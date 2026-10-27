@@ -78,7 +78,8 @@ if (!verifyOnly) {
 		JSON.stringify({ name: slug, sim: "sim.ts" }, null, 2),
 	);
 	writeFileSync(`${dir}/IDEA.md`, `${idea}\n`);
-	const install = await sh(["bun", "install", "--no-cache"], dir);
+	// Public registry on purpose: a machine-level registry mirror must not leak into the game's lockfile.
+	const install = await sh(["env", "NPM_CONFIG_REGISTRY=https://registry.npmjs.org", "BUN_CONFIG_REGISTRY=https://registry.npmjs.org", "bun", "install", "--no-cache"], dir);
 	if (install.code !== 0) throw new Error(`bun install failed: ${install.err}`);
 }
 const CLI = `${dir}/node_modules/dotframe/cli/bin.cjs`;
