@@ -4,3 +4,5 @@ node_modules/
 *.wav
 spike/out/
 spike/*/node_modules/
+spike/*/.dotframe/
+.DS_Store

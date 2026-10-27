@@ -14,16 +14,19 @@ Run: `bun --env-file=.env spike/v1-cutout.ts [prompt] [objects]` writes `spike/o
 
 ## Hitboxes and cutout check
 - `spike/hitbox.ts`: each cutout's mask becomes 8 band boxes (`BANDS` in `v1-cutout.ts`, a resolution choice, not measured), written as `out/<name>.hitbox.json` and used as `Body.parts`.
-- `spike/quality.ts`: compares SAM's mask with a foreground estimate from the sheet (distance from the paper color, Otsu threshold). Writes `out/<name>.check.png` (blue: foreground SAM missed, red: mask the estimate calls paper).
-- Same sheet, `--reuse`: missed foreground fox 2.4%, tree 1.8%, crate 2.1%, rock 28%. The check flags the rock. "Extra" is noisy on white parts (fox chest, tail tip read as paper), so `missed` is the signal.
+- `spike/quality.ts`: foreground estimate from the sheet (distance from the paper color, Otsu threshold). `out/<name>.check.png`: blue is foreground the mask missed, red is mask the estimate calls paper ("extra" is noisy on white parts, so `missed` is the signal).
+- Second opinion per object: SAM again with a box around the paper's connected region for that object; the mask that misses less of the region wins (text wins ties). Same sheet: text vs box missed fox 2.4% vs 1.4%, tree 1.8% vs 1.5%, rock 31% vs 1.7%, crate 2.1% vs 0.8%. Box won all four and fixed the rock.
+- Cost per sheet with the second opinion: $0.01 image + 8 x $0.0025 SAM = $0.03.
 
-## dotframe dogfood (branch `railly/body-collisions` in crafter-games/dotframe)
-- Fixed: a body stopped against an equal-height body fell through the floor (float-rounding overlap resolved vertically). This was in `stepBody` on main, not only in this spike.
-- Added: `Body.parts` (compound shapes) and `stepBodies` (bodies collide with each other).
-- `spike/drop2d` depends on that branch via `file:` until it is released. Replays: `fox-meets-tree`, `mash-1200`.
+## Materials
+- `spike/v1-material.ts`: a tileable material from Muse Image (7.9 s, $0.01) for meshes that tile a texture. The crate box in `drop3d` uses it instead of the cutout. `out/crate-material-tiled.png` shows the seams: plank ends repeat every tile, which reads as plank joints.
+
+## dotframe dogfood ([crafter-games/dotframe#51](https://github.com/crafter-games/dotframe/pull/51))
+- Fixed: a body stopped against an equal-height body fell through the floor (float-rounding overlap resolved vertically). In `stepBody` on main.
+- Fixed: alpha-cut meshes cast rectangular shadows.
+- Added: `Body.parts` (compound shapes), `stepBodies` (bodies collide), `Body.pushable` (a walker shoves it, one level deep).
+- `spike/drop2d` and `spike/drop3d` depend on the PR branch (`github:crafter-games/dotframe#railly/body-collisions`) until it is released. Replays: `fox-meets-tree`, `mash-1200`, `push-crate` (drop2d), `idle-120` (drop3d).
 
 ## Still open
-- The shadow pass ignores `alphaCutoff`: cards cast rectangular shadows.
-- A cutout on a box via triplanar shows the transparent border as white. Box textures need a seamless material sheet, not a cutout.
-- Bodies do not push each other: a walker stops at the first contact.
-- The rock's SAM miss is detected, not fixed (next: retry with a box prompt from the foreground estimate).
+- Chained pushes: a pushed body does not push a third.
+- Native (scriptc) build of the cutout shadow pipeline is not run on this machine.

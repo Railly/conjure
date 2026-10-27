@@ -36,7 +36,7 @@ interface Hitbox {
   parts: Solid[];
 }
 
-function createGame(sizes: { w: number; h: number }[], hitboxes: Hitbox[]): Game {
+function createGame(sizes: { w: number; h: number }[], hitboxes: Hitbox[], fox: { x: number; y: number }): Game {
   return {
     frame: 0,
     sprites: NAMES.map((name, i) => {
@@ -44,11 +44,12 @@ function createGame(sizes: { w: number; h: number }[], hitboxes: Hitbox[]): Game
       return {
         name,
         body: {
-          position: { x: 160 + i * 210, y: 420 + i * 90, z: 0 },
+          position: i === 0 ? { x: fox.x, y: fox.y, z: 0 } : { x: 160 + i * 210, y: 420 + i * 90, z: 0 },
           velocity: { x: 0, y: 0, z: 0 },
           halfWidth: (sizes[i].w * scale) / 2,
           halfHeight: HEIGHT / 2,
           onGround: false,
+          pushable: name === "crate",
           parts: hitboxes[i].parts.map((p) => ({
             x: p.x * scale,
             y: p.y * scale,
@@ -79,9 +80,10 @@ function step(game: Game, inputs: number[]): void {
 export default defineSim({
   players: 1,
   window: WINDOW,
-  clear: { r: 0.62, g: 0.8, b: 0.9, a: 1 },
+  clear: { r: 0.62, g: 0.8, b: 0.9 },
   // hitboxes: draw each body's collision parts over its sprite.
-  options: { hitboxes: false },
+  // foxX, foxY: where the fox drops in, to test one obstacle in isolation.
+  options: { hitboxes: false, foxX: 160, foxY: 420 },
   neutral: 0,
   rollbackWindow: 20,
   encode: (input: unknown): number => {
@@ -102,13 +104,16 @@ export default defineSim({
         NAMES.map(async (n) => JSON.parse(new TextDecoder().decode(await platform.load(`assets/${n}.hitbox.json`))) as Hitbox),
       );
       if (platform.image) for (const b of bytes) textures.push(await platform.image(b, true));
-      game = createGame(sizes, hitboxes);
+      game = createGame(sizes, hitboxes, { x: 160, y: 420 });
     })();
     return {
       ready,
       start: (_seed, options) => {
         showHitboxes = options.hitboxes === true;
-        game = createGame(sizes, hitboxes);
+        game = createGame(sizes, hitboxes, {
+          x: typeof options.foxX === "number" ? options.foxX : 160,
+          y: typeof options.foxY === "number" ? options.foxY : 420,
+        });
       },
       step: (inputs) => step(game, inputs),
       checksum: () => {

@@ -1,4 +1,4 @@
-// Spike V1: the same cutouts in 3D, as alpha-cut UV cards on the ground and as a texture on a box.
+// Spike V1: the same cutouts in 3D, as alpha-cut UV cards on the ground, and a tileable material on a box.
 import { createChecksum } from "dotframe/src/checksum";
 import { dsin } from "dotframe/src/detmath";
 import { createWorld, spawn, type World } from "dotframe/src/ecs";
@@ -30,7 +30,7 @@ const pngSize = (b: Uint8Array) => {
 export default defineSim({
   players: 1,
   window: WINDOW,
-  clear: { r: 0.62, g: 0.8, b: 0.9, a: 1 },
+  clear: { r: 0.62, g: 0.8, b: 0.9 },
   options: {},
   neutral: 0,
   encode: () => 0,
@@ -46,9 +46,10 @@ export default defineSim({
       sun: { direction: vec3(0.4, 1, 0.6), color: vec3(1, 0.95, 0.85), shadows: 20 },
     };
     const ready = (async () => {
-      const bytes = await Promise.all([...CARDS, "crate"].map((n) => platform.load(`assets/${n}.png`)));
+      const bytes = await Promise.all([...CARDS, "crate-material"].map((n) => platform.load(`assets/${n}.png`)));
       const tex: (Texture | undefined)[] = [];
-      for (const b of bytes) tex.push(platform.image ? await platform.image(b, true) : undefined);
+      // The material repeats over the box, so it loads with mipmaps (a repeating sampler); the cards do not.
+      for (let i = 0; i < bytes.length; i++) tex.push(platform.image ? await platform.image(bytes[i], true, i === CARDS.length) : undefined);
       const ground = spawn(world);
       world.transforms.set(ground, { position: vec3(0, -0.05, 0), rotation: vec3(0, 0, 0), scale: vec3(14, 0.1, 10) });
       world.meshes.set(ground, { mesh: renderer.addMesh(box()), color: vec3(0.42, 0.56, 0.31) });

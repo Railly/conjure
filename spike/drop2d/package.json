@@ -8,7 +8,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "dotframe": "file:../../../../crafter-games/dotframe-bodies"
+    "dotframe": "github:crafter-games/dotframe#railly/body-collisions"
   },
   "devDependencies": {
     "@types/bun": "^1.3.0",

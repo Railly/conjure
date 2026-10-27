@@ -35,9 +35,9 @@ function otsu(values: Uint8Array): number {
   return threshold;
 }
 
-// rgb: the crop around the object (3 channels); mask: SAM's mask on the same crop; paper: the sheet's paper color.
-export function checkCutout(rgb: Uint8Array, mask: Uint8Array, paper: [number, number, number]): { quality: Quality; foreground: Uint8Array } {
-  const n = mask.length;
+// Pixels that differ from the paper color by more than the Otsu split of those differences.
+export function foregroundOf(rgb: Uint8Array, paper: [number, number, number]): { foreground: Uint8Array; threshold: number } {
+  const n = rgb.length / 3;
   const dist = new Uint8Array(n);
   for (let i = 0; i < n; i++) {
     const dr = rgb[i * 3] - paper[0];
@@ -47,16 +47,22 @@ export function checkCutout(rgb: Uint8Array, mask: Uint8Array, paper: [number, n
   }
   const threshold = otsu(dist);
   const foreground = new Uint8Array(n);
+  for (let i = 0; i < n; i++) foreground[i] = dist[i] > threshold ? 1 : 0;
+  return { foreground, threshold };
+}
+
+// rgb: the crop around the object (3 channels); mask: SAM's mask on the same crop; paper: the sheet's paper color.
+export function checkCutout(rgb: Uint8Array, mask: Uint8Array, paper: [number, number, number]): { quality: Quality; foreground: Uint8Array } {
+  const { foreground, threshold } = foregroundOf(rgb, paper);
   let inter = 0;
   let union = 0;
   let fg = 0;
   let m = 0;
   let missed = 0;
   let extra = 0;
-  for (let i = 0; i < n; i++) {
-    const f = dist[i] > threshold ? 1 : 0;
+  for (let i = 0; i < mask.length; i++) {
+    const f = foreground[i];
     const k = mask[i] ? 1 : 0;
-    foreground[i] = f;
     fg += f;
     m += k;
     if (f && k) inter++;

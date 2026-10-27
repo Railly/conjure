@@ -3,7 +3,7 @@ import { decodeMaskToRaster, parseImageStream, recordsOfKind } from "@meta-sam/p
 import OpenAI from "openai";
 import sharp from "sharp";
 import { partsFromMask } from "./hitbox";
-import { checkCutout, paperColor } from "./quality";
+import { checkCutout, foregroundOf, paperColor } from "./quality";
 
 const OUT = new URL("./out/", import.meta.url).pathname;
 const IMAGE_USD = 0.01;
@@ -52,10 +52,16 @@ const paper = paperColor(sheetRgb, W, H, 24);
 const dataUrl = `data:image/png;base64,${sheetPng.toString("base64")}`;
 
 let samCalls = 0;
-const report: Record<string, unknown>[] = [];
-for (const name of objects) {
+interface Segment {
+  alpha: Buffer;
+  box: { x1: number; y1: number; x2: number; y2: number };
+  confidence?: number;
+}
+
+// One SAM call; prompt is a noun phrase or box tokens. Returns the first object's mask on the full frame.
+async function sam(prompt: string, label: string): Promise<Segment | null> {
   samCalls++;
-  const events = await time(`sam:${name}`, async () => {
+  const records = await time(label, async () => {
     const stream = await client.responses.create({
       model: "sam-3.1",
       input: [
@@ -63,7 +69,7 @@ for (const name of objects) {
           type: "message",
           role: "user",
           content: [
-            { type: "input_text", text: name },
+            { type: "input_text", text: prompt },
             { type: "input_image", image_url: dataUrl, detail: "auto" },
           ],
         },
@@ -73,11 +79,8 @@ for (const name of objects) {
     });
     return (await parseImageStream(stream as never).finalResult).records;
   });
-  const masks = recordsOfKind(events, "mask");
-  if (!masks.length) {
-    report.push({ name, found: 0 });
-    continue;
-  }
+  const masks = recordsOfKind(records, "mask");
+  if (!masks.length) return null;
   const { mask, bounds, confidence } = masks[0];
   const raster = decodeMaskToRaster(mask);
   const bw = bounds.right - bounds.left;
@@ -90,7 +93,80 @@ for (const name of objects) {
       const my = Math.floor((y * mask.height) / bh);
       if (raster[my * mask.width + mx]) alpha[(bounds.top + y) * W + bounds.left + x] = 255;
     }
-  const b = { x1: bounds.left, y1: bounds.top, x2: bounds.right, y2: bounds.bottom };
+  return { alpha, box: { x1: bounds.left, y1: bounds.top, x2: bounds.right, y2: bounds.bottom }, confidence };
+}
+
+// Foreground over the whole sheet, for following an object past the edge of SAM's box.
+const sheetForeground = foregroundOf(sheetRgb, paper).foreground;
+
+// The connected foreground region that touches the mask: the object as the paper sees it.
+function componentBox(alpha: Buffer): { x1: number; y1: number; x2: number; y2: number } {
+  const seen = new Uint8Array(W * H);
+  const queue: number[] = [];
+  for (let i = 0; i < W * H; i++)
+    if (alpha[i] && sheetForeground[i]) {
+      seen[i] = 1;
+      queue.push(i);
+    }
+  let x1 = W;
+  let y1 = H;
+  let x2 = -1;
+  let y2 = -1;
+  for (let q = 0; q < queue.length; q++) {
+    const i = queue[q];
+    const x = i % W;
+    const y = (i - x) / W;
+    if (x < x1) x1 = x;
+    if (x > x2) x2 = x;
+    if (y < y1) y1 = y;
+    if (y > y2) y2 = y;
+    for (const j of [x > 0 ? i - 1 : -1, x < W - 1 ? i + 1 : -1, y > 0 ? i - W : -1, y < H - 1 ? i + W : -1])
+      if (j >= 0 && !seen[j] && sheetForeground[j]) {
+        seen[j] = 1;
+        queue.push(j);
+      }
+  }
+  return { x1, y1, x2: x2 + 1, y2: y2 + 1 };
+}
+
+// Missed foreground of a full-frame mask inside a window, the same window for every candidate.
+function missedIn(alpha: Buffer, win: { x1: number; y1: number; x2: number; y2: number }): number {
+  let fg = 0;
+  let missed = 0;
+  for (let y = win.y1; y < win.y2; y++)
+    for (let x = win.x1; x < win.x2; x++) {
+      const i = y * W + x;
+      if (!sheetForeground[i]) continue;
+      fg++;
+      if (!alpha[i]) missed++;
+    }
+  return fg ? missed / fg : 0;
+}
+
+const report: Record<string, unknown>[] = [];
+for (const name of objects) {
+  const byText = await sam(name, `sam:${name}`);
+  if (!byText) {
+    report.push({ name, found: 0 });
+    continue;
+  }
+  // Second opinion: SAM again with a box around the paper's own region for this object. Keep whichever mask misses
+  // less of that region; the text mask wins ties.
+  const region = componentBox(byText.alpha);
+  const boxPrompt = `<0f>1<|box;x1=${region.x1};y1=${region.y1};x2=${region.x2 - 1};y2=${region.y2 - 1};w=${W};h=${H}|>`;
+  const byBox = await sam(boxPrompt, `sam-box:${name}`);
+  const win = {
+    x1: Math.min(region.x1, byText.box.x1, byBox?.box.x1 ?? W),
+    y1: Math.min(region.y1, byText.box.y1, byBox?.box.y1 ?? H),
+    x2: Math.max(region.x2, byText.box.x2, byBox?.box.x2 ?? 0),
+    y2: Math.max(region.y2, byText.box.y2, byBox?.box.y2 ?? 0),
+  };
+  const missedText = missedIn(byText.alpha, win);
+  const missedBox = byBox ? missedIn(byBox.alpha, win) : 1;
+  const chosen = byBox && missedBox < missedText ? byBox : byText;
+  const { alpha, confidence } = chosen;
+  const b = chosen.box;
+  const picked = { prompt: chosen === byText ? "text" : "box", missedText: +missedText.toFixed(3), missedBox: +missedBox.toFixed(3) };
 
   const pad = 16;
   const left = Math.max(0, b.x1 - pad);
@@ -144,7 +220,7 @@ for (const name of objects) {
   await sharp(overlay, { raw: { width: cw, height: ch, channels: 3 } }).png().toFile(`${OUT}${name}.check.png`);
   const parts = partsFromMask(Uint8Array.from(out.filter((_, i) => i % 4 === 3), (a) => (a ? 1 : 0)), cw, ch, BANDS);
   await Bun.write(`${OUT}${name}.hitbox.json`, JSON.stringify({ width: cw, height: ch, parts }));
-  report.push({ name, found: masks.length, confidence, box: b, mask: [mask.height, mask.width], quality, parts: parts.length });
+  report.push({ name, confidence, box: b, picked, quality, parts: parts.length });
 }
 
 const result = {
