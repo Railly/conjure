@@ -2,6 +2,8 @@
 import { decodeMaskToRaster, parseImageStream, recordsOfKind } from "@meta-sam/parser";
 import OpenAI from "openai";
 import sharp from "sharp";
+import { partsFromMask } from "./hitbox";
+import { checkCutout, paperColor } from "./quality";
 
 const OUT = new URL("./out/", import.meta.url).pathname;
 const IMAGE_USD = 0.01;
@@ -12,9 +14,13 @@ if (!apiKey) throw new Error("MODEL_API_KEY is not set");
 const client = new OpenAI({ baseURL: "https://api.meta.ai/v1", apiKey });
 
 const prompt =
-  process.argv[2] ??
+  process.argv[2] ||
   "A sheet of hand-painted watercolor game sprites on plain white paper, evenly spaced, not touching: a red fox, a pine tree, a mossy rock, a wooden crate. Flat front view, no shadows, no text.";
-const objects = (process.argv[3] ?? "fox,tree,rock,crate").split(",");
+const objects = (process.argv[3] || "fox,tree,rock,crate").split(",");
+// --reuse keeps out/sheet.png and only re-runs SAM and the cutout steps.
+const reuse = process.argv.includes("--reuse");
+// Horizontal bands per hitbox: the collision shape's vertical resolution.
+const BANDS = 8;
 
 const timings: Record<string, number> = {};
 const time = async <T>(label: string, fn: () => Promise<T>) => {
@@ -24,20 +30,25 @@ const time = async <T>(label: string, fn: () => Promise<T>) => {
   return r;
 };
 
-const gen = await time("muse-image", () =>
-  client.images.generate({
-    model: "muse-image-1.0",
-    prompt,
-    n: 1,
-    // @ts-expect-error Meta extensions
-    reasoning_strength: "low",
-    tool_enablement: { enable_image_search: false, enable_web_search: false, enable_shell: false },
-  }),
-);
-const sheet = Buffer.from(gen.data?.[0]?.b64_json ?? "", "base64");
-const sheetPng = await sharp(sheet).png().toBuffer();
-await Bun.write(`${OUT}sheet.png`, sheetPng);
+let sheetPng: Buffer;
+if (reuse) sheetPng = Buffer.from(await Bun.file(`${OUT}sheet.png`).arrayBuffer());
+else {
+  const gen = await time("muse-image", () =>
+    client.images.generate({
+      model: "muse-image-1.0",
+      prompt,
+      n: 1,
+      // @ts-expect-error Meta extensions
+      reasoning_strength: "low",
+      tool_enablement: { enable_image_search: false, enable_web_search: false, enable_shell: false },
+    }),
+  );
+  sheetPng = await sharp(Buffer.from(gen.data?.[0]?.b64_json ?? "", "base64")).png().toBuffer();
+  await Bun.write(`${OUT}sheet.png`, sheetPng);
+}
 const { width: W = 0, height: H = 0 } = await sharp(sheetPng).metadata();
+const sheetRgb = await sharp(sheetPng).removeAlpha().raw().toBuffer();
+const paper = paperColor(sheetRgb, W, H, 24);
 const dataUrl = `data:image/png;base64,${sheetPng.toString("base64")}`;
 
 let samCalls = 0;
@@ -118,13 +129,29 @@ for (const name of objects) {
     out[i * 4 + 3] = inside || edge ? 255 : 0;
   }
   await sharp(out, { raw: { width: cw, height: ch, channels: 4 } }).png().toFile(`${OUT}${name}.png`);
-  report.push({ name, found: masks.length, confidence, box: b, mask: [mask.height, mask.width] });
+  const { quality, foreground } = checkCutout(rgb, cutAlpha, paper);
+  // Review overlay: mask kept as is, foreground SAM missed in blue, mask the estimate calls paper in red.
+  const overlay = Buffer.alloc(cw * ch * 3);
+  for (let i = 0; i < cw * ch; i++) {
+    const k = cutAlpha[i] > 0;
+    const f = foreground[i] > 0;
+    const c = f && !k ? [40, 90, 255] : k && !f ? [255, 50, 50] : [rgb[i * 3], rgb[i * 3 + 1], rgb[i * 3 + 2]];
+    const dim = k || f ? 1 : 0.35;
+    overlay[i * 3] = c[0] * dim;
+    overlay[i * 3 + 1] = c[1] * dim;
+    overlay[i * 3 + 2] = c[2] * dim;
+  }
+  await sharp(overlay, { raw: { width: cw, height: ch, channels: 3 } }).png().toFile(`${OUT}${name}.check.png`);
+  const parts = partsFromMask(Uint8Array.from(out.filter((_, i) => i % 4 === 3), (a) => (a ? 1 : 0)), cw, ch, BANDS);
+  await Bun.write(`${OUT}${name}.hitbox.json`, JSON.stringify({ width: cw, height: ch, parts }));
+  report.push({ name, found: masks.length, confidence, box: b, mask: [mask.height, mask.width], quality, parts: parts.length });
 }
 
 const result = {
   sheet: { width: W, height: H },
   timings_ms: timings,
-  cost_usd: +(IMAGE_USD + samCalls * SAM_USD).toFixed(4),
+  cost_usd: +((reuse ? 0 : IMAGE_USD) + samCalls * SAM_USD).toFixed(4),
+  paper,
   objects: report,
 };
 await Bun.write(`${OUT}report.json`, JSON.stringify(result, null, 2));

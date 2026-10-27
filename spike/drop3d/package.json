@@ -8,7 +8,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "dotframe": "^0.3.6"
+    "dotframe": "file:../../../../crafter-games/dotframe-bodies"
   },
   "devDependencies": {
     "@types/bun": "^1.3.0",

@@ -2,7 +2,7 @@
 import { createChecksum } from "dotframe/src/checksum";
 import type { Draw2D } from "dotframe/src/draw2d";
 import type { Texture } from "dotframe/src/gpu";
-import { type Body, FIXED_STEP, type Solid, stepBody } from "dotframe/src/physics";
+import { type Body, FIXED_STEP, type Solid, stepBodies } from "dotframe/src/physics";
 import { defineSim, type SimPlatform, type SimRun } from "dotframe/src/sim";
 
 const WINDOW = { width: 960, height: 540, title: "drop2d" };
@@ -30,7 +30,13 @@ const pngSize = (b: Uint8Array) => {
   return { w: v.getUint32(16), h: v.getUint32(20) };
 };
 
-function createGame(sizes: { w: number; h: number }[]): Game {
+interface Hitbox {
+  width: number;
+  height: number;
+  parts: Solid[];
+}
+
+function createGame(sizes: { w: number; h: number }[], hitboxes: Hitbox[]): Game {
   return {
     frame: 0,
     sprites: NAMES.map((name, i) => {
@@ -43,6 +49,12 @@ function createGame(sizes: { w: number; h: number }[]): Game {
           halfWidth: (sizes[i].w * scale) / 2,
           halfHeight: HEIGHT / 2,
           onGround: false,
+          parts: hitboxes[i].parts.map((p) => ({
+            x: p.x * scale,
+            y: p.y * scale,
+            halfWidth: p.halfWidth * scale,
+            halfHeight: p.halfHeight * scale,
+          })),
         },
       };
     }),
@@ -52,17 +64,15 @@ function createGame(sizes: { w: number; h: number }[]): Game {
 // Input bits: 1 left, 2 right, 4 jump. Player 0 drives the fox.
 function step(game: Game, inputs: number[]): void {
   const bits = inputs[0] ?? 0;
-  for (const s of game.sprites) {
-    const b = s.body;
-    if (s.name === "fox") {
-      b.velocity = { x: (bits & 2 ? 260 : 0) - (bits & 1 ? 260 : 0), y: b.velocity.y, z: 0 };
-      if (bits & 4 && b.onGround) b.velocity = { x: b.velocity.x, y: 820, z: 0 };
-    }
-    const others = game.sprites
-      .filter((o) => o !== s)
-      .map((o) => ({ x: o.body.position.x, y: o.body.position.y, halfWidth: o.body.halfWidth, halfHeight: o.body.halfHeight }));
-    stepBody(b, [GROUND, ...WALLS, ...others], GRAVITY, FIXED_STEP);
-  }
+  const fox = game.sprites[0].body;
+  fox.velocity = { x: (bits & 2 ? 260 : 0) - (bits & 1 ? 260 : 0), y: fox.velocity.y, z: 0 };
+  if (bits & 4 && fox.onGround) fox.velocity = { x: fox.velocity.x, y: 820, z: 0 };
+  stepBodies(
+    game.sprites.map((s) => s.body),
+    [GROUND, ...WALLS],
+    GRAVITY,
+    FIXED_STEP,
+  );
   game.frame++;
 }
 
@@ -70,7 +80,8 @@ export default defineSim({
   players: 1,
   window: WINDOW,
   clear: { r: 0.62, g: 0.8, b: 0.9, a: 1 },
-  options: {},
+  // hitboxes: draw each body's collision parts over its sprite.
+  options: { hitboxes: false },
   neutral: 0,
   rollbackWindow: 20,
   encode: (input: unknown): number => {
@@ -80,18 +91,24 @@ export default defineSim({
   random: (next) => Math.floor(next() * 8),
   create: (platform: SimPlatform): SimRun => {
     let sizes: { w: number; h: number }[] = [];
+    let hitboxes: Hitbox[] = [];
+    let showHitboxes = false;
     const textures: Texture[] = [];
     let game: Game = { frame: 0, sprites: [] };
     const ready = (async () => {
       const bytes = await Promise.all(NAMES.map((n) => platform.load(`assets/${n}.png`)));
       sizes = bytes.map(pngSize);
+      hitboxes = await Promise.all(
+        NAMES.map(async (n) => JSON.parse(new TextDecoder().decode(await platform.load(`assets/${n}.hitbox.json`))) as Hitbox),
+      );
       if (platform.image) for (const b of bytes) textures.push(await platform.image(b, true));
-      game = createGame(sizes);
+      game = createGame(sizes, hitboxes);
     })();
     return {
       ready,
-      start: () => {
-        game = createGame(sizes);
+      start: (_seed, options) => {
+        showHitboxes = options.hitboxes === true;
+        game = createGame(sizes, hitboxes);
       },
       step: (inputs) => step(game, inputs),
       checksum: () => {
@@ -130,6 +147,15 @@ export default defineSim({
             draw.fillRect(x, y, b.halfWidth * 2, b.halfHeight * 2);
           }
         });
+        if (!showHitboxes) return;
+        draw.setStrokeStyle("#ff2d55");
+        draw.setLineWidth(2);
+        for (const s of game.sprites)
+          for (const p of s.body.parts ?? []) {
+            const x = s.body.position.x + p.x - p.halfWidth;
+            const y = WINDOW.height - (s.body.position.y + p.y + p.halfHeight);
+            draw.strokeRect(x, y, p.halfWidth * 2, p.halfHeight * 2);
+          }
       },
     };
   },
