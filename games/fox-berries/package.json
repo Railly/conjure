@@ -1,0 +1,13 @@
+{
+  "name": "fox-berries",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "dotframe": "github:crafter-games/dotframe#87db1a6557e5b223de19c88def28c6fdf77c04ac"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.3.0",
+    "@webgpu/types": "^0.1.74",
+    "typescript": "^5.9.0"
+  }
+}

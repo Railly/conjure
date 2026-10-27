@@ -5,7 +5,8 @@ import sharp from "sharp";
 import { partsFromMask } from "./hitbox";
 import { checkCutout, foregroundOf, paperColor } from "./quality";
 
-const OUT = new URL("./out/", import.meta.url).pathname;
+// CONJURE_OUT: directory for the sheet, cutouts, hitboxes and report (default spike/out/).
+const OUT = process.env.CONJURE_OUT ? `${process.env.CONJURE_OUT.replace(/\/$/, "")}/` : new URL("./out/", import.meta.url).pathname;
 const IMAGE_USD = 0.01;
 const SAM_USD = 2.5 / 1000;
 

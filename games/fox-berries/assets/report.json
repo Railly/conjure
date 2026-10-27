@@ -1,0 +1,109 @@
+{
+  "sheet": {
+    "width": 1920,
+    "height": 1280
+  },
+  "timings_ms": {
+    "muse-image": 9887,
+    "sam:fox": 2364,
+    "sam-box:fox": 4538,
+    "sam:berry": 3550,
+    "sam-box:berry": 3519,
+    "sam:rock": 2806,
+    "sam-box:rock": 2944,
+    "sam:tree": 2940,
+    "sam-box:tree": 3326
+  },
+  "cost_usd": 0.03,
+  "paper": [
+    248,
+    247,
+    243
+  ],
+  "objects": [
+    {
+      "name": "fox",
+      "box": {
+        "x1": 325,
+        "y1": 148,
+        "x2": 904,
+        "y2": 588
+      },
+      "picked": {
+        "prompt": "box",
+        "missedText": 0.023,
+        "missedBox": 0.012
+      },
+      "quality": {
+        "iou": 0.774,
+        "missed": 0.012,
+        "extra": 0.219,
+        "threshold": 112
+      },
+      "parts": 8
+    },
+    {
+      "name": "berry",
+      "box": {
+        "x1": 1097,
+        "y1": 133,
+        "x2": 1594,
+        "y2": 566
+      },
+      "picked": {
+        "prompt": "box",
+        "missedText": 0.968,
+        "missedBox": 0.008
+      },
+      "quality": {
+        "iou": 0.882,
+        "missed": 0.008,
+        "extra": 0.112,
+        "threshold": 112
+      },
+      "parts": 8
+    },
+    {
+      "name": "rock",
+      "box": {
+        "x1": 338,
+        "y1": 744,
+        "x2": 859,
+        "y2": 1114
+      },
+      "picked": {
+        "prompt": "box",
+        "missedText": 0.039,
+        "missedBox": 0.009
+      },
+      "quality": {
+        "iou": 0.767,
+        "missed": 0.009,
+        "extra": 0.227,
+        "threshold": 112
+      },
+      "parts": 8
+    },
+    {
+      "name": "tree",
+      "box": {
+        "x1": 1164,
+        "y1": 703,
+        "x2": 1512,
+        "y2": 1125
+      },
+      "picked": {
+        "prompt": "box",
+        "missedText": 0.023,
+        "missedBox": 0.018
+      },
+      "quality": {
+        "iou": 0.941,
+        "missed": 0.018,
+        "extra": 0.042,
+        "threshold": 117
+      },
+      "parts": 8
+    }
+  ]
+}

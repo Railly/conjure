@@ -6,3 +6,5 @@ spike/out/
 spike/*/node_modules/
 spike/*/.dotframe/
 .DS_Store
+games/*/node_modules/
+games/*/.dotframe/
