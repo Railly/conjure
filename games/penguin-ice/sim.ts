@@ -464,15 +464,27 @@ export default defineSim({
         draw.beginPath(); draw.ellipse(560, 404, 300, 76, 0, 0, Math.PI * 2, false); draw.fill();
         draw.setFillStyle("#c4e6f8");
         draw.beginPath(); draw.ellipse(860, 404, 220, 54, 0, 0, Math.PI * 2, false); draw.fill();
-        // snow (deterministic from frame)
+        // nieve abundante (determinista del frame: visible al instante, sin estado)
         draw.setFillStyle("#ffffff");
-        for (let i = 0; i < 64; i++) {
+        for (let i = 0; i < 220; i++) {
           const baseX = (i * 149) % W;
           const fall = (g.frame * (1 + (i % 3) * 0.4) + i * 89) % (H + 20);
           const x = baseX + dsin(g.frame * 0.02 + i * 1.7) * 12;
           const y = fall - 10;
           draw.beginPath(); draw.arc(x, y, i % 4 === 0 ? 3 : 2, 0, Math.PI * 2, false); draw.fill();
         }
+        // lluvia (determinista del frame: visible al instante, sin estado)
+        draw.setStrokeStyle("#4a90c4"); draw.setLineWidth(2);
+        draw.setGlobalAlpha(0.6);
+        for (let i = 0; i < 120; i++) {
+          const speed = 9 + (i % 4) * 2.5;
+          const fall = (g.frame * speed + i * 137) % (H + 40);
+          const baseX = (i * 197) % W;
+          const rx = (baseX + fall * 0.18 + dsin(g.frame * 0.05 + i * 1.3) * 4 + W) % W;
+          const ry = fall - 20;
+          draw.beginPath(); draw.moveTo(rx, ry); draw.lineTo(rx - 5, ry + 16); draw.stroke();
+        }
+        draw.setGlobalAlpha(1);
 
         // seal spectator (decoration, behind everything on the ice)
         if (assets.seal) {
@@ -534,10 +546,19 @@ export default defineSim({
         draw.setFillStyle("#ffb703");
         draw.beginPath(); draw.arc(def.iglooX - 40, sy(GROUND) - 96, 5 + dsin(g.frame * 0.08) * 1.5, 0, Math.PI * 2, false); draw.fill();
 
-        // fishes
+        // peces con brillo dorado (determinista del frame: visible al instante, sin estado)
         for (const f of g.fishes) {
           if (f.taken) continue;
           const bob = dsin(g.frame * 0.06 + f.x * 0.05) * 4;
+          const fy = sy(f.y) + bob;
+          const pulse = 20 + dsin(g.frame * 0.09 + f.x * 0.1) * 3;
+          draw.setGlobalAlpha(0.45);
+          draw.setFillStyle("#ffd700");
+          draw.beginPath(); draw.arc(f.x, fy, pulse, 0, Math.PI * 2, false); draw.fill();
+          draw.setGlobalAlpha(0.85);
+          draw.setFillStyle("#ffef9e");
+          draw.beginPath(); draw.arc(f.x, fy, pulse * 0.55, 0, Math.PI * 2, false); draw.fill();
+          draw.setGlobalAlpha(1);
           if (assets.fish) {
             const w = 38, h = 27;
             draw.drawImage(assets.fish, 0, 0, assets.fish.width, assets.fish.height, f.x - w / 2, sy(f.y) - h / 2 + bob, w, h);

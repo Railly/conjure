@@ -51,6 +51,7 @@ export async function runAgent(opts: {
   bashOk: string[];
   // Writes <tag>.log and <tag>.json into dir.
   tag: string;
+  effort?: "low" | "medium" | "high";
   onTool?: (name: string, input: unknown) => void;
 }): Promise<AgentRun> {
   const apiKey = process.env.MODEL_API_KEY;
@@ -64,6 +65,7 @@ export async function runAgent(opts: {
     prompt: opts.prompt,
     options: {
       model: opts.model,
+      ...(opts.effort ? { effort: opts.effort } : {}),
       cwd: opts.dir,
       systemPrompt: opts.system,
       allowedTools: [],

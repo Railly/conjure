@@ -19,14 +19,15 @@ interface Game {
   cat: Body; car: Body; suns: Sun[];
 }
 
-const NAMES = ["cat", "sun", "tree", "house", "car"] as const;
-const DRAW_W: Record<string, number> = { cat: 84, sun: 54, tree: 110, house: 150, car: 124 };
+const NAMES = ["cat", "sun", "tree", "house", "car", "dragon"] as const;
+const DRAW_W: Record<string, number> = { cat: 84, sun: 54, tree: 110, house: 150, car: 124, dragon: 120 };
 const FALLBACK: Record<string, Hitbox> = {
   cat: { width: 401, height: 303, parts: [{ x: 0, y: 0, halfWidth: 190, halfHeight: 140 }] },
   sun: { width: 303, height: 270, parts: [{ x: 0, y: 0, halfWidth: 140, halfHeight: 125 }] },
   tree: { width: 246, height: 278, parts: [{ x: 0, y: 60, halfWidth: 110, halfHeight: 70 }] },
   house: { width: 278, height: 293, parts: [{ x: 0, y: 0, halfWidth: 130, halfHeight: 140 }] },
   car: { width: 330, height: 167, parts: [{ x: 0, y: 0, halfWidth: 155, halfHeight: 75 }] },
+  dragon: { width: 400, height: 300, parts: [] },
 };
 // physics positions (y up): tree centers, mounds
 const TREES = [
@@ -54,7 +55,7 @@ function nextRand(g: Game): number {
 export default defineSim({
   players: 1,
   window: { width: W, height: H, title: "Cat's Sunny Way Home" },
-  clear: { r: 0.55, g: 0.82, b: 0.98 },
+  clear: { r: 0.04, g: 0.06, b: 0.16 },
   options: {},
   neutral: 0,
   encode: (input: unknown): number => {
@@ -236,7 +237,23 @@ export default defineSim({
       restore: (saved: unknown): void => { game = snapshot(saved as Game); },
       inspect: (): unknown => game,
       render: (draw: Draw2D): void => {
-        draw.setFillStyle("#87d0f7"); draw.fillRect(0, 0, W, H);
+        draw.setFillStyle("#0b1026"); draw.fillRect(0, 0, W, H);
+        // stars (twinkle with seeded frame)
+        for (let i = 0; i < 70; i++) {
+          const sx2 = (i * 137 + 41) % W;
+          const sy2 = (i * 89 + 23) % 380;
+          const tw = 0.5 + 0.5 * dsin(game.frame * 0.08 + i * 1.3);
+          draw.setGlobalAlpha(0.4 + tw * 0.6);
+          draw.setFillStyle("#ffffff");
+          const sz = i % 5 === 0 ? 3 : 2;
+          draw.fillRect(sx2, sy2, sz, sz);
+        }
+        draw.setGlobalAlpha(1);
+        // moon
+        draw.setFillStyle("#f5f0d0");
+        draw.beginPath(); draw.ellipse(830, 90, 34, 34, 0, 0, 6.2832, false); draw.fill();
+        draw.setFillStyle("#0b1026");
+        draw.beginPath(); draw.ellipse(818, 82, 28, 28, 0, 0, 6.2832, false); draw.fill();
         // clouds (shapes behind sprites)
         draw.setFillStyle("#ffffff");
         for (const [cx, cy, r] of [[160, 95, 26], [520, 95, 32], [800, 110, 24]] as const) {
@@ -261,6 +278,11 @@ export default defineSim({
           else { draw.setFillStyle("#ffd23f"); draw.fillRect(-dw / 2, -dh / 2, dw, dh); }
           draw.restore();
         });
+        // friendly dragon flying across the sky (decorative, loops forever)
+        const dSpan = W + 240;
+        const dX = W + 120 - ((game.frame * 2) % dSpan);
+        const dY = 430 + dsin(game.frame * 0.04) * 18;
+        drawSprite(draw, "dragon", dX, dY, true, 1);
         drawSprite(draw, "car", game.car.position.x, game.car.position.y, game.carDir < 0, 1);
         const blink = game.invuln > 0 && Math.floor(game.frame / 6) % 2 === 0 ? 0.45 : 1;
         drawSprite(draw, "cat", game.cat.position.x, game.cat.position.y, game.facing < 0, blink);

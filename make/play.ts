@@ -15,6 +15,8 @@ const arg = (name: string, fallback: string) => {
 };
 const port = Number(arg("--port", "5180"));
 const model = arg("--model", "muse-spark-1.3");
+// Reasoning effort for live edits: the player is waiting.
+const effort = arg("--effort", "low") as "low" | "medium" | "high";
 const dir = `${ROOT}/games/${slug}`;
 const engine = `${dir}/node_modules/dotframe/src`;
 const CLI = `${dir}/node_modules/dotframe/cli/bin.cjs`;
@@ -116,22 +118,31 @@ const send = (m: unknown) => {
   for (const c of listeners) c.enqueue(`data: ${JSON.stringify(m)}\n\n`);
 };
 
-const core = (await Bun.$`node ${CLI} skills get core`.quiet()).stdout.toString();
+const SPRITE = `bun ${ROOT}/spike/v1-sprite.ts ${dir}/assets `;
 // What the player asked for so far, oldest first: every edit must keep the earlier ones.
 const historyFile = join(work, "history.json");
 const history: string[] = (await Bun.file(historyFile).exists()) ? await Bun.file(historyFile).json() : [];
-const editSystem = (text: string) => `You change a running dotframe game in ${dir} while someone plays it. The player asked: "${text}".
+// Lean on purpose: every token here is waiting time for the player. The server checks the result itself.
+const editSystem = (text: string) => `You change a running dotframe game while someone plays it. The player asked: "${text}". Be fast: Read sim.ts, make the smallest edit that does it visibly right away, reply with one short sentence in Spanish saying what changed. Do not run checks; the server runs them.
 
-Make the smallest change to sim.ts (and its modules) that does what they asked, visibly, right away. Keep everything else as it is: the drawings in assets/, the controls, the rules that still apply.${history.length ? `
+Keep everything else: the drawings in assets/, the controls, the rules that still apply.${history.length ? ` The player already asked for, in order: ${history.map((h, i) => `${i + 1}. "${h}"`).join("; ")}. All of these must stay in effect; code that differs from the original game is these changes, never revert it.` : ""}
 
-The player already changed the game, in this order, and every one of these must stay in effect: ${history.map((h, i) => `${i + 1}. "${h}"`).join("; ")}. Code that differs from the original game is these changes, not a mistake: never revert it.` : ""}
+If the change needs something new on screen (a creature, an object), draw it in the game's own style with one command, then load assets/<name>.png and assets/<name>.hitbox.json the same way the game loads its other sprites:
+${SPRITE}<name> "<what to draw, a few words>"
 
-The page swaps your new sim in mid-match and calls restore() with a snapshot saved by the OLD code, so restore() must accept a snapshot without your new fields: give every new state field a default when it is missing. Keep all state changes in step(), render only reads, randomness from the seeded generator in the state, dotframe/src/detmath instead of Math.sin/cos/pow/exp.
+Rules: restore() is called with a snapshot from the OLD code, so every new state field needs a default when missing. State changes only in step(); render only reads. Randomness from the seeded generator in the state; dotframe/src/detmath instead of Math.sin/cos/pow/exp. Draw2D uses setFillStyle/setStrokeStyle/setLineWidth/setFont.`;
 
-When done, run bunx tsc --noEmit -p . and node ${CLI} sim --mash 7 --frames 600 --json, fix what fails, and reply with one short sentence in Spanish saying what changed. Bash runs single commands only, from: bunx tsc --noEmit | node ${CLI} sim | ls.
-
-# dotframe core skill
-${core}`;
+// After an edit: it must bundle and run headless. One repair round with the error, else the edit is undone.
+const check = async (): Promise<string> => {
+  try {
+    simJs = await build(join(dir, "sim.ts"));
+  } catch (e) {
+    return `bundle failed: ${String(e).slice(0, 600)}`;
+  }
+  const r = Bun.spawnSync(["node", CLI, "sim", "--mash", "7", "--frames", "300", "--json"], { cwd: dir });
+  const out = r.stdout.toString();
+  return r.exitCode === 0 && out.includes('"ok":true') ? "" : `headless run failed: ${(out || r.stderr.toString()).slice(0, 600)}`;
+};
 
 let busy = false;
 // Continues numbering after edits from an earlier session, so their undo copies are not overwritten.
@@ -142,25 +153,36 @@ const edit = async (text: string) => {
   edits++;
   copyFileSync(join(dir, "sim.ts"), join(work, `sim.${edits}.ts`));
   send({ status: `Muse esta cambiando el juego: "${text}"...` });
+  const started = performance.now();
+  let cost = 0;
+  const onTool = (name: string, input: unknown) => {
+    const i = input as { file_path?: string; command?: string };
+    const what = i.command?.includes("v1-sprite.ts") ? "dibujando un sprite nuevo" : `${name} ${String(i.file_path ?? i.command ?? "").replace(`${dir}/`, "").slice(0, 50)}`;
+    send({ status: `Muse: ${what}` });
+  };
   try {
-    const run = await runAgent({
-      dir,
-      model,
-      system: editSystem(text),
-      prompt: text,
-      bashOk: ["bunx tsc --noEmit", `node ${CLI} sim `, "ls"],
-      tag: `.play/edit-${edits}`,
-      onTool: (name, input) => send({ status: `Muse: ${name} ${String((input as { file_path?: string; command?: string }).file_path ?? (input as { command?: string }).command ?? "").replace(dir, "").slice(0, 60)}` }),
-    });
-    simJs = await build(join(dir, "sim.ts"));
+    const run = await runAgent({ dir, model, system: editSystem(text), prompt: text, bashOk: [SPRITE, "ls"], tag: `.play/edit-${edits}`, onTool, effort });
+    cost += costOf(run);
+    let summary = run.summary;
+    let failure = await check();
+    if (failure) {
+      send({ status: "Muse: arreglando un error..." });
+      const fix = await runAgent({ dir, model, system: editSystem(text), prompt: `Your edit for "${text}" broke the game: ${failure}. Fix it.`, bashOk: [SPRITE, "ls"], tag: `.play/edit-${edits}-fix`, onTool, effort });
+      cost += costOf(fix);
+      summary = fix.summary || summary;
+      failure = await check();
+    }
+    if (failure) throw new Error(failure);
     version++;
     history.push(text);
     writeFileSync(historyFile, JSON.stringify(history, null, 2));
-    const secs = (run.ms / 1000).toFixed(0);
-    console.log(`edit ${edits} "${text}": ${secs}s, $${costOf(run).toFixed(3)}`);
-    send({ version, done: `${run.summary.trim().split("\n").pop() ?? "Listo"} (${secs}s, $${costOf(run).toFixed(3)})` });
+    const secs = ((performance.now() - started) / 1000).toFixed(0);
+    console.log(`edit ${edits} "${text}": ${secs}s, $${cost.toFixed(3)}`);
+    send({ version, done: `${summary.trim().split("\n").pop() ?? "Listo"} (${secs}s, $${cost.toFixed(3)})` });
   } catch (e) {
     copyFileSync(join(work, `sim.${edits}.ts`), join(dir, "sim.ts"));
+    simJs = await build(join(dir, "sim.ts"));
+    console.log(`edit ${edits} "${text}" failed: ${String(e).slice(0, 200)}`);
     send({ status: `No pude aplicar el cambio, deje el juego como estaba: ${String(e).slice(0, 120)}` });
   } finally {
     busy = false;
