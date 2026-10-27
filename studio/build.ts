@@ -55,18 +55,22 @@ export async function buildGame(opts: { dir: string; slug: string; concept: Conc
   const { dir, slug, concept, drawings, emit } = opts;
   const started = performance.now();
   const CLI = join(dir, "node_modules/dotframe/cli/bin.cjs");
-  const core = sh(["node", CLI, "skills", "get", "core"], dir).out;
   const CUTOUT = `CONJURE_OUT=assets bun ${ROOT}/spike/v1-cutout.ts `;
   const SPRITE = `bun ${ROOT}/spike/v1-sprite.ts ${dir}/assets `;
   const VERIFY = `bun ${ROOT}/make/verify.ts ${slug}`;
   const bashOk = [`node ${CLI} `, CUTOUT, SPRITE, VERIFY, "bunx tsc --noEmit", "ls", "cat assets/report.json"];
   writeFileSync(join(dir, "CONCEPT.md"), `${conceptText(concept)}\n`);
+  // The kit carries title/win/lose screens, sprites, fonts, particles, shake and HUD, so the agent writes only the
+  // game's own mechanic: far fewer tokens, which is where build time goes.
+  const kit = await Bun.file(join(ROOT, "kit/kit.ts")).text();
+  const example = await Bun.file(join(ROOT, "kit/example.sim.ts")).text();
+  writeFileSync(join(dir, "kit.ts"), kit);
 
   const art = drawings.length
-    ? `The art is the player's own hand drawings, cut out of their photo: ${drawings.map((d) => `assets/${d}.png`).join(", ")}, each with assets/<name>.hitbox.json ({width, height, parts}: collision boxes in pixels, relative to the image center, y up). They are the stars: keep them recognizable, never recolor or replace them. If the concept needs one more object, draw it in their style: ${SPRITE}<name> "<what>".`
-    : `Make the art: ${CUTOUT}"<sheet prompt: one sheet of hand-painted game sprites in the concept's palette on plain white paper, evenly spaced, not touching, flat front view, no shadows, no text>" "<noun1,noun2,...>". It writes assets/<noun>.png (sticker cutouts) and assets/<noun>.hitbox.json ({width, height, parts}: collision boxes in pixels, relative to the image center, y up). Check cat assets/report.json: every quality.missed well under 0.1. One more object later in the same style: ${SPRITE}<name> "<what>".`;
+    ? `The art is the player's own hand drawings, cut out of their photo: ${drawings.join(", ")} (assets/<name>.png with assets/<name>.hitbox.json, loaded by loadKit). They are the stars: keep them recognizable, never recolor or replace them. If the concept needs one more object, draw it in their style first: ${SPRITE}<name> "<what>".`
+    : `Make the art first: ${CUTOUT}"<sheet prompt: one sheet of hand-painted game sprites in the concept's palette on plain white paper, evenly spaced, not touching, flat front view, no shadows, no text>" "<noun1,noun2,...>". It writes assets/<noun>.png and assets/<noun>.hitbox.json (loaded by loadKit). One more object later in the same style: ${SPRITE}<name> "<what>".`;
 
-  const system = `You are building a small, POLISHED game with the dotframe engine in ${dir}: the concept below, exactly, as a finished product a player would show friends. Work alone until it is done; nobody will answer questions.
+  const system = `You build a small, POLISHED game with the dotframe engine in ${dir}: the concept below, exactly, as a finished product a player would show friends. Work alone; nobody will answer questions. Be fast: every token you write is time the player waits.
 
 # Concept
 ${conceptText(concept)}
@@ -74,32 +78,19 @@ ${conceptText(concept)}
 # Art
 ${art}
 
-# Build
-- sim.ts holds the Sim contract (dotframe core skill below). Load images with platform.load + platform.image (only when platform.image exists; headless runs have none); PNG width and height are big-endian uint32 at offsets 16 and 20. Load hitboxes in every run, headless included.
-- Text needs a font: in create(), when platform.draw and platform.image exist, platform.draw.addFont(["archivo black", "sans-serif"], await platform.image(await platform.load("assets/fonts/archivo-black.png"), true), new TextDecoder().decode(await platform.load("assets/fonts/archivo-black.json"))). bangers is also there. Latin-1 only, no emoji.
-- Physics if the concept needs it: dotframe/src/physics (Body with parts from the hitbox JSON scaled to the drawn size, stepBodies, Body.pushable, FIXED_STEP; y up, flip when drawing; gravity 0 for top-down). Grid, rhythm or arena games can skip physics.
-- 3D concepts: createRenderer from dotframe/src/render in create(), draw.scene(renderer.draws(...)) then the HUD; drawings as UV cards (alphaCutoff) facing the camera.
-- state() must include outcome ("playing" | "won" | "lost") and progress (0 to 1, how close to winning). Winnable, but not by doing nothing or holding one key.
-- Everything in one plain state object; changes only in step; render only reads. Seeded randomness in the state, no Math.random or Date. dotframe/src/detmath instead of Math.sin/cos/pow/exp. Draw2D setters: setFillStyle, setStrokeStyle, setLineWidth, setFont.
+# How
+1. Write sim.ts in ONE Write call: the whole game, built on ./kit.ts (already in the directory, shown below). Start from the example below, which is a complete working game on the kit, and replace its mechanic with the concept's. Keep its structure: one Game state object, step(), render(), the scene flow (title, play, won, lost via sceneStep/endRun/overlay), state() with outcome and progress (0 to 1 toward winning).
+2. Implement the concept's juice with the kit: burst on every important event, shake on impacts, squash and stretch through drawSprite's sx/sy, floatText for feedback, sky plus layered shapes for a background with depth. Difficulty ramps over the minute. Winnable, but not by doing nothing or holding one key.
+3. Check, fixing only what fails: bunx tsc --noEmit -p . then ${VERIFY} (verdict must be "ok"), then node ${CLI} snap --frame 40 --out ${dir}/shot-title.png --json and node ${CLI} snap --frame 600 --mash 7 --out ${dir}/shot-play.png --json and Read both. Stop when they pass.
+4. Finish with two sentences in Spanish: what the game is and how to play.
 
-# Polish (this is what wins: do all of it)
-- A title screen: the game's name big, the drawings animated on it, "Pulsa ENTER" blinking. Then play. A win screen and a lose screen with the score and "ENTER para jugar de nuevo".
-- The concept's juice, implemented for real: particles (simulated in state) on every important event, screen shake on impacts, squash and stretch when things jump, land or hit (scale the sprite when drawing), floating feedback text, smooth easing, a background with depth (gradient, parallax layers, details in the palette).
-- A clean HUD: readable size, strong contrast, aligned, nothing overlapping.
-- Difficulty ramps over the minute.
+Rules: changes only in step, render only reads, randomness only from the kit's rng in the state, dotframe/src/detmath for trig. Physics if needed: dotframe/src/physics (Body.parts from partsAt(sprite, height), stepBodies, Body.pushable, FIXED_STEP; y up there, flip when drawing). 3D concepts: createRenderer from dotframe/src/render in create(), draw.scene(renderer.draws(...)) before the HUD, drawings as UV cards with alphaCutoff. Bash runs single commands only, from: ${bashOk.join(" | ")}.
 
-# Verify, and fix until all pass
-- node ${CLI} doctor --json: no ok false unless warn is true.
-- node ${CLI} sim --mash 7 --frames 1800 --json: reacts to input, nothing leaves the world.
-- node ${CLI} snap --frame 30 --out ${dir}/shot-title.png --json and --frame 600 --mash 7 --out ${dir}/shot-play.png: Read both PNGs and look like a picky art director. data.warnings must be absent.
-- ${VERIFY}: verdict "ok".
-- bunx tsc --noEmit -p .
-- node ${CLI} replay record replays/mash.json --mash 7 --frames 1800 --json
-Bash runs single commands only, from: ${bashOk.join(" | ")}. Write files with Write and Edit.
-Finish with two sentences in Spanish: what the game is and how to play.
+# kit.ts
+${kit}
 
-# dotframe core skill
-${core}`;
+# Example: example.sim.ts (asset names there are placeholders; use the real ones above)
+${example}`;
 
   const onTool = (name: string, input: unknown) => {
     const i = input as { file_path?: string; command?: string };
@@ -109,7 +100,7 @@ ${core}`;
   };
 
   emit({ stage: "code", message: "Muse Wonder empieza a construir" });
-  const runs = [await runAgent({ dir, model: "muse-wonder-1.0", system, prompt: "Build it.", bashOk, tag: "agent", onTool })];
+  const runs = [await runAgent({ dir, model: "muse-wonder-1.0", system, prompt: "Build it.", bashOk, tag: "agent", onTool, effort: "medium" })];
 
   // Independent checks: the playtester and a visual QA pass on fresh captures.
   const playtest = () => JSON.parse(sh(["bun", join(ROOT, "make/verify.ts"), slug], ROOT).out || "{}") as { verdict?: string; advice?: string };

@@ -2,7 +2,7 @@
 // Drop a photo or type an idea -> your drawings, cut out -> three concepts in different genres -> watch it being
 // built -> play it, and keep changing it while you play.
 //   bun --env-file=.env studio/server.ts [--port 5170]
-import { mkdirSync, writeFileSync } from "node:fs";
+import { appendFileSync, mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { buildGame, cutPhoto, scaffold } from "./build";
 import { type Concept, proposeConcepts } from "./concepts";
@@ -28,6 +28,8 @@ let nextPlayPort = 5190;
 const emit = (s: Session, e: { stage: string; message: string; data?: unknown }) => {
   const ev = { ...e, t: Date.now() };
   s.events.push(ev);
+  // Every event also lands on disk, so a session can be replayed and measured later.
+  appendFileSync(join(s.dir, "events.jsonl"), `${JSON.stringify(ev)}\n`);
   for (const c of s.listeners) c.enqueue(`data: ${JSON.stringify(ev)}\n\n`);
 };
 
