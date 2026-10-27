@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conjure Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0c11; --panel: #14141b; --line: #24242f; --text: #f2f1f6; --dim: #9a98a8; --faint: #5f5d6e;
+  --sun: #ffcf3f; --rose: #ff6b8b; --sky: #6bc5ff; --ok: #5be08f;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); font: 15px/1.45 Inter, system-ui, sans-serif; }
+body { display: grid; grid-template-columns: 440px 1fr; height: 100vh; overflow: hidden; }
+aside { border-right: 1px solid var(--line); display: flex; flex-direction: column; min-height: 0; }
+header { padding: 22px 24px 14px; display: flex; align-items: baseline; gap: 10px; }
+.logo { font: 800 26px/1 "Bricolage Grotesque", sans-serif; letter-spacing: -0.02em; background: linear-gradient(90deg, var(--sun), var(--rose) 60%, var(--sky)); -webkit-background-clip: text; color: transparent; }
+.tag { color: var(--faint); font-size: 13px; }
+.scroll { flex: 1; overflow-y: auto; padding: 0 24px 24px; }
+section { margin-top: 18px; }
+h2 { font: 600 12px/1 Inter, sans-serif; text-transform: uppercase; letter-spacing: .08em; color: var(--dim); margin: 0 0 10px; }
+.drop { display: block; border: 1.5px dashed #34334a; border-radius: 16px; padding: 22px; text-align: center; cursor: pointer; transition: .2s; background: #111118; }
+.drop:hover, .drop.over { border-color: var(--sun); background: #17161d; }
+.drop b { display: block; font: 600 16px "Bricolage Grotesque", sans-serif; margin-bottom: 4px; }
+.drop span { color: var(--dim); font-size: 13px; }
+.drop img { max-width: 100%; max-height: 160px; border-radius: 10px; display: block; margin: 0 auto; }
+textarea { width: 100%; margin-top: 10px; background: #111118; border: 1px solid var(--line); border-radius: 12px; color: var(--text); padding: 12px 14px; font: inherit; resize: none; height: 64px; outline: none; }
+textarea:focus { border-color: #45435c; }
+button.go { margin-top: 10px; width: 100%; padding: 13px; border: 0; border-radius: 12px; font: 600 15px Inter, sans-serif; color: #17130a; background: linear-gradient(90deg, var(--sun), #ffb13f); cursor: pointer; transition: .15s; }
+button.go:hover { filter: brightness(1.06); transform: translateY(-1px); }
+button.go:disabled { opacity: .45; cursor: default; transform: none; }
+.drawings { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.drawings figure { margin: 0; aspect-ratio: 1; border-radius: 12px; background: #f6f3ea; display: grid; place-items: center; padding: 8px; overflow: hidden; animation: pop .4s cubic-bezier(.2,1.4,.4,1) both; }
+.drawings img { width: 100%; height: 100%; object-fit: contain; min-height: 0; }
+.drawings figcaption { display: none; }
+@keyframes pop { from { transform: scale(.6); opacity: 0; } }
+.concept { border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-bottom: 10px; cursor: pointer; transition: .15s; background: var(--panel); animation: pop .45s cubic-bezier(.2,1.2,.4,1) both; }
+.concept:hover { border-color: #3d3b52; }
+.concept.on { border-color: var(--sun); box-shadow: 0 0 0 3px #ffcf3f22; }
+.concept .genre { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--sky); background: #6bc5ff1a; padding: 3px 8px; border-radius: 99px; }
+.concept h3 { font: 700 18px/1.2 "Bricolage Grotesque", sans-serif; margin: 8px 0 6px; }
+.concept p { margin: 0; color: var(--dim); font-size: 13.5px; }
+.concept .mech { margin-top: 8px; color: var(--text); font-size: 13px; }
+.feed { list-style: none; padding: 0; margin: 0; }
+.feed li { display: grid; grid-template-columns: 14px 1fr auto; gap: 10px; align-items: start; padding: 6px 0; font-size: 13.5px; color: var(--dim); animation: in .25s ease both; }
+.feed li:last-child { color: var(--text); }
+.feed li i { width: 8px; height: 8px; border-radius: 50%; margin-top: 6px; background: var(--faint); }
+.feed li[data-stage=art] i { background: var(--rose); }
+.feed li[data-stage=concepts] i, .feed li[data-stage=build] i { background: var(--sun); }
+.feed li[data-stage=code] i { background: var(--sky); }
+.feed li[data-stage=check] i, .feed li[data-stage=done] i, .feed li[data-stage=play] i { background: var(--ok); }
+.feed li[data-stage=error] i { background: #ff4d4d; } .feed li[data-stage=error] { color: #ff8a8a; }
+.feed li:last-child:not([data-stage=play]):not([data-stage=error]) i { animation: pulse 1s infinite; }
+.feed time { color: var(--faint); font-variant-numeric: tabular-nums; font-size: 12px; }
+@keyframes in { from { opacity: 0; transform: translateY(4px); } }
+@keyframes pulse { 50% { opacity: .3; } }
+main { position: relative; display: grid; place-items: center; padding: 28px; min-width: 0; background: radial-gradient(1200px 600px at 70% 0%, #1b1726 0%, transparent 60%), var(--bg); }
+.stage { width: min(100%, calc((100vh - 56px) * 16 / 9)); aspect-ratio: 16 / 9; border-radius: 22px; overflow: hidden; position: relative; background: #08080c; box-shadow: 0 30px 80px #0008, 0 0 0 1px #ffffff10; }
+.stage iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.empty { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; color: var(--dim); }
+.empty h1 { font: 800 clamp(34px, 5vw, 64px)/1 "Bricolage Grotesque", sans-serif; color: var(--text); margin: 0 0 14px; letter-spacing: -0.03em; }
+.empty h1 em { font-style: normal; background: linear-gradient(90deg, var(--sun), var(--rose)); -webkit-background-clip: text; color: transparent; }
+.floaters { position: absolute; inset: 0; pointer-events: none; }
+.floaters img { position: absolute; width: 18%; filter: drop-shadow(0 10px 20px #0006); animation: float 6s ease-in-out infinite; }
+@keyframes float { 50% { transform: translateY(-18px) rotate(4deg); } }
+.status { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); background: #000a; backdrop-filter: blur(10px); padding: 10px 18px; border-radius: 99px; font-size: 14px; white-space: nowrap; border: 1px solid #ffffff14; }
+.status:empty { display: none; }
+.meta { margin-top: 10px; font-size: 12.5px; color: var(--faint); }
+</style>
+</head>
+<body>
+<aside>
+  <header><div class="logo">Conjure</div><div class="tag">tu dibujo, jugable</div></header>
+  <div class="scroll">
+    <section>
+      <h2>1. Dibuja o describe</h2>
+      <label class="drop" id="drop"><input type="file" id="file" accept="image/*" hidden><b>Sube la foto de tu dibujo</b><span>o arrastrala aca. Papel, crayon, birome: todo vale.</span></label>
+      <textarea id="idea" placeholder="Opcional: una idea. &quot;que el gato maneje el auto&quot;, &quot;un juego de ritmo&quot;..."></textarea>
+      <button class="go" id="start">Conjurar</button>
+    </section>
+    <section id="drawingsBox" hidden><h2>Tus dibujos</h2><div class="drawings" id="drawings"></div></section>
+    <section id="conceptsBox" hidden><h2>2. Elige tu juego</h2><div id="concepts"></div><button class="go" id="build" disabled>Construir este juego</button></section>
+    <section id="feedBox" hidden><h2>En vivo</h2><ul class="feed" id="feed"></ul><div class="meta" id="meta"></div></section>
+  </div>
+</aside>
+<main>
+  <div class="stage" id="stage">
+    <div class="empty" id="empty"><div><h1>Dibuja. <em>Juega.</em></h1><div>Muse convierte tu dibujo en un juego, y lo cambia mientras juegas.</div></div></div>
+    <div class="floaters" id="floaters"></div>
+    <div class="status" id="status"></div>
+  </div>
+</main>
+<script>
+const $ = (id) => document.getElementById(id);
+let slug = null, chosen = -1, photo = null, t0 = 0;
+const drop = $("drop");
+const setPhoto = (f) => { photo = f; drop.innerHTML = `<img src="${URL.createObjectURL(f)}"><span>${f.name}</span>`; };
+$("file").onchange = (e) => e.target.files[0] && setPhoto(e.target.files[0]);
+drop.ondragover = (e) => { e.preventDefault(); drop.classList.add("over"); };
+drop.ondragleave = () => drop.classList.remove("over");
+drop.ondrop = (e) => { e.preventDefault(); drop.classList.remove("over"); e.dataTransfer.files[0] && setPhoto(e.dataTransfer.files[0]); };
+const secs = (t) => `${Math.round((t - t0) / 1000)}s`;
+const log = (e) => {
+  $("feedBox").hidden = false;
+  const li = document.createElement("li");
+  li.dataset.stage = e.stage;
+  li.innerHTML = `<i></i><span></span><time>${secs(e.t)}</time>`;
+  li.querySelector("span").textContent = e.message;
+  const feed = $("feed");
+  // Consecutive code steps replace each other so the feed reads as progress, not a log dump.
+  if (e.stage === "code" && feed.lastChild?.dataset.stage === "code") feed.lastChild.replaceWith(li); else feed.appendChild(li);
+  $("status").textContent = e.stage === "play" || e.stage === "concepts" && e.data ? "" : e.message;
+};
+const floaters = (names) => {
+  const box = $("floaters"); box.innerHTML = "";
+  const spots = [[8, 14], [72, 10], [12, 58], [76, 56], [42, 66], [44, 6]];
+  names.slice(0, 6).forEach((n, i) => {
+    const img = document.createElement("img");
+    img.src = `/games/${slug}/assets/${n}.png`;
+    img.style.left = spots[i][0] + "%"; img.style.top = spots[i][1] + "%"; img.style.animationDelay = `${i * -1.1}s`;
+    box.appendChild(img);
+  });
+};
+const listen = () => {
+  const es = new EventSource(`/api/events?slug=${slug}`);
+  es.onmessage = (m) => {
+    const e = JSON.parse(m.data);
+    if (!t0) t0 = e.t;
+    log(e);
+    if (e.data?.drawings) {
+      $("drawingsBox").hidden = false;
+      $("drawings").innerHTML = e.data.drawings.map((n) => `<figure><img src="/games/${slug}/assets/${n}.png"><figcaption>${n}</figcaption></figure>`).join("");
+      floaters(e.data.drawings); $("empty").hidden = true;
+    }
+    if (e.data?.concepts) {
+      $("conceptsBox").hidden = false;
+      $("concepts").innerHTML = e.data.concepts.map((c, i) => `<div class="concept" data-i="${i}" style="animation-delay:${i * 90}ms"><span class="genre">${c.genre}</span><h3></h3><p></p><div class="mech"></div></div>`).join("");
+      [...document.querySelectorAll(".concept")].forEach((el, i) => {
+        const c = e.data.concepts[i];
+        el.querySelector("h3").textContent = c.title; el.querySelector("p").textContent = c.pitch; el.querySelector(".mech").textContent = c.core_mechanic;
+        el.onclick = () => { chosen = i; document.querySelectorAll(".concept").forEach((x) => x.classList.toggle("on", x === el)); $("build").disabled = false; };
+      });
+    }
+    if (e.stage === "done" && e.data) $("meta").textContent = `${Math.round(e.data.ms / 60000)} min, US$${e.data.cost.toFixed(2)} de Muse, veredicto: ${e.data.verdict}`;
+    if (e.stage === "play") {
+      $("floaters").innerHTML = ""; $("empty").hidden = true;
+      const f = document.createElement("iframe"); f.src = e.data.url; f.allow = "autoplay"; $("stage").prepend(f); setTimeout(() => f.focus(), 500);
+    }
+  };
+};
+$("start").onclick = async () => {
+  if (!photo && !$("idea").value.trim()) return $("idea").focus();
+  $("start").disabled = true;
+  const fd = new FormData(); if (photo) fd.append("photo", photo); fd.append("idea", $("idea").value.trim());
+  slug = (await (await fetch("/api/start", { method: "POST", body: fd })).json()).slug;
+  listen();
+};
+$("build").onclick = async () => {
+  $("build").disabled = true;
+  document.querySelectorAll(".concept").forEach((x) => (x.style.pointerEvents = "none"));
+  await fetch("/api/build", { method: "POST", body: JSON.stringify({ slug, index: chosen }) });
+};
+</script>
+</body>
+</html>
