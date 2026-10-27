@@ -15,6 +15,7 @@ const PIT_BOTTOM = 92; // floor inside a hole (depth = one block, 48)
 const BLOCK = 48;
 const GRAV = -1600;
 const SPEED = 235;
+const PENGUIN_SCALE = 2.5; // el pinguino es gigante
 
 const BIT_LEFT = 1;
 const BIT_RIGHT = 2;
@@ -96,7 +97,7 @@ function loadLevel(g: Game, idx: number, resetScore: boolean): void {
   g.levelScoreStart = g.score;
   g.phase = "play";
   g.phaseTimer = 0;
-  g.px = def.spawn; g.py = GROUND + 34; g.pvx = 0; g.pvy = 0; g.face = 1; g.moving = 0;
+  g.px = def.spawn; g.py = GROUND + 34 * PENGUIN_SCALE; g.pvx = 0; g.pvy = 0; g.face = 1; g.moving = 0;
   g.blocks = def.blocks.map((x) => ({ x, y: GROUND + BLOCK / 2, vy: 0, filled: false, onGround: false, sinking: false, sinkX: x }));
   g.fishes = def.fishes.map((f) => ({ x: f.x, y: f.y, taken: false }));
   g.filledCount = 0;
@@ -214,7 +215,7 @@ export default defineSim({
   create: (platform: SimPlatform) => {
     const assets: Assets = {
       penguin: null, iceblock: null, igloo: null, fish: null, seal: null,
-      penguinParts: [{ x: 0, y: 0, halfWidth: 26, halfHeight: 28 }],
+      penguinParts: [{ x: 0, y: 0, halfWidth: 26 * PENGUIN_SCALE, halfHeight: 28 * PENGUIN_SCALE }],
       blockParts: [{ x: 0, y: 0, halfWidth: 23, halfHeight: 23 }],
       penguinHW: 26, penguinHH: 28, blockHW: 23, blockHH: 23,
     };
@@ -229,7 +230,7 @@ export default defineSim({
       };
       const penguinHb = await loadHb("penguin");
       const blockHb = await loadHb("iceblock");
-      assets.penguinParts = scaledParts(penguinHb, 56, 58);
+      assets.penguinParts = scaledParts(penguinHb, 56 * PENGUIN_SCALE, 58 * PENGUIN_SCALE);
       assets.blockParts = scaledParts(blockHb, BLOCK, BLOCK);
       const pb = bounds(assets.penguinParts);
       assets.penguinHW = pb.hw; assets.penguinHH = pb.hh;
@@ -359,7 +360,7 @@ export default defineSim({
         b.x = Math.max(BLOCK / 2, Math.min(W - BLOCK / 2, b.x));
         b.y = Math.max(BLOCK / 2, Math.min(H - 10, b.y));
       }
-      g.px = Math.max(26, Math.min(W - 26, g.px));
+      g.px = Math.max(26 * PENGUIN_SCALE, Math.min(W - 26 * PENGUIN_SCALE, g.px));
       g.py = Math.max(20, Math.min(H - 10, g.py));
 
       // A block centred over a hole starts sinking into it (see the sink tick above).
@@ -395,7 +396,7 @@ export default defineSim({
           g.phase = "over";
           g.phaseTimer = 0;
         } else {
-          g.px = def.spawn; g.py = GROUND + 34; g.pvy = 0;
+          g.px = def.spawn; g.py = GROUND + 34 * PENGUIN_SCALE; g.pvy = 0;
         }
         return;
       }
@@ -404,7 +405,7 @@ export default defineSim({
         g.lives--;
         g.falls++;
         if (g.lives <= 0) { g.phase = "over"; }
-        else { g.px = def.spawn; g.py = GROUND + 34; g.pvy = 0; }
+        else { g.px = def.spawn; g.py = GROUND + 34 * PENGUIN_SCALE; g.pvy = 0; }
         return;
       }
 
@@ -515,6 +516,20 @@ export default defineSim({
         } else {
           draw.setFillStyle("#ffffff"); draw.fillRect(def.iglooX - 60, groundScreenY - 90, 120, 90);
         }
+        // chimenea del iglu + humo (determinista del frame: visible al instante, sin estado)
+        const chimX = def.iglooX + 18;
+        const chimTop = groundScreenY - 118;
+        draw.setFillStyle("#6b7280"); draw.fillRect(chimX - 11, chimTop - 22, 22, 26);
+        draw.setFillStyle("#4b5563"); draw.fillRect(chimX - 13, chimTop - 26, 26, 6);
+        for (let i = 0; i < 5; i++) {
+          const t = ((g.frame * 0.9 + i * 22) % 88) / 88;
+          const sx = chimX + dsin(g.frame * 0.05 + i * 2.1) * 6 + t * 16;
+          const syy = chimTop - 30 - t * 64;
+          draw.setGlobalAlpha(0.75 * (1 - t));
+          draw.setFillStyle("#e5e7eb");
+          draw.beginPath(); draw.arc(sx, syy, 5 + t * 8, 0, Math.PI * 2, false); draw.fill();
+        }
+        draw.setGlobalAlpha(1);
         // goal flag glow when close
         draw.setFillStyle("#ffb703");
         draw.beginPath(); draw.arc(def.iglooX - 40, sy(GROUND) - 96, 5 + dsin(g.frame * 0.08) * 1.5, 0, Math.PI * 2, false); draw.fill();
@@ -546,10 +561,10 @@ export default defineSim({
         // penguin (waddle bob while walking)
         const bob = g.moving !== 0 && g.onGround ? Math.abs(dsin(g.frame * 0.32)) * 4 : 0;
         if (assets.penguin) {
-          const w = 58, h = 60;
+          const w = 58 * PENGUIN_SCALE, h = 60 * PENGUIN_SCALE;
           draw.drawImage(assets.penguin, 0, 0, assets.penguin.width, assets.penguin.height, g.px - w / 2, sy(g.py + assets.penguinHH) - bob, w, h);
         } else {
-          draw.setFillStyle("#22304a"); draw.beginPath(); draw.ellipse(g.px, sy(g.py), 20, 24, 0, 0, Math.PI * 2, false); draw.fill();
+          draw.setFillStyle("#22304a"); draw.beginPath(); draw.ellipse(g.px, sy(g.py), 20 * PENGUIN_SCALE, 24 * PENGUIN_SCALE, 0, 0, Math.PI * 2, false); draw.fill();
         }
 
         // particles

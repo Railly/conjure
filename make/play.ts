@@ -117,9 +117,14 @@ const send = (m: unknown) => {
 };
 
 const core = (await Bun.$`node ${CLI} skills get core`.quiet()).stdout.toString();
+// What the player asked for so far, oldest first: every edit must keep the earlier ones.
+const historyFile = join(work, "history.json");
+const history: string[] = (await Bun.file(historyFile).exists()) ? await Bun.file(historyFile).json() : [];
 const editSystem = (text: string) => `You change a running dotframe game in ${dir} while someone plays it. The player asked: "${text}".
 
-Make the smallest change to sim.ts (and its modules) that does what they asked, visibly, right away. Keep everything else as it is: the drawings in assets/, the controls, the rules that still apply.
+Make the smallest change to sim.ts (and its modules) that does what they asked, visibly, right away. Keep everything else as it is: the drawings in assets/, the controls, the rules that still apply.${history.length ? `
+
+The player already changed the game, in this order, and every one of these must stay in effect: ${history.map((h, i) => `${i + 1}. "${h}"`).join("; ")}. Code that differs from the original game is these changes, not a mistake: never revert it.` : ""}
 
 The page swaps your new sim in mid-match and calls restore() with a snapshot saved by the OLD code, so restore() must accept a snapshot without your new fields: give every new state field a default when it is missing. Keep all state changes in step(), render only reads, randomness from the seeded generator in the state, dotframe/src/detmath instead of Math.sin/cos/pow/exp.
 
@@ -149,6 +154,8 @@ const edit = async (text: string) => {
     });
     simJs = await build(join(dir, "sim.ts"));
     version++;
+    history.push(text);
+    writeFileSync(historyFile, JSON.stringify(history, null, 2));
     const secs = (run.ms / 1000).toFixed(0);
     console.log(`edit ${edits} "${text}": ${secs}s, $${costOf(run).toFixed(3)}`);
     send({ version, done: `${run.summary.trim().split("\n").pop() ?? "Listo"} (${secs}s, $${costOf(run).toFixed(3)})` });
@@ -192,6 +199,8 @@ Bun.serve({
       if (busy || edits === 0) return new Response("nothing");
       copyFileSync(join(work, `sim.${edits}.ts`), join(dir, "sim.ts"));
       edits--;
+      history.pop();
+      writeFileSync(historyFile, JSON.stringify(history, null, 2));
       simJs = await build(join(dir, "sim.ts"));
       version++;
       send({ version, done: "Deshecho" });
