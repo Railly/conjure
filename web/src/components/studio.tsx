@@ -293,7 +293,7 @@ export function Studio() {
                   {playUrl ? (
                     <iframe src={`${playUrl}?embed=1`} title="Tu juego" className="absolute inset-0 size-full" allow="autoplay" />
                   ) : (
-                    <Stage drawings={drawings} asset={asset} preview={preview} status={last?.message ?? ""} />
+                    <Stage drawings={drawings} asset={asset} preview={preview} status={phase === "choosing" ? "Elige un juego a la izquierda" : (last?.message ?? "")} waiting={phase === "choosing"} />
                   )}
                 </div>
                 {playUrl && <EditBar playUrl={playUrl} />}
@@ -336,7 +336,7 @@ function Feed({ events, t0, done }: { events: EngineEvent[]; t0: number; done: b
   );
 }
 
-function Stage({ drawings, asset, preview, status }: { drawings: string[]; asset: (n: string) => string; preview: string | null; status: string }) {
+function Stage({ drawings, asset, preview, status, waiting }: { drawings: string[]; asset: (n: string) => string; preview: string | null; status: string; waiting: boolean }) {
   const spots = [
     [10, 14],
     [70, 10],
@@ -371,7 +371,7 @@ function Stage({ drawings, asset, preview, status }: { drawings: string[]; asset
             exit={{ opacity: 0, y: -6 }}
             className="inline-flex items-center gap-2 rounded-full border border-line bg-surface/90 px-4 py-2 text-sm text-ink shadow-sm backdrop-blur"
           >
-            <Loader2 className="size-3.5 animate-spin text-ink-3" />
+            {waiting ? <ArrowRight className="size-3.5 rotate-180 text-ink-3" /> : <Loader2 className="size-3.5 animate-spin text-ink-3" />}
             {status || "Preparando"}
           </motion.div>
         </AnimatePresence>

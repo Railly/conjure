@@ -101,7 +101,10 @@ async function route(req: Request): Promise<Response> {
       (async () => {
         try {
           await buildGame({ dir: s.dir, slug: s.slug, concept, drawings: s.drawings, emit: (e) => emit(s, e) });
-          s.playPort = nextPlayPort++;
+          // Several Studio servers can run at once: take the next port nothing listens on.
+          let candidate = nextPlayPort++;
+          while (await fetch(`http://localhost:${candidate}/`).then(() => true, () => false)) candidate = nextPlayPort++;
+          s.playPort = candidate;
           Bun.spawn(["bun", join(ROOT, "make/play.ts"), s.slug, "--port", String(s.playPort)], { cwd: ROOT, env: process.env, stdout: "ignore", stderr: "ignore" });
           for (let i = 0; i < 60; i++) {
             if (await fetch(`http://localhost:${s.playPort}/`).then((r) => r.ok, () => false)) break;
