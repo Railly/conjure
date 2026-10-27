@@ -44,10 +44,21 @@ const newSession = (idea: string): Session => {
 
 const json = (data: unknown, status = 200) => new Response(JSON.stringify(data), { status, headers: { "content-type": "application/json" } });
 
+// The Next.js Studio (web/) calls this engine from another origin in development.
+const CORS = { "access-control-allow-origin": "*", "access-control-allow-headers": "content-type" };
+
 Bun.serve({
   port,
   idleTimeout: 0,
   fetch: async (req) => {
+    if (req.method === "OPTIONS") return new Response(null, { headers: CORS });
+    const res = await route(req);
+    for (const [k, v] of Object.entries(CORS)) res.headers.set(k, v);
+    return res;
+  },
+});
+
+async function route(req: Request): Promise<Response> {
     const url = new URL(req.url);
     const path = url.pathname;
     if (path === "/") return new Response(Bun.file(join(ROOT, "studio/ui.html")));
@@ -134,6 +145,5 @@ Bun.serve({
       }
     }
     return new Response("not found", { status: 404 });
-  },
-});
+}
 console.log(`Conjure Studio: http://localhost:${port}/`);

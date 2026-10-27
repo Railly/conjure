@@ -34,6 +34,8 @@ let sim = await loadSim(0);
 const ui = document.createElement("div");
 ui.innerHTML = '<form id="f"><input id="t" placeholder="Cambia el juego mientras juegas: que llueva, el gato vuela..." autocomplete="off"><button id="u" type="button">Deshacer</button></form><div id="s"></div>';
 ui.style.cssText = "position:fixed;left:16px;right:16px;bottom:16px;font:15px system-ui;z-index:9";
+// ?embed=1: the Studio around this page has its own edit bar.
+if (new URLSearchParams(location.search).get("embed") === "1") ui.style.display = "none";
 document.body.appendChild(ui);
 const st = document.createElement("style");
 st.textContent = "#f{display:flex;gap:8px}#t{flex:1;padding:12px 14px;border-radius:10px;border:0;font:inherit;background:rgba(255,255,255,.92)}#u{padding:0 14px;border-radius:10px;border:0;font:inherit;background:rgba(255,255,255,.6)}#s{margin-top:6px;color:#fff;text-shadow:0 1px 2px #000;min-height:1.2em}";
@@ -189,10 +191,20 @@ const edit = async (text: string) => {
   }
 };
 
+// The Next.js Studio (web/) embeds this page and drives /edit and /events from another origin.
+const CORS = { "access-control-allow-origin": "*", "access-control-allow-headers": "content-type" };
 Bun.serve({
   port,
   idleTimeout: 0,
   fetch: async (req) => {
+    if (req.method === "OPTIONS") return new Response(null, { headers: CORS });
+    const res = await serve(req);
+    for (const [k, v] of Object.entries(CORS)) res.headers.set(k, v);
+    return res;
+  },
+});
+
+async function serve(req: Request): Promise<Response> {
     const path = new URL(req.url).pathname;
     if (path === "/") return new Response(html, { headers: { "content-type": "text/html" } });
     if (path === "/main.js") return new Response(shellJs, { headers: { "content-type": "text/javascript" } });
@@ -234,6 +246,5 @@ Bun.serve({
       if (await file.exists()) return new Response(file);
     }
     return new Response("not found", { status: 404 });
-  },
-});
+}
 console.log(`http://localhost:${port}/  (${slug}: arrows or WASD, Space, Enter, R; type below the game to change it, model ${model})`);
