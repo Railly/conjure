@@ -40,6 +40,9 @@ document.body.appendChild(ui);
 const st = document.createElement("style");
 st.textContent = "#f{display:flex;gap:8px}#t{flex:1;padding:12px 14px;border-radius:10px;border:0;font:inherit;background:rgba(255,255,255,.92)}#u{padding:0 14px;border-radius:10px;border:0;font:inherit;background:rgba(255,255,255,.6)}#s{margin-top:6px;color:#fff;text-shadow:0 1px 2px #000;min-height:1.2em}";
 document.head.appendChild(st);
+// Browser shortcuts (Cmd+Ctrl+F to leave full screen, Cmd+R, Cmd+L) must reach the browser: the engine's key handler
+// cancels every game key, F and R included, so modified presses are stopped before it sees them.
+for (const type of ["keydown", "keyup"]) window.addEventListener(type, (e) => { if (e.metaKey || e.ctrlKey || e.altKey) e.stopImmediatePropagation(); }, true);
 const status = (s) => (document.getElementById("s").textContent = s);
 const typing = () => document.activeElement === document.getElementById("t");
 await run(sim.window, (p) => {
