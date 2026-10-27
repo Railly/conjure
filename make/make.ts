@@ -12,7 +12,7 @@ import { type CanUseTool, query } from "@anthropic-ai/claude-agent-sdk";
 
 const ROOT = new URL("..", import.meta.url).pathname.replace(/\/$/, "");
 const DOTFRAME_REF =
-	"github:crafter-games/dotframe#87db1a6557e5b223de19c88def28c6fdf77c04ac";
+	"github:crafter-games/dotframe#a1cdfb193838e7821a98068dae159d163afce51a";
 // Muse Wonder list prices per million tokens (dev.meta.ai/docs/pricing-rate-limits).
 const PRICE = { input: 4, cachedInput: 0.2, output: 20 };
 

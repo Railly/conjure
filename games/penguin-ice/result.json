@@ -1,0 +1,53 @@
+{
+  "idea": "un pingüino que empuja bloques de hielo para tapar agujeros y llegar al iglú",
+  "slug": "penguin-ice",
+  "agent": {
+    "ms": 354227,
+    "turns": 82,
+    "usage": {
+      "input": 222972,
+      "cachedInput": 2563800,
+      "output": 29973
+    },
+    "cost_usd": 2.0041
+  },
+  "art_cost_usd": 0.035,
+  "checks": {
+    "doctor_hard_failures": [],
+    "sim_ok": true,
+    "reacts_to_input": true,
+    "snap_ok": true,
+    "snap_warnings": [],
+    "replay_ok": true,
+    "tsc_ok": true
+  },
+  "state_after_mash": {
+    "phase": "play",
+    "level": 1,
+    "score": 0,
+    "lives": 3,
+    "penguin": {
+      "x": 191,
+      "y": 168
+    },
+    "blocks": [
+      {
+        "x": 250,
+        "y": 163,
+        "filled": false
+      },
+      {
+        "x": 520,
+        "y": 163,
+        "filled": false
+      }
+    ],
+    "filled": 0,
+    "holesNeeded": 2,
+    "fishTaken": 0,
+    "fishTotal": 3,
+    "falls": 0,
+    "frame": 1800
+  },
+  "summary": "## Penguin Ice — listo\n\n**El juego:** Un pingüino debe llegar al iglú cruzando un lago helado lleno de agujeros de agua. Empujas bloques de hielo (física real con `stepBodies` y bloques `pushable`, con hitboxes de los sprites); cuando un bloque se centra sobre un agujero se hunde con salpicaduras y lo tapa al ras del hielo, creando el camino. Hay 3 niveles (2, 3 y 4 agujeros), peces coleccionables (+100), +150 por agujero tapado y +500 por llegar al iglú. Una foca mira desde la orilla.\n\n**Controles:**\n- ←/→ o A/D: caminar y empujar bloques\n- R: reiniciar el nivel\n- Espacio/Enter: siguiente nivel o jugar de nuevo\n\n**Cómo pierdes:** si el pingüino cae a un agujero sin tapar pierde 1 de 3 vidas y vuelve al inicio del nivel (los agujeros tapados se quedan tapados). Sin vidas → game over. Ganás completando los 3 niveles.\n\n**Verificado:**\n- Arte generado (penguin, iceblock, igloo, fish, seal): `quality.missed` ≤ 0.035 en todos (< 0.1)\n- `doctor --json`: todo ok, render puro y sin `Math.*` no deterministas\n- `sim --mash 7 --frames 1800`: el pingüino reacciona (x 90→191), nada sale del mundo\n- Prueba de jugabilidad: manteniendo → se completan los 3 niveles y se gana (score 3050, 788 frames)\n- `snap` en frame 300 y en nivel completado: miré las imágenes — HUD, sprites, agujeros tapados y banner \"NIVEL COMPLETO!\" se ven bien, sin warnings\n- `bunx tsc --noEmit`: sin errores\n- Golden replay `replays/mash.json` grabado y verificado (checksum 652254108)"
+}
