@@ -8,3 +8,4 @@ spike/*/.dotframe/
 .DS_Store
 games/*/node_modules/
 games/*/.dotframe/
+games/*/.play/
