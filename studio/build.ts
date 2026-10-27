@@ -7,7 +7,7 @@ import { costOf, runAgent } from "../make/agent";
 import type { Concept } from "./concepts";
 
 const ROOT = new URL("..", import.meta.url).pathname.replace(/\/$/, "");
-export const DOTFRAME_REF = "github:crafter-games/dotframe#a1cdfb193838e7821a98068dae159d163afce51a";
+export const DOTFRAME_REF = "github:crafter-games/dotframe#20e1bc93755460fb1bb327dfe996898772241826";
 // Fixer rounds after the playtester and visual QA: this builder's own cap, so a game that cannot be fixed ends.
 const FIX_ROUNDS = 2;
 
