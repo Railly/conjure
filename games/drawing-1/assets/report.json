@@ -1,0 +1,108 @@
+{
+  "photo": {
+    "width": 1600,
+    "height": 1067
+  },
+  "timings_ms": {
+    "spark": 10562,
+    "sam:cat": 3318,
+    "sam:sun": 6324,
+    "sam:tree": 4485,
+    "sam:house": 2938,
+    "sam:car": 2644
+  },
+  "spark_usage": {
+    "completion_tokens": 1381,
+    "prompt_tokens": 2263,
+    "total_tokens": 3644,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1195
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  },
+  "sam_cost_usd": 0.0125,
+  "objects": [
+    {
+      "name": "cat",
+      "spark_box": [
+        422,
+        240,
+        798,
+        518
+      ],
+      "box": [
+        428,
+        217,
+        797,
+        488
+      ],
+      "parts": 8
+    },
+    {
+      "name": "sun",
+      "spark_box": [
+        968,
+        180,
+        1290,
+        452
+      ],
+      "box": [
+        952,
+        184,
+        1223,
+        422
+      ],
+      "parts": 8
+    },
+    {
+      "name": "tree",
+      "spark_box": [
+        1040,
+        470,
+        1260,
+        720
+      ],
+      "box": [
+        1047,
+        447,
+        1261,
+        693
+      ],
+      "parts": 8
+    },
+    {
+      "name": "house",
+      "spark_box": [
+        440,
+        614,
+        684,
+        882
+      ],
+      "box": [
+        435,
+        591,
+        681,
+        852
+      ],
+      "parts": 8
+    },
+    {
+      "name": "car",
+      "spark_box": [
+        854,
+        776,
+        1156,
+        933
+      ],
+      "box": [
+        858,
+        771,
+        1156,
+        906
+      ],
+      "parts": 8
+    }
+  ]
+}

@@ -1,40 +1,85 @@
-// Play a generated game in the browser: bundles a generic web entry around the game's sim.ts and serves the game
-// directory (assets load over HTTP, as in snap). Keys feed a JSON input every game's encode() can read.
-//   bun make/play.ts <slug> [--port 5180]
-import { mkdirSync, writeFileSync } from "node:fs";
+// Play a generated game in the browser, and change it while you play: type what you want ("que llueva", "el gato
+// vuela") and a Muse agent edits the game's code; the page swaps in the new sim and restores the running match, so
+// the game changes without starting over. Assets load over HTTP from the game directory, as in snap.
+//   bun --env-file=.env make/play.ts <slug> [--port 5180] [--model muse-spark-1.3]
+import { copyFileSync, mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { costOf, runAgent } from "./agent";
 
 const ROOT = new URL("..", import.meta.url).pathname.replace(/\/$/, "");
 const slug = process.argv[2];
-if (!slug) throw new Error("usage: play.ts <slug> [--port 5180]");
-const portArg = process.argv.indexOf("--port");
-const port = portArg > 0 ? Number(process.argv[portArg + 1]) : 5180;
+if (!slug) throw new Error("usage: play.ts <slug> [--port 5180] [--model muse-spark-1.3]");
+const arg = (name: string, fallback: string) => {
+  const i = process.argv.indexOf(name);
+  return i > 0 ? (process.argv[i + 1] ?? fallback) : fallback;
+};
+const port = Number(arg("--port", "5180"));
+const model = arg("--model", "muse-spark-1.3");
 const dir = `${ROOT}/games/${slug}`;
 const engine = `${dir}/node_modules/dotframe/src`;
+const CLI = `${dir}/node_modules/dotframe/cli/bin.cjs`;
+const work = join(dir, ".play");
+mkdirSync(work, { recursive: true });
 
-// Runs the sim at a fixed 60 Hz with keyboard input, the same contract the CLI drives headless.
-const entry = `import sim from ${JSON.stringify(`${dir}/sim.ts`)};
-import { createDraw2D } from ${JSON.stringify(`${engine}/draw2d`)};
+// The shell owns the canvas, input and the 60 Hz loop; the sim is a separate module it can replace mid-match.
+const shell = `import { createDraw2D } from ${JSON.stringify(`${engine}/draw2d`)};
 import { Key } from ${JSON.stringify(`${engine}/input`)};
 import { loadBytes, run } from ${JSON.stringify(`${engine}/web/run`)};
 const STEP = 1 / 60;
+// A computed URL, so the bundler leaves the import to the browser.
+const loadSim = async (v) => (await import(location.origin + "/sim.js?v=" + v)).default;
+let sim = await loadSim(0);
+const ui = document.createElement("div");
+ui.innerHTML = '<form id="f"><input id="t" placeholder="Cambia el juego mientras juegas: que llueva, el gato vuela..." autocomplete="off"><button id="u" type="button">Deshacer</button></form><div id="s"></div>';
+ui.style.cssText = "position:fixed;left:16px;right:16px;bottom:16px;font:15px system-ui;z-index:9";
+document.body.appendChild(ui);
+const st = document.createElement("style");
+st.textContent = "#f{display:flex;gap:8px}#t{flex:1;padding:12px 14px;border-radius:10px;border:0;font:inherit;background:rgba(255,255,255,.92)}#u{padding:0 14px;border-radius:10px;border:0;font:inherit;background:rgba(255,255,255,.6)}#s{margin-top:6px;color:#fff;text-shadow:0 1px 2px #000;min-height:1.2em}";
+document.head.appendChild(st);
+const status = (s) => (document.getElementById("s").textContent = s);
+const typing = () => document.activeElement === document.getElementById("t");
 await run(sim.window, (p) => {
   const draw = createDraw2D(p.gpu, sim.window.width, sim.window.height);
-  const game = sim.create({ gpu: p.gpu, load: loadBytes, headless: false, draw, image: p.gpu.createImage });
+  const platform = { gpu: p.gpu, load: loadBytes, headless: false, draw, image: p.gpu.createImage };
+  let game = sim.create(platform);
   let ready = false;
-  game.ready.then(() => {
-    game.start(Math.floor(Math.random() * 1e9), { ...sim.options });
-    ready = true;
+  game.ready.then(() => { game.start(Math.floor(Math.random() * 1e9), { ...sim.options }); ready = true; });
+  // Swap: build the new sim, start it, then move the running match into it. A snapshot it cannot read starts fresh.
+  const swap = async (v) => {
+    const next = await loadSim(v);
+    const fresh = next.create(platform);
+    await fresh.ready;
+    fresh.start(Math.floor(Math.random() * 1e9), { ...next.options });
+    let kept = true;
+    try { fresh.restore(structuredClone(game.save())); fresh.state(); } catch (e) { kept = false; fresh.start(1, { ...next.options }); }
+    sim = next; game = fresh;
+    return kept;
+  };
+  const events = new EventSource("/events");
+  events.onmessage = async (e) => {
+    const m = JSON.parse(e.data);
+    if (m.status) status(m.status);
+    if (m.version !== undefined) status((await swap(m.version)) ? m.done + " (la partida sigue)" : m.done + " (partida nueva: el estado cambio de forma)");
+  };
+  document.getElementById("f").onsubmit = async (e) => {
+    e.preventDefault();
+    const t = document.getElementById("t");
+    const text = t.value.trim();
+    if (!text) return;
+    t.value = ""; t.blur();
+    await fetch("/edit", { method: "POST", body: JSON.stringify({ text }) });
+  };
+  // The engine's window key handler cancels Enter and arrows; typed keys must not reach it, or Enter never submits.
+  document.getElementById("t").addEventListener("keydown", (e) => {
+    e.stopPropagation();
+    if (e.key === "Enter") { e.preventDefault(); document.getElementById("f").requestSubmit(); }
   });
+  document.getElementById("u").onclick = () => fetch("/undo", { method: "POST" });
   const keys = () => {
+    if (typing()) return {};
     const d = (k) => p.input.down(k);
-    const left = d(Key.Left) || d(Key.A);
-    const right = d(Key.Right) || d(Key.D);
-    const up = d(Key.Up) || d(Key.W);
-    const down = d(Key.Down) || d(Key.S);
-    const space = d(Key.Space);
-    const enter = d(Key.Enter);
-    const r = d(Key.R);
+    const left = d(Key.Left) || d(Key.A), right = d(Key.Right) || d(Key.D), up = d(Key.Up) || d(Key.W), down = d(Key.Down) || d(Key.S);
+    const space = d(Key.Space), enter = d(Key.Enter), r = d(Key.R);
     return { left, right, up, down, a: d(Key.A), d: d(Key.D), w: d(Key.W), s: d(Key.S), jump: up || space, action: space || enter, fire: space, space, enter, restart: r, r };
   };
   let simulated = -1;
@@ -55,20 +100,103 @@ await run(sim.window, (p) => {
 }, { fit: "window" });
 `;
 
-const work = join(dir, ".play");
-mkdirSync(work, { recursive: true });
-writeFileSync(join(work, "entry.js"), entry);
-const built = await Bun.build({ entrypoints: [join(work, "entry.js")], target: "browser" });
-if (!built.success) throw new Error(built.logs.map(String).join("\n"));
-const bundle = await built.outputs[0].text();
+const build = async (entry: string): Promise<string> => {
+  const built = await Bun.build({ entrypoints: [entry], target: "browser", format: "esm" });
+  if (!built.success) throw new Error(built.logs.map(String).join("\n"));
+  return built.outputs[0]!.text();
+};
+writeFileSync(join(work, "shell.js"), shell);
+const shellJs = await build(join(work, "shell.js"));
+let simJs = await build(join(dir, "sim.ts"));
+let version = 0;
 const html = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${slug}</title><style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#000}</style></head><body><script type="module" src="/main.js"></script></body></html>`;
+
+const listeners = new Set<ReadableStreamDefaultController>();
+const send = (m: unknown) => {
+  for (const c of listeners) c.enqueue(`data: ${JSON.stringify(m)}\n\n`);
+};
+
+const core = (await Bun.$`node ${CLI} skills get core`.quiet()).stdout.toString();
+const editSystem = (text: string) => `You change a running dotframe game in ${dir} while someone plays it. The player asked: "${text}".
+
+Make the smallest change to sim.ts (and its modules) that does what they asked, visibly, right away. Keep everything else as it is: the drawings in assets/, the controls, the rules that still apply.
+
+The page swaps your new sim in mid-match and calls restore() with a snapshot saved by the OLD code, so restore() must accept a snapshot without your new fields: give every new state field a default when it is missing. Keep all state changes in step(), render only reads, randomness from the seeded generator in the state, dotframe/src/detmath instead of Math.sin/cos/pow/exp.
+
+When done, run bunx tsc --noEmit -p . and node ${CLI} sim --mash 7 --frames 600 --json, fix what fails, and reply with one short sentence in Spanish saying what changed. Bash runs single commands only, from: bunx tsc --noEmit | node ${CLI} sim | ls.
+
+# dotframe core skill
+${core}`;
+
+let busy = false;
+// Continues numbering after edits from an earlier session, so their undo copies are not overwritten.
+let edits = (await Array.fromAsync(new Bun.Glob("sim.*.ts").scan(work))).length;
+const edit = async (text: string) => {
+  if (busy) return send({ status: "Todavia estoy con el cambio anterior." });
+  busy = true;
+  edits++;
+  copyFileSync(join(dir, "sim.ts"), join(work, `sim.${edits}.ts`));
+  send({ status: `Muse esta cambiando el juego: "${text}"...` });
+  try {
+    const run = await runAgent({
+      dir,
+      model,
+      system: editSystem(text),
+      prompt: text,
+      bashOk: ["bunx tsc --noEmit", `node ${CLI} sim `, "ls"],
+      tag: `.play/edit-${edits}`,
+      onTool: (name, input) => send({ status: `Muse: ${name} ${String((input as { file_path?: string; command?: string }).file_path ?? (input as { command?: string }).command ?? "").replace(dir, "").slice(0, 60)}` }),
+    });
+    simJs = await build(join(dir, "sim.ts"));
+    version++;
+    const secs = (run.ms / 1000).toFixed(0);
+    console.log(`edit ${edits} "${text}": ${secs}s, $${costOf(run).toFixed(3)}`);
+    send({ version, done: `${run.summary.trim().split("\n").pop() ?? "Listo"} (${secs}s, $${costOf(run).toFixed(3)})` });
+  } catch (e) {
+    copyFileSync(join(work, `sim.${edits}.ts`), join(dir, "sim.ts"));
+    send({ status: `No pude aplicar el cambio, deje el juego como estaba: ${String(e).slice(0, 120)}` });
+  } finally {
+    busy = false;
+  }
+};
 
 Bun.serve({
   port,
+  idleTimeout: 0,
   fetch: async (req) => {
     const path = new URL(req.url).pathname;
     if (path === "/") return new Response(html, { headers: { "content-type": "text/html" } });
-    if (path === "/main.js") return new Response(bundle, { headers: { "content-type": "text/javascript" } });
+    if (path === "/main.js") return new Response(shellJs, { headers: { "content-type": "text/javascript" } });
+    if (path === "/sim.js") return new Response(simJs, { headers: { "content-type": "text/javascript", "cache-control": "no-store" } });
+    if (path === "/events") {
+      let controller: ReadableStreamDefaultController | null = null;
+      return new Response(
+        new ReadableStream({
+          start: (c) => {
+            controller = c;
+            listeners.add(c);
+          },
+          cancel: () => {
+            if (controller) listeners.delete(controller);
+          },
+        }),
+        { headers: { "content-type": "text/event-stream", "cache-control": "no-store" } },
+      );
+    }
+    if (path === "/edit" && req.method === "POST") {
+      const { text } = (await req.json()) as { text: string };
+      void edit(String(text).slice(0, 300));
+      return new Response("ok");
+    }
+    if (path === "/undo" && req.method === "POST") {
+      if (busy || edits === 0) return new Response("nothing");
+      copyFileSync(join(work, `sim.${edits}.ts`), join(dir, "sim.ts"));
+      edits--;
+      simJs = await build(join(dir, "sim.ts"));
+      version++;
+      send({ version, done: "Deshecho" });
+      return new Response("ok");
+    }
     // Only the game's own assets are served.
     if (path.startsWith("/assets/") && !path.includes("..")) {
       const file = Bun.file(join(dir, path));
@@ -77,4 +205,4 @@ Bun.serve({
     return new Response("not found", { status: 404 });
   },
 });
-console.log(`http://localhost:${port}/  (${slug}: arrows or WASD, Space, Enter, R)`);
+console.log(`http://localhost:${port}/  (${slug}: arrows or WASD, Space, Enter, R; type below the game to change it, model ${model})`);

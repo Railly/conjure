@@ -1,0 +1,12 @@
+{"frame": 0, "inputs": [{"jump": true}]}
+{"frame": 1, "inputs": [{}]}
+{"frame": 20, "inputs": [{"right": true}]}
+{"frame": 40, "inputs": [{}]}
+{"frame": 60, "inputs": [{"right": true}]}
+{"frame": 85, "inputs": [{"right": true, "jump": true}]}
+{"frame": 86, "inputs": [{"right": true}]}
+{"frame": 145, "inputs": [{"right": true, "jump": true}]}
+{"frame": 146, "inputs": [{"right": true}]}
+{"frame": 205, "inputs": [{"right": true, "jump": true}]}
+{"frame": 206, "inputs": [{"right": true}]}
+{"frame": 320, "inputs": [{}]}

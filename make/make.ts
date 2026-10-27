@@ -14,24 +14,34 @@ const ROOT = new URL("..", import.meta.url).pathname.replace(/\/$/, "");
 const DOTFRAME_REF =
 	"github:crafter-games/dotframe#a1cdfb193838e7821a98068dae159d163afce51a";
 // Muse Wonder list prices per million tokens (dev.meta.ai/docs/pricing-rate-limits).
-const PRICE = { input: 4, cachedInput: 0.2, output: 20 };
+const PRICES: Record<string, { input: number; cachedInput: number; output: number }> = {
+	"muse-wonder-1.0": { input: 4, cachedInput: 0.2, output: 20 },
+	"muse-spark-1.3": { input: 1.25, cachedInput: 0.15, output: 4.25 },
+};
+// Fixer rounds after the verifier: this script's own cap, so a game that cannot be fixed does not loop forever.
+const FIX_ROUNDS = 2;
 
 const apiKey = process.env.MODEL_API_KEY;
 if (!apiKey) throw new Error("MODEL_API_KEY is not set");
-const idea = process.argv[2];
-if (!idea) throw new Error('usage: make.ts "<game idea>" [--slug name]');
+// --photo <file>: the player's own drawing becomes the art (spike/v1-photo.ts) instead of a generated sheet.
+const photoArg = process.argv.indexOf("--photo");
+const photo = photoArg > 0 ? resolve(process.argv[photoArg + 1] ?? "") : null;
+const idea = process.argv[2]?.startsWith("--") ? "" : (process.argv[2] ?? "");
+if (!idea && !photo) throw new Error('usage: make.ts "<game idea>" [--slug name] [--photo drawing.jpg]');
 const slugArg = process.argv.indexOf("--slug");
 const slug =
 	slugArg > 0
-		? process.argv[slugArg + 1]
-		: idea
+		? (process.argv[slugArg + 1] ?? "game")
+		: (idea || "drawing")
 				.toLowerCase()
 				.replace(/[^a-z0-9]+/g, "-")
 				.replace(/^-|-$/g, "")
 				.slice(0, 40);
 const dir = `${ROOT}/games/${slug}`;
 // --verify-only re-runs the independent checks on an existing game without calling the agent.
-const verifyOnly = process.argv.includes("--verify-only");
+// --fix runs the playtester and the fixer on an existing game (implies no rebuild).
+const fixOnly = process.argv.includes("--fix");
+const verifyOnly = fixOnly || process.argv.includes("--verify-only");
 
 const sh = async (cmd: string[], cwd = dir) => {
 	const p = Bun.spawn(cmd, {
@@ -87,6 +97,12 @@ const df = (args: string[]) => sh(["node", CLI, ...args]);
 const core = (await df(["skills", "get", "core"])).out;
 const design = (await df(["skills", "get", "game-design", "--full"])).out;
 const CUTOUT = `CONJURE_OUT=assets bun ${ROOT}/spike/v1-cutout.ts `;
+let drawn: string[] = [];
+if (photo && !verifyOnly) {
+	const cut = Bun.spawn(["bun", `${ROOT}/spike/v1-photo.ts`, photo], { cwd: ROOT, env: { ...process.env, CONJURE_OUT: `${dir}/assets` }, stdout: "pipe", stderr: "pipe" });
+	if ((await cut.exited) !== 0) throw new Error(`photo pipeline failed: ${await new Response(cut.stderr).text()}`);
+}
+if (photo) drawn = ((await Bun.file(`${dir}/assets/report.json`).json()).objects as { name: string; parts?: number }[]).filter((o) => o.parts).map((o) => o.name);
 // Draw2D draws text only with a baked SDF font: give every game the engine's bundled ones.
 if (!verifyOnly) {
 	mkdirSync(`${dir}/assets/fonts`, { recursive: true });
@@ -104,6 +120,7 @@ const BASH_OK = [
 	"bunx tsc --noEmit",
 	"ls",
 	"cat assets/report.json",
+	`bun ${ROOT}/make/verify.ts ${slug}`,
 ];
 const guard: CanUseTool = async (tool, input) => {
 	if (
@@ -136,13 +153,17 @@ const guard: CanUseTool = async (tool, input) => {
 	return { behavior: "deny", message: `${tool} is not available.` };
 };
 
+const artStep = photo
+	? `2. The art already exists: the player drew it by hand and it was cut out of their photo into assets/<name>.png (crayon or pencil on white, a white sticker border, transparent around it) with assets/<name>.hitbox.json ({width, height, parts}: collision boxes in pixels, relative to the image center, y up). The drawings: ${drawn.join(", ")}. Build the game around every one of them, give each a role that fits what it is, and do not make new art. The player sees their own drawings come alive: keep them recognizable, never recolor or replace them.`
+	: `2. Make the art. One command paints a watercolor sheet and cuts each object out:
+   ${CUTOUT}"<sheet prompt>" "<noun1,noun2,...>"
+   The sheet prompt describes one sheet of hand-painted game sprites on plain white paper, evenly spaced, not touching, one of each object, flat front view, no shadows, no text. It writes assets/<noun>.png (cutout with a white sticker border, transparent around it) and assets/<noun>.hitbox.json ({width, height, parts}: collision boxes in pixels, relative to the image center, y up). Then run "cat assets/report.json": every object needs a quality.missed well under 0.1, else run it again with clearer nouns.`;
+
 const system = `You build one complete, playable 2D game with the dotframe engine, from the player's idea, in ${dir}. Work alone until it is done; nobody will answer questions.
 
 # Steps
-1. Write SPEC.md: the game in a few lines (goal, controls, how you win and lose, what is on screen) and the list of art objects, 3 to 6 short concrete nouns (they become sprites).
-2. Make the art. One command paints a watercolor sheet and cuts each object out:
-   ${CUTOUT}"<sheet prompt>" "<noun1,noun2,...>"
-   The sheet prompt describes one sheet of hand-painted game sprites on plain white paper, evenly spaced, not touching, one of each object, flat front view, no shadows, no text. It writes assets/<noun>.png (cutout with a white sticker border, transparent around it) and assets/<noun>.hitbox.json ({width, height, parts}: collision boxes in pixels, relative to the image center, y up). Then run "cat assets/report.json": every object needs a quality.missed well under 0.1, else run it again with clearer nouns.
+1. Write SPEC.md: the game in a few lines (goal, controls, how you win and lose, what is on screen) and the list of art objects${photo ? " (the player's drawings)" : ", 3 to 6 short concrete nouns (they become sprites)"}.
+${artStep}
 3. Write sim.ts (the Sim contract below) and any modules it imports. Load images with platform.load + platform.image (only when platform.image exists; headless runs have none) and read PNG width and height from the header bytes (big-endian uint32 at offsets 16 and 20). Load hitboxes with platform.load + JSON.parse in every run, headless included, since physics needs them.
 4. Text: Draw2D draws text only with a registered font. assets/fonts has archivo-black and bangers (atlas .png plus metrics .json). In create(), when platform.draw and platform.image exist: platform.draw.addFont(["archivo black", "sans-serif"], await platform.image(await platform.load("assets/fonts/archivo-black.png"), true), new TextDecoder().decode(await platform.load("assets/fonts/archivo-black.json"))), then setFont('20px "Archivo Black"'). Latin-1 characters only (no emoji).
 5. Physics: dotframe/src/physics (Body with parts from the hitbox JSON scaled to the sprite's drawn size, stepBodies, Body.pushable, FIXED_STEP). y is up in physics; flip it when drawing.
@@ -151,6 +172,7 @@ const system = `You build one complete, playable 2D game with the dotframe engin
    - node ${CLI} sim --mash 7 --frames 1800 --json and read state: the game must react to input and nothing may leave the world.
    - node ${CLI} snap --frame 300 --mash 7 --out ${dir}/snap-300.png --json, then Read the PNG and look at it. data.warnings must be absent.
    - bunx tsc --noEmit -p .
+   - bun ${ROOT}/make/verify.ts ${slug}: a playtester. verdict must be "ok": no dumb policy (idle, holding keys, mashing one button) wins, and its search player finds a win. Follow its advice when it is not.
    - Record a golden replay: node ${CLI} replay record replays/mash.json --mash 7 --frames 1800 --json
 7. Finish with a short summary: what the game is, its controls, and what you verified.
 
@@ -159,6 +181,7 @@ const system = `You build one complete, playable 2D game with the dotframe engin
 - Everything in one plain state object; all changes in step; render only reads. No Math.random, no Date: use a seeded generator saved in the state. Use dotframe/src/detmath instead of Math.sin/cos/pow/exp.
 - Draw2D uses setters: setFillStyle, setStrokeStyle, setLineWidth, setFont (not property assignment).
 - Use the sprites you made; draw the world behind them with Draw2D shapes.
+- state() must include outcome: "playing", "won" or "lost" and progress: a number from 0 to 1 for how close the player is to winning (the verifier plays through both). The game must be winnable, but not by holding one key or doing nothing.
 - Keep it small and finished: one screen or a simple scrolling level, a score or a goal, a game over and a restart.
 
 # dotframe core skill
@@ -167,28 +190,25 @@ ${core}
 # dotframe game-design skill
 ${design}`;
 
-let agent = {
-	ms: 0,
-	turns: 0,
-	usage: { input: 0, cachedInput: 0, output: 0 },
-	summary: "",
-};
-if (verifyOnly) {
-	try {
-		agent = await Bun.file(`${dir}/agent.json`).json();
-	} catch {}
-} else {
+interface AgentRun {
+	model: string;
+	ms: number;
+	turns: number;
+	usage: { input: number; cachedInput: number; output: number };
+	summary: string;
+}
+async function runAgent(model: string, systemPrompt: string, prompt: string, tag: string): Promise<AgentRun> {
 	const started = performance.now();
 	const usage = { input: 0, cachedInput: 0, output: 0 };
 	let summary = "";
 	let turns = 0;
 	const log: string[] = [];
 	for await (const m of query({
-		prompt: `The player's idea: ${idea}`,
+		prompt,
 		options: {
-			model: "muse-wonder-1.0",
+			model,
 			cwd: dir,
-			systemPrompt: system,
+			systemPrompt,
 			allowedTools: [],
 			canUseTool: guard,
 			permissionMode: "default",
@@ -197,8 +217,8 @@ if (verifyOnly) {
 				...process.env,
 				ANTHROPIC_BASE_URL: "https://api.meta.ai",
 				ANTHROPIC_AUTH_TOKEN: apiKey,
-				ANTHROPIC_MODEL: "muse-wonder-1.0",
-				ANTHROPIC_DEFAULT_OPUS_MODEL: "muse-wonder-1.0",
+				ANTHROPIC_MODEL: model,
+				ANTHROPIC_DEFAULT_OPUS_MODEL: model,
 				ANTHROPIC_DEFAULT_SONNET_MODEL: "muse-spark-1.3",
 				ANTHROPIC_DEFAULT_HAIKU_MODEL: "muse-spark-1.3",
 				CLAUDE_CODE_SUBAGENT_MODEL: "muse-spark-1.3",
@@ -209,26 +229,46 @@ if (verifyOnly) {
 			turns++;
 			for (const c of m.message.content) {
 				if (c.type === "text") log.push(`text: ${c.text}`);
-				if (c.type === "tool_use")
-					log.push(`tool ${c.name}: ${JSON.stringify(c.input).slice(0, 400)}`);
+				if (c.type === "tool_use") log.push(`tool ${c.name}: ${JSON.stringify(c.input).slice(0, 400)}`);
 			}
 			process.stdout.write(".");
 		} else if (m.type === "result") {
 			summary = m.subtype === "success" ? m.result : "";
-			usage.input =
-				m.usage.input_tokens + (m.usage.cache_creation_input_tokens ?? 0);
+			usage.input = m.usage.input_tokens + (m.usage.cache_creation_input_tokens ?? 0);
 			usage.cachedInput = m.usage.cache_read_input_tokens ?? 0;
 			usage.output = m.usage.output_tokens;
 			log.push(`result ${m.subtype}`);
 		}
 	}
-	const agentMs = Math.round(performance.now() - started);
-	writeFileSync(`${dir}/agent.log`, `${log.join("\n")}\n`);
-	writeFileSync(
-		`${dir}/agent.json`,
-		JSON.stringify({ ms: agentMs, turns, usage, summary }, null, 2),
-	);
-	agent = { ms: agentMs, turns, usage, summary };
+	const run = { model, ms: Math.round(performance.now() - started), turns, usage, summary };
+	writeFileSync(`${dir}/${tag}.log`, `${log.join("\n")}\n`);
+	writeFileSync(`${dir}/${tag}.json`, JSON.stringify(run, null, 2));
+	return run;
+}
+const costOf = (r: AgentRun) => {
+	const p = PRICES[r.model] ?? PRICES["muse-wonder-1.0"]!;
+	return (r.usage.input * p.input + r.usage.cachedInput * p.cachedInput + r.usage.output * p.output) / 1e6;
+};
+
+const runs: AgentRun[] = [];
+if (verifyOnly) {
+	try {
+		runs.push({ model: "muse-wonder-1.0", ...(await Bun.file(`${dir}/agent.json`).json()) });
+	} catch {}
+} else {
+	runs.push(await runAgent("muse-wonder-1.0", system, idea ? `The player's idea: ${idea}` : "No idea given: invent the most fun small game these drawings suggest.", "agent"));
+}
+
+// The fixer: a cheaper model reads the playtester's report and changes the game until it passes.
+const verify = async () => JSON.parse((await sh(["bun", `${ROOT}/make/verify.ts`, slug])).out || "{}") as { verdict?: string; advice?: string };
+let verdict = await verify();
+const fixSystem = `${system}
+
+# You are now the fixer
+The game in this directory is built. A playtester (bun ${ROOT}/make/verify.ts ${slug}) wrote verify.json. Read it, SPEC.md and sim.ts, change the game so the verdict becomes "ok" while keeping it the same game (same drawings, same idea), then re-run the playtester and the checks in step 6. Change gameplay, not the playtester.`;
+for (let round = 1; (!verifyOnly || fixOnly) && verdict.verdict !== "ok" && round <= FIX_ROUNDS; round++) {
+	runs.push(await runAgent("muse-spark-1.3", fixSystem, `Verdict: ${verdict.verdict}. ${verdict.advice ?? ""}`, `fix-${round}`));
+	verdict = await verify();
 }
 
 // Independent checks.
@@ -257,26 +297,19 @@ const snap = await json([
 ]);
 const replay = await json(["replay", "verify", "replays/mash.json", "--json"]);
 const tsc = await sh(["bunx", "tsc", "--noEmit", "-p", "."]);
-const { usage } = agent;
-const cost =
-	(usage.input * PRICE.input +
-		usage.cachedInput * PRICE.cachedInput +
-		usage.output * PRICE.output) /
-	1e6;
+const cost = runs.reduce((sum, r) => sum + costOf(r), 0);
 let artCost = 0;
 try {
-	artCost = (await Bun.file(`${dir}/assets/report.json`).json()).cost_usd ?? 0;
+	const art = await Bun.file(`${dir}/assets/report.json`).json();
+	artCost = art.cost_usd ?? art.sam_cost_usd ?? 0;
 } catch {}
 
 const result = {
 	idea,
 	slug,
-	agent: {
-		ms: agent.ms,
-		turns: agent.turns,
-		usage,
-		cost_usd: +cost.toFixed(4),
-	},
+	agents: runs.map((r) => ({ model: r.model, ms: r.ms, turns: r.turns, usage: r.usage, cost_usd: +costOf(r).toFixed(4) })),
+	agent_cost_usd: +cost.toFixed(4),
+	verdict: verdict.verdict,
 	art_cost_usd: artCost,
 	checks: {
 		doctor_hard_failures: hard,
@@ -292,7 +325,7 @@ const result = {
 		tsc_ok: tsc.code === 0,
 	},
 	state_after_mash: mash.data?.state,
-	summary: agent.summary,
+	summary: runs[0]?.summary ?? "",
 };
 writeFileSync(`${dir}/result.json`, JSON.stringify(result, null, 2));
 console.log(`\n${JSON.stringify(result, null, 2)}`);
