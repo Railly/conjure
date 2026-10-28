@@ -12,3 +12,4 @@ games/*/.play/
 spike/photo/out/
 games/_kit-test/
 .vercel
+games/_template/

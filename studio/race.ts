@@ -1,10 +1,10 @@
 // Builds race in Vercel Sandboxes: one attempt per concept starts as soon as the concepts exist (so the one you pick
 // is already under way), and picking a concept adds more attempts of it. The first attempt whose independent checks
 // pass wins; the rest are stopped. Without sandbox credentials it falls back to one local build of the chosen concept.
-import { cpSync, mkdirSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, symlinkSync } from "node:fs";
 import { join } from "node:path";
 import { buildRemote, codeTarball } from "../sandbox/remote";
-import type { Emit } from "./build";
+import { type Emit, scaffold } from "./build";
 import type { Concept } from "./concepts";
 
 const ROOT = new URL("..", import.meta.url).pathname.replace(/\/$/, "");
@@ -79,7 +79,18 @@ export class Race {
     });
     for (const a of mine) if (a !== winner) a.ctrl.abort();
     if (!winner) return null;
+    await localDeps(winner.dir);
     const r = finished.find((f) => f.a === winner)?.r ?? (await winner.done)!;
     return { slug: winner.slug, dir: winner.dir, verdict: r.verdict, cost: r.cost };
   }
+}
+
+// A remote game comes home without node_modules; it shares one local install of the same engine version to play.
+let template: Promise<void> | null = null;
+async function localDeps(dir: string): Promise<void> {
+  if (existsSync(join(dir, "node_modules"))) return;
+  const tpl = join(ROOT, "games", "_template");
+  template ??= existsSync(join(tpl, "node_modules")) ? Promise.resolve() : (mkdirSync(tpl, { recursive: true }), scaffold(tpl, "_template"));
+  await template;
+  symlinkSync(join(tpl, "node_modules"), join(dir, "node_modules"));
 }
