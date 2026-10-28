@@ -6,6 +6,7 @@ import { appendFileSync, mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { buildGame, cutPhoto, scaffold } from "./build";
 import { type Concept, proposeConcepts } from "./concepts";
+import { Race, remoteReady } from "./race";
 
 const ROOT = new URL("..", import.meta.url).pathname.replace(/\/$/, "");
 const portArg = process.argv.indexOf("--port");
@@ -21,6 +22,7 @@ interface Session {
   events: { stage: string; message: string; data?: unknown; t: number }[];
   listeners: Set<ReadableStreamDefaultController>;
   playPort?: number;
+  race?: Race;
 }
 const sessions = new Map<string, Session>();
 let nextPlayPort = 5190;
@@ -87,6 +89,11 @@ async function route(req: Request): Promise<Response> {
           s.concepts = r.concepts;
           writeFileSync(join(s.dir, "concepts.json"), JSON.stringify(r, null, 2));
           emit(s, { stage: "concepts", message: "Elige tu juego", data: { concepts: r.concepts, ms: r.ms } });
+          // With sandboxes, every concept starts building while the player reads them.
+          if (remoteReady()) {
+            s.race = new Race(s, (e) => emit(s, e));
+            s.race.prebuild();
+          }
         } catch (e) {
           emit(s, { stage: "error", message: String(e).slice(0, 300) });
         }
@@ -102,12 +109,18 @@ async function route(req: Request): Promise<Response> {
       emit(s, { stage: "build", message: `Construyendo "${concept.title}"`, data: { concept } });
       (async () => {
         try {
-          await buildGame({ dir: s.dir, slug: s.slug, concept, drawings: s.drawings, emit: (e) => emit(s, e) });
+          let playSlug = s.slug;
+          if (s.race) {
+            const won = await s.race.choose(index);
+            if (!won) throw new Error("ninguna construccion termino");
+            playSlug = won.slug;
+            emit(s, { stage: "done", message: `Gano ${won.slug.split("-").pop()}: ${won.verdict}`, data: { verdict: won.verdict, cost: won.cost, ms: Date.now() - (s.events.find((x) => x.stage === "build")?.t ?? Date.now()) } });
+          } else await buildGame({ dir: s.dir, slug: s.slug, concept, drawings: s.drawings, emit: (e) => emit(s, e) });
           // Several Studio servers can run at once: take the next port nothing listens on.
           let candidate = nextPlayPort++;
           while (await fetch(`http://localhost:${candidate}/`).then(() => true, () => false)) candidate = nextPlayPort++;
           s.playPort = candidate;
-          Bun.spawn(["bun", join(ROOT, "make/play.ts"), s.slug, "--port", String(s.playPort)], { cwd: ROOT, env: process.env, stdout: "ignore", stderr: "ignore" });
+          Bun.spawn(["bun", join(ROOT, "make/play.ts"), playSlug, "--port", String(s.playPort)], { cwd: ROOT, env: process.env, stdout: "ignore", stderr: "ignore" });
           for (let i = 0; i < 60; i++) {
             if (await fetch(`http://localhost:${s.playPort}/`).then((r) => r.ok, () => false)) break;
             await Bun.sleep(500);
