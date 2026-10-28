@@ -11,7 +11,7 @@ const ROOT = new URL("..", import.meta.url).pathname.replace(/\/$/, "");
 // Attempts of the chosen concept, counting its prebuild: the race's width.
 export const ATTEMPTS = Number(process.env.CONJURE_ATTEMPTS ?? 3);
 
-export const remoteReady = () => Boolean(process.env.VERCEL_TOKEN && process.env.VERCEL_TEAM_ID && process.env.VERCEL_PROJECT_ID && process.env.CONJURE_SNAPSHOT_ID);
+export const remoteReady = () => Boolean((process.env.VERCEL_OIDC_TOKEN || (process.env.VERCEL_TOKEN && process.env.VERCEL_TEAM_ID && process.env.VERCEL_PROJECT_ID)) && process.env.CONJURE_SNAPSHOT_ID);
 
 interface Attempt {
   concept: number;

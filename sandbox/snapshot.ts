@@ -16,7 +16,8 @@ lap(`sandbox ${sandbox.name}`);
 try {
   await sandbox.writeFiles([{ path: `${HOME}/code.tgz`, content: await codeTarball() }]);
   await Promise.all([
-    sh(sandbox, "curl -fsSL https://bun.sh/install | bash >/dev/null 2>&1").then(() => lap("bun")),
+    // The image has no curl: Bun comes from npm, which ships its native binary.
+    sh(sandbox, "npm i -g bun@1.3.14 >/dev/null 2>&1 && bun --version").then((v) => lap(`bun ${v.trim()}`)),
     // The image is Ubuntu: --with-deps installs Chromium's libraries with apt.
     sh(sandbox, "npm i -g agent-browser >/dev/null 2>&1 && agent-browser install --with-deps >/dev/null 2>&1").then(() => lap("agent-browser")),
   ]);

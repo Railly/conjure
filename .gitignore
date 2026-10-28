@@ -11,3 +11,4 @@ games/*/.dotframe/
 games/*/.play/
 spike/photo/out/
 games/_kit-test/
+.vercel

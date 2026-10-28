@@ -120,17 +120,32 @@ ${example}`;
         {
           role: "user",
           content: [
-            { type: "text", text: `Two captures of a small game (first: its opening screen, second: mid-play). The concept: ${concept.title}, ${concept.pitch}. Judge it as a picky art director. List only real, visible problems that make it look unfinished: unreadable or overlapping text, an empty or flat screen, missing title screen, sprites cut off or misplaced, ugly placeholder shapes, no visual feedback. ok is true only when it looks like a finished, polished game.` },
+            { type: "text", text: `Two captures of a small game (first: its opening screen, second: mid-play). The concept: ${concept.title}, ${concept.pitch}. Judge it as a picky art director, and grade each real, visible problem. blocker: it makes the game look broken or unfinished (no title screen, an empty or flat screen, the HUD or instructions unreadable or overlapping each other, sprites cut off or misplaced, ugly placeholder shapes, no visual feedback at all). minor: anything else, including momentary effects (floating text, particles, flashes) crossing other things for a moment, which is normal in motion. ok is true when there is no blocker.` },
             ...images.map((url) => ({ type: "image_url" as const, image_url: { url: url! } })),
           ],
         },
       ],
       response_format: {
         type: "json_schema",
-        json_schema: { name: "qa", strict: true, schema: { type: "object", additionalProperties: false, required: ["ok", "issues"], properties: { ok: { type: "boolean" }, issues: { type: "array", items: { type: "string" } } } } },
+        json_schema: {
+          name: "qa",
+          strict: true,
+          schema: {
+            type: "object",
+            additionalProperties: false,
+            required: ["ok", "issues"],
+            properties: {
+              ok: { type: "boolean" },
+              issues: { type: "array", items: { type: "object", additionalProperties: false, required: ["severity", "problem"], properties: { severity: { type: "string", enum: ["blocker", "minor"] }, problem: { type: "string" } } } },
+            },
+          },
+        },
       },
     });
-    return JSON.parse(res.choices[0]?.message?.content ?? '{"ok":false,"issues":["no answer"]}');
+    // Only blockers send the game back to the fixer; minor notes are kept in the report.
+    const qa = JSON.parse(res.choices[0]?.message?.content ?? '{"ok":false,"issues":[]}') as { issues: { severity: string; problem: string }[] };
+    const blockers = qa.issues.filter((i) => i.severity === "blocker").map((i) => i.problem);
+    return { ok: blockers.length === 0, issues: blockers, minor: qa.issues.filter((i) => i.severity !== "blocker").map((i) => i.problem) } as { ok: boolean; issues: string[] };
   };
 
   emit({ stage: "check", message: "Playtester independiente" });

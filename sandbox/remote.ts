@@ -14,10 +14,13 @@ const APP = `${HOME}/conjure`;
 // A build is a few minutes; the cap keeps a stuck one from billing for hours.
 const BUILD_TIMEOUT_MS = 20 * 60_000;
 
-export const credentials = () => {
+// The SDK reads VERCEL_OIDC_TOKEN itself (vercel env pull, project conjure in crafter-station; it lasts 12 hours).
+// An access token with team and project ids works too and does not expire.
+export const credentials = (): { token: string; teamId: string; projectId: string } | Record<string, never> => {
   const { VERCEL_TOKEN: token, VERCEL_TEAM_ID: teamId, VERCEL_PROJECT_ID: projectId } = process.env;
-  if (!token || !teamId || !projectId) throw new Error("VERCEL_TOKEN, VERCEL_TEAM_ID and VERCEL_PROJECT_ID must be set (crafter-station)");
-  return { token, teamId, projectId };
+  if (token && teamId && projectId) return { token, teamId, projectId };
+  if (process.env.VERCEL_OIDC_TOKEN) return {};
+  throw new Error("no Vercel credentials: run vercel env pull .env.local in conjure, or set VERCEL_TOKEN, VERCEL_TEAM_ID, VERCEL_PROJECT_ID");
 };
 
 export const sh = async (sandbox: Sandbox, cmd: string, env: Record<string, string> = {}) => {
@@ -28,7 +31,7 @@ export const sh = async (sandbox: Sandbox, cmd: string, env: Record<string, stri
 
 // The code a build needs, as a tarball: everything but games, the web app, dependencies and secrets.
 export async function codeTarball(): Promise<Uint8Array> {
-  const p = Bun.spawn(["tar", "-cz", "--exclude=./games", "--exclude=./web", "--exclude=*/node_modules", "--exclude=./node_modules", "--exclude=./.env", "--exclude=./.git", "--exclude=./spike/out", "--exclude=./spike/photo", "-f", "-", "."], { cwd: ROOT, stdout: "pipe" });
+  const p = Bun.spawn(["tar", "--no-xattrs", "--no-mac-metadata", "-cz", "--exclude=./games", "--exclude=./web", "--exclude=*/node_modules", "--exclude=./node_modules", "--exclude=./.env", "--exclude=./.git", "--exclude=./spike/out", "--exclude=./spike/photo", "-f", "-", "."], { cwd: ROOT, stdout: "pipe", env: { ...process.env, COPYFILE_DISABLE: "1" } });
   const buf = new Uint8Array(await new Response(p.stdout).arrayBuffer());
   if ((await p.exited) !== 0) throw new Error("tar failed");
   return buf;
