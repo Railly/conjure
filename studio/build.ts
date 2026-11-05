@@ -101,11 +101,11 @@ ${example}`;
   const onTool = (name: string, input: unknown) => {
     const i = input as { file_path?: string; command?: string };
     const cmd = i.command ?? "";
-    const message = cmd.includes("v1-cutout") ? "Pintando la hoja de arte" : cmd.includes("v1-sprite") ? "Dibujando un sprite nuevo" : cmd.includes(" snap ") ? "Mirando el juego (captura)" : cmd.includes("verify.ts") ? "Playtester probando el juego" : cmd.includes(" doctor") ? "Chequeando el motor" : cmd.includes(" sim ") ? "Simulando partidas" : cmd.includes("tsc") ? "Compilando" : name === "Write" || name === "Edit" ? `Escribiendo ${String(i.file_path ?? "").replace(`${dir}/`, "")}` : name === "Read" ? `Leyendo ${String(i.file_path ?? "").replace(`${dir}/`, "")}` : name;
+    const message = cmd.includes("v1-cutout") ? "Painting the art sheet" : cmd.includes("v1-sprite") ? "Drawing a new sprite" : cmd.includes(" snap ") ? "Looking at the game (capture)" : cmd.includes("verify.ts") ? "Playtester testing the game" : cmd.includes(" doctor") ? "Checking the engine" : cmd.includes(" sim ") ? "Simulating matches" : cmd.includes("tsc") ? "Compiling" : name === "Write" || name === "Edit" ? `Writing ${String(i.file_path ?? "").replace(`${dir}/`, "")}` : name === "Read" ? `Reading ${String(i.file_path ?? "").replace(`${dir}/`, "")}` : name;
     emit({ stage: "code", message, data: { tool: name } });
   };
 
-  emit({ stage: "code", message: "Muse Wonder empieza a construir" });
+  emit({ stage: "code", message: "Muse Wonder starts building" });
   const runs = [await runAgent({ dir, model: "muse-wonder-1.0", system, prompt: "Build it.", bashOk, tag: "agent", onTool, effort: "medium" })];
 
   // Independent checks: the playtester and a visual QA pass on fresh captures.
@@ -155,23 +155,23 @@ ${example}`;
     return { ok: blockers.length === 0, issues: blockers, minor: qa.issues.filter((i) => i.severity !== "blocker").map((i) => i.problem), model: target.label, ms: Math.round(performance.now() - t0) } as { ok: boolean; issues: string[]; model: string; ms: number };
   };
 
-  emit({ stage: "check", message: "Playtester independiente" });
+  emit({ stage: "check", message: "Independent playtester" });
   let play = playtest();
   emit({ stage: "check", message: `Playtester: ${play.verdict}`, data: play });
   let qa = await visual();
-  emit({ stage: "check", message: `${qa.ok ? "QA visual: ok" : `QA visual: ${qa.issues.length} problemas`} · ${qa.model}`, data: qa });
+  emit({ stage: "check", message: `${qa.ok ? "Visual QA: ok" : `Visual QA: ${qa.issues.length} issues`} · ${qa.model}`, data: qa });
   for (let round = 1; (play.verdict !== "ok" || !qa.ok) && round <= FIX_ROUNDS; round++) {
-    emit({ stage: "fix", message: `Arreglando (ronda ${round})` });
+    emit({ stage: "fix", message: `Fixing (round ${round})` });
     const problems = [play.verdict !== "ok" ? `Playtester verdict ${play.verdict}: ${play.advice}` : "", qa.ok ? "" : `Visual QA: ${qa.issues.join("; ")}`].filter(Boolean).join("\n");
     runs.push(await runAgent({ dir, model: "muse-spark-1.3", system, prompt: `The game is built, but independent checks found problems. Fix them, keep the same game, and re-run the checks:\n${problems}`, bashOk, tag: `fix-${round}`, onTool }));
     play = playtest();
     qa = await visual();
-    emit({ stage: "check", message: `Playtester: ${play.verdict}. QA visual: ${qa.ok ? "ok" : `${qa.issues.length} problemas`}`, data: { play, qa } });
+    emit({ stage: "check", message: `Playtester: ${play.verdict}. Visual QA: ${qa.ok ? "ok" : `${qa.issues.length} issues`}`, data: { play, qa } });
   }
   const cost = runs.reduce((s, r) => s + costOf(r), 0);
   const verdict = play.verdict === "ok" && qa.ok ? "ok" : play.verdict === "ok" ? "ok-gameplay" : (play.verdict ?? "unknown");
   const ms = Math.round(performance.now() - started);
   writeFileSync(join(dir, "build.json"), JSON.stringify({ concept, verdict, playtest: play, qa, cost_usd: +cost.toFixed(4), ms, runs }, null, 2));
-  emit({ stage: "done", message: runs[0]?.summary ?? "Listo", data: { verdict, cost, ms } });
+  emit({ stage: "done", message: runs[0]?.summary ?? "Done", data: { verdict, cost, ms } });
   return { verdict, cost, ms };
 }

@@ -21,12 +21,12 @@ async function rebuild(dir: string): Promise<Ev[] | null> {
   const t = Date.now();
   const qa = build.qa as { ok?: boolean } | undefined;
   return [
-    { stage: "art", message: `${drawings.length} dibujos recortados`, data: { drawings }, t },
-    { stage: "concepts", message: "Elige tu juego", data: { concepts: [build.concept] }, t },
-    { stage: "build", message: "Construyendo", data: { concept: build.concept }, t },
+    { stage: "art", message: `${drawings.length} drawings cut out`, data: { drawings }, t },
+    { stage: "concepts", message: "Pick your game", data: { concepts: [build.concept] }, t },
+    { stage: "build", message: "Building", data: { concept: build.concept }, t },
     ...(verify ? [{ stage: "check", message: `Playtester: ${verify.verdict}`, data: verify, t }] : []),
-    ...(qa ? [{ stage: "check", message: qa.ok ? "QA visual: ok" : "QA visual: problemas", data: qa, t }] : []),
-    { stage: "done", message: "Listo", data: { verdict: build.verdict, cost: build.cost_usd, ms: build.ms }, t },
+    ...(qa ? [{ stage: "check", message: qa.ok ? "Visual QA: ok" : "Visual QA: issues", data: qa, t }] : []),
+    { stage: "done", message: "Done", data: { verdict: build.verdict, cost: build.cost_usd, ms: build.ms }, t },
   ];
 }
 
@@ -52,13 +52,13 @@ export async function GET(req: Request) {
   if (!events?.some((e) => e.stage === "done")) events = (await rebuild(dir)) ?? events;
   if (!events) return Response.json({ error: "unknown game" }, { status: 404 });
 
-  // The play server recorded in the events may be gone: ask the engine for a live one. A raced build plays from the
-  // winning sandbox's folder, named in the done message ("Gano c0-0: ok").
+  // The play server recorded in the events may be gone: ask the engine for a live one (it resolves a raced build
+  // to the winning sandbox's folder).
   if (events.some((e) => e.stage === "done")) {
     const open = await fetch(`${ENGINE}/api/open`, { method: "POST", body: JSON.stringify({ slug }) })
       .then((r) => (r.ok ? (r.json() as Promise<{ url: string }>) : null))
       .catch(() => null);
-    if (open?.url) events = [...events.filter((e) => e.stage !== "play"), { stage: "play", message: "A jugar", data: { url: open.url }, t: Date.now() }];
+    if (open?.url) events = [...events.filter((e) => e.stage !== "play"), { stage: "play", message: "Play", data: { url: open.url }, t: Date.now() }];
   }
   return Response.json(events);
 }

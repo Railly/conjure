@@ -73,22 +73,22 @@ main { position: relative; display: grid; place-items: center; padding: 28px; mi
 </head>
 <body>
 <aside>
-  <header><div class="logo">Conjure</div><div class="tag">tu dibujo, jugable</div></header>
+  <header><div class="logo">Conjure</div><div class="tag">your drawing, playable</div></header>
   <div class="scroll">
     <section>
       <h2>1. Dibuja o describe</h2>
-      <label class="drop" id="drop"><input type="file" id="file" accept="image/*" hidden><b>Sube la foto de tu dibujo</b><span>o arrastrala aca. Papel, crayon, birome: todo vale.</span></label>
-      <textarea id="idea" placeholder="Opcional: una idea. &quot;que el gato maneje el auto&quot;, &quot;un juego de ritmo&quot;..."></textarea>
+      <label class="drop" id="drop"><input type="file" id="file" accept="image/*" hidden><b>Upload a photo of your drawing</b><span>or drop it here. Paper, crayon, pen: anything works.</span></label>
+      <textarea id="idea" placeholder="Optional: an idea. &quot;the cat drives the car&quot;, &quot;a rhythm game&quot;..."></textarea>
       <button class="go" id="start">Conjurar</button>
     </section>
-    <section id="drawingsBox" hidden><h2>Tus dibujos</h2><div class="drawings" id="drawings"></div></section>
-    <section id="conceptsBox" hidden><h2>2. Elige tu juego</h2><div id="concepts"></div><button class="go" id="build" disabled>Construir este juego</button></section>
+    <section id="drawingsBox" hidden><h2>Your drawings</h2><div class="drawings" id="drawings"></div></section>
+    <section id="conceptsBox" hidden><h2>2. Pick your game</h2><div id="concepts"></div><button class="go" id="build" disabled>Build this game</button></section>
     <section id="feedBox" hidden><h2>En vivo</h2><ul class="feed" id="feed"></ul><div class="meta" id="meta"></div></section>
   </div>
 </aside>
 <main>
   <div class="stage" id="stage">
-    <div class="empty" id="empty"><div><h1>Dibuja. <em>Juega.</em></h1><div>Muse convierte tu dibujo en un juego, y lo cambia mientras juegas.</div></div></div>
+    <div class="empty" id="empty"><div><h1>Dibuja. <em>Juega.</em></h1><div>Muse turns your drawing into a game, and changes it while you play.</div></div></div>
     <div class="floaters" id="floaters"></div>
     <div class="status" id="status"></div>
   </div>

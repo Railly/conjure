@@ -93,7 +93,7 @@ const emit = (s: Session, e: { stage: string; message: string; data?: unknown })
 
 const newSession = (idea: string): Session => {
   const stamp = new Date().toISOString().slice(5, 16).replace(/[-:T]/g, "");
-  const base = (idea || "dibujo").toLowerCase().normalize("NFD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 24) || "juego";
+  const base = (idea || "drawing").toLowerCase().normalize("NFD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 24) || "juego";
   const slug = `${base}-${stamp}`;
   const dir = join(ROOT, "games", slug);
   mkdirSync(dir, { recursive: true });
@@ -135,16 +135,16 @@ async function route(req: Request): Promise<Response> {
           if (photo instanceof File && photo.size > 0) {
             const file = join(s.dir, `photo-input${photo.name.match(/\.\w+$/)?.[0] ?? ".jpg"}`);
             writeFileSync(file, new Uint8Array(await photo.arrayBuffer()));
-            emit(s, { stage: "art", message: "Encontrando tus dibujos" });
+            emit(s, { stage: "art", message: "Finding your drawings" });
             await installing;
             s.drawings = await cutPhoto(s.dir, file);
-            emit(s, { stage: "art", message: `${s.drawings.length} dibujos recortados`, data: { drawings: s.drawings } });
+            emit(s, { stage: "art", message: `${s.drawings.length} drawings cut out`, data: { drawings: s.drawings } });
           } else await installing;
-          emit(s, { stage: "concepts", message: "Muse Wonder esta imaginando tres juegos" });
+          emit(s, { stage: "concepts", message: "Muse Wonder is imagining three games" });
           const r = await proposeConcepts({ idea, drawings: s.drawings.map((n) => ({ name: n, png: join(s.dir, "assets", `${n}.png`) })) });
           s.concepts = r.concepts;
           writeFileSync(join(s.dir, "concepts.json"), JSON.stringify(r, null, 2));
-          emit(s, { stage: "concepts", message: "Elige tu juego", data: { concepts: r.concepts, ms: r.ms } });
+          emit(s, { stage: "concepts", message: "Pick your game", data: { concepts: r.concepts, ms: r.ms } });
           // With sandboxes, every concept starts building while the player reads them.
           if (remoteReady()) {
             s.race = new Race(s, (e) => emit(s, e));
@@ -162,15 +162,15 @@ async function route(req: Request): Promise<Response> {
       const s = sessions.get(slug);
       const concept = s?.concepts[index];
       if (!s || !concept) return json({ error: "unknown session or concept" }, 404);
-      emit(s, { stage: "build", message: `Construyendo "${concept.title}"`, data: { concept } });
+      emit(s, { stage: "build", message: `Building "${concept.title}"`, data: { concept } });
       (async () => {
         try {
           let playSlug = s.slug;
           if (s.race) {
             const won = await s.race.choose(index);
-            if (!won) throw new Error("ninguna construccion termino");
+            if (!won) throw new Error("no build finished");
             playSlug = won.slug;
-            emit(s, { stage: "done", message: `Gano ${won.slug.split("-").pop()}: ${won.verdict}`, data: { verdict: won.verdict, cost: won.cost, ms: Date.now() - (s.events.find((x) => x.stage === "build")?.t ?? Date.now()) } });
+            emit(s, { stage: "done", message: `Won by ${won.slug.split("-").pop()}: ${won.verdict}`, data: { verdict: won.verdict, cost: won.cost, ms: Date.now() - (s.events.find((x) => x.stage === "build")?.t ?? Date.now()) } });
           } else await buildGame({ dir: s.dir, slug: s.slug, concept, drawings: s.drawings, emit: (e) => emit(s, e) });
           // Several Studio servers can run at once: take the next port nothing listens on.
           let candidate = nextPlayPort++;
@@ -181,7 +181,7 @@ async function route(req: Request): Promise<Response> {
             if (await fetch(`http://localhost:${s.playPort}/`).then((r) => r.ok, () => false)) break;
             await Bun.sleep(500);
           }
-          emit(s, { stage: "play", message: "A jugar", data: { url: `http://localhost:${s.playPort}/` } });
+          emit(s, { stage: "play", message: "Play", data: { url: `http://localhost:${s.playPort}/` } });
         } catch (e) {
           emit(s, { stage: "error", message: String(e).slice(0, 300) });
         }

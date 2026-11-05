@@ -66,7 +66,7 @@ export class Race {
     for (const a of this.attempts) if (a.concept !== index) a.ctrl.abort();
     const mine = this.attempts.filter((a) => a.concept === index);
     for (let k = mine.length; k < ATTEMPTS; k++) mine.push(this.launch(index, k));
-    this.emit({ stage: "build", message: `${mine.length} construcciones en paralelo; gana la primera que pase los chequeos` });
+    this.emit({ stage: "build", message: `${mine.length} builds in parallel; the first to pass the checks wins` });
     const finished: { a: Attempt; r: { verdict: string; cost: number; ms: number } }[] = [];
     const winner = await new Promise<Attempt | null>((resolve) => {
       let left = mine.length;

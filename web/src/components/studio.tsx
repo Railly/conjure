@@ -560,7 +560,7 @@ const TOOL_LABEL: Record<string, string> = {
 };
 const humanize = (m: string) => {
   const body = m.replace(/^#\d+\s*/, "");
-  return TOOL_LABEL[body] ?? body.replace(/^Leyendo assets\/.+\.png$/, "Looking at your drawing").replace(/^Escribiendo sim\.ts$/, "Writing the game");
+  return TOOL_LABEL[body] ?? body.replace(/^(Leyendo|Reading) assets\/.+\.png$/, "Looking at your drawing").replace(/^(Escribiendo|Writing) sim\.ts$/, "Writing the game");
 };
 
 interface Lane {
@@ -583,7 +583,7 @@ function lanesOf(events: EngineEvent[]): Lane[] {
   }
   return [...map.values()].sort((a, b) => a.k - b.k);
 }
-const modelOfLane = (l: Lane) => (/simulando|simulating/i.test(l.last.message) ? "code" : l.last.stage === "fix" || (l.last.stage === "check" && l.last.message.includes("QA")) ? "Muse Spark" : /arte|sprite/i.test(l.last.message) ? "Muse Image" : l.last.stage === "check" ? "code" : "Muse Wonder");
+const modelOfLane = (l: Lane) => (/simulando|simulating/i.test(l.last.message) ? "code" : l.last.stage === "fix" || (l.last.stage === "check" && l.last.message.includes("QA")) ? "Muse Spark" : /arte|art sheet|sprite/i.test(l.last.message) ? "Muse Image" : l.last.stage === "check" ? "code" : "Muse Wonder");
 
 // The build as a timeline: one row per stage, the Muse model doing the job, and the measured gate results.
 const STAGES = [
@@ -597,7 +597,7 @@ const STAGES = [
 const reachOf = (e: EngineEvent): number => {
   if (e.stage === "art") return 0;
   if (e.stage === "concepts") return 1;
-  if (e.stage === "check" && e.message.includes("QA visual")) return 4;
+  if (e.stage === "check" && (e.message.includes("QA visual") || e.message.includes("Visual QA"))) return 4;
   if (e.stage === "check") return 3;
   if (e.stage === "build" || e.stage === "code" || e.stage === "fix") return 2;
   if (e.stage === "done" || e.stage === "play") return 5;
