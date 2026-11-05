@@ -1,0 +1,11 @@
+{
+  "model": "muse-wonder-1.0",
+  "ms": 644095,
+  "turns": 171,
+  "usage": {
+    "input": 441649,
+    "cachedInput": 6185552,
+    "output": 41912
+  },
+  "summary": "«El Sol Empuja al Gato a Casa» es un puzzle físico en una página de cuaderno amarilla donde eres el Sol: sin tocar nunca al gato, haces brotar ramas del árbol que lo empujan rodando y calientas el coche para usarlo de rampa y trampolín hasta la puerta elevada de su casa, antes de que caiga el ocaso en 90 segundos o de quemar sus 3 bigotes. Se juega con Enter para empezar, flechas izquierda/derecha o A/D para mover el Sol (que además deriva solo hacia el ocaso), flechas arriba/abajo para elegir el ángulo del rayo y Espacio para disparar (mantenerlo carga más potencia)."
+}

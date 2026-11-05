@@ -2,7 +2,7 @@
 // Drop a photo or type an idea -> your drawings, cut out -> three concepts in different genres -> watch it being
 // built -> play it, and keep changing it while you play.
 //   bun --env-file=.env studio/server.ts [--port 5170]
-import { appendFileSync, mkdirSync, writeFileSync } from "node:fs";
+import { appendFileSync, cpSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { buildGame, cutPhoto, scaffold } from "./build";
 import { type Concept, proposeConcepts } from "./concepts";
@@ -26,6 +26,31 @@ interface Session {
 }
 const sessions = new Map<string, Session>();
 let nextPlayPort = 5190;
+// Built games opened from the gallery: slug -> play server port.
+const opened = new Map<string, number>();
+// A raced build plays from the winning sandbox's folder (<slug>-cX-Y): the playtester that passed names it.
+async function playSlugOf(slug: string): Promise<string> {
+  if (!/^[\w-]+$/.test(slug) || (await Bun.file(join(ROOT, "games", slug, "sim.ts")).exists())) return slug;
+  const events = await Bun.file(join(ROOT, "games", slug, "events.jsonl")).text().catch(() => "");
+  const passed = [...events.matchAll(/"slug":"([\w-]+)","verdict":"ok"/g)].map((m) => m[1]!).filter((s) => s.startsWith(`${slug}-`));
+  for (const s of passed) if (await Bun.file(join(ROOT, "games", s, "sim.ts")).exists()) return s;
+  return slug;
+}
+async function openGame(requested: string): Promise<string | null> {
+  const slug = await playSlugOf(requested);
+  if (!/^[\w-]+$/.test(slug) || !(await Bun.file(join(ROOT, "games", slug, "sim.ts")).exists())) return null;
+  const known = opened.get(slug);
+  if (known && (await fetch(`http://localhost:${known}/`).then((r) => r.ok, () => false))) return `http://localhost:${known}/`;
+  let candidate = nextPlayPort++;
+  while (await fetch(`http://localhost:${candidate}/`).then(() => true, () => false)) candidate = nextPlayPort++;
+  Bun.spawn(["bun", join(ROOT, "make/play.ts"), slug, "--port", String(candidate)], { cwd: ROOT, env: process.env, stdout: "ignore", stderr: "ignore" });
+  for (let i = 0; i < 60; i++) {
+    if (await fetch(`http://localhost:${candidate}/`).then((r) => r.ok, () => false)) break;
+    await Bun.sleep(500);
+  }
+  opened.set(slug, candidate);
+  return `http://localhost:${candidate}/`;
+}
 
 const emit = (s: Session, e: { stage: string; message: string; data?: unknown }) => {
   const ev = { ...e, t: Date.now() };
@@ -131,6 +156,44 @@ async function route(req: Request): Promise<Response> {
         }
       })();
       return json({ ok: true });
+    }
+
+    // Open an already built game: start (or reuse) its play server and return the URL.
+    if (path === "/api/open" && req.method === "POST") {
+      const { slug } = (await req.json()) as { slug?: string };
+      const url = slug ? await openGame(slug) : null;
+      return url ? json({ url }) : json({ error: "unknown game" }, 404);
+    }
+
+    // Publish a game as a static site on Vercel (crafter-station) so anyone can play it from a link.
+    if (path === "/api/publish" && req.method === "POST") {
+      const { slug } = (await req.json()) as { slug?: string };
+      const gameSlug = slug ? await playSlugOf(slug) : null;
+      const base = gameSlug ? await openGame(gameSlug) : null;
+      if (!base || !gameSlug) return json({ error: "unknown game" }, 404);
+      const name = `conjure-${(slug ?? "game").toLowerCase().replace(/[^a-z0-9-]/g, "").slice(-40)}`;
+      const out = join("/tmp/conjure-publish", name);
+      rmSync(out, { recursive: true, force: true });
+      mkdirSync(join(out, "assets"), { recursive: true });
+      for (const f of ["", "main.js", "sim.js"]) {
+        const r = await fetch(base + f);
+        if (!r.ok) return json({ error: `could not read ${f || "index"}` }, 500);
+        const text = await r.text();
+        // A published copy is play-only: ?embed=1 hides the live-edit bar, which needs the local play server.
+        writeFileSync(join(out, f || "index.html"), f ? text : text.replace("<script", `<script>history.replaceState(null,"","?embed=1")</script><script`));
+      }
+      cpSync(join(ROOT, "games", gameSlug, "assets"), join(out, "assets"), { recursive: true, filter: (p) => !p.includes(".source") });
+      // One retry: the upload sometimes ends in a transient "fetch failed". The stable alias is printed on stderr.
+      let err = "";
+      for (let attempt = 0; attempt < 2; attempt++) {
+        const deploy = Bun.spawnSync(["vercel", "deploy", out, "--prod", "--yes", "--scope", "crafter-station"], { cwd: out, env: process.env });
+        const logs = deploy.stderr.toString();
+        const alias = logs.match(/Aliased\s+(https:\/\/\S+\.vercel\.app)/)?.[1];
+        const live = alias ?? deploy.stdout.toString().match(/https:\/\/\S+\.vercel\.app/)?.[0];
+        if (deploy.exitCode === 0 && live) return json({ url: live });
+        err = logs.slice(-400);
+      }
+      return json({ error: err }, 500);
     }
 
     // Live events for one session, replaying what already happened.

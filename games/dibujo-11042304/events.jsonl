@@ -1,0 +1,95 @@
+{"stage":"art","message":"Encontrando tus dibujos","t":1793833499011}
+{"stage":"art","message":"2 dibujos recortados","data":{"drawings":["cat","text"]},"t":1793833538472}
+{"stage":"concepts","message":"Muse Wonder esta imaginando tres juegos","t":1793833538472}
+{"stage":"concepts","message":"Elige tu juego","data":{"concepts":[{"controls":"Flechas izquierda y derecha o A y D para mover la palabra, barra espaciadora para lanzar al gato y Enter para reiniciar.","core_mechanic":"Malcriadazo es la paleta y el gato es la pelota","genre":"breakout-like","juice":"El gato se aplasta al rebotar y se estira al caer, deja una estela de pelo naranja y suelta partículas amarillas al romper platos. Cada rebote perfecto en la nariz muestra «¡ÑAM!», «¡ZAS!» o «¡MALCRIADO!» con combo creciente; la pantalla tiembla al romper una fila y la palabra se deforma como gelatina al golpear. Pantalla de título: el gato rebota sobre el texto hasta que pulsas Enter.","lose":"Pierdes si el gato cae tres veces por la parte inferior.","palette":"breakout-like","pitch":"La palabra «Malcriadazo», larga y elástica, es tu paleta, y la enorme cabeza del gato es la pelota rebotona. Rompe todos los platos de la cocina antes de que el gato malcriado se te escape por abajo.","roles":[{"object":"gato","role":"pelota gigante con cara, que rebota, gira y rompe los platos"},{"object":"texto «Malcriadazo»","role":"paleta horizontal larga y elástica que el jugador mueve"}],"title":"Malcriadazo Rebota","win":"Ganas si rompes los dieciocho platos antes de perder tus tres caídas."},{"controls":"Barra espaciadora para dar el bocado justo en el momento de la superposición y Enter para empezar o reiniciar. No necesitas ninguna otra tecla.","core_mechanic":"Atrapa la palabra con la boca del gato cuando se superpone","genre":"rhythm or timing","juice":"Al acertar, el gato se infla de satisfacción, la palabra cruje con migas y notas musicales, y aparece «¡PERFECTO!» con el combo. Al fallar, el gato parpadea por escala, suelta pelo y la pantalla da un pequeño golpe seco; los aciertos encadenados hacen que la palabra brille y se ondule al ritmo. Pantalla de título: el gato sigue el ritmo moviendo la cabeza sobre el texto inmóvil.","lose":"Pierdes si fallas tres bocados o si dejas pasar la palabra completa tres veces.","palette":"rhythm or timing","pitch":"La palabra «Malcriadazo» desfila cada vez más rápido sobre la boca del gato hambriento. Da el bocado justo cuando la palabra móvil se superpone con su silueta y consigue que el gato se la zampe entera al ritmo de la música.","roles":[{"object":"gato","role":"protagonista hambriento cuya boca es la zona de acierto"},{"object":"texto «Malcriadazo»","role":"objeto rítmico que desfila, se encoge y debe ser atrapado"}],"title":"¡A la Boca, Malcriadazo!","win":"Ganas si completas los veinte bocados rítmicos de la canción de un minuto."},{"controls":"WASD o flechas para moverte por la habitación en 3D, barra espaciadora para girar al gato y ponerlo de perfil, y Enter para empezar o reiniciar.","core_mechanic":"El gato es una tarjeta plana que puede ponerse de perfil","genre":"3D explorer or 3D arena","juice":"Al ponerte de perfil suena un «fiu» de papel, el gato se convierte en una línea vibrante y deja una estela de polvo; al volver de frente hace un «pop» elástico. Tocar el letrero final lanza confeti con forma de letras y una lluvia de pelo dorado, con cámara que se acerca y tiembla de alegría. Pantalla de título: la cámara orbita alrededor del gato plano en una habitación en penumbra iluminada por el gran letrero.","lose":"Pierdes si se agotan los noventa segundos o si una puerta giratoria te empuja de vuelta a la casilla de salida tres veces.","palette":"3D explorer or 3D arena","pitch":"Explora una habitación en 3D como un gato plano de papel que solo cabe por las rendijas cuando se pone de perfil. Llega hasta el letrero gigante de «Malcriadazo» que preside el fondo antes de que se acabe el tiempo.","roles":[{"object":"gato","role":"explorador plano en 3D que se gira para pasar por rendijas estrechas"},{"object":"texto «Malcriadazo»","role":"letrero luminoso gigante y meta final de la habitación"}],"title":"El Gato de Perfil","win":"Ganas si tocas el letrero de «Malcriadazo» al fondo de la habitación antes de que se acabe el tiempo."}],"ms":44805},"t":1793833583306}
+{"stage":"build","message":"Construyendo \"Malcriadazo Rebota\"","data":{"concept":{"controls":"Flechas izquierda y derecha o A y D para mover la palabra, barra espaciadora para lanzar al gato y Enter para reiniciar.","core_mechanic":"Malcriadazo es la paleta y el gato es la pelota","genre":"breakout-like","juice":"El gato se aplasta al rebotar y se estira al caer, deja una estela de pelo naranja y suelta partículas amarillas al romper platos. Cada rebote perfecto en la nariz muestra «¡ÑAM!», «¡ZAS!» o «¡MALCRIADO!» con combo creciente; la pantalla tiembla al romper una fila y la palabra se deforma como gelatina al golpear. Pantalla de título: el gato rebota sobre el texto hasta que pulsas Enter.","lose":"Pierdes si el gato cae tres veces por la parte inferior.","palette":"breakout-like","pitch":"La palabra «Malcriadazo», larga y elástica, es tu paleta, y la enorme cabeza del gato es la pelota rebotona. Rompe todos los platos de la cocina antes de que el gato malcriado se te escape por abajo.","roles":[{"object":"gato","role":"pelota gigante con cara, que rebota, gira y rompe los platos"},{"object":"texto «Malcriadazo»","role":"paleta horizontal larga y elástica que el jugador mueve"}],"title":"Malcriadazo Rebota","win":"Ganas si rompes los dieciocho platos antes de perder tus tres caídas."}},"t":1793833597907}
+{"stage":"build","message":"3 construcciones en paralelo; gana la primera que pase los chequeos","t":1793833597912}
+{"stage":"code","message":"#1 Sandbox listo (14s)","data":{"attempt":0},"t":1793833598239}
+{"stage":"code","message":"#1 Muse Wonder empieza a construir","t":1793833603182,"data":{"attempt":0}}
+{"stage":"code","message":"#1 ToolSearch","data":{"tool":"ToolSearch","attempt":0},"t":1793833603182}
+{"stage":"code","message":"#1 Bash","data":{"tool":"Bash","attempt":0},"t":1793833605530}
+{"stage":"code","message":"#1 Bash","data":{"tool":"Bash","attempt":0},"t":1793833607167}
+{"stage":"code","message":"#2 Sandbox listo (11s)","data":{"attempt":1},"t":1793833609352}
+{"stage":"code","message":"#1 Dibujando un sprite nuevo","data":{"tool":"Bash","attempt":0},"t":1793833611216}
+{"stage":"code","message":"#2 Muse Wonder empieza a construir","t":1793833613263,"data":{"attempt":1}}
+{"stage":"code","message":"#2 ToolSearch","data":{"tool":"ToolSearch","attempt":1},"t":1793833613263}
+{"stage":"code","message":"#2 Bash","data":{"tool":"Bash","attempt":1},"t":1793833615803}
+{"stage":"code","message":"#2 Leyendo CONCEPT.md","data":{"tool":"Read","attempt":1},"t":1793833618052}
+{"stage":"code","message":"#2 Leyendo assets/cat.png","data":{"tool":"Read","attempt":1},"t":1793833618067}
+{"stage":"code","message":"#2 Leyendo assets/text.png","data":{"tool":"Read","attempt":1},"t":1793833618073}
+{"stage":"code","message":"#3 Sandbox listo (21s)","data":{"attempt":2},"t":1793833618687}
+{"stage":"code","message":"#2 Dibujando un sprite nuevo","data":{"tool":"Bash","attempt":1},"t":1793833621212}
+{"stage":"code","message":"#3 Muse Wonder empieza a construir","t":1793833623964,"data":{"attempt":2}}
+{"stage":"code","message":"#3 ToolSearch","data":{"tool":"ToolSearch","attempt":2},"t":1793833623964}
+{"stage":"code","message":"#3 Bash","data":{"tool":"Bash","attempt":2},"t":1793833626623}
+{"stage":"code","message":"#3 Bash","data":{"tool":"Bash","attempt":2},"t":1793833628519}
+{"stage":"code","message":"#3 Leyendo assets/cat.png","data":{"tool":"Read","attempt":2},"t":1793833631217}
+{"stage":"code","message":"#3 Leyendo assets/text.png","data":{"tool":"Read","attempt":2},"t":1793833631231}
+{"stage":"code","message":"#3 Bash","data":{"tool":"Bash","attempt":2},"t":1793833636695}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Write","attempt":0},"t":1793833656247}
+{"stage":"code","message":"#1 Compilando","data":{"tool":"Bash","attempt":0},"t":1793833658333}
+{"stage":"code","message":"#1 Compilando","data":{"tool":"Bash","attempt":0},"t":1793833659828}
+{"stage":"code","message":"#1 Playtester probando el juego","data":{"tool":"Bash","attempt":0},"t":1793833662465}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Write","attempt":1},"t":1793833663627}
+{"stage":"code","message":"#2 Compilando","data":{"tool":"Bash","attempt":1},"t":1793833666206}
+{"stage":"code","message":"#2 Compilando","data":{"tool":"Bash","attempt":1},"t":1793833667412}
+{"stage":"code","message":"#1 ToolSearch","data":{"tool":"ToolSearch","attempt":0},"t":1793833669647}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793833670741}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793833674877}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793833674880}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793833674880}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793833674885}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793833674885}
+{"stage":"code","message":"#1 Playtester probando el juego","data":{"tool":"Bash","attempt":0},"t":1793833676140}
+{"stage":"code","message":"#2 Bash","data":{"tool":"Bash","attempt":1},"t":1793833678897}
+{"stage":"code","message":"#2 ToolSearch","data":{"tool":"ToolSearch","attempt":1},"t":1793833680345}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793833682679}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793833684641}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793833684642}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Write","attempt":2},"t":1793833684877}
+{"stage":"code","message":"#1 Playtester probando el juego","data":{"tool":"Bash","attempt":0},"t":1793833686344}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793833688023}
+{"stage":"code","message":"#1 Mirando el juego (captura)","data":{"tool":"Bash","attempt":0},"t":1793833688097}
+{"stage":"code","message":"#3 Compilando","data":{"tool":"Bash","attempt":2},"t":1793833689500}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793833690773}
+{"stage":"code","message":"#1 Mirando el juego (captura)","data":{"tool":"Bash","attempt":0},"t":1793833691585}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793833692764}
+{"stage":"code","message":"#3 Playtester probando el juego","data":{"tool":"Bash","attempt":2},"t":1793833694226}
+{"stage":"code","message":"#1 Leyendo shot-title.png","data":{"tool":"Read","attempt":0},"t":1793833694960}
+{"stage":"code","message":"#1 Leyendo shot-play.png","data":{"tool":"Read","attempt":0},"t":1793833694966}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793833695058}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793833696857}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793833704072}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793833705970}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793833706815}
+{"stage":"code","message":"#1 Mirando el juego (captura)","data":{"tool":"Bash","attempt":0},"t":1793833707186}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793833709572}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793833709909}
+{"stage":"code","message":"#1 Leyendo shot-play.png","data":{"tool":"Read","attempt":0},"t":1793833710961}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793833712305}
+{"stage":"code","message":"#3 Playtester probando el juego","data":{"tool":"Bash","attempt":2},"t":1793833713142}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793833713742}
+{"stage":"code","message":"#1 Playtester probando el juego","data":{"tool":"Bash","attempt":0},"t":1793833716321}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793833716941}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793833718809}
+{"stage":"check","message":"#1 Playtester independiente","t":1793833720252,"data":{"attempt":0}}
+{"stage":"check","message":"#1 Playtester: ok","data":{"slug":"dibujo-11042304-c0-0","verdict":"ok","contract":{"outcome":true,"progress":true},"too_easy_by":[],"search":{"outcome":"won","frames":2000,"progress":1,"inputs":1189},"budget":{"max_frames":7200,"segment":20,"tries":12},"policies":{"idle":{"outcome":"playing","frames":7200,"progress":0},"hold-right":{"outcome":"playing","frames":7200,"progress":0},"hold-left":{"outcome":"playing","frames":7200,"progress":0},"hold-right-jump":{"outcome":"playing","frames":7200,"progress":0},"hold-everything":{"outcome":"playing","frames":7200,"progress":0},"tap-action":{"outcome":"lost","frames":1050,"progress":0.5},"mash-1":{"outcome":"won","frames":2028,"progress":1},"mash-2":{"outcome":"won","frames":1847,"progress":1},"mash-3":{"outcome":"won","frames":1628,"progress":1},"mash-4":{"outcome":"won","frames":3585,"progress":1},"mash-5":{"outcome":"won","frames":2123,"progress":1},"mash-6":{"outcome":"won","frames":2184,"progress":1},"mash-7":{"outcome":"won","frames":2537,"progress":1},"mash-8":{"outcome":"won","frames":1572,"progress":1}},"advice":"Winnable, and no dumb policy wins.","attempt":0},"t":1793833720569}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793833720971}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793833724378}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793833724550}
+{"stage":"code","message":"#3 Playtester probando el juego","data":{"tool":"Bash","attempt":2},"t":1793833725696}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793833728023}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793833731692}
+{"stage":"code","message":"#2 Bash","data":{"tool":"Bash","attempt":1},"t":1793833732736}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793833734482}
+{"stage":"check","message":"#1 QA visual: ok","data":{"ok":true,"issues":[],"minor":["Opening screen: big title and subtitle sit over the plate row and the cat-head ball overlaps the subtitle line, slightly hurting readability but text remains legible in stills","Mid-play: cat ball at left wall is momentarily clipped by screen edge with motion-trail ghost and particles crossing the shelf area, normal motion effect, not a layout break"],"attempt":0},"t":1793833735342}
+{"stage":"done","message":"#1 «Malcriadazo Rebota» es un Breakout de cocina donde la palabra «Malcriadazo» es tu paleta elástica y la enorme cabeza del gato es la pelota que gira, se aplasta, deja estela de pelo naranja y rompe los 18 platos con partículas, temblores y gritos de combo como «¡ÑAM!» y «¡MALCRIADO!». Mueve la paleta con las flechas izquierda/derecha o A/D, lanza al gato con la barra espaciadora y reinicia con Enter, rompiendo todos los platos antes de que el gato se escape tres veces por abajo.","data":{"verdict":"ok","cost":0.6199032,"ms":136434,"attempt":0},"t":1793833735343}
+{"stage":"code","message":"#3 Playtester probando el juego","data":{"tool":"Bash","attempt":2},"t":1793833736515}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793833737832}
+{"stage":"code","message":"#3 Compilando","data":{"tool":"Bash","attempt":2},"t":1793833740844}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793833741810}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793833744663}
+{"stage":"code","message":"#3 Mirando el juego (captura)","data":{"tool":"Bash","attempt":2},"t":1793833745145}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793833746959}
+{"stage":"done","message":"Gano 0: ok","data":{"verdict":"ok","cost":0.6199032,"ms":150402},"t":1793833748309}
+{"stage":"play","message":"A jugar","data":{"url":"http://localhost:5190/"},"t":1793833748813}

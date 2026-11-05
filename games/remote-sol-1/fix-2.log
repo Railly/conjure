@@ -1,0 +1,29 @@
+text: Arreglando esos defectos visuales — casa recortada, coche tapado y ramas planas.
+tool Read: {"file_path":"/vercel/sandbox/conjure/games/remote-sol-1/sim.ts"}
+text: Viendo las capturas para medir el recorte exacto.
+tool ToolSearch: {"max_results":6,"query":"select:Bash,Read,Write,Edit"}
+text: Revisando capturas y tamaños de sprites para corregir el encuadre.
+tool Bash: {"command":"ls /vercel/sandbox/conjure/games/remote-sol-1/ /vercel/sandbox/conjure/games/remote-sol-1/assets/; cat /vercel/sandbox/conjure/games/remote-sol-1/assets/report.json 2>/dev/null | head -c 2000","description":"List game files and asset report"}
+tool Bash: {"command":"python3 -I -c \"from PIL import Image; import os; [print(n, Image.open(f'assets/{n}.png').size) for n in ['house','tree','sun','car','cat']]\" 2>&1 || file assets/*.png","description":"Check sprite pixel dimensions"}
+tool Read: {"file_path":"/vercel/sandbox/conjure/games/remote-sol-1/shot-title.png"}
+tool Read: {"file_path":"/vercel/sandbox/conjure/games/remote-sol-1/shot-play.png"}
+text: Veo los tres problemas en las capturas. Los corrijo ahora.
+tool Edit: {"replace_all":false,"file_path":"/vercel/sandbox/conjure/games/remote-sol-1/sim.ts","old_string":"const GROUND = 478, PORCH_Y = 412, PORCH_X = 724;","new_string":"const GROUND = 478, PORCH_Y = 412, PORCH_X = 724;\nconst HOUSE_X = 810, HOUSE_H = 198; // fully inside the screen with margin"}
+tool Edit: {"replace_all":false,"file_path":"/vercel/sandbox/conjure/games/remote-sol-1/sim.ts","old_string":"      if (px > PORCH_X && py > 200 && py < PORCH_Y && Math.abs(px - 852) < 95) { hitKind = \"house\"; hx = px; hy = py; break; }","new_string":"      if (px > PORCH_X && py > 200 && py < PORCH_Y && Math.abs(px - HOUSE_X) < 95) { hitKind = \"house\"; hx = px; hy = py; break; }"}
+tool Edit: {"replace_all":false,"file_path":"/vercel/sandbox/conjure/games/remote-sol-1/sim.ts","old_string":"  if (g.catX > 806 && g.catX < 900 && g.catY > PORCH_Y - 95 && g.catY < PORCH_Y + 10 && g.grounded) {\n    if (speed < 7.5) {\n      g.doorOpen = 1; g.smoke = 1;\n      burst(g.j, g.r, 852, PORCH_Y - 50, 36, \"#ffd23f\", 6, 7);\n      burst(g.j, g.r, 852, 180, 24, \"#ffffff\", 3, 6);\n      say(g, 85
+tool Edit: {"replace_all":false,"file_path":"/vercel/sandbox/conjure/games/remote-sol-1/sim.ts","old_string":"  // house (on porch)\n  drawSprite(draw, s.house!, 852, PORCH_Y - 100, 212);\n  // door glow / open state\n  const doorC = g.scene === \"won\" ? \"#ffe97a\" : \"#fff3b0\";\n  draw.setFillStyle(doorC); draw.setGlobalAlpha(g.scene === \"won\" ? 0.95 : 0.55 + dsin(g.frame * 0.06) * 0.15);\n  draw.fillR
+tool Edit: {"replace_all":false,"file_path":"/vercel/sandbox/conjure/games/remote-sol-1/sim.ts","old_string":"  // grown branches (thick crayon lines + leaves)\n  for (const b of g.branches) {\n    const len = (b.w / 2) * b.grow;\n    draw.setStrokeStyle(\"#8b5a2b\"); draw.setLineWidth(13);\n    draw.beginPath(); draw.moveTo(310, GROUND - 118); draw.lineTo(b.x - len * 0.4, b.y + 8); draw.lineTo(b.x + len, b.
+tool Edit: {"replace_all":false,"file_path":"/vercel/sandbox/conjure/games/remote-sol-1/sim.ts","old_string":"      text(draw, \"Toca ENTER\", W / 2, 386 + dsin(g.frame * 0.12) * 4, 36, \"#d35400\", \"center\", \"bangers\");\n      panel(draw, 130, 416, 700, 38, \"rgba(90,50,0,0.65)\");\n      text(draw, \"Izq/Der mover Sol · Arr/Aba ángulo · ESPACIO disparar\", W / 2, 435, 18, \"#ffffff\", \"center\");","ne
+tool Edit: {"replace_all":false,"file_path":"/vercel/sandbox/conjure/games/remote-sol-1/sim.ts","old_string":"      text(draw, `El gato llegó al ${Math.round(Math.min(1, g.catX / 852) * 100)}% del camino`, W / 2, 262, 20, \"#ffe9a8\", \"center\");","new_string":"      text(draw, `El gato llegó al ${Math.round(Math.min(1, g.catX / HOUSE_X) * 100)}% del camino`, W / 2, 262, 20, \"#ffe9a8\", \"center\");"}
+tool Edit: {"replace_all":false,"file_path":"/vercel/sandbox/conjure/games/remote-sol-1/sim.ts","old_string":"      state: () => ({ outcome: outcomeOf(g.scene), progress: g.scene === \"won\" ? 1 : Math.max(0, Math.min(0.98, (g.catX / 852) * 0.8 + g.branches.length * 0.04)), scene: g.scene, whiskers: g.whiskers, branches: g.branches.length, catX: Math.round(g.catX) }),","new_string":"      state: () => ({ out
+text: Ahora verifico que todo sigue pasando.
+tool Bash: {"command":"bunx tsc --noEmit -p .","description":"Type-check the game code"}
+tool Bash: {"command":"bun /vercel/sandbox/conjure/make/verify.ts remote-sol-1","description":"Run game verifier checks"}
+tool Bash: {"command":"node /vercel/sandbox/conjure/games/remote-sol-1/node_modules/dotframe/cli/bin.cjs snap --frame 40 --out /vercel/sandbox/conjure/games/remote-sol-1/shot-title.png --json","description":"Capture title screen snapshot"}
+tool Bash: {"command":"node /vercel/sandbox/conjure/games/remote-sol-1/node_modules/dotframe/cli/bin.cjs snap --frame 600 --mash 7 --out /vercel/sandbox/conjure/games/remote-sol-1/shot-play.png --json","description":"Capture gameplay snapshot with mashing"}
+tool Read: {"file_path":"/vercel/sandbox/conjure/games/remote-sol-1/shot-title.png"}
+tool Read: {"file_path":"/vercel/sandbox/conjure/games/remote-sol-1/shot-play.png"}
+text: Los tres defectos están corregidos y el verificador da "ok".
+
+El Sol Empuja al Gato a Casa es un puzle de física donde eres el Sol: disparas rayos al árbol para que sus ramas empujen al gato rodando y calientas el coche para usarlo de trampolín hasta la puerta. Mueve el Sol con Izq/Der o A/D, ajusta el ángulo con Arr/Aba, dispara con Espacio y pulsa Enter para empezar: gana si el gato entra suave en casa antes del ocaso, sin tostarlo más de dos veces.
+result success

@@ -1,0 +1,11 @@
+{
+  "model": "muse-wonder-1.0",
+  "ms": 150411,
+  "turns": 38,
+  "usage": {
+    "input": 142376,
+    "cachedInput": 417868,
+    "output": 13835
+  },
+  "summary": "Eres el Sol y debes empujar indirectamente al gato hasta la puerta alta de su casa antes de que caiga el ocaso en 90 segundos, haciendo brotar ramas del árbol y calentando el coche para usarlo como rampa sin tostar nunca al gato. Juega con ← → para moverte (contrarresta tu deriva al ocaso), ↑ ↓ para elegir el ángulo y Espacio para disparar el rayo: apunta bajo al árbol para empujar, al coche para mover la rampa, y entra suave por la puerta para ganar."
+}

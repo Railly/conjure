@@ -1,0 +1,11 @@
+{
+  "model": "muse-spark-1.3",
+  "ms": 38718,
+  "turns": 30,
+  "usage": {
+    "input": 154634,
+    "cachedInput": 301147,
+    "output": 4332
+  },
+  "summary": "El Sol Empuja al Gato a Casa es un puzle de físicas donde eres el Sol y debes llevar al gato rodando hasta su puerta calentando el árbol y el coche con tus rayos. Mueve el Sol con Izq/Der, ajusta el ángulo con Arr/Aba y dispara con ESPACIO sin tostar al gato antes del ocaso."
+}

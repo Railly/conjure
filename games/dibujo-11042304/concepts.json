@@ -1,0 +1,79 @@
+{
+  "concepts": [
+    {
+      "controls": "Flechas izquierda y derecha o A y D para mover la palabra, barra espaciadora para lanzar al gato y Enter para reiniciar.",
+      "core_mechanic": "Malcriadazo es la paleta y el gato es la pelota",
+      "genre": "breakout-like",
+      "juice": "El gato se aplasta al rebotar y se estira al caer, deja una estela de pelo naranja y suelta partículas amarillas al romper platos. Cada rebote perfecto en la nariz muestra «¡ÑAM!», «¡ZAS!» o «¡MALCRIADO!» con combo creciente; la pantalla tiembla al romper una fila y la palabra se deforma como gelatina al golpear. Pantalla de título: el gato rebota sobre el texto hasta que pulsas Enter.",
+      "lose": "Pierdes si el gato cae tres veces por la parte inferior.",
+      "palette": "breakout-like",
+      "pitch": "La palabra «Malcriadazo», larga y elástica, es tu paleta, y la enorme cabeza del gato es la pelota rebotona. Rompe todos los platos de la cocina antes de que el gato malcriado se te escape por abajo.",
+      "roles": [
+        {
+          "object": "gato",
+          "role": "pelota gigante con cara, que rebota, gira y rompe los platos"
+        },
+        {
+          "object": "texto «Malcriadazo»",
+          "role": "paleta horizontal larga y elástica que el jugador mueve"
+        }
+      ],
+      "title": "Malcriadazo Rebota",
+      "win": "Ganas si rompes los dieciocho platos antes de perder tus tres caídas."
+    },
+    {
+      "controls": "Barra espaciadora para dar el bocado justo en el momento de la superposición y Enter para empezar o reiniciar. No necesitas ninguna otra tecla.",
+      "core_mechanic": "Atrapa la palabra con la boca del gato cuando se superpone",
+      "genre": "rhythm or timing",
+      "juice": "Al acertar, el gato se infla de satisfacción, la palabra cruje con migas y notas musicales, y aparece «¡PERFECTO!» con el combo. Al fallar, el gato parpadea por escala, suelta pelo y la pantalla da un pequeño golpe seco; los aciertos encadenados hacen que la palabra brille y se ondule al ritmo. Pantalla de título: el gato sigue el ritmo moviendo la cabeza sobre el texto inmóvil.",
+      "lose": "Pierdes si fallas tres bocados o si dejas pasar la palabra completa tres veces.",
+      "palette": "rhythm or timing",
+      "pitch": "La palabra «Malcriadazo» desfila cada vez más rápido sobre la boca del gato hambriento. Da el bocado justo cuando la palabra móvil se superpone con su silueta y consigue que el gato se la zampe entera al ritmo de la música.",
+      "roles": [
+        {
+          "object": "gato",
+          "role": "protagonista hambriento cuya boca es la zona de acierto"
+        },
+        {
+          "object": "texto «Malcriadazo»",
+          "role": "objeto rítmico que desfila, se encoge y debe ser atrapado"
+        }
+      ],
+      "title": "¡A la Boca, Malcriadazo!",
+      "win": "Ganas si completas los veinte bocados rítmicos de la canción de un minuto."
+    },
+    {
+      "controls": "WASD o flechas para moverte por la habitación en 3D, barra espaciadora para girar al gato y ponerlo de perfil, y Enter para empezar o reiniciar.",
+      "core_mechanic": "El gato es una tarjeta plana que puede ponerse de perfil",
+      "genre": "3D explorer or 3D arena",
+      "juice": "Al ponerte de perfil suena un «fiu» de papel, el gato se convierte en una línea vibrante y deja una estela de polvo; al volver de frente hace un «pop» elástico. Tocar el letrero final lanza confeti con forma de letras y una lluvia de pelo dorado, con cámara que se acerca y tiembla de alegría. Pantalla de título: la cámara orbita alrededor del gato plano en una habitación en penumbra iluminada por el gran letrero.",
+      "lose": "Pierdes si se agotan los noventa segundos o si una puerta giratoria te empuja de vuelta a la casilla de salida tres veces.",
+      "palette": "3D explorer or 3D arena",
+      "pitch": "Explora una habitación en 3D como un gato plano de papel que solo cabe por las rendijas cuando se pone de perfil. Llega hasta el letrero gigante de «Malcriadazo» que preside el fondo antes de que se acabe el tiempo.",
+      "roles": [
+        {
+          "object": "gato",
+          "role": "explorador plano en 3D que se gira para pasar por rendijas estrechas"
+        },
+        {
+          "object": "texto «Malcriadazo»",
+          "role": "letrero luminoso gigante y meta final de la habitación"
+        }
+      ],
+      "title": "El Gato de Perfil",
+      "win": "Ganas si tocas el letrero de «Malcriadazo» al fondo de la habitación antes de que se acabe el tiempo."
+    }
+  ],
+  "ms": 44805,
+  "usage": {
+    "completion_tokens": 3156,
+    "prompt_tokens": 567,
+    "total_tokens": 3723,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1933
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  }
+}

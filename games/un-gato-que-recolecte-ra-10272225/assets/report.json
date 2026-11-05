@@ -1,0 +1,57 @@
+{
+  "photo": {
+    "width": 1600,
+    "height": 1600
+  },
+  "timings_ms": {
+    "spark": 13035,
+    "sam:cat": 5948,
+    "sam:text": 3774
+  },
+  "spark_usage": {
+    "completion_tokens": 2515,
+    "prompt_tokens": 3461,
+    "total_tokens": 5976,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2430
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  },
+  "sam_cost_usd": 0.005,
+  "objects": [
+    {
+      "name": "cat",
+      "spark_box": [
+        100,
+        172,
+        1506,
+        1061
+      ],
+      "box": [
+        107,
+        177,
+        1497,
+        1058
+      ],
+      "parts": 8
+    },
+    {
+      "name": "text",
+      "spark_box": [
+        195,
+        1185,
+        1435,
+        1345
+      ],
+      "box": [
+        197,
+        1158,
+        1434,
+        1338
+      ],
+      "parts": 8
+    }
+  ]
+}

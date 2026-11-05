@@ -1,0 +1,11 @@
+{
+  "model": "muse-wonder-1.0",
+  "ms": 121345,
+  "turns": 40,
+  "usage": {
+    "input": 71369,
+    "cachedInput": 497436,
+    "output": 11747
+  },
+  "summary": "«Malcriadazo Rebota» es un Breakout de cocina donde la palabra «Malcriadazo» es tu paleta elástica y la enorme cabeza del gato es la pelota que gira, se aplasta, deja estela de pelo naranja y rompe los 18 platos con partículas, temblores y gritos de combo como «¡ÑAM!» y «¡MALCRIADO!». Mueve la paleta con las flechas izquierda/derecha o A/D, lanza al gato con la barra espaciadora y reinicia con Enter, rompiendo todos los platos antes de que el gato se escape tres veces por abajo."
+}

@@ -1,0 +1,11 @@
+{
+  "model": "muse-spark-1.3",
+  "ms": 100638,
+  "turns": 46,
+  "usage": {
+    "input": 165546,
+    "cachedInput": 678996,
+    "output": 11370
+  },
+  "summary": "El juego es **El Sol Empuja al Gato a Casa**: eres el sol y debes meter al gato rodando en su casa disparando rayos que hacen brotar ramas del árbol y calientan el coche para usarlo de trampolín, antes del ocaso y sin tostar al gato más de tres veces. Para jugar, mueve el sol con A/D o flechas, ajusta el ángulo con arriba/abajo, mantén Espacio para disparar el rayo y pulsa Enter para empezar o reiniciar."
+}

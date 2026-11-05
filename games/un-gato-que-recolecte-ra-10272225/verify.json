@@ -1,0 +1,93 @@
+{
+  "slug": "un-gato-que-recolecte-ra-10272225",
+  "verdict": "ok",
+  "contract": {
+    "outcome": true,
+    "progress": true
+  },
+  "too_easy_by": [],
+  "search": {
+    "outcome": "won",
+    "frames": 3080,
+    "progress": 1,
+    "inputs": 1838
+  },
+  "budget": {
+    "max_frames": 7200,
+    "segment": 20,
+    "tries": 12
+  },
+  "policies": {
+    "idle": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-right": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-left": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-right-jump": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-everything": {
+      "outcome": "lost",
+      "frames": 3002,
+      "progress": 0
+    },
+    "tap-action": {
+      "outcome": "lost",
+      "frames": 3017,
+      "progress": 0
+    },
+    "mash-1": {
+      "outcome": "lost",
+      "frames": 3871,
+      "progress": 0.33
+    },
+    "mash-2": {
+      "outcome": "lost",
+      "frames": 2425,
+      "progress": 0.23
+    },
+    "mash-3": {
+      "outcome": "lost",
+      "frames": 2947,
+      "progress": 0.37
+    },
+    "mash-4": {
+      "outcome": "lost",
+      "frames": 3617,
+      "progress": 0.47
+    },
+    "mash-5": {
+      "outcome": "lost",
+      "frames": 3697,
+      "progress": 0.42
+    },
+    "mash-6": {
+      "outcome": "lost",
+      "frames": 2497,
+      "progress": 0.38
+    },
+    "mash-7": {
+      "outcome": "lost",
+      "frames": 3624,
+      "progress": 0.33
+    },
+    "mash-8": {
+      "outcome": "lost",
+      "frames": 3665,
+      "progress": 0.42
+    }
+  },
+  "advice": "Winnable, and no dumb policy wins."
+}

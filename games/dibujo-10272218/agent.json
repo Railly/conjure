@@ -1,0 +1,11 @@
+{
+  "model": "muse-wonder-1.0",
+  "ms": 873773,
+  "turns": 219,
+  "usage": {
+    "input": 355381,
+    "cachedInput": 8753036,
+    "output": 59146
+  },
+  "summary": "Gato Cometa: órbita y a casa es un puzzle de física de 4 niveles en el que lanzas a tu gato dibujado a mano para que entre por la ventana de su casa, usando la copa elástica del árbol, el techo rodante del coche y la gravedad del sol como herramientas. Se juega con las flechas izquierda/derecha para el ángulo y arriba/abajo para la potencia, Espacio para lanzar y mantenerlo en vuelo para orbitar el sol (soltándolo en el momento justo para salir disparado), y Enter para empezar, reintentar el nivel o jugar de nuevo."
+}

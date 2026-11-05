@@ -1,0 +1,11 @@
+{
+  "model": "muse-spark-1.3",
+  "ms": 686057,
+  "turns": 79,
+  "usage": {
+    "input": 231249,
+    "cachedInput": 1228448,
+    "output": 18060
+  },
+  "summary": "Listo. Corregí los cuatro defectos visuales sin tocar la jugabilidad: la portada ahora muestra a todo el reparto (casa, árbol y coche a todo color), nubes, estrellas, rayos de sol y la órbita punteada del gato con el título sobre tarjeta; el anillo de órbita se dibuja con puntos y su radio se limita para que nunca lo corte el borde superior; la plataforma rosa plana se sustituyó por un cojín de catapulta a rayas de crayón con banderín; y los ^ repetidos ahora son matas variadas de tres hojas con flores y piedritas. Verificado: `doctor` ok, `sim` ok, `verify.ts` veredicto \"ok\", `tsc` limpio y replay grabado; el `snap` del navegador no responde en este entorno (agota el tiempo antes de dibujar el primer fotograma, así que no pude regenerar los PNG).\n\nGato Cometa: órbita y a casa es un puzle de física en 4 niveles donde lanzas a un gato-bola para colarlo por la ventana de su casa. Ajusta ángulo y potencia con las flechas, lánzalo con Espacio y mantén Espacio en el aire para orbitar el sol, rebotar en el árbol y rodar sobre el coche."
+}

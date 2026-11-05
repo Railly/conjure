@@ -1,0 +1,93 @@
+{
+  "slug": "dibujo-10272218",
+  "verdict": "ok",
+  "contract": {
+    "outcome": true,
+    "progress": true
+  },
+  "too_easy_by": [],
+  "search": {
+    "outcome": "won",
+    "frames": 440,
+    "progress": 1,
+    "inputs": 253
+  },
+  "budget": {
+    "max_frames": 7200,
+    "segment": 20,
+    "tries": 12
+  },
+  "policies": {
+    "idle": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-right": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-left": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-right-jump": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-everything": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.03307695847655191
+    },
+    "tap-action": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.03307695847655191
+    },
+    "mash-1": {
+      "outcome": "won",
+      "frames": 635,
+      "progress": 1
+    },
+    "mash-2": {
+      "outcome": "won",
+      "frames": 557,
+      "progress": 1
+    },
+    "mash-3": {
+      "outcome": "won",
+      "frames": 396,
+      "progress": 1
+    },
+    "mash-4": {
+      "outcome": "won",
+      "frames": 431,
+      "progress": 1
+    },
+    "mash-5": {
+      "outcome": "won",
+      "frames": 641,
+      "progress": 1
+    },
+    "mash-6": {
+      "outcome": "won",
+      "frames": 504,
+      "progress": 1
+    },
+    "mash-7": {
+      "outcome": "won",
+      "frames": 780,
+      "progress": 1
+    },
+    "mash-8": {
+      "outcome": "won",
+      "frames": 425,
+      "progress": 1
+    }
+  },
+  "advice": "Winnable, and no dumb policy wins."
+}

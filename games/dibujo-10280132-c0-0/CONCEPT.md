@@ -1,0 +1,10 @@
+Title: La palanca del árbol dormido
+Genre: physics puzzle
+Pitch: El gato se ha dormido sobre el coche y solo el árbol puede empujarlo hasta casa sin tocarlo. Mueve el sol para doblar el árbol como una palanca viva y calcula cada empuje antes de que el gato ruede y se despierte.
+Core mechanic: El árbol crece físicamente hacia el sol: su tronco se inclina por tramos y su copa, cada vez más pesada, actúa como una palanca viva que empuja el coche. El jugador no empuja el coche directamente; calcula dónde poner el sol para que la copa ruede, golpee o sostenga el vehículo sin despertar al gato. Cada diez segundos la copa crece un poco, gana masa y hace el empuje más potente pero también más inestable.
+Controls: Flechas izquierda y derecha o A y D para mover el sol, espacio para soltar una ráfaga corta de luz y Enter para reiniciar el intento.
+Win: Ganas si el coche entra en la casa con el gato todavía dormido encima antes de que acabe el tiempo.
+Lose: Pierdes si el gato cae del coche, si el coche vuelca o si se agotan los noventa segundos sin entrar en la casa.
+Roles: cat: Pasajero dormido sobre el coche; su equilibrio es el medidor de peligro y su caída provoca la derrota.; sun: Cursor luminoso controlado por el jugador que orienta el crecimiento del árbol y activa ráfagas de luz.; tree: Palanca física articulada cuya copa pesada empuja, frena o levanta el coche según la posición del sol.; house: Meta y garaje de una sola pantalla; la puerta se abre cuando el coche se acerca alineado.; car: Vehículo con física y suspensión que transporta al gato y debe entrar completo en la casa.
+Juice: Partículas de polen dorado cuando el árbol crece, hojas verdes al rozar el coche, líneas de velocidad en las ruedas y ronroneos visuales con «Zzz» flotantes sobre el gato. La copa se estira al crecer y se aplasta al impactar, el coche se balancea con suspensión exagerada y la pantalla tiembla levemente solo si el gato está a punto de caerse. Al llegar aparece el texto «¡ENTRADA PERFECTA!» con confeti de hojas. La pantalla de título muestra la casa, el coche y el gato dormido mientras el sol persigue al árbol de un lado a otro.
+Palette: all

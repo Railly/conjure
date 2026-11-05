@@ -1,0 +1,49 @@
+{
+  "concepts": [
+    {
+      "controls": "A",
+      "core_mechanic": "B",
+      "genre": "C",
+      "juice": "D",
+      "lose": "E",
+      "palette": "",
+      "pitch": "F",
+      "roles": [
+        {
+          "object": "cat",
+          "role": "G"
+        },
+        {
+          "object": "sun",
+          "role": "H"
+        },
+        {
+          "object": "tree",
+          "role": "I"
+        },
+        {
+          "object": "house",
+          "role": "J"
+        },
+        {
+          "object": "car",
+          "role": "K"
+        }
+      ],
+      "title": "L",
+      "win": "M"
+    }
+  ],
+  "ms": 18882,
+  "usage": {
+    "completion_tokens": 1628,
+    "prompt_tokens": 1152,
+    "total_tokens": 2780,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1491
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  }
+}

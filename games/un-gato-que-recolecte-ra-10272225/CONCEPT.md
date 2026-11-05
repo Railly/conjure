@@ -1,0 +1,10 @@
+Title: Malcriadazo: Zarpa a Tiempo
+Genre: rhythm or timing
+Pitch: Escena 3D de una sola pantalla: el enorme Malcriadazo acecha desde el borde de un patio de baldosas. Los ratones cruzan siguiendo el ritmo de una campana cada vez más rápido y tu única arma es soltar la zarpa justo cuando pisan la baldosa marcada. Ni un paso de movimiento libre: todo es anticipación, carga y timing.
+Core mechanic: Cazar es cargar y soltar, no pulsar a tiempo sin más. A más carga, más lejos cae la zarpa y mayor es el área, pero el ratón huele la intención: si cargas demasiado, cambia de baldosa en el último instante con un amago. La ventana perfecta se estrecha cada 15 segundos, aparecen ratones dorados que exigen carga máxima y señuelos de peluche que rompen tu combo si los aplastas.
+Controls: Mantén Espacio: Malcriadazo se agacha y carga el salto (la cara se aplasta). Suelta Espacio: zarpazo en arco sobre la baldosa iluminada. Flechas ← → o A/D: elegir entre dos baldosas vecinas mientras cargas. Enter: empezar.
+Win: Ganas si cazas 15 ratones —y al menos 2 dorados— en 60 segundos.
+Lose: Pierdes si fallas 5 zarpazos o si se escapan 8 ratones por el borde de la granja antes de que acabe el minuto.
+Roles: cat: el cazador 3D protagonista en primer plano: su cabeza y zarpa gigantes ocupan media pantalla, hechas con la ilustración como tarjeta alpha-cut con sombra real; text: el nombre 'Malcriadazo' inscrito en las baldosas del patio y en la puerta del fondo: es el marcador de combo que se forma letra a letra
+Juice: Squash & stretch extremo: el gato se convierte en acordeón al cargar y sus ojos siguen al ratón. Al acertar en ventana perfecta: destello, pelos y polvo en anillo, '¡PERFECTO!' con la tipografía del dibujo, micro-congelación de 80 ms y vibración del suelo 3D. Fallar levanta una baldosa y hace temblar las letras de Malcriadazo; 5 aciertos seguidos encadenan ronroneo visual con ondas concéntricas. Título en 3D: el logo manuscrito está tallado en la puerta de la granja y el gato asoma tras él.
+Palette: patio 3D al atardecer: tierra terracota, baldosas crema, hierba verde polvorienta y sombras largas

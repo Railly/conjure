@@ -1,0 +1,11 @@
+{
+  "model": "muse-wonder-1.0",
+  "ms": 133936,
+  "turns": 37,
+  "usage": {
+    "input": 75672,
+    "cachedInput": 616720,
+    "output": 14205
+  },
+  "summary": "Eres el Sol y debes llevar rodando al Gato hasta la puerta elevada de su Casa antes de que caiga el ocaso en 90 segundos, sin tocarlo nunca directamente con tus rayos. Muévete con las flechas izquierda/derecha, elige el ángulo con arriba/abajo y dispara con Espacio: haz crecer ramas del Árbol para empujarlo y calienta el Coche para usarlo como trampolín final, cuidando sus 3 bigotes."
+}

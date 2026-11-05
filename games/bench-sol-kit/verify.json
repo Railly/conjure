@@ -1,0 +1,93 @@
+{
+  "slug": "bench-sol-kit",
+  "verdict": "ok",
+  "contract": {
+    "outcome": true,
+    "progress": true
+  },
+  "too_easy_by": [],
+  "search": {
+    "outcome": "won",
+    "frames": 380,
+    "progress": 0.9553921678358984,
+    "inputs": 217
+  },
+  "budget": {
+    "max_frames": 7200,
+    "segment": 20,
+    "tries": 12
+  },
+  "policies": {
+    "idle": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.4200477326968974
+    },
+    "hold-right": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.4200477326968974
+    },
+    "hold-left": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.4200477326968974
+    },
+    "hold-right-jump": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.4200477326968974
+    },
+    "hold-everything": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.4200477326968974
+    },
+    "tap-action": {
+      "outcome": "lost",
+      "frames": 5420,
+      "progress": 0.4200477326968974
+    },
+    "mash-1": {
+      "outcome": "lost",
+      "frames": 5448,
+      "progress": 0.08867249894372835
+    },
+    "mash-2": {
+      "outcome": "lost",
+      "frames": 5436,
+      "progress": 0.06908362159666648
+    },
+    "mash-3": {
+      "outcome": "won",
+      "frames": 1238,
+      "progress": 0.9548525548881464
+    },
+    "mash-4": {
+      "outcome": "lost",
+      "frames": 5466,
+      "progress": 0.21160083363483978
+    },
+    "mash-5": {
+      "outcome": "won",
+      "frames": 708,
+      "progress": 0.9550839178932785
+    },
+    "mash-6": {
+      "outcome": "lost",
+      "frames": 5472,
+      "progress": 0.3204709354553872
+    },
+    "mash-7": {
+      "outcome": "lost",
+      "frames": 1699,
+      "progress": 0.3813318748879666
+    },
+    "mash-8": {
+      "outcome": "lost",
+      "frames": 5424,
+      "progress": 0.0660581662763807
+    }
+  },
+  "advice": "Winnable, and no dumb policy wins."
+}

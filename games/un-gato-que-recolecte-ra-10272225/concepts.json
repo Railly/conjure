@@ -1,0 +1,79 @@
+{
+  "concepts": [
+    {
+      "controls": "#1 · Malcriádazo, Zonambi, top end.",
+      "core_mechanic": "El gato del dibujo es el único barco jugable (balandro ligero) y el texto manuscrito es el indicador-gol de cada puerta (tres ilustraciones deben hacerse visible-dibujo): en cada nivel la sala dibujo y el workflow maniobra, la fila de cajas de cartón, etc.",
+      "genre": "sokoban-like grid puzzle",
+      "juice": "Gato: sprite grande que ocupa casi 2 casillas, se aplasta al empujar y sus orejas rebotan; Ratones: dejan estela de polvo y chillan visualmente con '¡SQUEAK!' flotante; Texto: 'Malcriadazo' aparece como letrero pintado sobre la despensa, se ilumina letra a letra por cada ratón guardado y explota en confeti al completar la palabra. Partículas de migas al empujar cajas, mini screen-shake al chocar contra la pared, y pantalla de título con el gato mirándote tras el logo manuscrito.",
+      "lose": "Pierdes si un ratón queda arrinconado fuera de una caja, si bloqueas una caja contra una esquina, o si se acaban los 40 movimientos. Pulsa Enter para reintentar al instante.",
+      "palette": "cocina cálida de acuarela: crema, ocre, amarillo mostaza y contornos negros de lápiz",
+      "pitch": "Eres Malcriadazo en una despensa de 9×7 casillas. No persigues ratones: los arreas. Cada vez que das un paso, todos los ratones dan un paso en dirección contraria, asustados. Empuja cajas de cartón para construir corrales y guía a los 5 ratones dentro de la caja-trampa antes de quedarte sin movimientos.",
+      "roles": [
+        {
+          "object": "cat",
+          "role": "el protagonista en vista cenital: su cara redonda llena la casilla y sus orejas indican la dirección del siguiente paso"
+        },
+        {
+          "object": "text",
+          "role": "el rótulo 'Malcriadazo' pintado sobre la despensa y marcador de progreso: se enciende una letra por ratón capturado"
+        }
+      ],
+      "title": "Malcriadazo: Despensa Sin Salida",
+      "win": "Ganas cuando los 5 ratones están dentro de cajas-trampa y la palabra Malcriadazo queda completa e iluminada."
+    },
+    {
+      "controls": "Flechas ← → o A/D: mover la cabeza de Malcriadazo. Espacio: abrir la boca para tragar / escupir la bola de lana. Enter: empezar y reintentar.",
+      "core_mechanic": "No rebotas una pelota normal: rebotas ratones de juguete enredados en lana. Si un ratón rebota dos veces seguidas sin que lo tragues, se desenreda y escapa por abajo. Tragarlo carga el medidor Purr: al escupirlo sale disparado, atraviesa una fila entera y libera a todos los ratones de esa fila, pero vuelve mucho más rápido.",
+      "genre": "breakout-like",
+      "juice": "La cara del gato se estira horizontal al moverse y se deforma al tragar (mejillas infladas, ojos cerrados de gusto). Hilos de lana dejan trail ondulante, motas de polvo al rebotar en paredes, screen-shake suave al romper una fila y texto de combo '¡MALCRIADAZO x3!' que crece y rebota. Al perder un ratón, el gato hace puchero gigante 0,5 s. Título: el logo manuscrito cae como bloque y el gato lo caza de un cabezazo.",
+      "lose": "Pierdes si se escapan 3 ratones por la parte inferior o si la bola de lana cae 3 veces sin que Malcriadazo la intercepte con la cabeza o la boca.",
+      "palette": "pared de salón en verde azulado apagado, alfombra roja desaturada y el crema/amarillo cálido del dibujo como foco",
+      "pitch": "La cara gigante de Malcriadazo es tu paleta viviente en la parte inferior. Arriba, 18 ratones de juguete están atrapados en una estantería de bloques de lana. Haz rebotar la bola, libera ratones y atrápalos con la boca bien abierta: coleccionarlos depende de tragarlos en el momento exacto, no solo de romper bloques.",
+      "roles": [
+        {
+          "object": "cat",
+          "role": "la paleta protagonista a todo ancho: su frente rebota la bola, sus orejas dan efecto lateral y su boca es la zona de captura/carga"
+        },
+        {
+          "object": "text",
+          "role": "el letrero 'Malcriadazo' sobre la estantería y el anuncio físico de combos: cada combo hace temblar y crecer una letra"
+        }
+      ],
+      "title": "Malcriadazo: Cabeza Rompelana",
+      "win": "Ganas si rescatas 12 de los 18 ratones en menos de 90 segundos, completando así la colección sobre la repisa."
+    },
+    {
+      "controls": "Mantén Espacio: Malcriadazo se agacha y carga el salto (la cara se aplasta). Suelta Espacio: zarpazo en arco sobre la baldosa iluminada. Flechas ← → o A/D: elegir entre dos baldosas vecinas mientras cargas. Enter: empezar.",
+      "core_mechanic": "Cazar es cargar y soltar, no pulsar a tiempo sin más. A más carga, más lejos cae la zarpa y mayor es el área, pero el ratón huele la intención: si cargas demasiado, cambia de baldosa en el último instante con un amago. La ventana perfecta se estrecha cada 15 segundos, aparecen ratones dorados que exigen carga máxima y señuelos de peluche que rompen tu combo si los aplastas.",
+      "genre": "rhythm or timing",
+      "juice": "Squash & stretch extremo: el gato se convierte en acordeón al cargar y sus ojos siguen al ratón. Al acertar en ventana perfecta: destello, pelos y polvo en anillo, '¡PERFECTO!' con la tipografía del dibujo, micro-congelación de 80 ms y vibración del suelo 3D. Fallar levanta una baldosa y hace temblar las letras de Malcriadazo; 5 aciertos seguidos encadenan ronroneo visual con ondas concéntricas. Título en 3D: el logo manuscrito está tallado en la puerta de la granja y el gato asoma tras él.",
+      "lose": "Pierdes si fallas 5 zarpazos o si se escapan 8 ratones por el borde de la granja antes de que acabe el minuto.",
+      "palette": "patio 3D al atardecer: tierra terracota, baldosas crema, hierba verde polvorienta y sombras largas",
+      "pitch": "Escena 3D de una sola pantalla: el enorme Malcriadazo acecha desde el borde de un patio de baldosas. Los ratones cruzan siguiendo el ritmo de una campana cada vez más rápido y tu única arma es soltar la zarpa justo cuando pisan la baldosa marcada. Ni un paso de movimiento libre: todo es anticipación, carga y timing.",
+      "roles": [
+        {
+          "object": "cat",
+          "role": "el cazador 3D protagonista en primer plano: su cabeza y zarpa gigantes ocupan media pantalla, hechas con la ilustración como tarjeta alpha-cut con sombra real"
+        },
+        {
+          "object": "text",
+          "role": "el nombre 'Malcriadazo' inscrito en las baldosas del patio y en la puerta del fondo: es el marcador de combo que se forma letra a letra"
+        }
+      ],
+      "title": "Malcriadazo: Zarpa a Tiempo",
+      "win": "Ganas si cazas 15 ratones —y al menos 2 dorados— en 60 segundos."
+    }
+  ],
+  "ms": 29868,
+  "usage": {
+    "completion_tokens": 2643,
+    "prompt_tokens": 556,
+    "total_tokens": 3199,
+    "completion_tokens_details": {
+      "reasoning_tokens": 855
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  }
+}

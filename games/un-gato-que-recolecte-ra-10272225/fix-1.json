@@ -1,0 +1,11 @@
+{
+  "model": "muse-spark-1.3",
+  "ms": 242566,
+  "turns": 73,
+  "usage": {
+    "input": 118618,
+    "cachedInput": 1581939,
+    "output": 19665
+  },
+  "summary": "Todas las verificaciones pasan: el juego es **Malcriadazo: Zarpa a Tiempo**, un caza-ratones de ritmo donde el gato acecha en un patio al atardecer y debes soltar la zarpa justo cuando el ratón pisa tu baldosa. Mantén Espacio para cargar el salto, cambia de baldosa con ← →, suelta para atrapar 15 ratones (2 dorados con carga máxima) en 60 segundos sin fallar 5 veces ni dejar escapar 8, y nunca aplastes los peluches."
+}

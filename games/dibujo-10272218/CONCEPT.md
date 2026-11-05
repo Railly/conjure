@@ -1,0 +1,10 @@
+Title: Gato Cometa: órbita y a casa
+Genre: physics puzzle
+Pitch: Una pantalla por nivel, 4 niveles cortos: hay que meter al GATO por la ventana de su CASA lanzándolo por el aire con rebotes y órbitas imposibles. El ÁRBOL y el COCHE no son decorado: son tus herramientas.
+Core mechanic: El GATO es una bola peluda que lanzas con física… pero el SOL es un segundo centro de gravedad. En pleno vuelo, mantén Espacio y el GATO orbitará alrededor del SOL como un cometa con bigotes; suéltalo en el momento justo para salir disparado en otra dirección. Con eso rodeas el ÁRBOL (su copa rebota como goma), te deslizas por el techo del COCHE (que avanza un poco con el impacto y puede llevarte encima) y apuntas a la ventana abierta de la CASA. Cada nivel mueve el SOL más lejos y pone el COCHE en sitios peores.
+Controls: Flechas izquierda/derecha: ajustar ángulo. Arriba/abajo: ajustar potencia. Espacio: lanzar al GATO (y en el aire, pulsar otra vez para agarrarse). Enter: reintentar el nivel.
+Win: Ganas: el GATO entra por la ventana de la CASA en los 4 niveles antes de quedarte sin lanzamientos.
+Lose: Pierdes: se te acaban los 5 lanzamientos de un nivel o el GATO sale volando fuera de la pantalla.
+Roles: cat: La «bola» protagonista que lanzas, con cuerpo redondo de física y bigotes que giran en el aire.; sun: Un imán gravitatorio que puedes encender en vuelo para curvar la trayectoria del gato.; tree: Su copa verde es un trampolín elástico y su tronco un obstáculo sólido.; house: La meta: su ventana abierta es el agujero que hay que acertar.; car: Una plataforma móvil: caes en su techo, rueda un tramo y te da un segundo impulso.
+Juice: Estela de pelitos y estrellas tras el GATO en órbita, línea de puntos que muestra la trayectoria antes de lanzar, la copa del ÁRBOL se deforma al rebotar, el COCHE hace «clac» y echa polvito azul al moverse, sacudida de pantalla al golpe fuerte y «¡ZAS!» / «¡POR POCO!» en texto SDF al fallar por poco. Título: el GATO girando sin parar alrededor del SOL sobre la silueta de la CASA.
+Palette: Fondos de papel blanco y pegatinas de crayón a todo color, con el SOL amarillo brillando como foco en cada nivel.

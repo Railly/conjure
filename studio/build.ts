@@ -11,7 +11,13 @@ export const DOTFRAME_REF = "github:crafter-games/dotframe#20e1bc93755460fb1bb32
 // Fixer rounds after the playtester and visual QA: this builder's own cap, so a game that cannot be fixed ends.
 const FIX_ROUNDS = 2;
 
-export type Emit = (e: { stage: string; message: string; data?: unknown }) => void;
+// Visual QA runs on Muse Spark Open (open weights) on a Modal Shared Endpoint when configured, else on Muse Spark 1.3.
+const qaTarget = () =>
+  process.env.MODAL_SPARK_URL && process.env.MODAL_PROXY_TOKEN
+    ? { client: new OpenAI({ baseURL: `${process.env.MODAL_SPARK_URL.replace(/\/$/, "")}/v1`, apiKey: process.env.MODAL_PROXY_TOKEN }), model: "meta-models/Muse-Spark-Open-816B-A42B", label: "Muse Spark Open on Modal" }
+    : { client: new OpenAI({ baseURL: "https://api.meta.ai/v1", apiKey: process.env.MODEL_API_KEY }), model: "muse-spark-1.3", label: "Muse Spark 1.3" };
+
+export type Emit =(e: { stage: string; message: string; data?: unknown }) => void;
 
 const sh = (cmd: string[], cwd: string) => {
   const r = Bun.spawnSync(cmd, { cwd, env: process.env });
@@ -104,7 +110,7 @@ ${example}`;
 
   // Independent checks: the playtester and a visual QA pass on fresh captures.
   const playtest = () => JSON.parse(sh(["bun", join(ROOT, "make/verify.ts"), slug], ROOT).out || "{}") as { verdict?: string; advice?: string };
-  const visual = async (): Promise<{ ok: boolean; issues: string[] }> => {
+  const visual = async (): Promise<{ ok: boolean; issues: string[]; model?: string; ms?: number }> => {
     const shots = ["30", "600"].map((f) => {
       const out = join(dir, `qa-${f}.png`);
       sh(["node", CLI, "snap", "--frame", f, ...(f === "30" ? [] : ["--mash", "7"]), "--out", out, "--json"], dir);
@@ -112,9 +118,10 @@ ${example}`;
     });
     const images = await Promise.all(shots.map(async (p) => ((await Bun.file(p).exists()) ? `data:image/png;base64,${Buffer.from(await Bun.file(p).arrayBuffer()).toString("base64")}` : null)));
     if (images.some((i) => !i)) return { ok: false, issues: ["a capture failed: the game does not render"] };
-    const client = new OpenAI({ baseURL: "https://api.meta.ai/v1", apiKey: process.env.MODEL_API_KEY });
-    const res = await client.chat.completions.create({
-      model: "muse-spark-1.3",
+    const target = qaTarget();
+    const t0 = performance.now();
+    const res = await target.client.chat.completions.create({
+      model: target.model,
       reasoning_effort: "low",
       messages: [
         {
@@ -145,14 +152,14 @@ ${example}`;
     // Only blockers send the game back to the fixer; minor notes are kept in the report.
     const qa = JSON.parse(res.choices[0]?.message?.content ?? '{"ok":false,"issues":[]}') as { issues: { severity: string; problem: string }[] };
     const blockers = qa.issues.filter((i) => i.severity === "blocker").map((i) => i.problem);
-    return { ok: blockers.length === 0, issues: blockers, minor: qa.issues.filter((i) => i.severity !== "blocker").map((i) => i.problem) } as { ok: boolean; issues: string[] };
+    return { ok: blockers.length === 0, issues: blockers, minor: qa.issues.filter((i) => i.severity !== "blocker").map((i) => i.problem), model: target.label, ms: Math.round(performance.now() - t0) } as { ok: boolean; issues: string[]; model: string; ms: number };
   };
 
   emit({ stage: "check", message: "Playtester independiente" });
   let play = playtest();
   emit({ stage: "check", message: `Playtester: ${play.verdict}`, data: play });
   let qa = await visual();
-  emit({ stage: "check", message: qa.ok ? "QA visual: ok" : `QA visual: ${qa.issues.length} problemas`, data: qa });
+  emit({ stage: "check", message: `${qa.ok ? "QA visual: ok" : `QA visual: ${qa.issues.length} problemas`} · ${qa.model}`, data: qa });
   for (let round = 1; (play.verdict !== "ok" || !qa.ok) && round <= FIX_ROUNDS; round++) {
     emit({ stage: "fix", message: `Arreglando (ronda ${round})` });
     const problems = [play.verdict !== "ok" ? `Playtester verdict ${play.verdict}: ${play.advice}` : "", qa.ok ? "" : `Visual QA: ${qa.issues.join("; ")}`].filter(Boolean).join("\n");

@@ -1,0 +1,147 @@
+{
+  "concept": {
+    "controls": "Mantén Espacio: Malcriadazo se agacha y carga el salto (la cara se aplasta). Suelta Espacio: zarpazo en arco sobre la baldosa iluminada. Flechas ← → o A/D: elegir entre dos baldosas vecinas mientras cargas. Enter: empezar.",
+    "core_mechanic": "Cazar es cargar y soltar, no pulsar a tiempo sin más. A más carga, más lejos cae la zarpa y mayor es el área, pero el ratón huele la intención: si cargas demasiado, cambia de baldosa en el último instante con un amago. La ventana perfecta se estrecha cada 15 segundos, aparecen ratones dorados que exigen carga máxima y señuelos de peluche que rompen tu combo si los aplastas.",
+    "genre": "rhythm or timing",
+    "juice": "Squash & stretch extremo: el gato se convierte en acordeón al cargar y sus ojos siguen al ratón. Al acertar en ventana perfecta: destello, pelos y polvo en anillo, '¡PERFECTO!' con la tipografía del dibujo, micro-congelación de 80 ms y vibración del suelo 3D. Fallar levanta una baldosa y hace temblar las letras de Malcriadazo; 5 aciertos seguidos encadenan ronroneo visual con ondas concéntricas. Título en 3D: el logo manuscrito está tallado en la puerta de la granja y el gato asoma tras él.",
+    "lose": "Pierdes si fallas 5 zarpazos o si se escapan 8 ratones por el borde de la granja antes de que acabe el minuto.",
+    "palette": "patio 3D al atardecer: tierra terracota, baldosas crema, hierba verde polvorienta y sombras largas",
+    "pitch": "Escena 3D de una sola pantalla: el enorme Malcriadazo acecha desde el borde de un patio de baldosas. Los ratones cruzan siguiendo el ritmo de una campana cada vez más rápido y tu única arma es soltar la zarpa justo cuando pisan la baldosa marcada. Ni un paso de movimiento libre: todo es anticipación, carga y timing.",
+    "roles": [
+      {
+        "object": "cat",
+        "role": "el cazador 3D protagonista en primer plano: su cabeza y zarpa gigantes ocupan media pantalla, hechas con la ilustración como tarjeta alpha-cut con sombra real"
+      },
+      {
+        "object": "text",
+        "role": "el nombre 'Malcriadazo' inscrito en las baldosas del patio y en la puerta del fondo: es el marcador de combo que se forma letra a letra"
+      }
+    ],
+    "title": "Malcriadazo: Zarpa a Tiempo",
+    "win": "Ganas si cazas 15 ratones —y al menos 2 dorados— en 60 segundos."
+  },
+  "verdict": "ok",
+  "playtest": {
+    "slug": "un-gato-que-recolecte-ra-10272225",
+    "verdict": "ok",
+    "contract": {
+      "outcome": true,
+      "progress": true
+    },
+    "too_easy_by": [],
+    "search": {
+      "outcome": "won",
+      "frames": 3080,
+      "progress": 1,
+      "inputs": 1838
+    },
+    "budget": {
+      "max_frames": 7200,
+      "segment": 20,
+      "tries": 12
+    },
+    "policies": {
+      "idle": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-right": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-left": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-right-jump": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-everything": {
+        "outcome": "lost",
+        "frames": 3002,
+        "progress": 0
+      },
+      "tap-action": {
+        "outcome": "lost",
+        "frames": 3017,
+        "progress": 0
+      },
+      "mash-1": {
+        "outcome": "lost",
+        "frames": 3871,
+        "progress": 0.33
+      },
+      "mash-2": {
+        "outcome": "lost",
+        "frames": 2425,
+        "progress": 0.23
+      },
+      "mash-3": {
+        "outcome": "lost",
+        "frames": 2947,
+        "progress": 0.37
+      },
+      "mash-4": {
+        "outcome": "lost",
+        "frames": 3617,
+        "progress": 0.47
+      },
+      "mash-5": {
+        "outcome": "lost",
+        "frames": 3697,
+        "progress": 0.42
+      },
+      "mash-6": {
+        "outcome": "lost",
+        "frames": 2497,
+        "progress": 0.38
+      },
+      "mash-7": {
+        "outcome": "lost",
+        "frames": 3624,
+        "progress": 0.33
+      },
+      "mash-8": {
+        "outcome": "lost",
+        "frames": 3665,
+        "progress": 0.42
+      }
+    },
+    "advice": "Winnable, and no dumb policy wins."
+  },
+  "qa": {
+    "issues": [],
+    "ok": true
+  },
+  "cost_usd": 7.0432,
+  "ms": 1136870,
+  "runs": [
+    {
+      "model": "muse-wonder-1.0",
+      "ms": 863665,
+      "turns": 184,
+      "usage": {
+        "input": 1025460,
+        "cachedInput": 7419692,
+        "output": 49415
+      },
+      "summary": "Malcriadazo: Zarpa a Tiempo es una caza rítmica 3D en un patio al atardecer donde el gato gigante de tu dibujo, como tarjeta recortada con sombra real sobre las baldosas, acecha ratones que cruzan al ritmo de la campana mientras su nombre manuscrito preside la puerta de la granja y forma el combo letra a letra. Pulsa ENTER para empezar, mantén ESPACIO para cargar agachándote (suelta cuando el ratón pise tu baldosa iluminada y usa ← → o A/D para cambiar entre las dos baldosas vecinas mientras cargas), caza 15 ratones con al menos 2 dorados —que exigen carga máxima sin pasarte, porque el ratón huele el exceso y hace un amago— en 60 segundos, sin aplastar peluches, fallar 5 veces ni dejar escapar a 8."
+    },
+    {
+      "model": "muse-spark-1.3",
+      "ms": 242566,
+      "turns": 73,
+      "usage": {
+        "input": 118618,
+        "cachedInput": 1581939,
+        "output": 19665
+      },
+      "summary": "Todas las verificaciones pasan: el juego es **Malcriadazo: Zarpa a Tiempo**, un caza-ratones de ritmo donde el gato acecha en un patio al atardecer y debes soltar la zarpa justo cuando el ratón pisa tu baldosa. Mantén Espacio para cargar el salto, cambia de baldosa con ← →, suelta para atrapar 15 ratones (2 dorados con carga máxima) en 60 segundos sin fallar 5 veces ni dejar escapar 8, y nunca aplastes los peluches."
+    }
+  ]
+}
