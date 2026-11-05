@@ -1,0 +1,11 @@
+{
+  "model": "muse-wonder-1.0",
+  "ms": 120617,
+  "turns": 46,
+  "usage": {
+    "input": 71796,
+    "cachedInput": 573712,
+    "output": 13037
+  },
+  "summary": "Friend Tow is a cozy physics-puzzle fishing game where you slide a little boat, swing a pendulum hook, and tow a wobbly chain of jellyfish, octopuses, and a very heavy whale back to the dock aquarium before sunset. Play with Left/Right or A/D to move, hold and release Space to lower and reel the hook, fill all 8 aquarium spots in 90 seconds, watch for Perfect Drops in the lighthouse beam, and avoid hard bonks on rocks that shake friends loose."
+}

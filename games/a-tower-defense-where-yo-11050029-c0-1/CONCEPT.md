@@ -1,0 +1,10 @@
+Title: Recoil Rampart
+Genre: tower or base defense
+Pitch: Place cannons to stop a very slow, very determined snail army before it nibbles your castle to rubble. Every shot blasts your own cannons backward, so the best defense is a sliding, ramming cannon pile-up.
+Core mechanic: Every cannon shot kicks that cannon backward. You steer its slide to ram snails, knock it into new lanes, and set up the next volley instead of just placing towers and watching.
+Controls: Arrows / WASD to move the flag marker, Enter to place a cannon, Space to fire all cannons. Arrows / WASD steer a placed cannon's recoil skid before you press Space again.
+Win: Survive the full 90-second snail parade and keep at least one tower stone standing.
+Lose: You lose if enough snails reach the tower and chew its health to zero.
+Roles: tower: Your castle on the right side of the screen. It loses stones and tilts as snails chew it.; snail: The smiling front-line invader. Slow, common, and worth one hit.; mollusk: A tougher spiral-shelled invader that takes three hits and leaves a slippery slime trail.; gastropod: A pale, stretchy invader that moves in short speed bursts and takes two hits.; cannon: Your only defender. You place it, fire it, and steer its recoil slide into enemies.; mushroom: Explosive garden mushrooms on the path. Shoot or ram a cannon into one to clear a whole clump of snails.; flag: Your movable planting marker and rally flag. It shows where the next cannon will appear and waves faster as danger grows.
+Juice: Cannon muzzles flash with smoke rings, shells leave dotted trails, and direct hits burst into spiral shell chips. Ram kills squash the snail flat, stretch it back with a boing, and pop floating text like "RAM! x3". The screen shakes a little on each volley and a lot when a snail bites the tower. The title screen shows the tower trembling behind a huge "HOLD THE CASTLE!" banner while snails inch across the bottom.
+Palette: Sketchy stone gray and parchment white from the drawings, with cannon-smoke blue, mushroom red, flag gold, and slime green to make hits easy to read.

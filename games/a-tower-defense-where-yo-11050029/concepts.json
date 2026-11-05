@@ -1,0 +1,139 @@
+{
+  "concepts": [
+    {
+      "controls": "Arrows / WASD to move the flag marker, Enter to place a cannon, Space to fire all cannons. Arrows / WASD steer a placed cannon's recoil skid before you press Space again.",
+      "core_mechanic": "Every cannon shot kicks that cannon backward. You steer its slide to ram snails, knock it into new lanes, and set up the next volley instead of just placing towers and watching.",
+      "genre": "tower or base defense",
+      "juice": "Cannon muzzles flash with smoke rings, shells leave dotted trails, and direct hits burst into spiral shell chips. Ram kills squash the snail flat, stretch it back with a boing, and pop floating text like \"RAM! x3\". The screen shakes a little on each volley and a lot when a snail bites the tower. The title screen shows the tower trembling behind a huge \"HOLD THE CASTLE!\" banner while snails inch across the bottom.",
+      "lose": "You lose if enough snails reach the tower and chew its health to zero.",
+      "palette": "Sketchy stone gray and parchment white from the drawings, with cannon-smoke blue, mushroom red, flag gold, and slime green to make hits easy to read.",
+      "pitch": "Place cannons to stop a very slow, very determined snail army before it nibbles your castle to rubble. Every shot blasts your own cannons backward, so the best defense is a sliding, ramming cannon pile-up.",
+      "roles": [
+        {
+          "object": "tower",
+          "role": "Your castle on the right side of the screen. It loses stones and tilts as snails chew it."
+        },
+        {
+          "object": "snail",
+          "role": "The smiling front-line invader. Slow, common, and worth one hit."
+        },
+        {
+          "object": "mollusk",
+          "role": "A tougher spiral-shelled invader that takes three hits and leaves a slippery slime trail."
+        },
+        {
+          "object": "gastropod",
+          "role": "A pale, stretchy invader that moves in short speed bursts and takes two hits."
+        },
+        {
+          "object": "cannon",
+          "role": "Your only defender. You place it, fire it, and steer its recoil slide into enemies."
+        },
+        {
+          "object": "mushroom",
+          "role": "Explosive garden mushrooms on the path. Shoot or ram a cannon into one to clear a whole clump of snails."
+        },
+        {
+          "object": "flag",
+          "role": "Your movable planting marker and rally flag. It shows where the next cannon will appear and waves faster as danger grows."
+        }
+      ],
+      "title": "Recoil Rampart",
+      "win": "Survive the full 90-second snail parade and keep at least one tower stone standing."
+    },
+    {
+      "controls": "Left / Right or A / D to roll the cannon along the bottom, Space to launch or fire the cannonball, Up / W to do a short hop-brake that catches a low ball.",
+      "core_mechanic": "Your cannon is the paddle. Bounce the cannonball to crack shells, but catch it on the barrel to reload and fire one perfect straight shot that pierces a whole column.",
+      "genre": "breakout-like",
+      "juice": "Shells crack in stages with chalky chips before shattering in a spiral burst. Piercing shots leave a burning line, mushroom bounces wobble and squish, and multi-cracks stack combo text like \"CRACK x4!\" in the middle of the screen. Missing a ball makes the cannon droop and sparks fly off the castle bricks. The title screen has one giant cannonball bouncing over the words \"SHELL BREAKER\" while snails peek from behind the letters.",
+      "lose": "You lose if you drop three cannonballs, or if the crawling snail wall reaches the bottom.",
+      "palette": "Clean cream background like the paper drawings, ink-black outlines, red mushrooms, gold flags, and bright green slime trails so the ball never gets lost.",
+      "pitch": "A breakout battle where your paddle is a cannon and the bricks are an advancing wall of snail shells. Bounce to crack them, catch to reload, then fire a piercing shot straight through the parade.",
+      "roles": [
+        {
+          "object": "tower",
+          "role": "The castle wall behind your cannon at the bottom. Dropped balls chip it, and losing all three balls breaks it."
+        },
+        {
+          "object": "snail",
+          "role": "The standard smiling shell-brick in the advancing wall. One good hit cracks it, the second breaks it."
+        },
+        {
+          "object": "mollusk",
+          "role": "A dark, extra-hard shell-brick that takes three hits and drops the ball faster."
+        },
+        {
+          "object": "gastropod",
+          "role": "A pale wobbly shell-brick that slides sideways after each hit, changing the wall's shape."
+        },
+        {
+          "object": "cannon",
+          "role": "Your paddle and launcher. Roll it to bounce the ball, catch on the barrel to reload a piercing shot."
+        },
+        {
+          "object": "mushroom",
+          "role": "Bouncy bumpers stuck in the wall. Hitting one makes the ball zoom and the mushroom squish wide for a big bounce."
+        },
+        {
+          "object": "flag",
+          "role": "The victory flag at the very top center behind the snails. Break through and hit it to finish the wall early."
+        }
+      ],
+      "title": "Shell Breaker Siege",
+      "win": "Break every snail in the wall, or sneak a shot through to hit the victory flag, before losing all three balls."
+    },
+    {
+      "controls": "Arrows / WASD to step one tile and shove cannons or mushrooms, Space to wait one turn, Enter to restart the current room.",
+      "core_mechanic": "Time only moves when you do. Each step makes every snail crawl one tile and every lined-up cannon fire, and the cannon's recoil can shove it into switches, mushrooms, or the back of another snail in a chain reaction.",
+      "genre": "sokoban-like grid puzzle",
+      "juice": "Every step lands with a tiny hop and dust puff, snails leave fading slime footprints, and cannon fire makes shell pieces skitter across the tiles. Chain hits freeze for a split second and count up \"CHAIN x2! x3!\" in big chalk letters. Solving a room pops the flag with confetti stars and a happy wobble from the tower. The title screen shows a frozen puzzle board under the words \"ONE STEP AT A TIME\" until you press Enter and everything moves once.",
+      "lose": "You lose a room if a snail reaches the tower, eats the flag, or corners you against a wall. Restart the room with Enter and try a smarter route.",
+      "palette": "Graph-paper cream and pencil gray for the grid, warm red mushrooms, gold flags, pale blue gastropods, and dark ink shells to tell the three snail types apart at a glance.",
+      "pitch": "A turn-based pushing puzzle where snails only crawl when you step, and cannons only fire when you line them up. Shove, bait, and recoil your way through six tiny rooms before the parade reaches the castle.",
+      "roles": [
+        {
+          "object": "tower",
+          "role": "The castle door at the far side of every room. If any snail reaches it, the room fails."
+        },
+        {
+          "object": "snail",
+          "role": "A basic patrolling snail that crawls one tile toward the tower each time you step."
+        },
+        {
+          "object": "mollusk",
+          "role": "A heavy dark snail you can also shove, but only one tile and only with a cannon recoil or a mushroom spring."
+        },
+        {
+          "object": "gastropod",
+          "role": "A pale snail that crawls two tiles whenever you step onto a slime tile, making slime dangerous to cross."
+        },
+        {
+          "object": "cannon",
+          "role": "A pushable block that fires down its row after every step if a snail is in line, then recoils one tile backward."
+        },
+        {
+          "object": "mushroom",
+          "role": "A pushable springy block. Shove a snail or cannon into it to bounce them three tiles in the same direction."
+        },
+        {
+          "object": "flag",
+          "role": "The goal tile in each room. Stand on it to plant the flag and clear the room once no snail is past the halfway line."
+        }
+      ],
+      "title": "One Step Snail Siege",
+      "win": "Plant the flag in all six rooms before a snail reaches the tower. Finish the set in about two minutes."
+    }
+  ],
+  "ms": 30683,
+  "usage": {
+    "completion_tokens": 2779,
+    "prompt_tokens": 1254,
+    "total_tokens": 4033,
+    "completion_tokens_details": {
+      "reasoning_tokens": 908
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  }
+}

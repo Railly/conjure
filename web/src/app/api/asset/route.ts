@@ -12,7 +12,9 @@ export async function GET(req: Request) {
   // Session-root screenshots the home gallery may show; everything else resolves inside assets/.
   const SHOTS = new Set(["shot-play", "qa-600", "shot-title"]);
   const file = name === "photo-input" || SHOTS.has(name) ? join(GAMES, slug, `${name}.png`) : join(GAMES, slug, "assets", `${name}.png`);
+  // Phone photos arrive as JPEG: fall back to photo-input.jpg.
   const png = await readFile(file).catch(() => null);
-  if (!png) return new Response("not found", { status: 404 });
-  return new Response(png, { headers: { "content-type": "image/png", "cache-control": "public, max-age=3600" } });
+  const jpg = !png && name === "photo-input" ? await readFile(join(GAMES, slug, "photo-input.jpg")).catch(() => null) : null;
+  if (!png && !jpg) return new Response("not found", { status: 404 });
+  return new Response(png ?? jpg, { headers: { "content-type": png ? "image/png" : "image/jpeg", "cache-control": "public, max-age=3600" } });
 }

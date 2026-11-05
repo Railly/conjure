@@ -1,0 +1,127 @@
+{
+  "concepts": [
+    {
+      "controls": "Up/Down or W/S: Aim the catapult. Hold and release Space: Launch. Press Space in mid-air: Shield Drop. Enter: Start / Retry.",
+      "core_mechanic": "Shield Drop changes flight. A launched knight screams across the sky, and one timed press of Space cancels his arc and sends him straight down, shield-first. A clean drop smashes through two tower blocks, while a late drop bounces him harmlessly into the dirt. The drifting cloud is a trampoline: bounce off it to regain height and set up a perfect drop.",
+      "genre": "physics puzzle",
+      "juice": "The catapult creaks and stretches as power builds, the knight does a squash-and-spin launch pose with a speed trail, and the cloud squishes with a soft boing bounce. Shield Drop adds a downward streak, a big dust ring, block chips, and a short screen shake. Each block knocked loose shows floating text like \"CRACK!\" and \"TIMBER!\"; dropping the dragon triggers slow, tumbling physics, gold sparkles from the chest, confetti, and a big \"DRAGON DOWN!\" banner. Title screen: the whole wobbly tower sways behind \"KNIGHT FLIGHT\" with \"Press Enter to Launch!\"",
+      "lose": "You have 5 knights. Run out before the dragon falls and the dragon waves from the top: \"OUT OF KNIGHTS! The Dragon Keeps the Gold!\"",
+      "palette": "Hand-drawn crayon storybook on sky blue and parchment. The bright blue cloud, red-plumed knight, brown catapult and tower, purple dragon, and golden chest pop against simple hills and puffy distant clouds.",
+      "pitch": "Launch the knight from the catapult, bounce him off a cloud, and slam him shield-first into the dragon's wobbly tower. Knock the dragon all the way to the ground to crack open the treasure chest.",
+      "roles": [
+        {
+          "object": "cloud",
+          "role": "A drifting trampoline cloud the knight can bounce off to change his arc"
+        },
+        {
+          "object": "knight",
+          "role": "The living cannonball, launched again and again"
+        },
+        {
+          "object": "catapult",
+          "role": "The player's aimable launcher on the left hill"
+        },
+        {
+          "object": "tower",
+          "role": "The tall stack of physics blocks that creaks, wobbles, and collapses"
+        },
+        {
+          "object": "dragon",
+          "role": "The purple boss perched on top who must be knocked to the ground"
+        },
+        {
+          "object": "chest",
+          "role": "The treasure prize beside the dragon; it bursts open when you win"
+        }
+      ],
+      "title": "Knight Flight: Dragon Down!",
+      "win": "Knock the dragon off the tower and onto the ground: \"DRAGON DOWN! You Got the Treasure!\""
+    },
+    {
+      "controls": "Left/Right or A/D: Roll the catapult. Space: Catch, aim while holding, and release to fling. Enter: Start / Retry.",
+      "core_mechanic": "You do not bounce the knight automatically. The catapult can CATCH him in its net; while he sits there, the arm slowly bends back and your left/right movement becomes a visible aim arc. Release Space for a powered fling that smashes through an extra block. Just bouncing him off the catapult frame is weak, so every catch is a little risk/reward aiming moment while the dragon is shooting at you.",
+      "genre": "breakout-like",
+      "juice": "Every block hit pops crayon chips, cracks the block face, and flashes combo text: \"SMASH x2!\", \"x3!\", \"UNSTOPPABLE!\" A perfect powered fling gives the knight a sword trail, the catapult arm snaps with wood splinters, and the whole screen gives a tiny kick. The cloud bumper squishes flat then puffs back with sparkle puffs. Dragon fireballs leave smoke trails and make the knight glow orange when they speed him up. Title screen: the knight bounces between the title letters while the catapult rolls underneath, with \"Press Enter to Play!\"",
+      "lose": "Let the knight hit the ground 3 times: \"KNIGHT DOWN! The Dragon Keeps the Gold!\"",
+      "palette": "A toy-like night courtyard in deep blue and torch orange, so the silver knight, purple dragon, and glowing gold chest stay readable against the brown tower blocks.",
+      "pitch": "The knight is the ball, the catapult is your catcher-and-flinger, and the dragon's tower is a wall of breakable blocks. Catch, aim, and smash upward until you break through and bonk the chest three times before the dragon blasts you apart.",
+      "roles": [
+        {
+          "object": "cloud",
+          "role": "A moving squishy bumper near the top that boosts the knight and changes his angle"
+        },
+        {
+          "object": "knight",
+          "role": "The bouncing ball, tumbling sword-first through the tower"
+        },
+        {
+          "object": "catapult",
+          "role": "Your moving paddle that catches, aims, and power-flings the knight"
+        },
+        {
+          "object": "tower",
+          "role": "A stacked wall of breakable blocks protecting the prize"
+        },
+        {
+          "object": "dragon",
+          "role": "The moving boss at the top who drops fireballs that speed up the knight"
+        },
+        {
+          "object": "chest",
+          "role": "The final target behind the dragon; hit it 3 times to win"
+        }
+      ],
+      "title": "Sir Bounce-a-Lot",
+      "win": "Break through the tower and hit the chest 3 times: \"TREASURE BONKED! You Win the Gold!\""
+    },
+    {
+      "controls": "Up/Down or W/S: Fly the dragon up and down the tower. Space: Tail Swat. Enter: Start / Retry.",
+      "core_mechanic": "You play the dragon defending his own hoard, and your only attack is a physics tail swat. A swatted knight does not disappear; he becomes a flying wrecking ball who can smash other incoming knights out of the air, and every mid-air knight-on-knight collision builds your Chain score and shoves the enemy catapult backward. Over 90 seconds the catapult rolls closer, fires faster, and starts launching two knights at once, sometimes hidden behind the passing cloud until the last second.",
+      "genre": "tower or base defense",
+      "juice": "The dragon's wings flap with stretchy overshoot, his tail makes a big swoosh arc, and a clean swat gives a knight a spinning trail, a \"WHAM!\" pop, and a tiny screen shake. Chain collisions burst into helmet sparkles with floating \"CHAIN x2!\", \"CHAIN x3!\", \"KNIGHT BOWLING!\" text. Knights who hit the tower knock loose chips and make the whole tower wobble; knights who reach the chest shake out one big gold coin with a clink flash. The cloud puffs apart when a hidden knight bursts through. Title screen: the dragon proudly sits on \"GUARD THE GOLD\" guarding the chest, with \"Press Enter to Defend!\"",
+      "lose": "If 3 knights reach the chest and haul coins away, or the tower loses its top block: \"THE GOLD IS GONE! The Knights Win!\"",
+      "palette": "Sunset orange sky behind a purple dragon, with the brown tower and catapult in silhouette-lite storybook colors and the chest glowing gold on the tower top. Incoming knights stay bright silver so their arcs are easy to read.",
+      "pitch": "Surprise: you are the dragon. Enemy catapults are flinging knights at your tower-top treasure, and your tail swat turns each knight into a flying bowling ball that can knock the next ones out of the sky.",
+      "roles": [
+        {
+          "object": "cloud",
+          "role": "A drifting cover cloud that sometimes hides an incoming knight until he pops out"
+        },
+        {
+          "object": "knight",
+          "role": "The enemy ammunition, launched in arcs at the tower"
+        },
+        {
+          "object": "catapult",
+          "role": "The enemy launcher at the bottom that creeps closer as the attack speeds up"
+        },
+        {
+          "object": "tower",
+          "role": "Your defensible perch; its top blocks are your health"
+        },
+        {
+          "object": "dragon",
+          "role": "The player character, flying up and down and tail-swatting knights"
+        },
+        {
+          "object": "chest",
+          "role": "The hoard on the tower top that you must protect for 90 seconds"
+        }
+      ],
+      "title": "Guard the Gold!",
+      "win": "Protect the chest for 90 seconds: \"TIME'S UP! The Dragon Keeps the Treasure!\""
+    }
+  ],
+  "ms": 39070,
+  "usage": {
+    "completion_tokens": 3339,
+    "prompt_tokens": 1240,
+    "total_tokens": 4579,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1512
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  }
+}

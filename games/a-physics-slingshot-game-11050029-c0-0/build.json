@@ -1,0 +1,158 @@
+{
+  "concept": {
+    "controls": "Up/Down or W/S: Aim the catapult. Hold and release Space: Launch. Press Space in mid-air: Shield Drop. Enter: Start / Retry.",
+    "core_mechanic": "Shield Drop changes flight. A launched knight screams across the sky, and one timed press of Space cancels his arc and sends him straight down, shield-first. A clean drop smashes through two tower blocks, while a late drop bounces him harmlessly into the dirt. The drifting cloud is a trampoline: bounce off it to regain height and set up a perfect drop.",
+    "genre": "physics puzzle",
+    "juice": "The catapult creaks and stretches as power builds, the knight does a squash-and-spin launch pose with a speed trail, and the cloud squishes with a soft boing bounce. Shield Drop adds a downward streak, a big dust ring, block chips, and a short screen shake. Each block knocked loose shows floating text like \"CRACK!\" and \"TIMBER!\"; dropping the dragon triggers slow, tumbling physics, gold sparkles from the chest, confetti, and a big \"DRAGON DOWN!\" banner. Title screen: the whole wobbly tower sways behind \"KNIGHT FLIGHT\" with \"Press Enter to Launch!\"",
+    "lose": "You have 5 knights. Run out before the dragon falls and the dragon waves from the top: \"OUT OF KNIGHTS! The Dragon Keeps the Gold!\"",
+    "palette": "Hand-drawn crayon storybook on sky blue and parchment. The bright blue cloud, red-plumed knight, brown catapult and tower, purple dragon, and golden chest pop against simple hills and puffy distant clouds.",
+    "pitch": "Launch the knight from the catapult, bounce him off a cloud, and slam him shield-first into the dragon's wobbly tower. Knock the dragon all the way to the ground to crack open the treasure chest.",
+    "roles": [
+      {
+        "object": "cloud",
+        "role": "A drifting trampoline cloud the knight can bounce off to change his arc"
+      },
+      {
+        "object": "knight",
+        "role": "The living cannonball, launched again and again"
+      },
+      {
+        "object": "catapult",
+        "role": "The player's aimable launcher on the left hill"
+      },
+      {
+        "object": "tower",
+        "role": "The tall stack of physics blocks that creaks, wobbles, and collapses"
+      },
+      {
+        "object": "dragon",
+        "role": "The purple boss perched on top who must be knocked to the ground"
+      },
+      {
+        "object": "chest",
+        "role": "The treasure prize beside the dragon; it bursts open when you win"
+      }
+    ],
+    "title": "Knight Flight: Dragon Down!",
+    "win": "Knock the dragon off the tower and onto the ground: \"DRAGON DOWN! You Got the Treasure!\""
+  },
+  "verdict": "ok",
+  "playtest": {
+    "slug": "a-physics-slingshot-game-11050029-c0-0",
+    "verdict": "ok",
+    "contract": {
+      "outcome": true,
+      "progress": true
+    },
+    "too_easy_by": [],
+    "search": {
+      "outcome": "won",
+      "frames": 1080,
+      "progress": 1,
+      "inputs": 637
+    },
+    "budget": {
+      "max_frames": 7200,
+      "segment": 20,
+      "tries": 12
+    },
+    "policies": {
+      "idle": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-right": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-left": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-right-jump": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-everything": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "tap-action": {
+        "outcome": "lost",
+        "frames": 524,
+        "progress": 0.07669616519174041
+      },
+      "mash-1": {
+        "outcome": "lost",
+        "frames": 619,
+        "progress": 0.07669616519174041
+      },
+      "mash-2": {
+        "outcome": "lost",
+        "frames": 615,
+        "progress": 0.07669616519174041
+      },
+      "mash-3": {
+        "outcome": "lost",
+        "frames": 473,
+        "progress": 0.07669616519174041
+      },
+      "mash-4": {
+        "outcome": "lost",
+        "frames": 704,
+        "progress": 0.07669616519174041
+      },
+      "mash-5": {
+        "outcome": "lost",
+        "frames": 639,
+        "progress": 0.07669616519174041
+      },
+      "mash-6": {
+        "outcome": "lost",
+        "frames": 694,
+        "progress": 0.07669616519174041
+      },
+      "mash-7": {
+        "outcome": "lost",
+        "frames": 633,
+        "progress": 0.07669616519174041
+      },
+      "mash-8": {
+        "outcome": "lost",
+        "frames": 574,
+        "progress": 0.07669616519174041
+      }
+    },
+    "advice": "Winnable, and no dumb policy wins."
+  },
+  "qa": {
+    "ok": true,
+    "issues": [],
+    "minor": [
+      "Opening title: white 'DRAGON DOWN!' subtitle sits directly over white cloud scribble, lowering contrast",
+      "Mid-play floating 'SHIELD DROP!' text in pale blue has low contrast against light sky"
+    ],
+    "model": "Muse Spark 1.3",
+    "ms": 16962
+  },
+  "cost_usd": 0.6167,
+  "ms": 135533,
+  "runs": [
+    {
+      "model": "muse-wonder-1.0",
+      "ms": 115573,
+      "turns": 36,
+      "usage": {
+        "input": 69606,
+        "cachedInput": 561168,
+        "output": 11303
+      },
+      "summary": "Knight Flight: Dragon Down! is a physics puzzle where you launch knights from a catapult, bounce them off a drifting trampoline cloud, and use a timed Shield Drop to smash the dragon's wobbly tower. Aim with Up/Down (or W/S), hold and release Space to launch, press Space in mid-air to Shield Drop, and press Enter to start or retry — knock the dragon to the ground within 5 knights to win the treasure."
+    }
+  ]
+}

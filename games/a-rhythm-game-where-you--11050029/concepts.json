@@ -1,0 +1,127 @@
+{
+  "concepts": [
+    {
+      "controls": "A/K for the guitar lane, S/L for the drum lane, Space to make the frog stomp on a glowing beat. Hit pairs with two lane keys at once. Enter starts.",
+      "core_mechanic": "You are not playing to an invisible metronome — you are playing to the frog. He bounces on the drum, and every note is only PERFECT if you hit it on the exact frame he lands. Chain perfects and he does a bigger and bigger dance combo; break the chain and he slips, reverses his bounce for 4 beats, and the next notes come in mirrored lanes.",
+      "genre": "rhythm or timing",
+      "juice": "Title screen: 'FROGGY FINALE — Press Enter, Feel The Beat!' with the frog bouncing on the big drum under the title. Perfect hits burst tiny stars off the note, squash the frog flat then stretch him tall, and pop floating text: 'PERFECT!', 'GREAT!', 'MISS...', 'COMBO x12!'. The guitar wobbles and sheds sparkles when its lane is hit, the drum booms with a ring shockwave and tiny screen shake on every frog landing. A 10-perfect streak trails rainbow notes behind the frog's feet.",
+      "lose": "Miss 8 notes total and the show stops: 'The Crowd Went Quiet...'",
+      "palette": "Warm stage browns and reds from the guitar and drum, black ink notes, and the bright green frog popping in the center spotlight.",
+      "pitch": "Hit the falling notes in time with the bouncing frog and he dances a full concert routine. Keep the combo alive through the whole song and he pulls off the big finale leap!",
+      "roles": [
+        {
+          "object": "guitar",
+          "role": "The left instrument lane — its neck is the track A/K notes slide down, and it strums and shakes on every hit."
+        },
+        {
+          "object": "note",
+          "role": "The standard black note — a single quick tap on the guitar or drum lane."
+        },
+        {
+          "object": "drum",
+          "role": "The right instrument lane and the frog's trampoline — he bounces on it to set the true beat, and S/L notes land on its head."
+        },
+        {
+          "object": "pair",
+          "role": "The beamed double note — must be hit with one guitar key and one drum key at the same time."
+        },
+        {
+          "object": "tone",
+          "role": "The second single note, drawn bigger and slower — a hold note: press and keep holding until its tail passes."
+        },
+        {
+          "object": "frog",
+          "role": "The star dancer and living metronome in the center — his landing frame defines PERFECT timing, and he performs the dance your combo builds."
+        }
+      ],
+      "title": "Froggy Finale",
+      "win": "Survive to the end of the 90-second song: 'BRAVO! What A Dance!'"
+    },
+    {
+      "controls": "Left/Right or A/D moves the frog-and-drum paddle, Space launches the note ball and does a drum bounce-boost, Enter starts.",
+      "core_mechanic": "Your paddle is a drum, so the ball does not just bounce — it bounces to a beat. A shrinking ring closes on the drum; bounce the note exactly when the ring snaps shut and it rockets upward with a power smash, bounce off-beat and it dribbles weakly. Smashing the guitar's strings in rhythm builds a solo meter that can shatter a whole string at once.",
+      "genre": "breakout-like",
+      "juice": "Title screen: 'DRUM BOUNCE JAM — Press Enter To Launch!' with the note ball already bouncing between the frog and the huge guitar. Each string snapped sprays brown splinters and a musical sparkle trail, the ball leaves a fading note ghost behind it, and the drum squash-bounces with a bass ring on every paddle hit. On-beat bounces flash 'ON THE BEAT!', off-beat shows 'Weak...', and a filled solo meter makes the screen pulse and the frog throw his arms wide for 'SOLO SMASH!'. Losing a ball drops the frog's smile and shakes the screen hard.",
+      "lose": "Lose all 3 note balls: 'Out Of Notes! The Jam Is Over.'",
+      "palette": "The pale guitar body fills the top of the screen against a dark stage, red drum at the bottom, black notes flying, green frog riding it all.",
+      "pitch": "Bounce a musical note off the frog's drum to snap every string on the giant guitar. Time your bounces to the beat ring and weak taps turn into string-shattering power shots!",
+      "roles": [
+        {
+          "object": "guitar",
+          "role": "The giant breakable wall at the top — its body is armored and its six strings are the rows of bricks you must snap."
+        },
+        {
+          "object": "note",
+          "role": "The main ball — one bouncing black note you keep in play."
+        },
+        {
+          "object": "drum",
+          "role": "The paddle itself — the frog sits on it, you slide it along the bottom, and its beat ring decides bounce power."
+        },
+        {
+          "object": "pair",
+          "role": "A falling beamed-pair pickup — catch it and your ball splits into two notes for double damage until one is lost."
+        },
+        {
+          "object": "tone",
+          "role": "A falling heavy tone pickup — catch it and the next bounce is a slow, armor-piercing smash that cracks the guitar body itself."
+        },
+        {
+          "object": "frog",
+          "role": "The rider on the drum paddle — he leans, squashes, and celebrates, and his position is what you actually aim with."
+        }
+      ],
+      "title": "Drum Bounce Jam",
+      "win": "Snap all six strings and crack the guitar body open before losing your balls: 'You Broke The Guitar! Encore!'"
+    },
+    {
+      "controls": "Arrows/WASD moves the frog conductor, A places a guitar tower, D places a drum tower on glowing pads, Space conducts — tap it exactly on the beat to make all towers fire. Enter starts.",
+      "core_mechanic": "Your towers are a band, and a band only plays when conducted. Guitar and drum towers sit silent until you tap Space on the beat as the frog lands — a perfect conduct fires every tower at once in a chord blast, an off-beat tap fires nothing and stumbles the frog. Place towers, then literally keep time to defend.",
+      "genre": "tower or base defense",
+      "juice": "Title screen: 'POND DEFENSE LIVE! — Press Enter To Take The Stage!' with the frog waving from his lily pad stage. Perfect conducts flash 'ON BEAT!' with a gold ring bursting from the frog, guitar towers spray brown string-spark particles, drum towers thump out red shockwaves with a mini screen shake. Notes pop into ink splats, pairs crack apart with a 'SPLIT!' pop, and leaks make the stage lights flicker and the frog wobble with 'OW!'. A held streak shows 'THE BAND IS ON FIRE! x8' as towers glow.",
+      "lose": "Let 10 notes reach the stage and the concert is ruined: 'The Stage Was Overrun!'",
+      "palette": "One pond-green screen with brown guitar towers, red drum towers, black ink enemies marching in, and the frog holding the lit center stage.",
+      "pitch": "Musical notes are marching on the frog's pond stage, and only his band can stop them. Build guitar and drum towers, then tap the beat to conduct them into firing — no beat, no shots!",
+      "roles": [
+        {
+          "object": "guitar",
+          "role": "The long-range tower — placed on pads, it strums single targets far down the lane with string shots."
+        },
+        {
+          "object": "note",
+          "role": "The basic enemy — a fast black note marching down the path toward the stage."
+        },
+        {
+          "object": "drum",
+          "role": "The splash tower — placed on pads, it booms a short-range drum blast that hits every enemy around it, but only on a conducted beat."
+        },
+        {
+          "object": "pair",
+          "role": "The splitter enemy — a beamed pair that, when popped, breaks into one note and one tone that keep marching."
+        },
+        {
+          "object": "tone",
+          "role": "The tank enemy — a big slow single note with lots of health that shrugs off guitar shots and needs drum blasts."
+        },
+        {
+          "object": "frog",
+          "role": "The conductor and the base you defend — he stands on the center stage, you move him between pads to build, and his bounce shows the beat to conduct to."
+        }
+      ],
+      "title": "Pond Defense Live!",
+      "win": "Survive all 12 waves in about two minutes: 'CONCERT SAVED! The Pond Cheers!'"
+    }
+  ],
+  "ms": 33954,
+  "usage": {
+    "completion_tokens": 3154,
+    "prompt_tokens": 1480,
+    "total_tokens": 4634,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1150
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  }
+}

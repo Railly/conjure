@@ -2,7 +2,7 @@
 // Drop a photo or type an idea -> your drawings, cut out -> three concepts in different genres -> watch it being
 // built -> play it, and keep changing it while you play.
 //   bun --env-file=.env studio/server.ts [--port 5170]
-import { appendFileSync, cpSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { appendFileSync, cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { buildGame, cutPhoto, scaffold } from "./build";
 import { type Concept, proposeConcepts } from "./concepts";
@@ -36,6 +36,37 @@ async function playSlugOf(slug: string): Promise<string> {
   for (const s of passed) if (await Bun.file(join(ROOT, "games", s, "sim.ts")).exists()) return s;
   return slug;
 }
+// Social cards for a published game: title and genre from the build concept, the image from the showcase site.
+function shareableHtml(html: string, slug: string, gameSlug: string): string {
+  const events = [slug, gameSlug].map((d) => { try { return readFileSync(join(ROOT, "games", d, "events.jsonl"), "utf8"); } catch { return ""; } }).join("\n");
+  const concept = [...events.matchAll(/"stage":"build".*?"concept":(\{.*?\})\}/g)].map((m) => { try { return JSON.parse(m[1]!) as { title?: string; genre?: string; pitch?: string }; } catch { return null; } }).filter(Boolean).at(-1);
+  const esc = (t: string) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
+  const title = esc(concept?.title ?? slug);
+  const genre = concept?.genre ? ` A ${esc(concept.genre)}` : " A game";
+  const description = `${genre} built by agents from a kid's drawing. Made with Conjure.`;
+  const site = "https://conjure.crafter.run";
+  const image = `${site}/og/${encodeURIComponent(slug)}`;
+  const head = [
+    `<title>${title} · conjure</title>`,
+    `<meta name="description" content="${description}">`,
+    `<meta property="og:type" content="website">`,
+    `<meta property="og:site_name" content="conjure">`,
+    `<meta property="og:title" content="${title}">`,
+    `<meta property="og:description" content="${description}">`,
+    `<meta property="og:image" content="${image}">`,
+    `<meta property="og:image:width" content="1200">`,
+    `<meta property="og:image:height" content="630">`,
+    `<meta name="twitter:card" content="summary_large_image">`,
+    `<meta name="twitter:title" content="${title}">`,
+    `<meta name="twitter:description" content="${description}">`,
+    `<meta name="twitter:image" content="${image}">`,
+    `<link rel="icon" href="${site}/icon.svg" type="image/svg+xml">`,
+    `<link rel="apple-touch-icon" href="${site}/apple-icon.png">`,
+    `<meta name="theme-color" content="#0A0A0B">`,
+  ].join("");
+  return html.replace(/<title>[^<]*<\/title>/, "").replace("</head>", `${head}</head>`);
+}
+
 async function openGame(requested: string): Promise<string | null> {
   const slug = await playSlugOf(requested);
   if (!/^[\w-]+$/.test(slug) || !(await Bun.file(join(ROOT, "games", slug, "sim.ts")).exists())) return null;
@@ -180,7 +211,7 @@ async function route(req: Request): Promise<Response> {
         if (!r.ok) return json({ error: `could not read ${f || "index"}` }, 500);
         const text = await r.text();
         // A published copy is play-only: ?embed=1 hides the live-edit bar, which needs the local play server.
-        writeFileSync(join(out, f || "index.html"), f ? text : text.replace("<script", `<script>history.replaceState(null,"","?embed=1")</script><script`));
+        writeFileSync(join(out, f || "index.html"), f ? text : shareableHtml(text.replace("<script", `<script>history.replaceState(null,"","?embed=1")</script><script`), slug ?? gameSlug, gameSlug));
       }
       cpSync(join(ROOT, "games", gameSlug, "assets"), join(out, "assets"), { recursive: true, filter: (p) => !p.includes(".source") });
       // One retry: the upload sometimes ends in a transient "fetch failed". The stable alias is printed on stderr.

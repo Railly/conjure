@@ -1,0 +1,11 @@
+{
+  "model": "muse-spark-1.3",
+  "ms": 70465,
+  "turns": 25,
+  "usage": {
+    "input": 72923,
+    "cachedInput": 362444,
+    "output": 4478
+  },
+  "summary": "Sunburn Speedway is a 3D desert kart sprint where you grab sun pickups, hold SPACE to cook boost power, and zig-zag through palm shade to vent heat before you spin out.\n\nDrive with WASD or arrows, bounce cacti for speed, hit every checkpoint, and cross the finish before the 90-second clock ends."
+}

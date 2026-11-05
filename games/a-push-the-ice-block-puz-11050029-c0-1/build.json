@@ -1,0 +1,154 @@
+{
+  "concept": {
+    "controls": "Arrows / WASD: Slide in that direction. R: Restart the level. Enter: Start, advance to the next level.",
+    "core_mechanic": "When you move, the penguin slides until stopped by an ice cube, an igloo wall, or the edge of an ice floe. Ice cubes slide too when you bump into them, so every move rearranges your own set of brakes and bumpers. Pale snowflakes are spin patches: anything that slides onto one turns 90 degrees clockwise and keeps going, letting you bend the penguin and cubes around corners you could never walk around.",
+    "genre": "Sokoban-like grid puzzle",
+    "juice": "The penguin stretches long while sliding and does a happy squash when it stops. Ice cubes leave frosty trails, spray snow particles on every impact, and make the screen give a tiny thud-shake when they slam into the igloo. Landing on a snowflake spins the sprite with a sparkle burst and a floating \"SPIN!\" pop-up, and reaching the fish triggers a confetti of orange scales, a big \"YUM!\" and the penguin's feet wiggling. Title screen: the drawings are scattered on one big ice floe with the words \"SLIDE & SUPPER\" in chunky letters, and the penguin quietly slides back and forth between a cube and the igloo.",
+    "lose": "You lose a level if the penguin slides off the floe into the water, or if every ice cube slides off or shatters, because then nothing can stop you before the edge. The game shows \"SPLASH!\" or \"OUT OF BRAKES!\" and restarts that level.",
+    "palette": "Non-applicable.",
+    "pitch": "You are a very slippery penguin who cannot walk on ice, only slide and hope something stops you before the water. Shove the ice cubes around, ride the spinning snowflakes, and line up one perfect glide that lands you right on the fish.",
+    "roles": [
+      {
+        "object": "cube",
+        "role": "Pushable sliding blocks. They are the only movable brakes in the game: you slide into one to stop, and it skids away until it hits something else. If a cube slides off the floe it is gone, and if it spins off a snowflake into an igloo it shatters, so careless pushes cost you your safety net."
+      },
+      {
+        "object": "fish",
+        "role": "The goal tile on each floe. You must come to a complete stop exactly on the fish to eat it and finish the level. Sliding past it does not count, which is the whole puzzle."
+      },
+      {
+        "object": "igloo",
+        "role": "Fixed, indestructible wall pieces. The igloo drawing is placed as rounded corner blocks and shelters that cubes and the penguin bounce off, forming the walls and dead ends of each puzzle."
+      },
+      {
+        "object": "penguin",
+        "role": "The player. It only ever slides in straight lines, waddling in place for a moment before each launch, and its whole body is animated squash-and-stretch so planning a route feels like lining up a bowling shot."
+      },
+      {
+        "object": "snowflake",
+        "role": "Spin tiles painted on the ice. When the penguin or a cube lands on one mid-slide, it rotates 90 degrees clockwise and keeps sliding in the new direction. Later levels chain two or three snowflakes so one push curls a cube all the way around an igloo."
+      }
+    ],
+    "title": "Slide & Supper",
+    "win": "Clear all five ice floes by stopping exactly on the fish each time. The final screen shows the penguin back at the igloo with a stack of fish and the words \"FULL BELLY. NICE SLIDING!\""
+  },
+  "verdict": "ok",
+  "playtest": {
+    "slug": "a-push-the-ice-block-puz-11050029-c0-1",
+    "verdict": "ok",
+    "contract": {
+      "outcome": true,
+      "progress": true
+    },
+    "too_easy_by": [],
+    "search": {
+      "outcome": "won",
+      "frames": 1300,
+      "progress": 1,
+      "inputs": 769
+    },
+    "budget": {
+      "max_frames": 7200,
+      "segment": 20,
+      "tries": 12
+    },
+    "policies": {
+      "idle": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-right": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-left": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-right-jump": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-everything": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "tap-action": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "mash-1": {
+        "outcome": "lost",
+        "frames": 65,
+        "progress": 0
+      },
+      "mash-2": {
+        "outcome": "lost",
+        "frames": 187,
+        "progress": 0.2
+      },
+      "mash-3": {
+        "outcome": "lost",
+        "frames": 199,
+        "progress": 0.2
+      },
+      "mash-4": {
+        "outcome": "lost",
+        "frames": 89,
+        "progress": 0
+      },
+      "mash-5": {
+        "outcome": "lost",
+        "frames": 59,
+        "progress": 0
+      },
+      "mash-6": {
+        "outcome": "lost",
+        "frames": 221,
+        "progress": 0.2
+      },
+      "mash-7": {
+        "outcome": "lost",
+        "frames": 77,
+        "progress": 0
+      },
+      "mash-8": {
+        "outcome": "lost",
+        "frames": 41,
+        "progress": 0
+      }
+    },
+    "advice": "Winnable, and no dumb policy wins."
+  },
+  "qa": {
+    "ok": true,
+    "issues": [],
+    "minor": [
+      "Opening screen title and how-to text sits directly on top of level sprites (spin flake, igloo/penguin) on the floe grid, causing text-over-sprite clutter",
+      "SPLASH! fail overlay text sits over dimmed board sprites underneath, momentary feedback overlap in motion"
+    ],
+    "model": "Muse Spark 1.3",
+    "ms": 19594
+  },
+  "cost_usd": 0.7004,
+  "ms": 155307,
+  "runs": [
+    {
+      "model": "muse-wonder-1.0",
+      "ms": 132408,
+      "turns": 31,
+      "usage": {
+        "input": 74829,
+        "cachedInput": 427224,
+        "output": 15782
+      },
+      "summary": "Slide & Supper is a Sokoban-like sliding puzzle where a penguin can only glide across five ice floes, shoving ice cubes into place as brakes, riding spinning snowflakes around corners, and trying to stop exactly on each fish. Play with Arrows/WASD to slide, R to restart a floe, and Enter to start or advance — avoid splashing into the water or losing all your cubes!"
+    }
+  ]
+}

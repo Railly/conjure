@@ -1,0 +1,93 @@
+{
+  "slug": "a-physics-slingshot-game-11050029-c0-0",
+  "verdict": "ok",
+  "contract": {
+    "outcome": true,
+    "progress": true
+  },
+  "too_easy_by": [],
+  "search": {
+    "outcome": "won",
+    "frames": 1080,
+    "progress": 1,
+    "inputs": 637
+  },
+  "budget": {
+    "max_frames": 7200,
+    "segment": 20,
+    "tries": 12
+  },
+  "policies": {
+    "idle": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-right": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-left": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-right-jump": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-everything": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "tap-action": {
+      "outcome": "lost",
+      "frames": 524,
+      "progress": 0.07669616519174041
+    },
+    "mash-1": {
+      "outcome": "lost",
+      "frames": 619,
+      "progress": 0.07669616519174041
+    },
+    "mash-2": {
+      "outcome": "lost",
+      "frames": 615,
+      "progress": 0.07669616519174041
+    },
+    "mash-3": {
+      "outcome": "lost",
+      "frames": 473,
+      "progress": 0.07669616519174041
+    },
+    "mash-4": {
+      "outcome": "lost",
+      "frames": 704,
+      "progress": 0.07669616519174041
+    },
+    "mash-5": {
+      "outcome": "lost",
+      "frames": 639,
+      "progress": 0.07669616519174041
+    },
+    "mash-6": {
+      "outcome": "lost",
+      "frames": 694,
+      "progress": 0.07669616519174041
+    },
+    "mash-7": {
+      "outcome": "lost",
+      "frames": 633,
+      "progress": 0.07669616519174041
+    },
+    "mash-8": {
+      "outcome": "lost",
+      "frames": 574,
+      "progress": 0.07669616519174041
+    }
+  },
+  "advice": "Winnable, and no dumb policy wins."
+}

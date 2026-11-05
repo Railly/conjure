@@ -49,7 +49,7 @@ async function card(slug: string): Promise<GameCard | null> {
   if (!c?.title || c.title.trim().length < 3) return null;
   const exists = (p: string) => stat(p).then(() => true, () => false);
   const [photo, assets, st, shots] = await Promise.all([
-    exists(join(dir, "photo-input.png")),
+    exists(join(dir, "photo-input.png")).then(async (png) => png || exists(join(dir, "photo-input.jpg"))),
     readdir(join(dir, "assets")).catch(() => [] as string[]),
     stat(dir),
     Promise.all(["shot-play", "qa-600", "shot-title"].map((n) => exists(join(dir, `${n}.png`)))),
@@ -60,6 +60,12 @@ async function card(slug: string): Promise<GameCard | null> {
 }
 
 export async function GET() {
+  // games/featured.json (an ordered list of slugs) curates the gallery; without it every built game is listed.
+  const featured = await json<string[]>(join(GAMES, "featured.json"));
+  if (featured?.length) {
+    const cards = (await Promise.all(featured.filter((s) => /^[\w-]+$/.test(s)).map(card))).filter((c): c is GameCard => c !== null);
+    return Response.json(cards, { headers: { "cache-control": "no-store" } });
+  }
   const names = await readdir(GAMES).catch(() => [] as string[]);
   const slugs = names.filter((n) => /^[\w-]+$/.test(n) && !n.startsWith("_") && !/-c\d+-\d+$/.test(n));
   const cards = (await Promise.all(slugs.map(card))).filter((c): c is GameCard => c !== null);

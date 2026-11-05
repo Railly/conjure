@@ -1,0 +1,21 @@
+text: Fixing those blank trackside cards — giving them real drawings.
+tool Bash: {"command":"ls -R | head -n 100","description":"List files"}
+tool Read: {"file_path":"/vercel/sandbox/conjure/games/a-3d-kart-race-on-a-dese-11050029-c0-0/sim.ts"}
+tool Read: {"file_path":"/vercel/sandbox/conjure/games/a-3d-kart-race-on-a-dese-11050029-c0-0/shot-title.png"}
+tool Read: {"file_path":"/vercel/sandbox/conjure/games/a-3d-kart-race-on-a-dese-11050029-c0-0/shot-play.png"}
+text: Those horizon rectangles are placeholder mesas — replacing them with real shaded desert.
+tool Edit: {"replace_all":false,"file_path":"/vercel/sandbox/conjure/games/a-3d-kart-race-on-a-dese-11050029-c0-0/sim.ts","old_string":"    // mesas / dunes\n    let seed=12345; const rnd=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0; return seed/4294967296;};\n    for(let i=0;i<26;i++){ const x=(rnd()-0.5)*260, z=-rnd()*1250+40; if(Math.abs(x)<28) continue;\n      add(x,2+rnd()*3,z,rnd()*0.8,18+rnd()*3
+tool Edit: {"replace_all":false,"file_path":"/vercel/sandbox/conjure/games/a-3d-kart-race-on-a-dese-11050029-c0-0/sim.ts","old_string":"      const w=18+rnd()*30, h=5+rnd()*7, d=14+rnd()*20; const base:i32|string|any=0 as any;\n      const side:i32|string|any=0 as any;\n      const c:[number,number,number]= i%3?[0.82,0.55,0.34]:[0.88,0.66,0.42];\n      const top:[number,number,number]=[Math.min(1,c[0]+0.1),M
+tool Edit: {"replace_all":false,"file_path":"/vercel/sandbox/conjure/games/a-3d-kart-race-on-a-dese-11050029-c0-0/sim.ts","old_string":"      const c:[number,number,number]= i%3?[0.82,0.55,0.34]:[0.88,0.66,0.42];","new_string":"      const c:[number,number,number]= i%3?[0.82,0.55,0.34]:[0.88,0.66,0.42];\n      const top:[number,number,number]=[Math.min(1,c[0]+0.10),Math.min(1,c[1]+0.08),Math.min(1,c[2]+0.05)
+tool Edit: {"replace_all":false,"file_path":"/vercel/sandbox/conjure/games/a-3d-kart-race-on-a-dese-11050029-c0-0/sim.ts","old_string":"    draw.setFillStyle(\"#d9a05f\"); draw.fillRect(0,238,W,302);\n    draw.setFillStyle(\"#c98d4e\");\n    for(let i=0;i<7;i++){ const x=((i*173+g.s*2)% (W+220))-110; draw.beginPath(); draw.arc(x,252,90+(i%3)*36,Math.PI,0,false); draw.fill(); }\n    draw.setFillStyle(\"#b9773
+tool Bash: {"command":"bunx tsc --noEmit -p . 2>&1 | head -n 20","description":"Typecheck project"}
+tool Bash: {"command":"bunx tsc --noEmit","description":"Typecheck with bunx tsc"}
+tool Bash: {"command":"bun /vercel/sandbox/conjure/make/verify.ts a-3d-kart-race-on-a-dese-11050029-c0-0","description":"Run game verifier"}
+tool Bash: {"command":"node /vercel/sandbox/conjure/games/a-3d-kart-race-on-a-dese-11050029-c0-0/node_modules/dotframe/cli/bin.cjs snap --frame 40 --out /vercel/sandbox/conjure/games/a-3d-kart-race-on-a-dese-11050029-c0-0/shot-title.png --json","description":"Capture title screenshot"}
+tool Bash: {"command":"node /vercel/sandbox/conjure/games/a-3d-kart-race-on-a-dese-11050029-c0-0/node_modules/dotframe/cli/bin.cjs snap --frame 600 --mash 7 --out /vercel/sandbox/conjure/games/a-3d-kart-race-on-a-dese-11050029-c0-0/shot-play.png --json","description":"Capture gameplay screenshot"}
+tool Read: {"file_path":"/vercel/sandbox/conjure/games/a-3d-kart-race-on-a-dese-11050029-c0-0/shot-title.png"}
+tool Read: {"file_path":"/vercel/sandbox/conjure/games/a-3d-kart-race-on-a-dese-11050029-c0-0/shot-play.png"}
+text: Sunburn Speedway is a 3D desert kart sprint where you grab sun pickups, hold SPACE to cook boost power, and zig-zag through palm shade to vent heat before you spin out.
+
+Drive with WASD or arrows, bounce cacti for speed, hit every checkpoint, and cross the finish before the 90-second clock ends.
+result success

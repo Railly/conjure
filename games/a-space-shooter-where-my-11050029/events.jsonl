@@ -1,0 +1,183 @@
+{"stage":"art","message":"Encontrando tus dibujos","t":1793838574717}
+{"stage":"art","message":"5 dibujos recortados","data":{"drawings":["rocket","alien","planet","star","asteroid"]},"t":1793838607841}
+{"stage":"concepts","message":"Muse Wonder esta imaginando tres juegos","t":1793838607842}
+{"stage":"concepts","message":"Elige tu juego","data":{"concepts":[{"controls":"Arrows/WASD: fire that way and get kicked the opposite way. Space: fire your loaded Star Cannon.","core_mechanic":"Recoil flight. Every shot blasts the rocket backwards, so aiming, dodging, and flying are the same action. Asteroids are indestructible bumpers that ricochet your shots around corners into aliens you could not hit directly.","genre":"Shoot 'em up","juice":"Huge flame squash on every shot, drifting shell casings, and a short screen kick in the recoil direction. Ricochet kills pop floating text like \"PING! +200\" and \"THROUGH TWO!\" Aliens burst into green rings, asteroids spark and ring like bells, and a caught star makes the rocket glow and trail sparkles. The title screen shows \"RECOIL ROCKET\" bouncing side to side as the idle rocket fires by itself.","lose":"Three aliens slip past and hit the planet, or the rocket crashes three times. You see \"THE PLANET WAS OVERWHELMED.\"","palette":"Non-alcoholic, warm and Neighborly","pitch":"Your cannon is also your engine — every shot launches you backwards across space! Bounce blasts off asteroids, blast the aliens, and keep them away from your planet for 90 seconds.","roles":[{"object":"rocket","role":"Your ship, moved entirely by the recoil from its own cannon."},{"object":"alien","role":"Wobbling invaders that drift, zigzag, and finally dive toward the planet."},{"object":"planet","role":"The fragile purple planet anchored at bottom-center; it cracks a little more each time an alien reaches it."},{"object":"star","role":"A power-up dropped by special aliens. Fly through it to load one piercing Star Cannon shot that passes through everything in a line."},{"object":"asteroid","role":"Unbreakable floating bumpers that deflect your shots and damage your rocket if you slam into them."}],"title":"Recoil Rocket","win":"Survive the full 90-second invasion. You see \"YOU SAVED THE PLANET!\""},{"controls":"Left/Right or A/D: slide the rocket. Up/Down or W/S: tilt its nose to aim the bounce. Space: fire the thruster for a speed-boosting save.","core_mechanic":"The star is an unstoppable bouncing ball and the rocket is the paddle. Tilting the rocket changes the rebound angle on the fly, and a thruster blast can bump a falling star back up at the last instant — but it needs two seconds to recharge.","genre":"Breakout-like","juice":"The star leaves a twinkling trail and stretches into a comet at high speed, while the rocket squashes on every bounce. Asteroid breaks explode into gray chunks with a crunchy screen shake and score text like \"CRACKED! +100.\" Alien bonks flash \"BONK!\" and leave the alien spinning and dizzy. A planet hit shakes the whole screen and adds a visible crack. The title screen reads \"STAR BOUNCE\" with the star already bouncing around the letters.","lose":"The star slips past the rocket three times and cracks the planet apart. You see \"THE PLANET CRACKED APART.\"","palette":"classic bready: ripe tomato tartine // woven // sticky-full of dead-of-night bite","pitch":"Bounce one wild star off your rocket to smash the asteroid wall before the aliens behind it rebuild it. Guard the planet below you — every miss cracks it!","roles":[{"object":"rocket","role":"A sideways paddle sliding along the bottom, tilting and thrusting to steer the star."},{"object":"alien","role":"A row of builders above the wall who slide around, dodge the star, and toss a fresh asteroid back into the wall every few seconds."},{"object":"planet","role":"Your back wall below the rocket. It takes the hit whenever the star gets past you."},{"object":"star","role":"The ball itself — fast, bouncy, and the only thing that can smash asteroids or bonk aliens."},{"object":"asteroid","role":"The breakable brick wall packed across mid-screen that you must clear to reach the aliens."}],"title":"Star Bounce","win":"Clear all the asteroids and bonk each of the three aliens once. You see \"WALL DOWN! PLANET SAVED!\""},{"controls":"Arrows/WASD: fly the rocket around the planet. Space: plant a star turret on a locked asteroid, or pick a grown turret back up.","core_mechanic":"Your defenses are built by ramming. Shove a drifting asteroid until it clicks into the glowing orbit ring around the planet, then plant a star on it to make an auto-firing turret. Big asteroids take a running start to move, and a turret only covers the lane it sits in, so you are always repositioning your wall.","genre":"Tower or base defense","juice":"Ramming makes the rocket's flame flare and the asteroid wobble before the satisfying orbit-lock snap, ring flash, and chime. Planted stars bloom open with a sparkle burst and pulse before each shot. Aliens pop in green splats, combo defenses print \"DOUBLE ZAP!\" and a planet hit triggers a red flash, big shake, and a new crack. The title screen shows \"PLANET ON THE RING\" slowly orbiting the planet.","lose":"Five aliens reach the planet and finish cracking it. You see \"THE RING HAS FALLEN.\"","palette":"fresh fruits: anise-like sweet-hooked // dive // craveable compote-like // pastel","pitch":"Ram drifting asteroids into orbit, plant stars on them, and turn the whole ring into a fortress around your planet. Hold the ring through five waves of aliens!","roles":[{"object":"rocket","role":"Your builder ship — it rams asteroids into place, carries stars, and can body-block one alien lane in an emergency."},{"object":"alien","role":"Invaders floating in along four straight lanes toward the planet, in faster and tougher waves."},{"object":"planet","role":"The planet at center-screen, circled by the orbit ring you are trying to fortify."},{"object":"star","role":"A turret seed. Planted on a locked asteroid it blooms and auto-fires down its lane; you start with three and earn one after each wave."},{"object":"asteroid","role":"Both building material and base — free ones drift uselessly until rammed into the orbit ring, where they become turret platforms that also block aliens."}],"title":"Planet on the Ring","win":"Hold out through all five waves, about two minutes. You see \"THE RING HELD! YOU WIN!\""}],"ms":36630},"t":1793838644487}
+{"stage":"build","message":"Construyendo \"Recoil Rocket\"","data":{"concept":{"controls":"Arrows/WASD: fire that way and get kicked the opposite way. Space: fire your loaded Star Cannon.","core_mechanic":"Recoil flight. Every shot blasts the rocket backwards, so aiming, dodging, and flying are the same action. Asteroids are indestructible bumpers that ricochet your shots around corners into aliens you could not hit directly.","genre":"Shoot 'em up","juice":"Huge flame squash on every shot, drifting shell casings, and a short screen kick in the recoil direction. Ricochet kills pop floating text like \"PING! +200\" and \"THROUGH TWO!\" Aliens burst into green rings, asteroids spark and ring like bells, and a caught star makes the rocket glow and trail sparkles. The title screen shows \"RECOIL ROCKET\" bouncing side to side as the idle rocket fires by itself.","lose":"Three aliens slip past and hit the planet, or the rocket crashes three times. You see \"THE PLANET WAS OVERWHELMED.\"","palette":"Non-alcoholic, warm and Neighborly","pitch":"Your cannon is also your engine — every shot launches you backwards across space! Bounce blasts off asteroids, blast the aliens, and keep them away from your planet for 90 seconds.","roles":[{"object":"rocket","role":"Your ship, moved entirely by the recoil from its own cannon."},{"object":"alien","role":"Wobbling invaders that drift, zigzag, and finally dive toward the planet."},{"object":"planet","role":"The fragile purple planet anchored at bottom-center; it cracks a little more each time an alien reaches it."},{"object":"star","role":"A power-up dropped by special aliens. Fly through it to load one piercing Star Cannon shot that passes through everything in a line."},{"object":"asteroid","role":"Unbreakable floating bumpers that deflect your shots and damage your rocket if you slam into them."}],"title":"Recoil Rocket","win":"Survive the full 90-second invasion. You see \"YOU SAVED THE PLANET!\""}},"t":1793838659359}
+{"stage":"build","message":"3 construcciones en paralelo; gana la primera que pase los chequeos","t":1793838659373}
+{"stage":"code","message":"#2 Sandbox listo (160s)","data":{"attempt":1},"t":1793838819751}
+{"stage":"code","message":"#2 Muse Wonder empieza a construir","t":1793838824286,"data":{"attempt":1}}
+{"stage":"code","message":"#2 Bash","data":{"tool":"Bash","attempt":1},"t":1793838824286}
+{"stage":"code","message":"#1 Sandbox listo (214s)","data":{"attempt":0},"t":1793838860885}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Write","attempt":1},"t":1793838865295}
+{"stage":"code","message":"#1 Muse Wonder empieza a construir","t":1793838865687,"data":{"attempt":0}}
+{"stage":"code","message":"#1 Bash","data":{"tool":"Bash","attempt":0},"t":1793838865687}
+{"stage":"code","message":"#2 Compilando","data":{"tool":"Bash","attempt":1},"t":1793838866925}
+{"stage":"code","message":"#2 Compilando","data":{"tool":"Bash","attempt":1},"t":1793838869108}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793838872441}
+{"stage":"code","message":"#3 Sandbox listo (221s)","data":{"attempt":2},"t":1793838880125}
+{"stage":"code","message":"#2 ToolSearch","data":{"tool":"ToolSearch","attempt":1},"t":1793838880172}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838885019}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838885020}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838885021}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838885023}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838885025}
+{"stage":"code","message":"#3 Muse Wonder empieza a construir","t":1793838886060,"data":{"attempt":2}}
+{"stage":"code","message":"#3 Bash","data":{"tool":"Bash","attempt":2},"t":1793838886060}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838887287}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793838888723}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838897264}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838897266}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838897266}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838897267}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838897270}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838897270}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793838899588}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838906527}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838906528}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Write","attempt":0},"t":1793838906758}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793838908139}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793838909236}
+{"stage":"code","message":"#1 Compilando","data":{"tool":"Bash","attempt":0},"t":1793838911214}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838913028}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838913034}
+{"stage":"code","message":"#1 Compilando","data":{"tool":"Bash","attempt":0},"t":1793838914086}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793838915326}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793838918109}
+{"stage":"code","message":"#1 Compilando","data":{"tool":"Bash","attempt":0},"t":1793838920131}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838922619}
+{"stage":"code","message":"#1 Playtester probando el juego","data":{"tool":"Bash","attempt":0},"t":1793838923723}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793838924621}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Write","attempt":2},"t":1793838928552}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838930998}
+{"stage":"code","message":"#3 Compilando","data":{"tool":"Bash","attempt":2},"t":1793838931112}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793838932721}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793838933590}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793838933592}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793838933593}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793838933595}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793838933595}
+{"stage":"code","message":"#1 Playtester probando el juego","data":{"tool":"Bash","attempt":0},"t":1793838935350}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793838935562}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838937271}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838937272}
+{"stage":"code","message":"#3 Playtester probando el juego","data":{"tool":"Bash","attempt":2},"t":1793838937344}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793838938863}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793838942120}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793838942122}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793838942122}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793838942124}
+{"stage":"code","message":"#1 Playtester probando el juego","data":{"tool":"Bash","attempt":0},"t":1793838944265}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838944408}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793838946068}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793838948118}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793838948126}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793838948128}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793838948128}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793838950041}
+{"stage":"code","message":"#3 Playtester probando el juego","data":{"tool":"Bash","attempt":2},"t":1793838952019}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793838954393}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793838954394}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793838954395}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793838954399}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793838954399}
+{"stage":"code","message":"#1 Playtester probando el juego","data":{"tool":"Bash","attempt":0},"t":1793838956594}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793838958121}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793838958121}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838958604}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838958622}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838958622}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838958623}
+{"stage":"code","message":"#3 Playtester probando el juego","data":{"tool":"Bash","attempt":2},"t":1793838959935}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793838960933}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838967468}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793838968091}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793838968091}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793838968091}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793838968478}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793838968480}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793838968480}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793838969316}
+{"stage":"code","message":"#3 Playtester probando el juego","data":{"tool":"Bash","attempt":2},"t":1793838969950}
+{"stage":"code","message":"#1 Playtester probando el juego","data":{"tool":"Bash","attempt":0},"t":1793838970343}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838974409}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793838976161}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793838976162}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793838976324}
+{"stage":"code","message":"#3 Playtester probando el juego","data":{"tool":"Bash","attempt":2},"t":1793838977878}
+{"stage":"code","message":"#3 Mirando el juego (captura)","data":{"tool":"Bash","attempt":2},"t":1793838982037}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838983423}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838983425}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838983425}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838983428}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793838985517}
+{"stage":"code","message":"#3 Mirando el juego (captura)","data":{"tool":"Bash","attempt":2},"t":1793838985899}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793838986560}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793838986562}
+{"stage":"code","message":"#1 Playtester probando el juego","data":{"tool":"Bash","attempt":0},"t":1793838988488}
+{"stage":"code","message":"#3 Leyendo shot-title.png","data":{"tool":"Read","attempt":2},"t":1793838988731}
+{"stage":"code","message":"#3 Leyendo shot-play.png","data":{"tool":"Read","attempt":2},"t":1793838988731}
+{"stage":"code","message":"#2 Compilando","data":{"tool":"Bash","attempt":1},"t":1793838989771}
+{"stage":"code","message":"#2 Mirando el juego (captura)","data":{"tool":"Bash","attempt":1},"t":1793838993114}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793838994230}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793838994230}
+{"stage":"code","message":"#3 Leyendo assets/planet.png","data":{"tool":"Read","attempt":2},"t":1793838994970}
+{"stage":"code","message":"#3 Leyendo assets/rocket.png","data":{"tool":"Read","attempt":2},"t":1793838994976}
+{"stage":"code","message":"#1 Playtester probando el juego","data":{"tool":"Bash","attempt":0},"t":1793838996205}
+{"stage":"code","message":"#2 Mirando el juego (captura)","data":{"tool":"Bash","attempt":1},"t":1793838997248}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793839001139}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793839001607}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793839001613}
+{"stage":"code","message":"#2 Leyendo shot-title.png","data":{"tool":"Read","attempt":1},"t":1793839001645}
+{"stage":"code","message":"#2 Leyendo shot-play.png","data":{"tool":"Read","attempt":1},"t":1793839001663}
+{"stage":"code","message":"#1 Playtester probando el juego","data":{"tool":"Bash","attempt":0},"t":1793839003901}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793839003923}
+{"stage":"code","message":"#3 Mirando el juego (captura)","data":{"tool":"Bash","attempt":2},"t":1793839005847}
+{"stage":"code","message":"#2 Leyendo assets/planet.png","data":{"tool":"Read","attempt":1},"t":1793839006768}
+{"stage":"code","message":"#3 Compilando","data":{"tool":"Bash","attempt":2},"t":1793839008304}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793839011786}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793839011788}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793839011788}
+{"stage":"code","message":"#3 Mirando el juego (captura)","data":{"tool":"Bash","attempt":2},"t":1793839012334}
+{"stage":"code","message":"#1 Playtester probando el juego","data":{"tool":"Bash","attempt":0},"t":1793839014717}
+{"stage":"code","message":"#3 Leyendo shot-play.png","data":{"tool":"Read","attempt":2},"t":1793839016047}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793839016351}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793839016360}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793839016360}
+{"stage":"code","message":"#2 Mirando el juego (captura)","data":{"tool":"Bash","attempt":1},"t":1793839019540}
+{"stage":"code","message":"#3 Playtester probando el juego","data":{"tool":"Bash","attempt":2},"t":1793839019703}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793839023776}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793839023778}
+{"stage":"code","message":"#2 Leyendo shot-play.png","data":{"tool":"Read","attempt":1},"t":1793839024160}
+{"stage":"check","message":"#3 Playtester independiente","t":1793839024625,"data":{"attempt":2}}
+{"stage":"code","message":"#1 Playtester probando el juego","data":{"tool":"Bash","attempt":0},"t":1793839026503}
+{"stage":"check","message":"#3 Playtester: ok","data":{"slug":"a-space-shooter-where-my-11050029-c0-2","verdict":"ok","contract":{"outcome":true,"progress":true},"too_easy_by":[],"search":{"outcome":"won","frames":5420,"progress":1,"inputs":3241},"budget":{"max_frames":7200,"segment":20,"tries":12},"policies":{"idle":{"outcome":"playing","frames":7200,"progress":0},"hold-right":{"outcome":"playing","frames":7200,"progress":0},"hold-left":{"outcome":"playing","frames":7200,"progress":0},"hold-right-jump":{"outcome":"playing","frames":7200,"progress":0},"hold-everything":{"outcome":"playing","frames":7200,"progress":0},"tap-action":{"outcome":"lost","frames":4743,"progress":0.8746296296296296},"mash-1":{"outcome":"lost","frames":4098,"progress":0.75},"mash-2":{"outcome":"won","frames":5436,"progress":1},"mash-3":{"outcome":"won","frames":5448,"progress":1},"mash-4":{"outcome":"won","frames":5466,"progress":1},"mash-5":{"outcome":"won","frames":5436,"progress":1},"mash-6":{"outcome":"lost","frames":2922,"progress":0.5277777777777778},"mash-7":{"outcome":"won","frames":5454,"progress":1},"mash-8":{"outcome":"won","frames":5424,"progress":1}},"advice":"Winnable, and no dumb policy wins.","attempt":2},"t":1793839026596}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793839027828}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793839032399}
+{"stage":"check","message":"#2 Playtester independiente","t":1793839033995,"data":{"attempt":1}}
+{"stage":"code","message":"#1 Playtester probando el juego","data":{"tool":"Bash","attempt":0},"t":1793839034366}
+{"stage":"check","message":"#2 Playtester: ok","data":{"slug":"a-space-shooter-where-my-11050029-c0-1","verdict":"ok","contract":{"outcome":true,"progress":true},"too_easy_by":[],"search":{"outcome":"won","frames":5420,"progress":1,"inputs":3241},"budget":{"max_frames":7200,"segment":20,"tries":12},"policies":{"idle":{"outcome":"playing","frames":7200,"progress":0},"hold-right":{"outcome":"playing","frames":7200,"progress":0},"hold-left":{"outcome":"playing","frames":7200,"progress":0},"hold-right-jump":{"outcome":"playing","frames":7200,"progress":0},"hold-everything":{"outcome":"playing","frames":7200,"progress":0},"tap-action":{"outcome":"lost","frames":1256,"progress":0},"mash-1":{"outcome":"lost","frames":5235,"progress":0.5864722222222223},"mash-2":{"outcome":"won","frames":5436,"progress":1},"mash-3":{"outcome":"won","frames":5448,"progress":1},"mash-4":{"outcome":"won","frames":5466,"progress":1},"mash-5":{"outcome":"lost","frames":4934,"progress":0.5409814814814815},"mash-6":{"outcome":"won","frames":5472,"progress":1},"mash-7":{"outcome":"won","frames":5454,"progress":1},"mash-8":{"outcome":"won","frames":5424,"progress":1}},"advice":"Winnable, and no dumb policy wins.","attempt":1},"t":1793839036308}
+{"stage":"code","message":"#1 Mirando el juego (captura)","data":{"tool":"Bash","attempt":0},"t":1793839039486}
+{"stage":"check","message":"#3 QA visual: 1 problemas · Muse Spark 1.3","data":{"ok":false,"issues":["Opening screen tagline 'Your cannon is your engine!' is overlapped by an asteroid sprite centered on the text, making the middle of the line unreadable"],"minor":[],"model":"Muse Spark 1.3","ms":13799,"attempt":2},"t":1793839043338}
+{"stage":"fix","message":"#3 Arreglando (ronda 1)","t":1793839043338,"data":{"attempt":2}}
+{"stage":"code","message":"#1 Mirando el juego (captura)","data":{"tool":"Bash","attempt":0},"t":1793839043640}
+{"stage":"code","message":"#3 ToolSearch","data":{"tool":"ToolSearch","attempt":2},"t":1793839046807}
+{"stage":"code","message":"#1 Leyendo shot-title.png","data":{"tool":"Read","attempt":0},"t":1793839048127}
+{"stage":"code","message":"#1 Leyendo shot-play.png","data":{"tool":"Read","attempt":0},"t":1793839048141}
+{"stage":"code","message":"#3 Leyendo sim.ts","data":{"tool":"Read","attempt":2},"t":1793839049068}
+{"stage":"code","message":"#1 Leyendo assets/planet.png","data":{"tool":"Read","attempt":0},"t":1793839051558}
+{"stage":"code","message":"#1 Leyendo assets/rocket.png","data":{"tool":"Read","attempt":0},"t":1793839051566}
+{"stage":"code","message":"#1 Leyendo assets/alien.png","data":{"tool":"Read","attempt":0},"t":1793839055234}
+{"stage":"code","message":"#1 Leyendo assets/asteroid.png","data":{"tool":"Read","attempt":0},"t":1793839055250}
+{"stage":"code","message":"#1 Leyendo assets/star.png","data":{"tool":"Read","attempt":0},"t":1793839055252}
+{"stage":"check","message":"#2 QA visual: ok · Muse Spark 1.3","data":{"ok":true,"issues":[],"minor":["Floating +100 score text briefly overlaps the center controls hint in mid-play capture, momentary effect overlap"],"model":"Muse Spark 1.3","ms":18214,"attempt":1},"t":1793839057527}
+{"stage":"done","message":"#2 Recoil Rocket is a 90-second space shooter where every shot blasts your rocket backwards, so you aim, dodge, and fly with the same cannon — bouncing blasts off indestructible asteroids into wobbling aliens, catching dropped stars, and keeping invaders away from the purple planet at the bottom. Play with Arrows/WASD to fire in that direction (and get kicked the opposite way), ricochet shots for bonus “PING!” points, fly through a star to load the piercing Star Cannon and fire it with Space, and survive the full invasion without letting three aliens hit the planet or crashing three times.","data":{"verdict":"ok","cost":1.1917552,"ms":236642,"attempt":1},"t":1793839057527}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793839059575}
+{"stage":"code","message":"#3 Compilando","data":{"tool":"Bash","attempt":2},"t":1793839065780}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793839067206}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793839067207}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793839067207}
+{"stage":"code","message":"#3 Compilando","data":{"tool":"Bash","attempt":2},"t":1793839068445}
+{"stage":"code","message":"#1 Mirando el juego (captura)","data":{"tool":"Bash","attempt":0},"t":1793839070237}
+{"stage":"code","message":"#3 Playtester probando el juego","data":{"tool":"Bash","attempt":2},"t":1793839072325}
+{"stage":"done","message":"Gano 1: ok","data":{"verdict":"ok","cost":1.1917552,"ms":413200},"t":1793839072559}
+{"stage":"play","message":"A jugar","data":{"url":"http://localhost:5204/"},"t":1793839073064}

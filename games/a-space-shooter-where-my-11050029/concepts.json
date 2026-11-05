@@ -1,0 +1,115 @@
+{
+  "concepts": [
+    {
+      "controls": "Arrows/WASD: fire that way and get kicked the opposite way. Space: fire your loaded Star Cannon.",
+      "core_mechanic": "Recoil flight. Every shot blasts the rocket backwards, so aiming, dodging, and flying are the same action. Asteroids are indestructible bumpers that ricochet your shots around corners into aliens you could not hit directly.",
+      "genre": "Shoot 'em up",
+      "juice": "Huge flame squash on every shot, drifting shell casings, and a short screen kick in the recoil direction. Ricochet kills pop floating text like \"PING! +200\" and \"THROUGH TWO!\" Aliens burst into green rings, asteroids spark and ring like bells, and a caught star makes the rocket glow and trail sparkles. The title screen shows \"RECOIL ROCKET\" bouncing side to side as the idle rocket fires by itself.",
+      "lose": "Three aliens slip past and hit the planet, or the rocket crashes three times. You see \"THE PLANET WAS OVERWHELMED.\"",
+      "palette": "Non-alcoholic, warm and Neighborly",
+      "pitch": "Your cannon is also your engine — every shot launches you backwards across space! Bounce blasts off asteroids, blast the aliens, and keep them away from your planet for 90 seconds.",
+      "roles": [
+        {
+          "object": "rocket",
+          "role": "Your ship, moved entirely by the recoil from its own cannon."
+        },
+        {
+          "object": "alien",
+          "role": "Wobbling invaders that drift, zigzag, and finally dive toward the planet."
+        },
+        {
+          "object": "planet",
+          "role": "The fragile purple planet anchored at bottom-center; it cracks a little more each time an alien reaches it."
+        },
+        {
+          "object": "star",
+          "role": "A power-up dropped by special aliens. Fly through it to load one piercing Star Cannon shot that passes through everything in a line."
+        },
+        {
+          "object": "asteroid",
+          "role": "Unbreakable floating bumpers that deflect your shots and damage your rocket if you slam into them."
+        }
+      ],
+      "title": "Recoil Rocket",
+      "win": "Survive the full 90-second invasion. You see \"YOU SAVED THE PLANET!\""
+    },
+    {
+      "controls": "Left/Right or A/D: slide the rocket. Up/Down or W/S: tilt its nose to aim the bounce. Space: fire the thruster for a speed-boosting save.",
+      "core_mechanic": "The star is an unstoppable bouncing ball and the rocket is the paddle. Tilting the rocket changes the rebound angle on the fly, and a thruster blast can bump a falling star back up at the last instant — but it needs two seconds to recharge.",
+      "genre": "Breakout-like",
+      "juice": "The star leaves a twinkling trail and stretches into a comet at high speed, while the rocket squashes on every bounce. Asteroid breaks explode into gray chunks with a crunchy screen shake and score text like \"CRACKED! +100.\" Alien bonks flash \"BONK!\" and leave the alien spinning and dizzy. A planet hit shakes the whole screen and adds a visible crack. The title screen reads \"STAR BOUNCE\" with the star already bouncing around the letters.",
+      "lose": "The star slips past the rocket three times and cracks the planet apart. You see \"THE PLANET CRACKED APART.\"",
+      "palette": "classic bready: ripe tomato tartine // woven // sticky-full of dead-of-night bite",
+      "pitch": "Bounce one wild star off your rocket to smash the asteroid wall before the aliens behind it rebuild it. Guard the planet below you — every miss cracks it!",
+      "roles": [
+        {
+          "object": "rocket",
+          "role": "A sideways paddle sliding along the bottom, tilting and thrusting to steer the star."
+        },
+        {
+          "object": "alien",
+          "role": "A row of builders above the wall who slide around, dodge the star, and toss a fresh asteroid back into the wall every few seconds."
+        },
+        {
+          "object": "planet",
+          "role": "Your back wall below the rocket. It takes the hit whenever the star gets past you."
+        },
+        {
+          "object": "star",
+          "role": "The ball itself — fast, bouncy, and the only thing that can smash asteroids or bonk aliens."
+        },
+        {
+          "object": "asteroid",
+          "role": "The breakable brick wall packed across mid-screen that you must clear to reach the aliens."
+        }
+      ],
+      "title": "Star Bounce",
+      "win": "Clear all the asteroids and bonk each of the three aliens once. You see \"WALL DOWN! PLANET SAVED!\""
+    },
+    {
+      "controls": "Arrows/WASD: fly the rocket around the planet. Space: plant a star turret on a locked asteroid, or pick a grown turret back up.",
+      "core_mechanic": "Your defenses are built by ramming. Shove a drifting asteroid until it clicks into the glowing orbit ring around the planet, then plant a star on it to make an auto-firing turret. Big asteroids take a running start to move, and a turret only covers the lane it sits in, so you are always repositioning your wall.",
+      "genre": "Tower or base defense",
+      "juice": "Ramming makes the rocket's flame flare and the asteroid wobble before the satisfying orbit-lock snap, ring flash, and chime. Planted stars bloom open with a sparkle burst and pulse before each shot. Aliens pop in green splats, combo defenses print \"DOUBLE ZAP!\" and a planet hit triggers a red flash, big shake, and a new crack. The title screen shows \"PLANET ON THE RING\" slowly orbiting the planet.",
+      "lose": "Five aliens reach the planet and finish cracking it. You see \"THE RING HAS FALLEN.\"",
+      "palette": "fresh fruits: anise-like sweet-hooked // dive // craveable compote-like // pastel",
+      "pitch": "Ram drifting asteroids into orbit, plant stars on them, and turn the whole ring into a fortress around your planet. Hold the ring through five waves of aliens!",
+      "roles": [
+        {
+          "object": "rocket",
+          "role": "Your builder ship — it rams asteroids into place, carries stars, and can body-block one alien lane in an emergency."
+        },
+        {
+          "object": "alien",
+          "role": "Invaders floating in along four straight lanes toward the planet, in faster and tougher waves."
+        },
+        {
+          "object": "planet",
+          "role": "The planet at center-screen, circled by the orbit ring you are trying to fortify."
+        },
+        {
+          "object": "star",
+          "role": "A turret seed. Planted on a locked asteroid it blooms and auto-fires down its lane; you start with three and earn one after each wave."
+        },
+        {
+          "object": "asteroid",
+          "role": "Both building material and base — free ones drift uselessly until rammed into the orbit ring, where they become turret platforms that also block aliens."
+        }
+      ],
+      "title": "Planet on the Ring",
+      "win": "Hold out through all five waves, about two minutes. You see \"THE RING HELD! YOU WIN!\""
+    }
+  ],
+  "ms": 36630,
+  "usage": {
+    "completion_tokens": 3103,
+    "prompt_tokens": 1143,
+    "total_tokens": 4246,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1571
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  }
+}

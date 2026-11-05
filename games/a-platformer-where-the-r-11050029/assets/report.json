@@ -1,0 +1,108 @@
+{
+  "photo": {
+    "width": 1600,
+    "height": 1067
+  },
+  "timings_ms": {
+    "spark": 18245,
+    "sam:robot": 2111,
+    "sam:cloud": 4119,
+    "sam:key": 3177,
+    "sam:door": 2044,
+    "sam:hedgehog": 2509
+  },
+  "spark_usage": {
+    "completion_tokens": 2280,
+    "prompt_tokens": 2263,
+    "total_tokens": 4543,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2094
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 5
+    }
+  },
+  "sam_cost_usd": 0.0125,
+  "objects": [
+    {
+      "name": "robot",
+      "spark_box": [
+        450,
+        137,
+        710,
+        422
+      ],
+      "box": [
+        454,
+        137,
+        709,
+        421
+      ],
+      "parts": 8
+    },
+    {
+      "name": "cloud",
+      "spark_box": [
+        969,
+        138,
+        1375,
+        466
+      ],
+      "box": [
+        966,
+        142,
+        1341,
+        440
+      ],
+      "parts": 8
+    },
+    {
+      "name": "key",
+      "spark_box": [
+        333,
+        470,
+        514,
+        762
+      ],
+      "box": [
+        339,
+        449,
+        517,
+        732
+      ],
+      "parts": 8
+    },
+    {
+      "name": "door",
+      "spark_box": [
+        960,
+        493,
+        1230,
+        822
+      ],
+      "box": [
+        953,
+        471,
+        1210,
+        791
+      ],
+      "parts": 8
+    },
+    {
+      "name": "hedgehog",
+      "spark_box": [
+        602,
+        764,
+        892,
+        956
+      ],
+      "box": [
+        606,
+        745,
+        893,
+        930
+      ],
+      "parts": 8
+    }
+  ]
+}

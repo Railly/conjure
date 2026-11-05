@@ -1,0 +1,115 @@
+{
+  "concepts": [
+    {
+      "controls": "Arrows / WASD: Slide in that direction. R: Restart the level. Enter: Start, advance to the next level.",
+      "core_mechanic": "When you move, the penguin slides until stopped by an ice cube, an igloo wall, or the edge of an ice floe. Ice cubes slide too when you bump into them, so every move rearranges your own set of brakes and bumpers. Pale snowflakes are spin patches: anything that slides onto one turns 90 degrees clockwise and keeps going, letting you bend the penguin and cubes around corners you could never walk around.",
+      "genre": "Sokoban-like grid puzzle",
+      "juice": "The penguin stretches long while sliding and does a happy squash when it stops. Ice cubes leave frosty trails, spray snow particles on every impact, and make the screen give a tiny thud-shake when they slam into the igloo. Landing on a snowflake spins the sprite with a sparkle burst and a floating \"SPIN!\" pop-up, and reaching the fish triggers a confetti of orange scales, a big \"YUM!\" and the penguin's feet wiggling. Title screen: the drawings are scattered on one big ice floe with the words \"SLIDE & SUPPER\" in chunky letters, and the penguin quietly slides back and forth between a cube and the igloo.",
+      "lose": "You lose a level if the penguin slides off the floe into the water, or if every ice cube slides off or shatters, because then nothing can stop you before the edge. The game shows \"SPLASH!\" or \"OUT OF BRAKES!\" and restarts that level.",
+      "palette": "Non-applicable.",
+      "pitch": "You are a very slippery penguin who cannot walk on ice, only slide and hope something stops you before the water. Shove the ice cubes around, ride the spinning snowflakes, and line up one perfect glide that lands you right on the fish.",
+      "roles": [
+        {
+          "object": "cube",
+          "role": "Pushable sliding blocks. They are the only movable brakes in the game: you slide into one to stop, and it skids away until it hits something else. If a cube slides off the floe it is gone, and if it spins off a snowflake into an igloo it shatters, so careless pushes cost you your safety net."
+        },
+        {
+          "object": "fish",
+          "role": "The goal tile on each floe. You must come to a complete stop exactly on the fish to eat it and finish the level. Sliding past it does not count, which is the whole puzzle."
+        },
+        {
+          "object": "igloo",
+          "role": "Fixed, indestructible wall pieces. The igloo drawing is placed as rounded corner blocks and shelters that cubes and the penguin bounce off, forming the walls and dead ends of each puzzle."
+        },
+        {
+          "object": "penguin",
+          "role": "The player. It only ever slides in straight lines, waddling in place for a moment before each launch, and its whole body is animated squash-and-stretch so planning a route feels like lining up a bowling shot."
+        },
+        {
+          "object": "snowflake",
+          "role": "Spin tiles painted on the ice. When the penguin or a cube lands on one mid-slide, it rotates 90 degrees clockwise and keeps sliding in the new direction. Later levels chain two or three snowflakes so one push curls a cube all the way around an igloo."
+        }
+      ],
+      "title": "Slide & Supper",
+      "win": "Clear all five ice floes by stopping exactly on the fish each time. The final screen shows the penguin back at the igloo with a stack of fish and the words \"FULL BELLY. NICE SLIDING!\""
+    },
+    {
+      "controls": "Left / Right or A / D: Waddle along the bottom of the screen. Space: Belly-flop to give the bouncing cube a stronger, angled bounce. Enter: Start and relaunch after a miss.",
+      "core_mechanic": "Your ice cube is melting. Every bounce off the penguin shrinks it a little and speeds it up, and if it gets tiny it slips straight past you. Big blue snowflakes drift down through the playfield: steering the cube through one instantly refreezes it back to full size with a crackle of frost, but each refreeze makes the next melt faster. So you are constantly choosing between safe defensive bounces and risky shots up at the igloos to grab a snowflake before the cube dribbles away.",
+      "genre": "Breakout-like",
+      "juice": "The penguin squashes flat on each bounce and waddles with a little foot-slapping trail of snow dust. Cube impacts spray ice chips, the igloo flashes white and sheds chunky particles as it cracks, and every snowflake catch bursts into blue sparkles with a rising \"REFREEZE!\" and a combo counter for consecutive catches. Losing a cube triggers a sad slow-motion puddle and a small screen shake. Title screen: the huge igloo looms at the top with the fish peeking out of its door, the cube bouncing idly between the penguin's feet, under the words \"FREEZE POP.\"",
+      "lose": "You have three cubes. You lose one when it melts to a sliver or falls past the penguin, and the game ends when all three are gone, showing \"ALL MELTED!\" with the penguin sitting in a puddle.",
+      "palette": "Non-applicable.",
+      "pitch": "Your penguin bounces a melting ice cube with its belly to crack open the big igloo and free the fish trapped inside. Catch falling snowflakes with the cube to refreeze it, because a tiny cube is a lost cube.",
+      "roles": [
+        {
+          "object": "cube",
+          "role": "The breakout ball. A chunky square of ice that bounces around the screen, chipping the igloo with every hit. It visibly shrinks and speeds up as it melts and grows back with a frosty flash when it passes through a snowflake."
+        },
+        {
+          "object": "fish",
+          "role": "The prisoner. The fish is visible inside the igloo's doorway the whole game, tail-flapping for help. When the igloo finally breaks, the fish flops out and falls, and you must catch it on the penguin's belly to win, which is harder than it sounds because the leftover cube is still bouncing around."
+        },
+        {
+          "object": "igloo",
+          "role": "The breakable fortress at the top of the screen, drawn big and wide. It takes fifteen cube hits to crack open, passes through visible crack stages, and sheds a fresh ice shield you have to knock off each time it gets rebuilt, just as your cube is melting fastest."
+        },
+        {
+          "object": "penguin",
+          "role": "The paddle. It slides left and right along the bottom ice, bouncing the cube off its round belly. Pressing space at the moment of contact does a belly-flop that launches the cube faster and at a sharper angle for aimed shots."
+        },
+        {
+          "object": "snowflake",
+          "role": "Falling refreeze power-ups that drift down at an angle. Only the cube can use them: route the cube through a snowflake to restore its size. They get smaller and faster over time, so the shots that save you keep getting harder."
+        }
+      ],
+      "title": "Freeze Pop",
+      "win": "Crack the igloo open with fifteen cube hits, then catch the falling fish on the penguin's belly. The win screen reads \"FISH FREED! DINNER IS SERVED!\" as the penguin balances the fish on its head."
+    },
+    {
+      "controls": "Left / Right or A / D: Switch lanes. Up / Down or W / S: Hop the penguin closer to or further from the cube for a harder or softer shove. Space: Brace for impact. Enter: Start.",
+      "core_mechanic": "You never steer the penguin directly: you steer the ice cube plowing along just ahead of it, and the penguin slides into the back of the cube and knocks it sideways a half-second later, so every dodge is planned one beat early. Grazing snowflakes grows the cube stage by stage, and a big cube can smash clean through an igloo, showering ice everywhere, while a small cube just bounces off and takes you with it. Before each igloo you have to decide whether your cube is fat enough to smash it or whether you need to thread a gap and grab one more snowflake first.",
+      "genre": "Endless runner",
+      "juice": "The penguin leans hard into every lane change with a stretched body and a spray of powder snow, and the cube kicks up a constant glittering wake. Smashing an igloo is the showpiece: big screen shake, the whole drawing bursting into chunks and sparkles, and floating combo text that climbs \"SMASH x2\", \"SMASH x3\" for chained breaks. Grazing a snowflake without touching it pops up \"CLOSE! +GROW\" with a blue flash. Title screen: the three drawings race down the slope toward the camera, cube first, under the words \"PLOW GO\" and \"Press Enter. Try not to be the crumple zone.\"",
+      "lose": "If you hit an igloo with a cube that is too small to smash it, or clip the igloo yourself, the run ends in a tumble of snow with the words \"CRUMPLED!\" If you slide off the edge of the slope chasing a snowflake, it is \"OFF THE MOUNTAIN!\"",
+      "palette": "Non-applicable.",
+      "pitch": "Your penguin is tobogganing downhill behind a runaway ice cube, and the only steering you have is shoving that cube left and right before the penguin crashes into it. Grow the cube on snowflakes so it can smash through igloos instead of bouncing you off the mountain.",
+      "roles": [
+        {
+          "object": "cube",
+          "role": "Your plow and shield, always sliding one beat ahead of the penguin. It grows a size stage each time it grazes or collects a snowflake, shrinks one stage every time it smashes something, and its size decides whether an igloo is a smash or a crash."
+        },
+        {
+          "object": "fish",
+          "role": "The finish line. A giant fish frozen upright in a block of clear ice at the bottom of the slope, ninety seconds away. Smashing into it (gently, with any cube) ends the run in a feast."
+        },
+        {
+          "object": "igloo",
+          "role": "The gates. Igloos sit across the three-lane slope, sometimes covering one lane, sometimes two. A big cube smashes through them for combo points; a small cube and the penguin bounce off in a very silly crash."
+        },
+        {
+          "object": "penguin",
+          "role": "The rider. It follows the cube with a fixed delay, leaning, hopping and bracing on your inputs. Because it trails the cube, reading its swaying body tells you exactly when your last shove is about to land."
+        },
+        {
+          "object": "snowflake",
+          "role": "Growth pickups scattered in risky lines near the edges and right beside igloos. Each one the cube touches adds a size stage and a ring of frost particles, and taking the greedy line is usually what sets up the next smash."
+        }
+      ],
+      "title": "Plow Go",
+      "win": "Survive the ninety-second downhill slope and reach the frozen fish at the bottom. The win screen reads \"YOU MADE IT! FISH FEAST!\" with your smash combo shown underneath."
+    }
+  ],
+  "ms": 49221,
+  "usage": {
+    "completion_tokens": 4364,
+    "prompt_tokens": 1122,
+    "total_tokens": 5486,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1903
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  }
+}

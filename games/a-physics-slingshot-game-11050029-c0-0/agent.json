@@ -1,0 +1,11 @@
+{
+  "model": "muse-wonder-1.0",
+  "ms": 115573,
+  "turns": 36,
+  "usage": {
+    "input": 69606,
+    "cachedInput": 561168,
+    "output": 11303
+  },
+  "summary": "Knight Flight: Dragon Down! is a physics puzzle where you launch knights from a catapult, bounce them off a drifting trampoline cloud, and use a timed Shield Drop to smash the dragon's wobbly tower. Aim with Up/Down (or W/S), hold and release Space to launch, press Space in mid-air to Shield Drop, and press Enter to start or retry — knock the dragon to the ground within 5 knights to win the treasure."
+}

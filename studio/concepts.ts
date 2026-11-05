@@ -53,7 +53,7 @@ Rules:
 - Each has one surprising core mechanic that is fun in the first 10 seconds and gets harder over a minute. Not "collect items and avoid enemies".
 - Small enough to build and finish in one pass: one screen or one scrolling stretch, a minute or two of play, a clear win and a clear loss.
 - juice: the concrete effects that make it feel polished (particles on what events, screen shake when, squash and stretch, trails, combo text, title screen idea).
-- Write in Spanish with correct spelling and every accent (física, está, árbol) for title, pitch, controls, win, lose; keep the genre in English. Pitch: two sentences at most.`;
+- Write in natural US English for title, pitch, controls, win, lose, and every text shown in the game. Pitch: two sentences at most.`;
 	const t = performance.now();
 	// Structured output can come back filled with placeholders ("A", "B", one concept): check it, and ask again with
 	// more reasoning once before giving up.

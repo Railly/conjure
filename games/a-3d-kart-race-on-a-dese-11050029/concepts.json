@@ -1,0 +1,115 @@
+{
+  "concepts": [
+    {
+      "controls": "WASD or arrow keys to drive. Hold SPACE to boost, release to coast.",
+      "core_mechanic": "You don't just spend boost, you cook with it: holding SPACE burns collected sun energy for speed but steadily raises a big smiling SUN heat gauge over your kart. If the gauge fills, you overheat and spin out, but darting through the long shadows of palm-card billboards dumps heat fast and snaps your grip back on, so the fastest line is a desperate zig-zag between sun pickups and palm shade. Cacti are springy bumper cards — clip one and you bounce off with a speed kick and a new angle instead of crashing, letting you slingshot around corners if you aim the ricochet.",
+      "genre": "racing",
+      "juice": "Title screen is a huge checkered flag card flapping over the desert with 'SUNBURN SPEEDWAY' wobbling in the heat and 'Press ENTER to race!'. Sun pickups burst into yellow crayon sparks and a '+BOOST!' popup, boost leaves a shimmering orange trail, palm shade cools you with blue droplets and a soft 'ahhh' hiss visual puff, cactus hits squash the kart flat for three frames with a 'BOING!' and tiny screen shake, overheating makes the whole screen wobble red before a cartoon spin-out. Crossing each flag checkpoint throws confetti in black and white squares and flashes your split time.",
+      "lose": "Time runs out before the finish line, shown as 'OUT OF TIME! The sun wins this one.'",
+      "palette": "Hot sand tan, crayon red kart, black-and-white flag checks, palm green and cactus green pops, sun yellow and boost orange against a pale sky.",
+      "pitch": "A 3D kart sprint around one twisty desert lap where your own drawings line the track as giant wobbling cards. Grab suns to boost, but don't cook yourself — victory goes to the driver who surfs palm-tree shade at full throttle.",
+      "roles": [
+        {
+          "object": "car",
+          "role": "Your chunky red 3D kart seen from a low chase camera, with your drawing printed on its side panels and hood so it reads as the star from every angle."
+        },
+        {
+          "object": "flag",
+          "role": "Oversized checkered checkpoint arches and the finish gantry; driving under each one banks your time and waves wildly as you pass."
+        },
+        {
+          "object": "palm",
+          "role": "Tall alpha-cut palm cards lining the bends whose cast shadows are real cooling zones that vent your heat gauge and restore grip."
+        },
+        {
+          "object": "cactus",
+          "role": "Springy bumper obstacles at corner edges — hitting one bounces you back onto the racing line with bonus speed instead of stopping you."
+        },
+        {
+          "object": "sun",
+          "role": "Spinning collectible boost pickups on the track, and also the smiling heat gauge face that gets redder and sweatier as you over-boost."
+        }
+      ],
+      "title": "Sunburn Speedway",
+      "win": "Cross the finish flag before the 90-second clock ends, shown as 'YOU WIN! Desert champion!'"
+    },
+    {
+      "controls": "WASD to drive (your kart drifts and keeps its momentum). Arrow keys tap a quick dash in that direction. SPACE spends a sun for a big ram-dash.",
+      "core_mechanic": "You have no weapon — but you tow the checkered flag behind you on a rope, and it swings with real momentum as a wrecking ball. Wide drifts whip the flag around in huge arcs that smash cactus cards to pieces, tight turns tuck it uselessly behind you, and dashing stretches the rope so the flag flies even wider for one glorious sweep. Every cactus smashed drops a sun; grab a sun and your next dash automatically slingshots the flag a full 360 degrees around the kart. Palm trees are anchor posts: swing the flag around one and it wraps, shortens, and then uncoils with double snap speed.",
+      "genre": "top-down arena or twin-stick-feel (keyboard)",
+      "juice": "Title screen shows your kart doing slow donuts dragging the flag through the sand spelling 'FLAG WHIP ARENA' with 'Press ENTER to start!'. Cactus smashes explode into green crayon chunks and spines with a 'SMASH!' or 'DOUBLE SMASH!' combo popup, the flag leaves a checkered motion trail at full swing, wrapping a palm makes the rope creak-tighten with a vibrating line and leaf burst, sun-powered 360 spins ring the kart with yellow speed lines and shake the screen, and palm-canopy shade zones briefly slow the sun's burn clock with cool green sparkles.",
+      "lose": "The 75-second timer burns down before all cacti are smashed, shown as 'TIME'S UP! The cacti keep the arena.'",
+      "palette": "Warm top-down sand with dark palm shadows, bright red kart, black-and-white flag whipping over everything, vivid cactus green targets and glowing yellow suns.",
+      "pitch": "A top-down arena where your kart tows a checkered flag on a rope and wrecks cacti with pure swing physics. Drift wide, wrap palms, and let that flag fly.",
+      "roles": [
+        {
+          "object": "car",
+          "role": "Your drifty top-down kart with your drawing as the full top-facing sprite, tires kicking sand as it slides."
+        },
+        {
+          "object": "flag",
+          "role": "The hero weapon: a checkered flag on a tow rope trailing your kart, swinging, wrapping, and smashing with momentum you create by steering."
+        },
+        {
+          "object": "palm",
+          "role": "Solid anchor trees mid-arena that the flag rope wraps around for slingshot snaps, plus shady canopy circles that pause the timer's burn for a moment."
+        },
+        {
+          "object": "cactus",
+          "role": "The smash targets — spiky cards planted around the arena in trickier clusters each round, worth more when flattened by a fast flag tip."
+        },
+        {
+          "object": "sun",
+          "role": "Dropped by smashed cacti and burning down your timer in the corner as a smiling clock-face; collecting one powers a full 360-degree flag spin on your next dash."
+        }
+      ],
+      "title": "Flag Whip Arena",
+      "win": "Smash every cactus in the arena before time runs out, shown as 'YOU WIN! Every cactus flattened!'"
+    },
+    {
+      "controls": "Press SPACE exactly as your kart crosses a sun. Use the LEFT and RIGHT arrows (or A and D) to switch lanes for cacti and palm shade. ENTER starts.",
+      "core_mechanic": "Your kart drives itself down an endless-feeling desert straight — your only job is the beat. Suns scroll toward you in rhythm and tapping SPACE dead-on contact fires a boost hop; the twist is that every Perfect hit literally speeds up the music of the track, raising the tempo so suns, flag beat-bars, and cactus dodges all arrive faster, while a Miss drops the tempo and drains your combo. Palm trees mark hold-beats: stay in a palm's lane through its whole shadow to bank a cooling combo save, and checkered flags are bar lines where your accuracy gets judged in one big stamp.",
+      "genre": "rhythm or timing",
+      "juice": "Title screen pulses 'SUNBEAT GRAND PRIX' to a four-count with the sun drawing bouncing on every beat and 'Press ENTER on the beat!'. Perfect hits flash 'PERFECT!' in wobbling yellow letters with a sun-ray shockwave and tiny hop of the kart, Good hits puff 'GOOD!', misses splat a grey 'MISS...' and crack the combo counter, palm hold-beats stream green leaf particles as the shade fills, flag bar lines slam down a giant 'NICE BEAT!' or 'KEEP IT UP!' stamp with screen bounce, and a 16-combo makes the kart trail rainbow crayon streaks while the sun in the sky dances.",
+      "lose": "Your combo meter empties from missed beats and cactus hits, shown as 'OUT OF GAS! The beat got away.'",
+      "palette": "Sunset desert oranges fading to dusk purple over the run, yellow beat-suns glowing on the track, green palm silhouettes, stark black-and-white flag bar lines.",
+      "pitch": "A rhythm racer where your kart auto-drives a desert highway and suns are the notes — hit them on the beat to boost, and every perfect hit makes the whole race faster. Survive one full song at full tempo to take the flag.",
+      "roles": [
+        {
+          "object": "car",
+          "role": "Your auto-driving red kart sprite bouncing, hopping, and boost-streaking down a three-lane desert straight in time with the music."
+        },
+        {
+          "object": "flag",
+          "role": "Checkered bar-line gates that sweep down the track marking the end of each musical phrase and stamp your accuracy as you cross."
+        },
+        {
+          "object": "palm",
+          "role": "Hold-beat trees: park in their lane and ride their shadow for the full hold to refill your combo meter and earn a save."
+        },
+        {
+          "object": "cactus",
+          "role": "Off-beat hazards in a lane that thump your kart and break your combo unless you lane-swap away between beats."
+        },
+        {
+          "object": "sun",
+          "role": "The rhythm notes themselves — glowing suns placed on the beat down each lane that you tap SPACE on to boost, plus the sky sun that dances faster as tempo rises."
+        }
+      ],
+      "title": "Sunbeat Grand Prix",
+      "win": "Reach the final flag at the end of the 90-second track with your combo meter alive, shown as 'YOU WIN! You rode the sunbeat!'"
+    }
+  ],
+  "ms": 40494,
+  "usage": {
+    "completion_tokens": 3387,
+    "prompt_tokens": 1198,
+    "total_tokens": 4585,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1282
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  }
+}

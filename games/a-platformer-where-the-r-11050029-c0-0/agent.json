@@ -1,0 +1,11 @@
+{
+  "model": "muse-wonder-1.0",
+  "ms": 110400,
+  "turns": 43,
+  "usage": {
+    "input": 75475,
+    "cachedInput": 521384,
+    "output": 12677
+  },
+  "summary": "Bounce Bot: Cloud Key Quest is a crayon-sky platformer where a cheerful robot trampoline-bounces across drifting, sinking, occasionally popping clouds to grab the golden Key and unlock the far Door, dodging patrolling Hedgehogs with only 3 hearts. Play with Arrows or A/D to move and SPACE / Up to jump (hold for a higher bounce), starting with ENTER or SPACE."
+}

@@ -88,7 +88,7 @@ ${art}
 1. Write sim.ts in ONE Write call: the whole game, built on ./kit.ts (already in the directory, shown below). Start from the example below, which is a complete working game on the kit, and replace its mechanic with the concept's. Keep its structure: one Game state object, step(), render(), the scene flow (title, play, won, lost via sceneStep/endRun/overlay), state() with outcome and progress (0 to 1 toward winning).
 2. Implement the concept's juice with the kit: burst on every important event, shake on impacts, squash and stretch through drawSprite's sx/sy, floatText for feedback, sky plus layered shapes for a background with depth. Difficulty ramps over the minute. Winnable, but not by doing nothing or holding one key.
 3. Check, fixing only what fails: bunx tsc --noEmit -p . then ${VERIFY} (verdict must be "ok"), then node ${CLI} snap --frame 40 --out ${dir}/shot-title.png --json and node ${CLI} snap --frame 600 --mash 7 --out ${dir}/shot-play.png --json and Read both. Stop when they pass.
-4. Finish with two sentences in Spanish: what the game is and how to play.
+4. Finish with two sentences in English: what the game is and how to play. All in-game text is in English.
 
 Rules: changes only in step, render only reads, randomness only from the kit's rng in the state, dotframe/src/detmath for trig. Physics if needed: dotframe/src/physics (Body.parts from partsAt(sprite, height), stepBodies, Body.pushable, FIXED_STEP; y up there, flip when drawing). 3D concepts: createRenderer from dotframe/src/render in create(), draw.scene(renderer.draws(...)) before the HUD, drawings as UV cards with alphaCutoff. Bash runs single commands only, from: ${bashOk.join(" | ")}.
 

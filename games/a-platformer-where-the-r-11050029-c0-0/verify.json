@@ -1,0 +1,93 @@
+{
+  "slug": "a-platformer-where-the-r-11050029-c0-0",
+  "verdict": "ok",
+  "contract": {
+    "outcome": true,
+    "progress": true
+  },
+  "too_easy_by": [],
+  "search": {
+    "outcome": "won",
+    "frames": 540,
+    "progress": 1,
+    "inputs": 313
+  },
+  "budget": {
+    "max_frames": 7200,
+    "segment": 20,
+    "tries": 12
+  },
+  "policies": {
+    "idle": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.043164062499999996
+    },
+    "hold-right": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.043164062499999996
+    },
+    "hold-left": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.043164062499999996
+    },
+    "hold-right-jump": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.043164062499999996
+    },
+    "hold-everything": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.043164062499999996
+    },
+    "tap-action": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.043164062499999996
+    },
+    "mash-1": {
+      "outcome": "lost",
+      "frames": 1200,
+      "progress": 0.1890431573489713
+    },
+    "mash-2": {
+      "outcome": "lost",
+      "frames": 678,
+      "progress": 0.06802027978185989
+    },
+    "mash-3": {
+      "outcome": "lost",
+      "frames": 612,
+      "progress": 0.08459266407623266
+    },
+    "mash-4": {
+      "outcome": "lost",
+      "frames": 1295,
+      "progress": 0.13352314804477503
+    },
+    "mash-5": {
+      "outcome": "lost",
+      "frames": 782,
+      "progress": 0.0717588295101286
+    },
+    "mash-6": {
+      "outcome": "lost",
+      "frames": 916,
+      "progress": 0.09289300562042158
+    },
+    "mash-7": {
+      "outcome": "lost",
+      "frames": 471,
+      "progress": 0.09407750360823493
+    },
+    "mash-8": {
+      "outcome": "lost",
+      "frames": 539,
+      "progress": 0.16349897270562713
+    }
+  },
+  "advice": "Winnable, and no dumb policy wins."
+}

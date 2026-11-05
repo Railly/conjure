@@ -1,0 +1,108 @@
+{
+  "photo": {
+    "width": 1600,
+    "height": 1067
+  },
+  "timings_ms": {
+    "spark": 15735,
+    "sam:car": 3491,
+    "sam:flag": 1959,
+    "sam:palm": 2568,
+    "sam:cactus": 5714,
+    "sam:sun": 3195
+  },
+  "spark_usage": {
+    "completion_tokens": 1962,
+    "prompt_tokens": 2263,
+    "total_tokens": 4225,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1776
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 5
+    }
+  },
+  "sam_cost_usd": 0.0125,
+  "objects": [
+    {
+      "name": "car",
+      "spark_box": [
+        386,
+        200,
+        713,
+        385
+      ],
+      "box": [
+        379,
+        179,
+        714,
+        360
+      ],
+      "parts": 8
+    },
+    {
+      "name": "flag",
+      "spark_box": [
+        934,
+        164,
+        1286,
+        464
+      ],
+      "box": [
+        936,
+        139,
+        1288,
+        434
+      ],
+      "parts": 8
+    },
+    {
+      "name": "palm",
+      "spark_box": [
+        326,
+        472,
+        623,
+        844
+      ],
+      "box": [
+        329,
+        447,
+        622,
+        818
+      ],
+      "parts": 8
+    },
+    {
+      "name": "cactus",
+      "spark_box": [
+        670,
+        708,
+        936,
+        988
+      ],
+      "box": [
+        673,
+        689,
+        928,
+        989
+      ],
+      "parts": 8
+    },
+    {
+      "name": "sun",
+      "spark_box": [
+        964,
+        467,
+        1378,
+        791
+      ],
+      "box": [
+        957,
+        442,
+        1331,
+        791
+      ],
+      "parts": 8
+    }
+  ]
+}

@@ -1,5 +1,5 @@
-// Play a generated game in the browser, and change it while you play: type what you want ("que llueva", "el gato
-// vuela") and a Muse agent edits the game's code; the page swaps in the new sim and restores the running match, so
+// Play a generated game in the browser, and change it while you play: type what you want ("make it rain", "the cat
+// flies") and a Muse agent edits the game's code; the page swaps in the new sim and restores the running match, so
 // the game changes without starting over. Assets load over HTTP from the game directory, as in snap.
 //   bun --env-file=.env make/play.ts <slug> [--port 5180] [--model muse-spark-1.3]
 import { copyFileSync, mkdirSync, writeFileSync } from "node:fs";
@@ -32,7 +32,7 @@ const STEP = 1 / 60;
 const loadSim = async (v) => (await import(location.origin + "/sim.js?v=" + v)).default;
 let sim = await loadSim(0);
 const ui = document.createElement("div");
-ui.innerHTML = '<form id="f"><input id="t" placeholder="Cambia el juego mientras juegas: que llueva, el gato vuela..." autocomplete="off"><button id="u" type="button">Deshacer</button></form><div id="s"></div>';
+ui.innerHTML = '<form id="f"><input id="t" placeholder="Change the game while you play: make it rain, the cat flies..." autocomplete="off"><button id="u" type="button">Undo</button></form><div id="s"></div>';
 ui.style.cssText = "position:fixed;left:16px;right:16px;bottom:16px;font:15px system-ui;z-index:9";
 // ?embed=1: the Studio around this page has its own edit bar.
 if (new URLSearchParams(location.search).get("embed") === "1") ui.style.display = "none";
@@ -66,7 +66,7 @@ await run(sim.window, (p) => {
   events.onmessage = async (e) => {
     const m = JSON.parse(e.data);
     if (m.status) status(m.status);
-    if (m.version !== undefined) status((await swap(m.version)) ? m.done + " (la partida sigue)" : m.done + " (partida nueva: el estado cambio de forma)");
+    if (m.version !== undefined) status((await swap(m.version)) ? m.done + " (the match continues)" : m.done + " (new match: the game state changed shape)");
   };
   document.getElementById("f").onsubmit = async (e) => {
     e.preventDefault();
@@ -128,7 +128,7 @@ const SPRITE = `bun ${ROOT}/spike/v1-sprite.ts ${dir}/assets `;
 const historyFile = join(work, "history.json");
 const history: string[] = (await Bun.file(historyFile).exists()) ? await Bun.file(historyFile).json() : [];
 // Lean on purpose: every token here is waiting time for the player. The server checks the result itself.
-const editSystem = (text: string) => `You change a running dotframe game while someone plays it. The player asked: "${text}". Be fast: Read sim.ts, make the smallest edit that does it visibly right away, reply with one short sentence in Spanish saying what changed. Do not run checks; the server runs them.
+const editSystem = (text: string) => `You change a running dotframe game while someone plays it. The player asked: "${text}". Be fast: Read sim.ts, make the smallest edit that does it visibly right away, reply with one short sentence in English saying what changed. Do not run checks; the server runs them.
 
 Keep everything else: the drawings in assets/, the controls, the rules that still apply.${history.length ? ` The player already asked for, in order: ${history.map((h, i) => `${i + 1}. "${h}"`).join("; ")}. All of these must stay in effect; code that differs from the original game is these changes, never revert it.` : ""}
 
@@ -153,16 +153,16 @@ let busy = false;
 // Continues numbering after edits from an earlier session, so their undo copies are not overwritten.
 let edits = (await Array.fromAsync(new Bun.Glob("sim.*.ts").scan(work))).length;
 const edit = async (text: string) => {
-  if (busy) return send({ status: "Todavia estoy con el cambio anterior." });
+  if (busy) return send({ status: "Still working on the last change." });
   busy = true;
   edits++;
   copyFileSync(join(dir, "sim.ts"), join(work, `sim.${edits}.ts`));
-  send({ status: `Muse esta cambiando el juego: "${text}"...` });
+  send({ status: `Muse is changing the game: "${text}"...` });
   const started = performance.now();
   let cost = 0;
   const onTool = (name: string, input: unknown) => {
     const i = input as { file_path?: string; command?: string };
-    const what = i.command?.includes("v1-sprite.ts") ? "dibujando un sprite nuevo" : `${name} ${String(i.file_path ?? i.command ?? "").replace(`${dir}/`, "").slice(0, 50)}`;
+    const what = i.command?.includes("v1-sprite.ts") ? "drawing a new sprite" : `${name} ${String(i.file_path ?? i.command ?? "").replace(`${dir}/`, "").slice(0, 50)}`;
     send({ status: `Muse: ${what}` });
   };
   try {
@@ -171,7 +171,7 @@ const edit = async (text: string) => {
     let summary = run.summary;
     let failure = await check();
     if (failure) {
-      send({ status: "Muse: arreglando un error..." });
+      send({ status: "Muse: fixing a bug..." });
       const fix = await runAgent({ dir, model, system: editSystem(text), prompt: `Your edit for "${text}" broke the game: ${failure}. Fix it.`, bashOk: [SPRITE, "ls"], tag: `.play/edit-${edits}-fix`, onTool, effort });
       cost += costOf(fix);
       summary = fix.summary || summary;
@@ -183,12 +183,12 @@ const edit = async (text: string) => {
     writeFileSync(historyFile, JSON.stringify(history, null, 2));
     const secs = ((performance.now() - started) / 1000).toFixed(0);
     console.log(`edit ${edits} "${text}": ${secs}s, $${cost.toFixed(3)}`);
-    send({ version, done: `${summary.trim().split("\n").pop() ?? "Listo"} (${secs}s, $${cost.toFixed(3)})` });
+    send({ version, done: `${summary.trim().split("\n").pop() ?? "Done"} (${secs}s, $${cost.toFixed(3)})` });
   } catch (e) {
     copyFileSync(join(work, `sim.${edits}.ts`), join(dir, "sim.ts"));
     simJs = await build(join(dir, "sim.ts"));
     console.log(`edit ${edits} "${text}" failed: ${String(e).slice(0, 200)}`);
-    send({ status: `No pude aplicar el cambio, deje el juego como estaba: ${String(e).slice(0, 120)}` });
+    send({ status: `Couldn't apply the change, the game is unchanged: ${String(e).slice(0, 120)}` });
   } finally {
     busy = false;
   }
@@ -240,7 +240,7 @@ async function serve(req: Request): Promise<Response> {
       writeFileSync(historyFile, JSON.stringify(history, null, 2));
       simJs = await build(join(dir, "sim.ts"));
       version++;
-      send({ version, done: "Deshecho" });
+      send({ version, done: "Undone" });
       return new Response("ok");
     }
     // Only the game's own assets are served.

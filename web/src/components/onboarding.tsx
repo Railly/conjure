@@ -39,20 +39,20 @@ export function HackathonBadge() {
         role="tooltip"
         className="pointer-events-none absolute top-full left-1/2 z-50 mt-2 w-max max-w-[300px] -translate-x-1/2 rounded-md border border-line bg-raised px-2.5 py-1.5 text-[12px] leading-snug text-ink-2 opacity-0 shadow-[0_8px_24px_-12px_rgba(0,0,0,.25)] transition-opacity duration-150 group-hover:opacity-100 group-focus-within:opacity-100"
       >
-        Hecho para el Meta Global AI Developer Hackathon, organizado por Meta y Cerebral Valley
+        Made for the Meta Global AI Developer Hackathon, hosted by Meta and Cerebral Valley
       </span>
     </span>
   );
 }
 
 const STEPS = [
-  { n: 1, text: "Recorta tus dibujos", model: "Muse Spark + SAM 3.1" },
-  { n: 2, text: "Propone 3 juegos", model: "Muse Wonder" },
-  { n: 3, text: "3 agentes construyen en paralelo, gana el que pasa el playtester", model: "Muse Wonder" },
-  { n: 4, text: "Cámbialo mientras juegas", model: "Muse Spark + Muse Image" },
+  { n: 1, text: "Cuts out your drawings", model: "Muse Spark + SAM 3.1" },
+  { n: 2, text: "Pitches 3 games", model: "Muse Wonder" },
+  { n: 3, text: "3 agents build in parallel, the first to pass the playtester wins", model: "Muse Wonder" },
+  { n: 4, text: "Change it while you play", model: "Muse Spark + Muse Image" },
 ];
 
-/* "Cómo funciona" ghost button + popover. onTour replays the guided tour. */
+/* "How it works" ghost button + popover. onTour replays the guided tour. */
 export function HowItWorks({ onTour }: { onTour?: () => void }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -82,13 +82,13 @@ export function HowItWorks({ onTour }: { onTour?: () => void }) {
         aria-haspopup="dialog"
         className="inline-flex h-8 items-center rounded-md px-2.5 text-[13px] text-ink-2 transition-colors hover:bg-accent-soft/60 hover:text-ink"
       >
-        Cómo funciona
+        How it works
       </button>
       <AnimatePresence>
         {open && (
           <motion.div
             role="dialog"
-            aria-label="Cómo funciona"
+            aria-label="How it works"
             initial={{ opacity: 0, scale: reduce ? 1 : 0.97 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: reduce ? 1 : 0.97 }}
@@ -110,7 +110,7 @@ export function HowItWorks({ onTour }: { onTour?: () => void }) {
               ))}
             </ol>
             <div className="mx-1 mt-1 flex items-center justify-between gap-3 border-t border-line px-2 pt-2.5 pb-1.5">
-              <p className="font-mono text-[10.5px] leading-snug text-ink-3">Verificado por código, no por el modelo. Corre sobre <DotframeLink />.
+              <p className="font-mono text-[10.5px] leading-snug text-ink-3">Verified by code, not by the model. Runs on <DotframeLink />.
               </p>
               {onTour && (
                 <button
@@ -121,7 +121,7 @@ export function HowItWorks({ onTour }: { onTour?: () => void }) {
                   }}
                   className="shrink-0 rounded-md border border-line px-2 py-1 text-[11.5px] text-ink-2 transition-colors hover:border-line-2 hover:text-ink"
                 >
-                  Ver el tour
+                  Take the tour
                 </button>
               )}
             </div>
@@ -135,9 +135,9 @@ export function HowItWorks({ onTour }: { onTour?: () => void }) {
 type TourStep = { target: string; text: string; place: "below" | "above" | "left" };
 
 const TOUR: TourStep[] = [
-  { target: "composer", text: "Sube la foto de un dibujo o describe un juego", place: "below" },
-  { target: "gallery", text: "O abre un juego ya hecho", place: "below" },
-  { target: "how", text: "Así lo construyen los agentes", place: "below" },
+  { target: "composer", text: "Upload a photo of a drawing or describe a game", place: "below" },
+  { target: "gallery", text: "Or open a game that's already built", place: "below" },
+  { target: "how", text: "How the agents build it", place: "below" },
 ];
 
 /* Decides whether the tour auto-starts. Never on ?game= or ?demo=; ?tour=1 forces it. */
@@ -226,7 +226,7 @@ export function Tour({ open, onClose }: { open: boolean; onClose: () => void }) 
       {open && (
         <motion.div key="tour" className="fixed inset-0 z-[90]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={t} role="dialog" aria-label="Tour">
           {/* Backdrop click closes. The spotlight is drawn by the ring's outer shadow so the target stays crisp. */}
-          <button type="button" aria-label="Cerrar tour" onClick={onClose} className="absolute inset-0 cursor-default" />
+          <button type="button" aria-label="Close tour" onClick={onClose} className="absolute inset-0 cursor-default" />
           {/* Four dim panes around the target plus a 1px ring. Plain CSS transitions on purpose: one huge shadowed layer drops out in Chrome. */}
           {(() => {
             const r = rect ?? { top: innerHeight / 2, left: innerWidth / 2, width: 0, height: 0 };
@@ -254,17 +254,17 @@ export function Tour({ open, onClose }: { open: boolean; onClose: () => void }) 
           >
             <p className="text-[13.5px] leading-snug text-ink">{step.text}</p>
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-1.5" role="group" aria-label={`Paso ${i + 1} de ${TOUR.length}`}>
+              <div className="flex items-center gap-1.5" role="group" aria-label={`Step ${i + 1} of ${TOUR.length}`}>
                 {TOUR.map((s, k) => (
                   <span key={s.target} className={`size-1.5 rounded-full transition-colors duration-200 ${k === i ? "bg-accent" : "bg-line-2"}`} />
                 ))}
               </div>
               <div className="flex items-center gap-1">
                 <button type="button" onClick={onClose} className="h-7 rounded-md px-2 text-[12px] text-ink-3 transition-colors hover:text-ink">
-                  Saltar
+                  Skip
                 </button>
                 <button type="button" onClick={next} className="btn-primary h-7 rounded-md px-2.5 text-[12px] font-medium">
-                  {last ? "Listo" : "Siguiente"}
+                  {last ? "Done" : "Next"}
                 </button>
               </div>
             </div>

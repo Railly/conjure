@@ -1,0 +1,130 @@
+{"stage":"art","message":"Encontrando tus dibujos","t":1793838585799}
+{"stage":"art","message":"6 dibujos recortados","data":{"drawings":["guitar","note","drum","pair","tone","frog"]},"t":1793838623932}
+{"stage":"concepts","message":"Muse Wonder esta imaginando tres juegos","t":1793838623932}
+{"stage":"concepts","message":"Elige tu juego","data":{"concepts":[{"controls":"A/K for the guitar lane, S/L for the drum lane, Space to make the frog stomp on a glowing beat. Hit pairs with two lane keys at once. Enter starts.","core_mechanic":"You are not playing to an invisible metronome — you are playing to the frog. He bounces on the drum, and every note is only PERFECT if you hit it on the exact frame he lands. Chain perfects and he does a bigger and bigger dance combo; break the chain and he slips, reverses his bounce for 4 beats, and the next notes come in mirrored lanes.","genre":"rhythm or timing","juice":"Title screen: 'FROGGY FINALE — Press Enter, Feel The Beat!' with the frog bouncing on the big drum under the title. Perfect hits burst tiny stars off the note, squash the frog flat then stretch him tall, and pop floating text: 'PERFECT!', 'GREAT!', 'MISS...', 'COMBO x12!'. The guitar wobbles and sheds sparkles when its lane is hit, the drum booms with a ring shockwave and tiny screen shake on every frog landing. A 10-perfect streak trails rainbow notes behind the frog's feet.","lose":"Miss 8 notes total and the show stops: 'The Crowd Went Quiet...'","palette":"Warm stage browns and reds from the guitar and drum, black ink notes, and the bright green frog popping in the center spotlight.","pitch":"Hit the falling notes in time with the bouncing frog and he dances a full concert routine. Keep the combo alive through the whole song and he pulls off the big finale leap!","roles":[{"object":"guitar","role":"The left instrument lane — its neck is the track A/K notes slide down, and it strums and shakes on every hit."},{"object":"note","role":"The standard black note — a single quick tap on the guitar or drum lane."},{"object":"drum","role":"The right instrument lane and the frog's trampoline — he bounces on it to set the true beat, and S/L notes land on its head."},{"object":"pair","role":"The beamed double note — must be hit with one guitar key and one drum key at the same time."},{"object":"tone","role":"The second single note, drawn bigger and slower — a hold note: press and keep holding until its tail passes."},{"object":"frog","role":"The star dancer and living metronome in the center — his landing frame defines PERFECT timing, and he performs the dance your combo builds."}],"title":"Froggy Finale","win":"Survive to the end of the 90-second song: 'BRAVO! What A Dance!'"},{"controls":"Left/Right or A/D moves the frog-and-drum paddle, Space launches the note ball and does a drum bounce-boost, Enter starts.","core_mechanic":"Your paddle is a drum, so the ball does not just bounce — it bounces to a beat. A shrinking ring closes on the drum; bounce the note exactly when the ring snaps shut and it rockets upward with a power smash, bounce off-beat and it dribbles weakly. Smashing the guitar's strings in rhythm builds a solo meter that can shatter a whole string at once.","genre":"breakout-like","juice":"Title screen: 'DRUM BOUNCE JAM — Press Enter To Launch!' with the note ball already bouncing between the frog and the huge guitar. Each string snapped sprays brown splinters and a musical sparkle trail, the ball leaves a fading note ghost behind it, and the drum squash-bounces with a bass ring on every paddle hit. On-beat bounces flash 'ON THE BEAT!', off-beat shows 'Weak...', and a filled solo meter makes the screen pulse and the frog throw his arms wide for 'SOLO SMASH!'. Losing a ball drops the frog's smile and shakes the screen hard.","lose":"Lose all 3 note balls: 'Out Of Notes! The Jam Is Over.'","palette":"The pale guitar body fills the top of the screen against a dark stage, red drum at the bottom, black notes flying, green frog riding it all.","pitch":"Bounce a musical note off the frog's drum to snap every string on the giant guitar. Time your bounces to the beat ring and weak taps turn into string-shattering power shots!","roles":[{"object":"guitar","role":"The giant breakable wall at the top — its body is armored and its six strings are the rows of bricks you must snap."},{"object":"note","role":"The main ball — one bouncing black note you keep in play."},{"object":"drum","role":"The paddle itself — the frog sits on it, you slide it along the bottom, and its beat ring decides bounce power."},{"object":"pair","role":"A falling beamed-pair pickup — catch it and your ball splits into two notes for double damage until one is lost."},{"object":"tone","role":"A falling heavy tone pickup — catch it and the next bounce is a slow, armor-piercing smash that cracks the guitar body itself."},{"object":"frog","role":"The rider on the drum paddle — he leans, squashes, and celebrates, and his position is what you actually aim with."}],"title":"Drum Bounce Jam","win":"Snap all six strings and crack the guitar body open before losing your balls: 'You Broke The Guitar! Encore!'"},{"controls":"Arrows/WASD moves the frog conductor, A places a guitar tower, D places a drum tower on glowing pads, Space conducts — tap it exactly on the beat to make all towers fire. Enter starts.","core_mechanic":"Your towers are a band, and a band only plays when conducted. Guitar and drum towers sit silent until you tap Space on the beat as the frog lands — a perfect conduct fires every tower at once in a chord blast, an off-beat tap fires nothing and stumbles the frog. Place towers, then literally keep time to defend.","genre":"tower or base defense","juice":"Title screen: 'POND DEFENSE LIVE! — Press Enter To Take The Stage!' with the frog waving from his lily pad stage. Perfect conducts flash 'ON BEAT!' with a gold ring bursting from the frog, guitar towers spray brown string-spark particles, drum towers thump out red shockwaves with a mini screen shake. Notes pop into ink splats, pairs crack apart with a 'SPLIT!' pop, and leaks make the stage lights flicker and the frog wobble with 'OW!'. A held streak shows 'THE BAND IS ON FIRE! x8' as towers glow.","lose":"Let 10 notes reach the stage and the concert is ruined: 'The Stage Was Overrun!'","palette":"One pond-green screen with brown guitar towers, red drum towers, black ink enemies marching in, and the frog holding the lit center stage.","pitch":"Musical notes are marching on the frog's pond stage, and only his band can stop them. Build guitar and drum towers, then tap the beat to conduct them into firing — no beat, no shots!","roles":[{"object":"guitar","role":"The long-range tower — placed on pads, it strums single targets far down the lane with string shots."},{"object":"note","role":"The basic enemy — a fast black note marching down the path toward the stage."},{"object":"drum","role":"The splash tower — placed on pads, it booms a short-range drum blast that hits every enemy around it, but only on a conducted beat."},{"object":"pair","role":"The splitter enemy — a beamed pair that, when popped, breaks into one note and one tone that keep marching."},{"object":"tone","role":"The tank enemy — a big slow single note with lots of health that shrugs off guitar shots and needs drum blasts."},{"object":"frog","role":"The conductor and the base you defend — he stands on the center stage, you move him between pads to build, and his bounce shows the beat to conduct to."}],"title":"Pond Defense Live!","win":"Survive all 12 waves in about two minutes: 'CONCERT SAVED! The Pond Cheers!'"}],"ms":33954},"t":1793838657902}
+{"stage":"build","message":"Construyendo \"Froggy Finale\"","data":{"concept":{"controls":"A/K for the guitar lane, S/L for the drum lane, Space to make the frog stomp on a glowing beat. Hit pairs with two lane keys at once. Enter starts.","core_mechanic":"You are not playing to an invisible metronome — you are playing to the frog. He bounces on the drum, and every note is only PERFECT if you hit it on the exact frame he lands. Chain perfects and he does a bigger and bigger dance combo; break the chain and he slips, reverses his bounce for 4 beats, and the next notes come in mirrored lanes.","genre":"rhythm or timing","juice":"Title screen: 'FROGGY FINALE — Press Enter, Feel The Beat!' with the frog bouncing on the big drum under the title. Perfect hits burst tiny stars off the note, squash the frog flat then stretch him tall, and pop floating text: 'PERFECT!', 'GREAT!', 'MISS...', 'COMBO x12!'. The guitar wobbles and sheds sparkles when its lane is hit, the drum booms with a ring shockwave and tiny screen shake on every frog landing. A 10-perfect streak trails rainbow notes behind the frog's feet.","lose":"Miss 8 notes total and the show stops: 'The Crowd Went Quiet...'","palette":"Warm stage browns and reds from the guitar and drum, black ink notes, and the bright green frog popping in the center spotlight.","pitch":"Hit the falling notes in time with the bouncing frog and he dances a full concert routine. Keep the combo alive through the whole song and he pulls off the big finale leap!","roles":[{"object":"guitar","role":"The left instrument lane — its neck is the track A/K notes slide down, and it strums and shakes on every hit."},{"object":"note","role":"The standard black note — a single quick tap on the guitar or drum lane."},{"object":"drum","role":"The right instrument lane and the frog's trampoline — he bounces on it to set the true beat, and S/L notes land on its head."},{"object":"pair","role":"The beamed double note — must be hit with one guitar key and one drum key at the same time."},{"object":"tone","role":"The second single note, drawn bigger and slower — a hold note: press and keep holding until its tail passes."},{"object":"frog","role":"The star dancer and living metronome in the center — his landing frame defines PERFECT timing, and he performs the dance your combo builds."}],"title":"Froggy Finale","win":"Survive to the end of the 90-second song: 'BRAVO! What A Dance!'"}},"t":1793838676248}
+{"stage":"build","message":"3 construcciones en paralelo; gana la primera que pase los chequeos","t":1793838676258}
+{"stage":"code","message":"#2 Sandbox listo (112s)","data":{"attempt":1},"t":1793838788306}
+{"stage":"code","message":"#2 Muse Wonder empieza a construir","t":1793838793228,"data":{"attempt":1}}
+{"stage":"code","message":"#2 Bash","data":{"tool":"Bash","attempt":1},"t":1793838793228}
+{"stage":"code","message":"#2 Bash","data":{"tool":"Bash","attempt":1},"t":1793838797202}
+{"stage":"code","message":"#2 Bash","data":{"tool":"Bash","attempt":1},"t":1793838798720}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Write","attempt":1},"t":1793838854327}
+{"stage":"code","message":"#2 Compilando","data":{"tool":"Bash","attempt":1},"t":1793838856410}
+{"stage":"code","message":"#2 Compilando","data":{"tool":"Bash","attempt":1},"t":1793838858298}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793838862182}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838878552}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838880521}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838883019}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838886318}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793838889425}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793838893464}
+{"stage":"code","message":"#2 ToolSearch","data":{"tool":"ToolSearch","attempt":1},"t":1793838895265}
+{"stage":"code","message":"#2 Leyendo /vercel/sandbox/conjure/make/verify.ts","data":{"tool":"Read","attempt":1},"t":1793838897137}
+{"stage":"code","message":"#1 Sandbox listo (240s)","data":{"attempt":0},"t":1793838900343}
+{"stage":"code","message":"#3 Sandbox listo (227s)","data":{"attempt":2},"t":1793838902871}
+{"stage":"code","message":"#1 Muse Wonder empieza a construir","t":1793838903840,"data":{"attempt":0}}
+{"stage":"code","message":"#1 ToolSearch","data":{"tool":"ToolSearch","attempt":0},"t":1793838903840}
+{"stage":"code","message":"#1 Bash","data":{"tool":"Bash","attempt":0},"t":1793838906290}
+{"stage":"code","message":"#3 Muse Wonder empieza a construir","t":1793838906441,"data":{"attempt":2}}
+{"stage":"code","message":"#3 Bash","data":{"tool":"Bash","attempt":2},"t":1793838906441}
+{"stage":"code","message":"#3 Leyendo dotframe.json","data":{"tool":"Read","attempt":2},"t":1793838908432}
+{"stage":"code","message":"#1 Bash","data":{"tool":"Bash","attempt":0},"t":1793838909297}
+{"stage":"code","message":"#1 Bash","data":{"tool":"Bash","attempt":0},"t":1793838911163}
+{"stage":"code","message":"#1 Bash","data":{"tool":"Bash","attempt":0},"t":1793838912791}
+{"stage":"code","message":"#1 Bash","data":{"tool":"Bash","attempt":0},"t":1793838915243}
+{"stage":"code","message":"#1 Bash","data":{"tool":"Bash","attempt":0},"t":1793838917047}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838920155}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838922499}
+{"stage":"code","message":"#1 Bash","data":{"tool":"Bash","attempt":0},"t":1793838924282}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838924358}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838926240}
+{"stage":"code","message":"#1 Playtester probando el juego","data":{"tool":"Bash","attempt":0},"t":1793838927141}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838928290}
+{"stage":"code","message":"#1 Bash","data":{"tool":"Bash","attempt":0},"t":1793838930472}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838930635}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793838934049}
+{"stage":"code","message":"#2 Leyendo sim.ts","data":{"tool":"Read","attempt":1},"t":1793838945751}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838948393}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838951266}
+{"stage":"code","message":"#1 Leyendo assets/frog.png","data":{"tool":"Read","attempt":0},"t":1793838954980}
+{"stage":"code","message":"#1 Leyendo assets/guitar.png","data":{"tool":"Read","attempt":0},"t":1793838954980}
+{"stage":"code","message":"#1 Leyendo assets/drum.png","data":{"tool":"Read","attempt":0},"t":1793838955001}
+{"stage":"code","message":"#1 Leyendo assets/note.png","data":{"tool":"Read","attempt":0},"t":1793838955001}
+{"stage":"code","message":"#1 Leyendo assets/pair.png","data":{"tool":"Read","attempt":0},"t":1793838955001}
+{"stage":"code","message":"#1 Leyendo assets/tone.png","data":{"tool":"Read","attempt":0},"t":1793838955001}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838955071}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838957753}
+{"stage":"code","message":"#1 Leyendo assets/report.json","data":{"tool":"Read","attempt":0},"t":1793838959363}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793838959940}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838969560}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838971775}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Write","attempt":2},"t":1793838972802}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838974827}
+{"stage":"code","message":"#3 Compilando","data":{"tool":"Bash","attempt":2},"t":1793838975757}
+{"stage":"code","message":"#3 Compilando","data":{"tool":"Bash","attempt":2},"t":1793838978107}
+{"stage":"code","message":"#2 Bash","data":{"tool":"Bash","attempt":1},"t":1793838979106}
+{"stage":"code","message":"#3 Playtester probando el juego","data":{"tool":"Bash","attempt":2},"t":1793838981371}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838981468}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838983498}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838986803}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793838989646}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793838991470}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Write","attempt":0},"t":1793839002474}
+{"stage":"code","message":"#1 Compilando","data":{"tool":"Bash","attempt":0},"t":1793839004914}
+{"stage":"code","message":"#1 Playtester probando el juego","data":{"tool":"Bash","attempt":0},"t":1793839008370}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793839008622}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793839010994}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793839012789}
+{"stage":"code","message":"#3 ToolSearch","data":{"tool":"ToolSearch","attempt":2},"t":1793839012941}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793839014600}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793839016803}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793839016805}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793839016808}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793839016808}
+{"stage":"code","message":"#3 Playtester probando el juego","data":{"tool":"Bash","attempt":2},"t":1793839019063}
+{"stage":"code","message":"#1 ToolSearch","data":{"tool":"ToolSearch","attempt":0},"t":1793839026629}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793839027143}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793839029600}
+{"stage":"code","message":"#3 Playtester probando el juego","data":{"tool":"Bash","attempt":2},"t":1793839029815}
+{"stage":"code","message":"#2 Escribiendo sim.ts","data":{"tool":"Edit","attempt":1},"t":1793839031645}
+{"stage":"code","message":"#2 Playtester probando el juego","data":{"tool":"Bash","attempt":1},"t":1793839033300}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793839034265}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793839037363}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793839038243}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793839038243}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793839038243}
+{"stage":"code","message":"#2 Compilando","data":{"tool":"Bash","attempt":1},"t":1793839038978}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793839041039}
+{"stage":"code","message":"#3 Playtester probando el juego","data":{"tool":"Bash","attempt":2},"t":1793839041119}
+{"stage":"code","message":"#2 Mirando el juego (captura)","data":{"tool":"Bash","attempt":1},"t":1793839042975}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793839044846}
+{"stage":"code","message":"#3 Compilando","data":{"tool":"Bash","attempt":2},"t":1793839045004}
+{"stage":"code","message":"#1 Playtester probando el juego","data":{"tool":"Bash","attempt":0},"t":1793839047566}
+{"stage":"code","message":"#2 Mirando el juego (captura)","data":{"tool":"Bash","attempt":1},"t":1793839047629}
+{"stage":"code","message":"#2 Leyendo shot-title.png","data":{"tool":"Read","attempt":1},"t":1793839051558}
+{"stage":"code","message":"#2 Leyendo shot-play.png","data":{"tool":"Read","attempt":1},"t":1793839051558}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793839055657}
+{"stage":"check","message":"#2 Playtester independiente","t":1793839057705,"data":{"attempt":1}}
+{"stage":"code","message":"#1 Playtester probando el juego","data":{"tool":"Bash","attempt":0},"t":1793839058763}
+{"stage":"check","message":"#2 Playtester: ok","data":{"slug":"a-rhythm-game-where-you--11050029-c0-1","verdict":"ok","contract":{"outcome":true,"progress":true},"too_easy_by":[],"search":{"outcome":"won","frames":5420,"progress":1,"inputs":3241},"budget":{"max_frames":7200,"segment":20,"tries":12},"policies":{"idle":{"outcome":"playing","frames":7200,"progress":0},"hold-right":{"outcome":"playing","frames":7200,"progress":0},"hold-left":{"outcome":"playing","frames":7200,"progress":0},"hold-right-jump":{"outcome":"playing","frames":7200,"progress":0},"hold-everything":{"outcome":"playing","frames":7200,"progress":0},"tap-action":{"outcome":"lost","frames":666,"progress":0.05263703703703703},"mash-1":{"outcome":"won","frames":5436,"progress":1},"mash-2":{"outcome":"won","frames":5424,"progress":1},"mash-3":{"outcome":"won","frames":5424,"progress":1},"mash-4":{"outcome":"won","frames":5430,"progress":1},"mash-5":{"outcome":"won","frames":5430,"progress":1},"mash-6":{"outcome":"won","frames":5430,"progress":1},"mash-7":{"outcome":"won","frames":5430,"progress":1},"mash-8":{"outcome":"won","frames":5430,"progress":1}},"advice":"Winnable, and no dumb policy wins.","attempt":1},"t":1793839061078}
+{"stage":"code","message":"#3 Mirando el juego (captura)","data":{"tool":"Bash","attempt":2},"t":1793839068188}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793839069497}
+{"stage":"code","message":"#3 Mirando el juego (captura)","data":{"tool":"Bash","attempt":2},"t":1793839072151}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793839073005}
+{"stage":"code","message":"#3 Leyendo shot-title.png","data":{"tool":"Read","attempt":2},"t":1793839074789}
+{"stage":"code","message":"#3 Leyendo shot-play.png","data":{"tool":"Read","attempt":2},"t":1793839074795}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793839075920}
+{"stage":"code","message":"#1 Playtester probando el juego","data":{"tool":"Bash","attempt":0},"t":1793839078602}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793839082711}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793839082711}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793839082714}
+{"stage":"check","message":"#2 QA visual: ok · Muse Spark 1.3","data":{"ok":true,"issues":[],"minor":["Right-lane receptor hint 'S/L' is partially tucked behind the drum sprite, making the small on-stage label harder to read","Falling music note momentarily overlaps the top-right MISSES/PERFECTS HUD panel"],"model":"Muse Spark 1.3","ms":21716,"attempt":1},"t":1793839085778}
+{"stage":"done","message":"#2 Froggy Finale is a 90-second rhythm concert where the bouncing frog is your metronome — notes are PERFECT only when hit on the exact frame he lands on his drum, building dance combos, rainbow streaks, and the big finale leap, while a miss makes him slip and mirrors the lanes for 4 beats. Play with Enter to start, A/K for the guitar lane, S/L for the drum lane, both together for beamed pairs, hold the big notes, and press Space for glowing stomp beats — survive to \"BRAVO! What A Dance!\" without missing 8 notes or the crowd goes quiet.","data":{"verdict":"ok","cost":1.3091104,"ms":296250,"attempt":1},"t":1793839085778}
+{"stage":"code","message":"#3 Escribiendo sim.ts","data":{"tool":"Edit","attempt":2},"t":1793839086606}
+{"stage":"code","message":"#3 Compilando","data":{"tool":"Bash","attempt":2},"t":1793839089725}
+{"stage":"code","message":"#3 Mirando el juego (captura)","data":{"tool":"Bash","attempt":2},"t":1793839094842}
+{"stage":"code","message":"#1 Escribiendo sim.ts","data":{"tool":"Edit","attempt":0},"t":1793839098198}
+{"stage":"code","message":"#3 Leyendo shot-play.png","data":{"tool":"Read","attempt":2},"t":1793839100010}
+{"stage":"done","message":"Gano 1: ok","data":{"verdict":"ok","cost":1.3091104,"ms":424746},"t":1793839100994}
+{"stage":"play","message":"A jugar","data":{"url":"http://localhost:5205/"},"t":1793839102003}

@@ -1,0 +1,11 @@
+{
+  "model": "muse-wonder-1.0",
+  "ms": 132408,
+  "turns": 31,
+  "usage": {
+    "input": 74829,
+    "cachedInput": 427224,
+    "output": 15782
+  },
+  "summary": "Slide & Supper is a Sokoban-like sliding puzzle where a penguin can only glide across five ice floes, shoving ice cubes into place as brakes, riding spinning snowflakes around corners, and trying to stop exactly on each fish. Play with Arrows/WASD to slide, R to restart a floe, and Enter to start or advance — avoid splashing into the water or losing all your cubes!"
+}

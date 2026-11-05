@@ -1,0 +1,115 @@
+{
+  "concepts": [
+    {
+      "controls": "#robot-platformer-controls",
+      "core_mechanic": "You steer the Robot to jump between Clouds. The Clouds are solid platforms that sink, stretch, and snap back like soft trampolines. Grab the Key and the exit Door opens — in a whiffle-style mini platformer where timing and bouncing matter more than walking.",
+      "genre": "platformer",
+      "juice": "- Game feel: fast responsive jumps with coyote time, jump buffering, variable jump height, and a strongly eased landing squish that makes hopping between Clouds feel great.\n- Reward feedback: every safe landing kicks out a puff of cloud particles; grabbing the Key pops gold sparkles and a wobble; reaching the Door swings it open with a slow creak and a star burst.\n- Camera: camera-only scroll with slight lead — we look ahead in the direction the Robot is running so up-coming Hedgehogs and gaps are always readable.\n- Music & SFX: a cheerful waltz-like mini tune with music-box melody over soft arps; landing poofs, a hollow trampoline boing-pitched by combo size, a shimmery Key pickup chime, and a Hedgehog \"pop\" sting.\n- Visual: a flat crayon sky with big crayon stars and tiny gradient motes drifting behind; the Robot's crayon body, antennae balls, and circular eyes animate with squash-and-stretch and motion-trail afterimages.",
+      "lose": "You lose if the Robot falls off the bottom of the screen three times, or touches a Hedgehog twice — he pops into a cloud of screws, drops back to the last solid Cloud he stood on, and loses a heart. After the last heart, it's game over.",
+      "palette": "Soft crayon sky: pale blue background, white clouds with light blue outlines, golden yellow key, warm brown door, and the Robot's white-and-light-blue body with its red, pink, and yellow chest buttons.",
+      "pitch": "Bounce the Robot across drifting Clouds to grab the Key and unlock the Door — but watch out: Hedgehogs pop the Clouds right under your feet. Every landing feels like a tiny trampoline party, and every close call earns a poof of sparkles.",
+      "roles": [
+        {
+          "object": "Robot",
+          "role": "The player character — a cheerful crayon robot with antennae who runs, jumps, and squash-and-stretches between cloud platforms."
+        },
+        {
+          "object": "Cloud",
+          "role": "The platforms themselves — drifting, bouncy cloud trampolines the Robot hops between; they sink under his weight and wobble back into shape."
+        },
+        {
+          "object": "Key",
+          "role": "The goal item floating over a high cloud — grab it and the exit Door unlocks with a golden flash."
+        },
+        {
+          "object": "Door",
+          "role": "The exit door standing on the final cloud at the far end of the level — walk through it with the Key to win."
+        },
+        {
+          "object": "Hedgehog",
+          "role": "The hazard — spiky crayon hedgehogs patrolling certain clouds; touching one pops the Robot (and sometimes the cloud)."
+        }
+      ],
+      "title": "Bounce Bot: Cloud Key Quest",
+      "win": "You win when the Robot carries the Key to the Door on the far cloud and steps through it."
+    },
+    {
+      "controls": "#bouncing-platform-controls",
+      "core_mechanic": "Momentum Fling: the Robot trampoline-bounces across clouds, and every landing stores bounce — the longer you fall, the higher the next jump launches you, letting you fling over wide gaps, but a too-big bounce can overshoot tiny clouds. Thread your landing zones to chain just-right hops to the Key, then out to the Door.",
+      "genre": "platformer-variant",
+      "juice": "- Game feel: variable-height jumps, coyote time, jump buffering, and landings that compress the Robot into a cute pancake before springing back.\n- Reward feedback: landing puffs, a pitch-climbing boing, golden sparkles on Key grab, and the Door swinging open with a star-burst; near-misses trigger a squeaky 'Phew!' text pop.\n- Camera: smooth camera-only scroll ahead of the Robot toward the goal, so upcoming Clouds and Hedgehogs are always framed clearly.\n- Music & SFX: a bouncy toy-piano tune with pizzicato strings; boings pitch up with your jump height, a music-box twinkle for the Key, a squeaky Hedgehog pop, and a creaky Door swing.\n- Visual: flat crayon-sky gradient, crayon stars as UI accents, and motion-trail afterimages that show your arc over every gap.",
+      "lose": "You lose if the Robot touches a Hedgehog twice (pops into bolts and stars, back to the last solid Cloud) or falls below the scrolling screen three times.",
+      "palette": "Soft crayon pastels: pale blue sky, white clouds with light blue scribble outlines, golden yellow key, warm brown door, spiky brown hedgehogs, and the Robot's light blue body with red and yellow chest buttons.",
+      "pitch": "Bounce the Robot across drifting clouds to grab the Key and unlock the Door — but Hedgehogs pop the clouds, and the higher you fall, the wilder your next bounce gets. Keep your hops just right and ride the momentum all the way home.",
+      "roles": [
+        {
+          "object": "Robot",
+          "role": "The player character — a happy crayon robot who runs and jumps between cloud platforms, squashing and stretching with every bounce."
+        },
+        {
+          "object": "Cloud",
+          "role": "The platforms — soft, drifting trampolines that the Robot hops across; the higher he falls, the bigger the bounce they give back."
+        },
+        {
+          "object": "Key",
+          "role": "The goal item floating over a high cloud — touching it unlocks the Door with a golden twinkle."
+        },
+        {
+          "object": "Door",
+          "role": "The exit, standing on the final cloud — reach it after grabbing the Key to win."
+        },
+        {
+          "object": "Hedgehog",
+          "role": "The hazard — cute spiky hedgehogs patrolling some clouds; a touch pops the Robot back to the last safe cloud."
+        }
+      ],
+      "title": "Cloud Hop: Key Bot Bounce",
+      "win": "Grab the Key, then bounce to the far cloud and step through the Door."
+    },
+    {
+      "controls": "#robot-platform-controls",
+      "core_mechanic": "You run and jump the Robot between cloud platforms with weighted, bouncy physics — hold longer to bounce higher off each squishy cloud. The clouds slowly drift and bob, so every gap is a little timing puzzle, and Hedgehogs patrolling the clouds will pop off a heart on contact.",
+      "genre": "2D physics platformer",
+      "juice": "- Feel: variable jumps with coyote time and input buffering so landings always feel fair; the Robot squashes flat on landing and stretches on the bounce, with little dust-puff particles on every cloud touch.\n- Feedback: key pickup bursts gold sparkles and plays a bright chime; touching a Hedgehog pops a heart with a squeak and a quick screen flash; the Door swings open with a creak and a star burst when you arrive with the Key.\n- Camera: smooth camera-only scrolling with lookahead toward the direction of travel, keeping upcoming clouds and Hedgehogs in frame.\n- Music & SFX: a cheerful waltz-like mini tune on music-box piano with soft plucky bass; gentle boings pitched to bounce height, a shimmery key jingle, and a soft \"pop\" when hurt.\n- Visual: soft crayon-textured sky in pale blue with drifting gradient clouds behind; the Robot leaves faint motion trails when bouncing high, and the Key spins with a twinkle trail.",
+      "lose": "Touch a Hedgehog and you lose a heart and bounce back to the last solid cloud; lose all 3 hearts — or fall below the screen 3 times — and it's game over.",
+      "palette": "Crayon pastels: pale blue sky, white clouds with blue crayon outlines, golden-yellow key, warm brown door, brown spiky hedgehogs, and the light-blue-and-white Robot with red, pink, and yellow chest buttons.",
+      "pitch": "Bounce the Robot across drifting, squishy clouds to grab the Key and unlock the Door, dodging spiky Hedgehogs along the way. It's a cozy one-button-feel hop — timing your bounces is everything, and one bad landing sends you tumbling.",
+      "roles": [
+        {
+          "object": "Robot",
+          "role": "The player character — the cheerful crayon robot who runs and jumps between clouds, squashing and stretching with every bounce."
+        },
+        {
+          "object": "Cloud",
+          "role": "The platforms themselves: drifting, bobbing trampolines that squish under the Robot's feet and spring him onward."
+        },
+        {
+          "object": "Key",
+          "role": "The level goal item, floating above a high cloud — grab it to unlock the exit Door."
+        },
+        {
+          "object": "Door",
+          "role": "The exit at the far end of the course, locked until the Robot arrives carrying the Key."
+        },
+        {
+          "object": "Hedgehog",
+          "role": "The hazard — cute but spiky patrol enemies wandering back and forth on some clouds, costing a heart on contact."
+        }
+      ],
+      "title": "Bounce Bot: Cloud Key Quest",
+      "win": "Reach the Door at the end of the cloud course while carrying the Key."
+    }
+  ],
+  "ms": 70964,
+  "usage": {
+    "completion_tokens": 4612,
+    "prompt_tokens": 1131,
+    "total_tokens": 5743,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2592
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  }
+}

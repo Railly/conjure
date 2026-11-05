@@ -1,0 +1,11 @@
+{
+  "model": "muse-wonder-1.0",
+  "ms": 213108,
+  "turns": 91,
+  "usage": {
+    "input": 108153,
+    "cachedInput": 1529516,
+    "output": 22662
+  },
+  "summary": "Recoil Rocket is a 90-second space shooter where every shot blasts your rocket backwards, so you aim, dodge, and fly with the same cannon — bouncing blasts off indestructible asteroids into wobbling aliens, catching dropped stars, and keeping invaders away from the purple planet at the bottom. Play with Arrows/WASD to fire in that direction (and get kicked the opposite way), ricochet shots for bonus “PING!” points, fly through a star to load the piercing Star Cannon and fire it with Space, and survive the full invasion without letting three aliens hit the planet or crashing three times."
+}

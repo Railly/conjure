@@ -1,0 +1,11 @@
+{
+  "model": "muse-wonder-1.0",
+  "ms": 281116,
+  "turns": 81,
+  "usage": {
+    "input": 145849,
+    "cachedInput": 2336564,
+    "output": 22643
+  },
+  "summary": "Sunburn Speedway is a 3D desert kart sprint where your hand-drawn kart races a twisty lap lined with giant wobbling palm, cactus, flag, and sun cards — grabbing suns to boost while palm shade cools your overheating sun gauge. Drive with WASD or arrow keys, hold SPACE to boost (but dart through shade and bounce off cacti to avoid cooking), and cross the finish flag before the 90-second clock runs out."
+}

@@ -1,0 +1,162 @@
+{
+  "concept": {
+    "controls": "WASD or arrow keys to drive. Hold SPACE to boost, release to coast.",
+    "core_mechanic": "You don't just spend boost, you cook with it: holding SPACE burns collected sun energy for speed but steadily raises a big smiling SUN heat gauge over your kart. If the gauge fills, you overheat and spin out, but darting through the long shadows of palm-card billboards dumps heat fast and snaps your grip back on, so the fastest line is a desperate zig-zag between sun pickups and palm shade. Cacti are springy bumper cards — clip one and you bounce off with a speed kick and a new angle instead of crashing, letting you slingshot around corners if you aim the ricochet.",
+    "genre": "racing",
+    "juice": "Title screen is a huge checkered flag card flapping over the desert with 'SUNBURN SPEEDWAY' wobbling in the heat and 'Press ENTER to race!'. Sun pickups burst into yellow crayon sparks and a '+BOOST!' popup, boost leaves a shimmering orange trail, palm shade cools you with blue droplets and a soft 'ahhh' hiss visual puff, cactus hits squash the kart flat for three frames with a 'BOING!' and tiny screen shake, overheating makes the whole screen wobble red before a cartoon spin-out. Crossing each flag checkpoint throws confetti in black and white squares and flashes your split time.",
+    "lose": "Time runs out before the finish line, shown as 'OUT OF TIME! The sun wins this one.'",
+    "palette": "Hot sand tan, crayon red kart, black-and-white flag checks, palm green and cactus green pops, sun yellow and boost orange against a pale sky.",
+    "pitch": "A 3D kart sprint around one twisty desert lap where your own drawings line the track as giant wobbling cards. Grab suns to boost, but don't cook yourself — victory goes to the driver who surfs palm-tree shade at full throttle.",
+    "roles": [
+      {
+        "object": "car",
+        "role": "Your chunky red 3D kart seen from a low chase camera, with your drawing printed on its side panels and hood so it reads as the star from every angle."
+      },
+      {
+        "object": "flag",
+        "role": "Oversized checkered checkpoint arches and the finish gantry; driving under each one banks your time and waves wildly as you pass."
+      },
+      {
+        "object": "palm",
+        "role": "Tall alpha-cut palm cards lining the bends whose cast shadows are real cooling zones that vent your heat gauge and restore grip."
+      },
+      {
+        "object": "cactus",
+        "role": "Springy bumper obstacles at corner edges — hitting one bounces you back onto the racing line with bonus speed instead of stopping you."
+      },
+      {
+        "object": "sun",
+        "role": "Spinning collectible boost pickups on the track, and also the smiling heat gauge face that gets redder and sweatier as you over-boost."
+      }
+    ],
+    "title": "Sunburn Speedway",
+    "win": "Cross the finish flag before the 90-second clock ends, shown as 'YOU WIN! Desert champion!'"
+  },
+  "verdict": "ok",
+  "playtest": {
+    "slug": "a-3d-kart-race-on-a-dese-11050029-c0-0",
+    "verdict": "ok",
+    "contract": {
+      "outcome": true,
+      "progress": true
+    },
+    "too_easy_by": [],
+    "search": {
+      "outcome": "won",
+      "frames": 2600,
+      "progress": 0.997546184682233,
+      "inputs": 1549
+    },
+    "budget": {
+      "max_frames": 7200,
+      "segment": 20,
+      "tries": 12
+    },
+    "policies": {
+      "idle": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0.0019199709840792677
+      },
+      "hold-right": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0.0019199709840792677
+      },
+      "hold-left": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0.0019199709840792677
+      },
+      "hold-right-jump": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0.0019199709840792677
+      },
+      "hold-everything": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0.0019199709840792677
+      },
+      "tap-action": {
+        "outcome": "lost",
+        "frames": 5420,
+        "progress": 0.07281046141840633
+      },
+      "mash-1": {
+        "outcome": "lost",
+        "frames": 5448,
+        "progress": 0.24540053705302659
+      },
+      "mash-2": {
+        "outcome": "lost",
+        "frames": 5676,
+        "progress": 0.27022104977686434
+      },
+      "mash-3": {
+        "outcome": "lost",
+        "frames": 5688,
+        "progress": 0.28959051728798324
+      },
+      "mash-4": {
+        "outcome": "lost",
+        "frames": 5706,
+        "progress": 0.28514799370327976
+      },
+      "mash-5": {
+        "outcome": "lost",
+        "frames": 5436,
+        "progress": 0.15863312362285076
+      },
+      "mash-6": {
+        "outcome": "lost",
+        "frames": 5712,
+        "progress": 0.26748044149134176
+      },
+      "mash-7": {
+        "outcome": "lost",
+        "frames": 5454,
+        "progress": 0.235883759026355
+      },
+      "mash-8": {
+        "outcome": "lost",
+        "frames": 5424,
+        "progress": 0.15365377222656512
+      }
+    },
+    "advice": "Winnable, and no dumb policy wins."
+  },
+  "qa": {
+    "ok": true,
+    "issues": [],
+    "minor": [],
+    "model": "Muse Spark 1.3",
+    "ms": 14459
+  },
+  "cost_usd": 1.6681,
+  "ms": 389757,
+  "runs": [
+    {
+      "model": "muse-wonder-1.0",
+      "ms": 281116,
+      "turns": 81,
+      "usage": {
+        "input": 145849,
+        "cachedInput": 2336564,
+        "output": 22643
+      },
+      "summary": "Sunburn Speedway is a 3D desert kart sprint where your hand-drawn kart races a twisty lap lined with giant wobbling palm, cactus, flag, and sun cards — grabbing suns to boost while palm shade cools your overheating sun gauge. Drive with WASD or arrow keys, hold SPACE to boost (but dart through shade and bounce off cacti to avoid cooking), and cross the finish flag before the 90-second clock runs out."
+    },
+    {
+      "model": "muse-spark-1.3",
+      "ms": 70465,
+      "turns": 25,
+      "usage": {
+        "input": 72923,
+        "cachedInput": 362444,
+        "output": 4478
+      },
+      "summary": "Sunburn Speedway is a 3D desert kart sprint where you grab sun pickups, hold SPACE to cook boost power, and zig-zag through palm shade to vent heat before you spin out.\n\nDrive with WASD or arrows, bounce cacti for speed, hit every checkpoint, and cross the finish before the 90-second clock ends."
+    }
+  ]
+}

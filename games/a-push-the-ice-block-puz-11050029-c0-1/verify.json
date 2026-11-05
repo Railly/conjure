@@ -1,0 +1,93 @@
+{
+  "slug": "a-push-the-ice-block-puz-11050029-c0-1",
+  "verdict": "ok",
+  "contract": {
+    "outcome": true,
+    "progress": true
+  },
+  "too_easy_by": [],
+  "search": {
+    "outcome": "won",
+    "frames": 1300,
+    "progress": 1,
+    "inputs": 769
+  },
+  "budget": {
+    "max_frames": 7200,
+    "segment": 20,
+    "tries": 12
+  },
+  "policies": {
+    "idle": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-right": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-left": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-right-jump": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-everything": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "tap-action": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "mash-1": {
+      "outcome": "lost",
+      "frames": 65,
+      "progress": 0
+    },
+    "mash-2": {
+      "outcome": "lost",
+      "frames": 187,
+      "progress": 0.2
+    },
+    "mash-3": {
+      "outcome": "lost",
+      "frames": 199,
+      "progress": 0.2
+    },
+    "mash-4": {
+      "outcome": "lost",
+      "frames": 89,
+      "progress": 0
+    },
+    "mash-5": {
+      "outcome": "lost",
+      "frames": 59,
+      "progress": 0
+    },
+    "mash-6": {
+      "outcome": "lost",
+      "frames": 221,
+      "progress": 0.2
+    },
+    "mash-7": {
+      "outcome": "lost",
+      "frames": 77,
+      "progress": 0
+    },
+    "mash-8": {
+      "outcome": "lost",
+      "frames": 41,
+      "progress": 0
+    }
+  },
+  "advice": "Winnable, and no dumb policy wins."
+}

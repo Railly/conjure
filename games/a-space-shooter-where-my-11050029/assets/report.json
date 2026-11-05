@@ -1,0 +1,108 @@
+{
+  "photo": {
+    "width": 1600,
+    "height": 1067
+  },
+  "timings_ms": {
+    "spark": 13718,
+    "sam:rocket": 3671,
+    "sam:alien": 3232,
+    "sam:planet": 3028,
+    "sam:star": 3049,
+    "sam:asteroid": 3724
+  },
+  "spark_usage": {
+    "completion_tokens": 1623,
+    "prompt_tokens": 2263,
+    "total_tokens": 3886,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1435
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  },
+  "sam_cost_usd": 0.0125,
+  "objects": [
+    {
+      "name": "rocket",
+      "spark_box": [
+        261,
+        208,
+        500,
+        643
+      ],
+      "box": [
+        261,
+        182,
+        506,
+        617
+      ],
+      "parts": 8
+    },
+    {
+      "name": "alien",
+      "spark_box": [
+        488,
+        462,
+        756,
+        846
+      ],
+      "box": [
+        489,
+        437,
+        754,
+        818
+      ],
+      "parts": 8
+    },
+    {
+      "name": "planet",
+      "spark_box": [
+        769,
+        310,
+        1078,
+        483
+      ],
+      "box": [
+        747,
+        298,
+        1057,
+        458
+      ],
+      "parts": 8
+    },
+    {
+      "name": "star",
+      "spark_box": [
+        1049,
+        377,
+        1330,
+        624
+      ],
+      "box": [
+        1054,
+        351,
+        1297,
+        597
+      ],
+      "parts": 8
+    },
+    {
+      "name": "asteroid",
+      "spark_box": [
+        1091,
+        669,
+        1399,
+        937
+      ],
+      "box": [
+        1068,
+        643,
+        1367,
+        913
+      ],
+      "parts": 8
+    }
+  ]
+}

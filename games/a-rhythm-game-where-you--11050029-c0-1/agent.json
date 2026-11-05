@@ -1,0 +1,11 @@
+{
+  "model": "muse-wonder-1.0",
+  "ms": 268183,
+  "turns": 77,
+  "usage": {
+    "input": 111086,
+    "cachedInput": 1849432,
+    "output": 24744
+  },
+  "summary": "Froggy Finale is a 90-second rhythm concert where the bouncing frog is your metronome — notes are PERFECT only when hit on the exact frame he lands on his drum, building dance combos, rainbow streaks, and the big finale leap, while a miss makes him slip and mirrors the lanes for 4 beats. Play with Enter to start, A/K for the guitar lane, S/L for the drum lane, both together for beamed pairs, hold the big notes, and press Space for glowing stomp beats — survive to \"BRAVO! What A Dance!\" without missing 8 notes or the crowd goes quiet."
+}

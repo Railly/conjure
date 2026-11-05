@@ -58,30 +58,30 @@ interface GameCard {
 type Phase = "idle" | "cutting" | "choosing" | "building" | "playing";
 
 const GENRE_LABEL: Record<string, string> = {
-  "physics puzzle": "Puzzle de física",
-  racing: "Carreras",
-  "rhythm or timing": "Ritmo",
+  "physics puzzle": "Physics puzzle",
+  racing: "Racing",
+  "rhythm or timing": "Rhythm",
   "endless runner": "Runner",
   "shoot 'em up": "Shoot 'em up",
-  "sokoban-like grid puzzle": "Puzzle de grilla",
-  "tower or base defense": "Defensa",
-  stealth: "Sigilo",
+  "sokoban-like grid puzzle": "Grid puzzle",
+  "tower or base defense": "Defense",
+  stealth: "Stealth",
   "breakout-like": "Breakout",
-  sports: "Deportes",
-  survival: "Supervivencia",
-  "3d explorer or 3d arena": "Aventura 3D",
-  "3d explorer": "Aventura 3D",
-  "3d arena": "Arena 3D",
-  platformer: "Plataformas",
+  sports: "Sports",
+  survival: "Survival",
+  "3d explorer or 3d arena": "3D adventure",
+  "3d explorer": "3D adventure",
+  "3d arena": "3D arena",
+  platformer: "Platformer",
   puzzle: "Puzzle",
-  "top-down adventure": "Aventura",
+  "top-down adventure": "Adventure",
 };
-const genreLabel = (g: string) => GENRE_LABEL[g.toLowerCase()] ?? (/3d/i.test(g) ? "Juego 3D" : g.split(/ or |,/)[0]!.trim().replace(/^./, (c) => c.toUpperCase()));
+const genreLabel = (g: string) => GENRE_LABEL[g.toLowerCase()] ?? (/3d/i.test(g) ? "3D game" : g.split(/ or |,/)[0]!.trim().replace(/^./, (c) => c.toUpperCase()));
 
 const SUGGESTIONS = [
-  { text: "Un pingüino que empuja hielo", Icon: Snowflake },
-  { text: "Un gato que junta soles", Icon: Cat },
-  { text: "Carrera de autos de cartón", Icon: Car },
+  { text: "A penguin pushing ice", Icon: Snowflake },
+  { text: "A cat collecting suns", Icon: Cat },
+  { text: "Cardboard car race", Icon: Car },
 ];
 const thumbOf = (g: GameCard) => (g.photo ? `/api/asset?slug=${g.slug}&n=photo-input` : g.cover ? `/api/asset?slug=${g.slug}&n=${encodeURIComponent(g.cover)}` : null);
 
@@ -132,7 +132,7 @@ export function Studio() {
       setDemo(true);
       setSlug("demo");
       setPreview(new URLSearchParams(location.search).get("photo"));
-      setEvents([{ stage: "art", message: "Encontrando tus dibujos", t: 1_000 }]);
+      setEvents([{ stage: "art", message: "Finding your drawings", t: 1_000 }]);
       setPhase("cutting");
       return;
     }
@@ -231,7 +231,7 @@ export function Studio() {
   const t0 = events[0]?.t ?? 0;
   const last = events.at(-1);
   const concept = chosen >= 0 ? (concepts[chosen] ?? null) : null;
-  const title = concept?.title ?? (phase === "idle" ? "" : "Nuevo juego");
+  const title = concept?.title ?? (phase === "idle" ? "" : "New game");
 
   // The preview toolbar.
   const [frameKey, setFrameKey] = useState(0);
@@ -280,7 +280,7 @@ export function Studio() {
           {phase !== "idle" && (
             <a href="/" className="btn-primary inline-flex h-8 items-center gap-1.5 rounded-md pr-3 pl-2.5 text-[13px] font-medium">
               <Plus className="size-4" strokeWidth={2.25} />
-              Nuevo
+              New
             </a>
           )}
           <HowItWorks onTour={phase === "idle" ? tour.start : undefined} />
@@ -294,10 +294,10 @@ export function Studio() {
           <motion.main key="hero" exit={{ opacity: 0 }} transition={{ duration: 0.15 }} className="flex flex-1 flex-col items-center px-6 pb-20">
             <section className="flex w-full flex-col items-center pt-[10vh]">
               <motion.h1 initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }} className="text-center text-[clamp(36px,3.3vw,48px)] font-semibold leading-[1.05] tracking-[-0.035em] text-balance">
-                ¿Qué quieres jugar?
+                What do you want to play?
               </motion.h1>
               <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.05, duration: 0.3 }} className="mt-3 text-center text-[14px] text-ink-2 text-balance">
-                Para chicos que dibujan. Cambia el juego hablando, cada cambio se verifica.
+                For kids who draw. Change the game by asking, and every change gets checked.
               </motion.p>
 
               <motion.div
@@ -327,8 +327,8 @@ export function Studio() {
                     }
                   }}
                   rows={3}
-                  placeholder={preview ? "Opcional: cómo te lo imaginas" : "Sube tu dibujo o describe un juego…"}
-                  aria-label="Describe tu juego"
+                  placeholder={preview ? "Optional: how you picture it" : "Upload a drawing or describe a game…"}
+                  aria-label="Describe your game"
                   className="min-h-[76px] w-full resize-none bg-transparent px-2 pt-1.5 text-[15px] leading-snug text-ink outline-none placeholder:text-ink-3 focus-visible:outline-none"
                 />
                 <input ref={fileRef} type="file" accept="image/*" hidden onChange={(e) => pick(e.target.files?.[0])} />
@@ -338,22 +338,22 @@ export function Studio() {
                       type="button"
                       onClick={() => fileRef.current?.click()}
                       className="inline-flex h-8 items-center gap-1.5 overflow-hidden rounded-lg border border-line px-2.5 text-[13px] text-ink-2 transition-colors hover:border-line-2 hover:text-ink"
-                      aria-label="Subir la foto de tu dibujo"
-                      title="Subir la foto de tu dibujo"
+                      aria-label="Upload a photo of your drawing"
+                      title="Upload a photo of your drawing"
                     >
                       {preview ? (
                         // biome-ignore lint/performance/noImgElement: local object URL preview
-                        <img src={preview} alt="Tu dibujo" className="size-5 rounded-sm object-cover" />
+                        <img src={preview} alt="Your drawing" className="size-5 rounded-sm object-cover" />
                       ) : (
                         <ImagePlus className="size-4" strokeWidth={1.75} />
                       )}
-                      Foto
+                      Photo
                     </button>
                     <span className="inline-flex h-8 items-center rounded-lg px-2 font-mono text-[11px] text-ink-3">
                       <Models text="Muse Wonder · dotframe" />
                     </span>
                   </div>
-                  <button type="button" onClick={start} disabled={!photo && !idea.trim()} className="btn-primary inline-flex size-8 items-center justify-center rounded-lg disabled:pointer-events-none disabled:opacity-40" aria-label="Conjurar">
+                  <button type="button" onClick={start} disabled={!photo && !idea.trim()} className="btn-primary inline-flex size-8 items-center justify-center rounded-lg disabled:pointer-events-none disabled:opacity-40" aria-label="Conjure">
                     <ArrowUp className="size-4" strokeWidth={2.5} />
                   </button>
                 </div>
@@ -371,7 +371,7 @@ export function Studio() {
 
             {gallery.length > 0 && (
               <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} className="mt-14 w-full max-w-[1100px]">
-                <h2 data-tour="gallery" className="mb-4 inline-block text-[15px] font-medium tracking-[-0.01em]">Hechos con Conjure</h2>
+                <h2 data-tour="gallery" className="mb-4 inline-block text-[15px] font-medium tracking-[-0.01em]">Made with Conjure</h2>
                 <div className="grid grid-cols-1 gap-x-5 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
                   {gallery.map((g) => (
                     <a key={g.slug} href={`/?game=${g.slug}`} className="group block">
@@ -383,7 +383,7 @@ export function Studio() {
                         <GameThumb game={g} className="size-7 shrink-0 rounded-full border border-line bg-surface object-cover" />
                         <div className="min-w-0">
                           <p className="truncate text-[13px] font-medium tracking-[-0.01em]">{g.title}</p>
-                          <p className="truncate font-mono text-[10.5px] text-ink-3">{genreLabel(g.genre || "juego")}</p>
+                          <p className="truncate font-mono text-[10.5px] text-ink-3">{genreLabel(g.genre || "game")}</p>
                         </div>
                       </div>
                     </a>
@@ -416,23 +416,23 @@ export function Studio() {
                 <div className="flex min-w-0 items-center gap-2.5">
                   <span className={`size-2 shrink-0 rounded-full ${phase === "playing" ? "bg-leaf" : "bg-accent animate-pulse"}`} />
                   <span className="truncate text-[13px] font-medium tracking-[-0.01em]">{title}</span>
-                  <span className="shrink-0 font-mono text-[10.5px] text-ink-3">{phase === "playing" ? "Jugando" : phase === "choosing" ? "Eligiendo" : "Construyendo"}</span>
+                  <span className="shrink-0 font-mono text-[10.5px] text-ink-3">{phase === "playing" ? "Playing" : phase === "choosing" ? "Choosing" : "Building"}</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <ToolButton label="Reiniciar" onClick={() => setFrameKey((k) => k + 1)} disabled={!playUrl}>
+                  <ToolButton label="Restart" onClick={() => setFrameKey((k) => k + 1)} disabled={!playUrl}>
                     <RotateCcw className="size-[15px]" strokeWidth={1.75} />
                   </ToolButton>
-                  <ToolButton label="Pantalla completa" onClick={() => stageRef.current?.requestFullscreen?.()} disabled={!playUrl}>
+                  <ToolButton label="Full screen" onClick={() => stageRef.current?.requestFullscreen?.()} disabled={!playUrl}>
                     <Maximize2 className="size-[15px]" strokeWidth={1.75} />
                   </ToolButton>
                   <button type="button" onClick={copyLink} className="inline-flex h-7 items-center gap-1.5 rounded-md border border-line px-2 text-[12px] text-ink-2 transition-colors hover:border-line-2 hover:text-ink">
                     {copied ? <Check className="size-3.5 text-leaf" strokeWidth={2.5} /> : <Link2 className="size-3.5" strokeWidth={1.75} />}
-                    {copied ? "Copiado" : "Copiar link"}
+                    {copied ? "Copied" : "Copy link"}
                   </button>
                   {pub.state === "done" && pub.url ? (
                     <span className="inline-flex h-7 items-center gap-1.5 rounded-md border border-accent/40 pl-2 pr-1 text-[12px]">
                       <Globe className="size-3.5 text-accent" strokeWidth={1.75} />
-                      <span className="text-ink-2">Publicado</span>
+                      <span className="text-ink-2">Published</span>
                       <span className="max-w-[180px] truncate font-mono text-[11px] text-ink-3">{pub.url.replace(/^https?:\/\//, "")}</span>
                       <button
                         type="button"
@@ -444,16 +444,16 @@ export function Studio() {
                         }
                         className="rounded px-1.5 py-0.5 text-[11.5px] text-ink-2 transition-colors hover:bg-paper hover:text-ink"
                       >
-                        {pubCopied ? "Copiado" : "Copiar"}
+                        {pubCopied ? "Copied" : "Copy"}
                       </button>
                       <a href={pub.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-[11.5px] text-ink-2 transition-colors hover:bg-paper hover:text-ink">
-                        Abrir
+                        Open
                         <ExternalLink className="size-3" strokeWidth={1.75} />
                       </a>
                     </span>
                   ) : (
                     <span className="inline-flex items-center gap-2">
-                      {pub.state === "error" && <span className="font-mono text-[10.5px] text-rose">No se pudo publicar</span>}
+                      {pub.state === "error" && <span className="font-mono text-[10.5px] text-rose">Couldn't publish</span>}
                       <button
                         type="button"
                         onClick={publish}
@@ -461,7 +461,7 @@ export function Studio() {
                         className="inline-flex h-7 items-center gap-1.5 rounded-md border border-accent/50 px-2 text-[12px] text-accent transition-colors hover:border-accent hover:bg-accent-soft disabled:pointer-events-none disabled:opacity-50"
                       >
                         {pub.state === "busy" ? <Loader2 className="size-3.5 animate-spin" strokeWidth={2} /> : <Globe className="size-3.5" strokeWidth={1.75} />}
-                        {pub.state === "busy" ? "Publicando…" : pub.state === "error" ? "Reintentar" : "Publicar"}
+                        {pub.state === "busy" ? "Publishing…" : pub.state === "error" ? "Retry" : "Publish"}
                       </button>
                     </span>
                   )}
@@ -470,13 +470,13 @@ export function Studio() {
               <div className="flex min-h-0 flex-1 items-center justify-center bg-stage/60 p-4">
                 <div ref={stageRef} className="relative w-full overflow-hidden rounded-lg border border-line bg-stage shadow-[0_1px_2px_rgba(0,0,0,.04)]" style={{ aspectRatio: "16 / 9", width: "min(100%, calc((100dvh - 96px) * 16 / 9))" }}>
                   {playUrl ? (
-                    <iframe key={frameKey} src={`${playUrl}?embed=1`} title="Tu juego" className="absolute inset-0 size-full" allow="autoplay; fullscreen" />
+                    <iframe key={frameKey} src={`${playUrl}?embed=1`} title="Your game" className="absolute inset-0 size-full" allow="autoplay; fullscreen" />
                   ) : (
                     <Stage
                       drawings={drawings}
                       asset={asset}
                       preview={preview ?? (slug && !demo ? asset("photo") : null)}
-                      status={phase === "choosing" ? (chosen < 0 ? "Elige un juego" : "Listo para construir") : phase === "cutting" && drawings.length === 0 ? "Buscando tus dibujos" : humanize(last?.message ?? "")}
+                      status={phase === "choosing" ? (chosen < 0 ? "Pick a game" : "Ready to build") : phase === "cutting" && drawings.length === 0 ? "Looking for your drawings" : humanize(last?.message ?? "")}
                       waiting={phase === "choosing"}
                       lanes={phase === "building" ? lanesOf(events) : []}
                       pick={phase === "choosing" && chosen >= 0 ? (concepts[chosen] ?? null) : null}
@@ -527,7 +527,7 @@ function GameSwitcher({ title, games, current }: { title: string; games: GameCar
       <AnimatePresence>
         {open && (
           <motion.div initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }} transition={{ duration: 0.12 }} className="absolute top-full left-0 z-30 mt-1 w-[320px] overflow-hidden rounded-xl border border-line-2 bg-surface p-1 shadow-[0_12px_32px_-12px_rgba(0,0,0,.25)]">
-            <p className="px-2.5 pt-1.5 pb-1 text-[11px] font-medium text-ink-3">Recientes</p>
+            <p className="px-2.5 pt-1.5 pb-1 text-[11px] font-medium text-ink-3">Recent</p>
             <div className="max-h-[360px] overflow-y-auto">
               {games.slice(0, 8).map((g) => (
                 <a key={g.slug} href={`/?game=${g.slug}`} className={`flex items-center gap-2.5 rounded-lg px-2 py-1.5 transition-colors hover:bg-paper ${g.slug === current ? "bg-paper" : ""}`}>
@@ -536,12 +536,12 @@ function GameSwitcher({ title, games, current }: { title: string; games: GameCar
                   </span>
                   <span className="min-w-0 flex-1">
                     <span className="block truncate text-[13px] font-medium tracking-[-0.01em]">{g.title}</span>
-                    <span className="block truncate font-mono text-[10.5px] text-ink-3">{genreLabel(g.genre || "juego")}</span>
+                    <span className="block truncate font-mono text-[10.5px] text-ink-3">{genreLabel(g.genre || "game")}</span>
                   </span>
                   {g.slug === current && <Check className="size-3.5 shrink-0 text-accent" strokeWidth={2.5} />}
                 </a>
               ))}
-              {games.length === 0 && <p className="px-2.5 py-3 text-[12px] text-ink-3">Todavía no hay juegos</p>}
+              {games.length === 0 && <p className="px-2.5 py-3 text-[12px] text-ink-3">No games yet</p>}
             </div>
           </motion.div>
         )}
@@ -551,16 +551,16 @@ function GameSwitcher({ title, games, current }: { title: string; games: GameCar
 }
 // Raw agent tool names leak from the engine feed when a step has no friendlier label; give them verbs.
 const TOOL_LABEL: Record<string, string> = {
-  Bash: "Corriendo el juego",
-  Glob: "Buscando archivos",
-  Grep: "Buscando en el código",
-  TodoWrite: "Planeando",
-  MultiEdit: "Editando el juego",
-  WebFetch: "Leyendo la documentación",
+  Bash: "Running the game",
+  Glob: "Looking for files",
+  Grep: "Searching the code",
+  TodoWrite: "Planning",
+  MultiEdit: "Editing the game",
+  WebFetch: "Reading the docs",
 };
 const humanize = (m: string) => {
   const body = m.replace(/^#\d+\s*/, "");
-  return TOOL_LABEL[body] ?? body.replace(/^Leyendo assets\/.+\.png$/, "Mirando tu dibujo").replace(/^Escribiendo sim\.ts$/, "Escribiendo el juego");
+  return TOOL_LABEL[body] ?? body.replace(/^Leyendo assets\/.+\.png$/, "Looking at your drawing").replace(/^Escribiendo sim\.ts$/, "Writing the game");
 };
 
 interface Lane {
@@ -583,15 +583,15 @@ function lanesOf(events: EngineEvent[]): Lane[] {
   }
   return [...map.values()].sort((a, b) => a.k - b.k);
 }
-const modelOfLane = (l: Lane) => (/simulando/i.test(l.last.message) ? "código" : l.last.stage === "fix" || (l.last.stage === "check" && l.last.message.includes("QA")) ? "Muse Spark" : /arte|sprite/i.test(l.last.message) ? "Muse Image" : l.last.stage === "check" ? "código" : "Muse Wonder");
+const modelOfLane = (l: Lane) => (/simulando|simulating/i.test(l.last.message) ? "code" : l.last.stage === "fix" || (l.last.stage === "check" && l.last.message.includes("QA")) ? "Muse Spark" : /arte|sprite/i.test(l.last.message) ? "Muse Image" : l.last.stage === "check" ? "code" : "Muse Wonder");
 
 // The build as a timeline: one row per stage, the Muse model doing the job, and the measured gate results.
 const STAGES = [
-  { id: "art", label: "Recorte", hint: "Encuentra cada dibujo en la foto y lo recorta", model: "Muse Spark + SAM 3.1", gate: false },
-  { id: "concepts", label: "Ideas", hint: "Tres juegos posibles con tus dibujos", model: "Muse Wonder", gate: false },
-  { id: "race", label: "Sandboxes", hint: "Tres construcciones en paralelo. Gana la primera que pasa los chequeos", model: "Muse Wonder + Muse Image", gate: false },
-  { id: "playtest", label: "Playtester", hint: "Simula partidas en código. Tiene que ser ganable y no ganarse sin jugar", model: "código", gate: true },
-  { id: "qa", label: "QA visual", hint: "Mira dos capturas del juego", model: "Muse Spark · modelo", gate: false },
+  { id: "art", label: "Cutout", hint: "Finds each drawing in the photo and cuts it out", model: "Muse Spark + SAM 3.1", gate: false },
+  { id: "concepts", label: "Ideas", hint: "Three possible games with your drawings", model: "Muse Wonder", gate: false },
+  { id: "race", label: "Sandboxes", hint: "Three builds in parallel. The first to pass the checks wins", model: "Muse Wonder + Muse Image", gate: false },
+  { id: "playtest", label: "Playtester", hint: "Simulates matches in code. It has to be winnable, and not winnable without playing", model: "code", gate: true },
+  { id: "qa", label: "Visual QA", hint: "Looks at two screenshots of the game", model: "Muse Spark · model", gate: false },
 ] as const;
 
 const reachOf = (e: EngineEvent): number => {
@@ -628,7 +628,7 @@ function Pipeline({ events, t0, done }: { events: EngineEvent[]; t0: number; don
           const waiting = active && i === 2 && reached <= 1;
           const gate = st.id === "playtest" && play ? gateOf(play) : st.id === "qa" && qa ? { pass: qa.ok, fact: qa.ok ? "ok" : `${qa.issues.length} issues` } : null;
           const state = skipped ? "skip" : gate && !done ? (gate.pass ? "done" : "fail") : finished ? "done" : active ? "active" : "todo";
-          const detail = skipped ? "Sin foto, el arte se pinta" : waiting ? "Esperando tu elección" : st.id === "race" && lanes.size > 0 ? `${lanes.size} en paralelo` : "";
+          const detail = skipped ? "No photo, the art gets painted" : waiting ? "Waiting for your pick" : st.id === "race" && lanes.size > 0 ? `${lanes.size} in parallel` : "";
           return (
             <li key={st.id} className="grid h-8 grid-cols-[16px_1fr_auto] items-center gap-x-2.5" title={`${st.hint}${gate ? ` · ${gate.fact}` : ""}`}>
               <Marker state={state} />
@@ -647,7 +647,7 @@ function Pipeline({ events, t0, done }: { events: EngineEvent[]; t0: number; don
         })}
       </ol>
       <div className="mt-2 flex items-center justify-between border-t border-line pt-2 font-mono text-[10.5px] text-ink-3">
-        <span className={error ? "truncate text-rose" : ""}>{error ? error.message : done ? "Listo" : "En curso"}</span>
+        <span className={error ? "truncate text-rose" : ""}>{error ? error.message : done ? "Done" : "In progress"}</span>
         <time className="shrink-0 tabular-nums">{elapsed}s</time>
       </div>
     </div>
@@ -699,7 +699,7 @@ function Stage({ drawings, asset, preview, status, waiting, lanes, pick }: { dra
         <div className="absolute inset-0 grid place-items-center p-8">
           <div className="relative h-full max-w-full overflow-hidden rounded-md">
             {/* biome-ignore lint/performance/noImgElement: the player's photo */}
-            <img src={preview} alt="Tu foto" className="h-full w-auto max-w-full object-contain" />
+            <img src={preview} alt="Your photo" className="h-full w-auto max-w-full object-contain" />
             <span className="animate-scan pointer-events-none absolute inset-x-0 h-px bg-accent shadow-[0_0_12px_1px_var(--accent)]" aria-hidden="true" />
           </div>
         </div>
@@ -753,7 +753,7 @@ function Stage({ drawings, asset, preview, status, waiting, lanes, pick }: { dra
           <AnimatePresence mode="wait">
             <motion.div key={status} initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.15 }} className="inline-flex h-8 max-w-full items-center gap-2 rounded-md border border-line bg-surface px-3 text-[12.5px] text-ink">
               {waiting ? <span className="size-1.5 rounded-full bg-ink-3" /> : drawings.length === 0 && !pick ? <span className="size-2 shrink-0 animate-pulse rounded-full bg-accent" /> : <Loader2 className="size-3.5 shrink-0 animate-spin text-accent" />}
-              <span className="truncate">{status || "Preparando"}</span>
+              <span className="truncate">{status || "Getting ready"}</span>
             </motion.div>
           </AnimatePresence>
         </div>
@@ -821,7 +821,7 @@ function Thread({ phase, preview, idea, drawings, asset, concepts, chosen, setCh
     setText("");
     send(t);
   };
-  const suggestions = ["un dragón amigo", "que llueva", "que sea de noche"];
+  const suggestions = ["a friendly dragon", "make it rain", "make it night"];
   const art = events.find((e) => e.stage === "art" && e.data?.drawings);
   const minutes = Math.max(1, Math.round((result?.ms ?? 0) / 60000));
 
@@ -834,10 +834,10 @@ function Thread({ phase, preview, idea, drawings, asset, concepts, chosen, setCh
             {preview ? (
               <div className="overflow-hidden rounded-xl rounded-tr-sm border border-line bg-surface p-1">
                 {/* biome-ignore lint/performance/noImgElement: the player's photo */}
-                <img src={preview} alt="Tu dibujo" className="h-32 w-auto max-w-[220px] rounded-lg object-cover" />
+                <img src={preview} alt="Your drawing" className="h-32 w-auto max-w-[220px] rounded-lg object-cover" />
               </div>
             ) : (
-              <p className="max-w-[85%] rounded-xl rounded-tr-sm bg-ink px-3.5 py-2 text-[13.5px] leading-snug text-paper">{idea.trim() || "Mis dibujos"}</p>
+              <p className="max-w-[85%] rounded-xl rounded-tr-sm bg-ink px-3.5 py-2 text-[13.5px] leading-snug text-paper">{idea.trim() || "My drawings"}</p>
             )}
           </div>
 
@@ -846,7 +846,7 @@ function Thread({ phase, preview, idea, drawings, asset, concepts, chosen, setCh
             <Agent>
               {drawings.length > 0 ? (
                 <>
-                  <p className="text-[13.5px]">Recorté {drawings.length === 1 ? "un dibujo" : `${drawings.length} dibujos`}</p>
+                  <p className="text-[13.5px]">Cut out {drawings.length === 1 ? "1 drawing" : `${drawings.length} drawings`}</p>
                   <div className="mt-2 flex flex-wrap gap-1.5">
                     {drawings.map((d) => (
                       <span key={d} className="flex h-[76px] min-w-[76px] max-w-[168px] items-center justify-center rounded-lg border border-line bg-surface px-2" title={d}>
@@ -858,7 +858,7 @@ function Thread({ phase, preview, idea, drawings, asset, concepts, chosen, setCh
                 </>
               ) : (
                 <p className="flex items-center gap-2 text-[13.5px] text-ink-2">
-                  <Loader2 className="size-3.5 animate-spin text-accent" /> Buscando tus dibujos
+                  <Loader2 className="size-3.5 animate-spin text-accent" /> Looking for your drawings
                 </p>
               )}
             </Agent>
@@ -867,7 +867,7 @@ function Thread({ phase, preview, idea, drawings, asset, concepts, chosen, setCh
           {/* Ideas: pick one, or the chosen one once the build starts */}
           {concepts.length > 0 && phase === "choosing" && (
             <Agent>
-              <p className="text-[13.5px]">Se me ocurren tres juegos. Elige uno</p>
+              <p className="text-[13.5px]">Here are three game ideas. Pick one</p>
               <div className="mt-2 flex flex-col gap-1.5">
                 {concepts.map((c, i) => (
                   <button key={c.title} type="button" onClick={() => setChosen(i)} className={`rounded-lg border p-3 text-left transition-colors ${chosen === i ? "border-accent bg-accent-soft" : "border-line bg-surface hover:border-line-2"}`}>
@@ -880,7 +880,7 @@ function Thread({ phase, preview, idea, drawings, asset, concepts, chosen, setCh
                   </button>
                 ))}
                 <button type="button" onClick={build} disabled={chosen < 0} className="btn-primary mt-1 inline-flex h-9 items-center justify-center rounded-lg text-[13px] font-medium disabled:pointer-events-none">
-                  {chosen < 0 ? "Elige un juego" : "Construir"}
+                  {chosen < 0 ? "Pick a game" : "Build"}
                 </button>
               </div>
             </Agent>
@@ -903,10 +903,10 @@ function Thread({ phase, preview, idea, drawings, asset, concepts, chosen, setCh
                   {done ? <Check className="size-3.5 text-leaf" strokeWidth={3} /> : <Loader2 className="size-3.5 animate-spin text-accent" />}
                   {done ? (
                     <span>
-                      Construido en {minutes} min <span className="text-ink-3">· US${(result?.cost ?? 0).toFixed(2)}</span>
+                      Built in {minutes} min <span className="text-ink-3">· ${(result?.cost ?? 0).toFixed(2)}</span>
                     </span>
                   ) : (
-                    "Construyendo"
+                    "Building"
                   )}
                 </span>
                 <ChevronDown className={`size-3.5 text-ink-3 transition-transform ${buildOpen ? "rotate-180" : ""}`} strokeWidth={2} />
@@ -940,13 +940,13 @@ function Thread({ phase, preview, idea, drawings, asset, concepts, chosen, setCh
                         </>
                       ) : e.mode === "done" ? (
                         <>
-                          <span className="tabular-nums">{Math.max(1, Math.round((e.ended - e.started) / 1000))} s · verificado</span>
+                          <span className="tabular-nums">{Math.max(1, Math.round((e.ended - e.started) / 1000))} s · verified</span>
                           <button type="button" onClick={() => undo(e.id)} className="inline-flex h-5 items-center gap-1 rounded border border-line px-1.5 font-sans text-[11px] text-ink-2 transition-colors hover:border-line-2 hover:text-ink">
-                            <Undo2 className="size-3" /> Deshacer
+                            <Undo2 className="size-3" /> Undo
                           </button>
                         </>
                       ) : e.mode === "undone" ? (
-                        <span>deshecho</span>
+                        <span>undone</span>
                       ) : null}
                     </p>
                   </div>
@@ -980,14 +980,14 @@ function Thread({ phase, preview, idea, drawings, asset, concepts, chosen, setCh
             }}
             rows={2}
             disabled={!playUrl}
-            placeholder={playUrl ? "Pide un cambio…" : "El juego está en camino"}
-            aria-label="Pide un cambio"
+            placeholder={playUrl ? "Ask for a change…" : "The game is on its way"}
+            aria-label="Ask for a change"
             style={{ outline: "none" }}
             className="min-h-[56px] w-full resize-none bg-transparent px-3 pt-2.5 text-[13.5px] leading-snug outline-none placeholder:text-ink-3 focus-visible:outline-none"
           />
           <div className="flex items-center justify-between px-2 pb-2">
-            <span className="px-1 font-mono text-[10.5px] text-ink-3">{busy ? "Muse trabajando" : <Models text="Muse Spark · Muse Image" />}</span>
-            <button type="button" onClick={submit} disabled={!text.trim() || busy || !playUrl} className="btn-primary grid size-7 place-items-center rounded-md" aria-label="Enviar">
+            <span className="px-1 font-mono text-[10.5px] text-ink-3">{busy ? "Muse is working" : <Models text="Muse Spark · Muse Image" />}</span>
+            <button type="button" onClick={submit} disabled={!text.trim() || busy || !playUrl} className="btn-primary grid size-7 place-items-center rounded-md" aria-label="Send">
               {busy ? <Loader2 className="size-4 animate-spin" /> : <ArrowUp className="size-4" strokeWidth={2.25} />}
             </button>
           </div>
@@ -1029,7 +1029,7 @@ function useEdits(playUrl: string | null) {
     if (process.env.NODE_ENV === "production") return;
     const m = new URLSearchParams(location.search).get("edit");
     if (m !== "busy" && m !== "done") return;
-    setEdits([{ id: 1, asked: "que aparezca un dragón amigo", model: "Muse Image", mode: m, started: Date.now() - 7_000, ended: Date.now() + 5_000, status: m === "busy" ? "Dibujando en el estilo de tu dibujo" : "Apareció un dragón amigo que vuela sobre la cocina." }]);
+    setEdits([{ id: 1, asked: "add a friendly dragon", model: "Muse Image", mode: m, started: Date.now() - 7_000, ended: Date.now() + 5_000, status: m === "busy" ? "Drawing in the style of your drawing" : "A friendly dragon now flies over the kitchen." }]);
   }, []);
   useEffect(() => {
     if (!base) return;
@@ -1038,7 +1038,7 @@ function useEdits(playUrl: string | null) {
       const e = JSON.parse(m.data) as { status?: string; done?: string };
       if (e.status) {
         const s = e.status;
-        if (s.startsWith("No pude")) {
+        if (s.startsWith("No pude") || s.startsWith("Couldn't")) {
           patchLast((x) => ({ ...x, mode: "failed", status: s, ended: Date.now() }));
           return;
         }
@@ -1054,7 +1054,7 @@ function useEdits(playUrl: string | null) {
   const send = useCallback(
     (t: string) => {
       if (!base) return;
-      setEdits((prev) => [...prev, { id: Date.now(), asked: t, status: "Leyendo el juego", mode: "busy", model: "Muse Spark", started: Date.now(), ended: 0 }]);
+      setEdits((prev) => [...prev, { id: Date.now(), asked: t, status: "Reading the game", mode: "busy", model: "Muse Spark", started: Date.now(), ended: 0 }]);
       fetch(`${base}/edit`, { method: "POST", body: JSON.stringify({ text: t }) }).catch(() => {});
     },
     [base],
@@ -1073,12 +1073,12 @@ function useEdits(playUrl: string | null) {
 
 const humanizeEdit = (m: string) => {
   const body = m.replace(/^Muse:\s*/, "");
-  if (/sprite/i.test(body)) return "Dibujando en el estilo de tu dibujo";
-  if (/arreglando/i.test(body)) return "Arreglando un error";
-  if (/^(Write|Edit|MultiEdit)\b/.test(body)) return "Cambiando las reglas";
-  if (/^Read\b/.test(body)) return "Leyendo el juego";
-  if (/^(Bash|ls)\b/.test(body)) return "Probando el cambio";
-  return body.replace(/^Muse esta\s*/, "");
+  if (/sprite/i.test(body)) return "Drawing in the style of your drawing";
+  if (/arreglando|fixing/i.test(body)) return "Fixing a bug";
+  if (/^(Write|Edit|MultiEdit)\b/.test(body)) return "Changing the rules";
+  if (/^Read\b/.test(body)) return "Reading the game";
+  if (/^(Bash|ls)\b/.test(body)) return "Testing the change";
+  return body.replace(/^Muse (esta|is)\s*/, "").replace(/^./, (c) => c.toUpperCase());
 };
 
 // Mark: a rounded square with a crayon spark. Wordmark in Geist semibold, lowercase, tight.
@@ -1098,9 +1098,9 @@ function Logo() {
 function demoSession(mode: string) {
   const drawings = ["cat", "car", "house", "sun", "tree", "dragon"];
   const concepts: Concept[] = [
-    { title: "La palanca del árbol dormido", genre: "physics puzzle", pitch: "El gato se durmió sobre el auto y solo el árbol puede empujarlo hasta casa. Mueve el sol para doblar el árbol como una palanca viva.", core_mechanic: "", controls: "Flechas para mover el sol, espacio para soltar" },
-    { title: "Carrera al atardecer", genre: "racing", pitch: "El auto corre hacia la casa antes de que el sol se ponga, esquivando árboles.", core_mechanic: "", controls: "" },
-    { title: "El gato y la casa", genre: "endless runner", pitch: "El gato salta árboles y autos para llegar a casa.", core_mechanic: "", controls: "" },
+    { title: "The sleepy tree lever", genre: "physics puzzle", pitch: "The cat fell asleep on the car and only the tree can push it home. Move the sun to bend the tree like a living lever.", core_mechanic: "", controls: "Arrows move the sun, space lets go" },
+    { title: "Sunset race", genre: "racing", pitch: "The car races home before sunset, dodging trees.", core_mechanic: "", controls: "" },
+    { title: "The cat and the house", genre: "endless runner", pitch: "The cat jumps over trees and cars to get home.", core_mechanic: "", controls: "" },
   ];
   let t = 1_000;
   const ev = (stage: string, message: string, data?: EngineEvent["data"]): EngineEvent => {
@@ -1108,24 +1108,24 @@ function demoSession(mode: string) {
     return { stage, message, t, data };
   };
   const events: EngineEvent[] = [
-    ev("art", "Encontrando tus dibujos"),
-    ev("art", "6 dibujos recortados", { drawings }),
-    ev("concepts", "Muse Wonder esta imaginando tres juegos"),
-    ev("concepts", "Elige tu juego", { concepts }),
+    ev("art", "Finding your drawings"),
+    ev("art", "6 drawings cut out", { drawings }),
+    ev("concepts", "Muse Wonder is imagining three games"),
+    ev("concepts", "Pick your game", { concepts }),
   ];
   if (mode !== "choosing") {
     events.push(
-      ev("build", `Construyendo "${concepts[0]!.title}"`),
-      ev("build", "3 construcciones en paralelo; gana la primera que pase los chequeos"),
+      ev("build", `Building "${concepts[0]!.title}"`),
+      ev("build", "3 builds in parallel, the first to pass the checks wins"),
       ev("code", "#1 Escribiendo sim.ts", { attempt: 0 }),
-      ev("code", "#2 Compilando", { attempt: 1 }),
-      ev("code", "#3 Pintando la hoja de arte", { attempt: 2 }),
+      ev("code", "#2 Compiling", { attempt: 1 }),
+      ev("code", "#3 Painting the art sheet", { attempt: 2 }),
       ev("check", "#1 Playtester: ok", { attempt: 0, verdict: "ok", search: { outcome: "won", frames: 3080 }, too_easy_by: [], policies: { idle: 1, "hold-right": 1, "hold-left": 1, "hold-right-jump": 1, "hold-everything": 1, "tap-action": 1 } }),
-      ev("code", "#2 Simulando partidas", { attempt: 1 }),
+      ev("code", "#2 Simulating matches", { attempt: 1 }),
       ev("check", "#1 QA visual: ok", { attempt: 0, ok: true, issues: [] }),
     );
   }
-  if (mode === "playing") events.push(ev("done", "Ganó el intento 1", { verdict: "ok", cost: 0.42, ms: 214_000 }), ev("play", "A jugar"));
+  if (mode === "playing") events.push(ev("done", "Attempt 1 won", { verdict: "ok", cost: 0.42, ms: 214_000 }), ev("play", "Let's play"));
   return {
     slug: "dibujo-10280132",
     drawings,

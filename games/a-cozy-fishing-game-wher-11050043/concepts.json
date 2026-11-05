@@ -1,0 +1,115 @@
+{
+  "concepts": [
+    {
+      "controls": "Left/Right or A/D: Slide boat | Space: Drop and reel hook on the beat | Enter: Start",
+      "core_mechanic": "Your hook swings like a metronome to the lighthouse beam. Time your drop when the beam, a jellyfish's pulse, and the hook all line up to snag a friend cleanly - each catch adds that friend's rhythm to the song, so a whale slows the swing heavy and low, an octopus adds a tricky triplet, and jellyfish add off-beats you now have to play through.",
+      "genre": "rhythm or timing",
+      "juice": "Title screen: 'HOOK, LINE & BEAT!' bobbing on waves over the boat while the lighthouse beam sweeps in time. Clean catches burst musical notes and hearts, pop 'PERFECT! COMBO x4' in wiggly letters, and make the caught friend bounce in the deck aquarium. Early or late catches show 'EARLY…' or 'LATE…', wobble the hook with a sad twang, and shake the screen a tiny bit; a perfect streak trails sparkles behind the hook.",
+      "lose": "Miss three beats in a row and the line tangles - 'ALL TANGLED UP! TRY AGAIN.'",
+      "palette": "Warm cream sky, coral red boat, teal sea, and purple jellyfish accents",
+      "pitch": "A one-song fishing concert where the lighthouse keeps the beat and every sea friend you hook joins the band. Fill the boat's aquarium before the song ends, without losing the rhythm.",
+      "roles": [
+        {
+          "object": "boat",
+          "role": "Your fishing boat at the surface, sliding left and right with the swinging hook and the glass aquarium on its deck"
+        },
+        {
+          "object": "whale",
+          "role": "The biggest, lowest singer underwater - hard to time, worth the most, and catching him slows your hook's swing"
+        },
+        {
+          "object": "octopus",
+          "role": "The conductor on a rock, waving tentacles to telegraph the next beat pattern before it hits"
+        },
+        {
+          "object": "lighthouse",
+          "role": "The metronome - its rotating beam is the beat you must drop the hook on"
+        },
+        {
+          "object": "jellyfish",
+          "role": "Pulsing backup dancers whose glow swells exactly on the off-beats, and catchable friends who add those off-beats to the song"
+        }
+      ],
+      "title": "Hook, Line & Beat!",
+      "win": "Catch 8 friends before the 90-second song ends - 'FULL AQUARIUM! WHAT A SHOW!'"
+    },
+    {
+      "controls": "Left/Right or A/D: Move boat | Up/Down or W/S: Shorten or lengthen line | Space: Drop hook, then press again to release | Enter: Start",
+      "core_mechanic": "Every friend you catch changes the physics of the next drop. A dangling whale turns your hook into a wrecking-ball pendulum, a clingy octopus stretches the line like a bungee, and a jellyfish floats upward against the fall - so you must release each friend at just the right swing to arc them gently into the right tier of a stackable glass aquarium, heavy friends low or the whole tank tips.",
+      "genre": "physics puzzle",
+      "juice": "Title screen: 'WHALE-WEIGHT AQUARIUM' with the whale dangling from the hook, swaying the whole title. Good landings make a soft splash, heart bubbles, a squash-and-stretch plop, and 'SOFT LANDING! +100'. Hard hits crackle 'TOO HARD!' with a screen shake and the tank rocking; a perfect gentle drop at the swing's peak trails sparkles and pops 'SPLASH-FREE! COMBO x3'.",
+      "lose": "Tip the tank, land three friends too hard, or use all 12 drops - 'THE TANK TIPPED! TRY AGAIN.'",
+      "palette": "Pale paper white, crayon red boat and octopus, soft blue whale, and sunny yellow lighthouse beam",
+      "pitch": "A wobbly physics puzzler where the friend on your hook completely changes how it swings, stretches, or floats. Plan each release to stack a whale, an octopus, and their pals safely into one tippy aquarium.",
+      "roles": [
+        {
+          "object": "boat",
+          "role": "Your movable crane boat at the top, carrying the hook, line, and winch"
+        },
+        {
+          "object": "whale",
+          "role": "The heaviest catch and bottom-tier resident - on the hook he swings wide and slow, and placed high he will tip the tank"
+        },
+        {
+          "object": "octopus",
+          "role": "A stretchy catch whose clinging tentacles lengthen your line mid-swing, and a middle-tier resident who can grab and steady a rocking tank once"
+        },
+        {
+          "object": "lighthouse",
+          "role": "The harbormaster on the shore - its beam flashes yellow, then red, to warn of the wind gust that hits on the next drop"
+        },
+        {
+          "object": "jellyfish",
+          "role": "A floaty catch who rises instead of falling when released, needing the top tier, and who drifts upward if you mistime her"
+        }
+      ],
+      "title": "Whale-Weight Aquarium",
+      "win": "Place all 6 friends in the right tiers in 12 drops or fewer - 'EVERYONE'S HOME! BEAUTIFULLY BALANCED.'"
+    },
+    {
+      "controls": "Left/Right or A/D: Sail boat | Space: Lower hook / reel in / drop catch | Enter: Start",
+      "core_mechanic": "You never shoot. Hook one drifting jellyfish and its dangling tentacles gently sting-link to every jelly it brushes, building a long, swinging living chain you can scoop a whole wave with - but the longer the chain, the harder it swings, and if it clips the lighthouse it snaps and scatters. Ferry chains to the whale, who ferries a full load to the aquarium in one trip.",
+      "genre": "tower or base defense",
+      "juice": "Title screen: 'LIGHTHOUSE LAST LIGHT' in bold letters under a sweeping beam, jellyfish drifting like lanterns. Each link in a chain pops with a soft 'LINK!' and a ring of bubbles, growing combo text like 'CHAIN OF 5!'; delivering a load makes the whale spout hearts and 'SAFE AND SOUND!'. A jelly hitting the glass cracks it with a shake and 'THE AQUARIUM CRACKED!', while the octopus's repair slaps on a starfish patch with a happy squeak.",
+      "lose": "Three jellyfish bump the aquarium before you can ferry them - 'THREE BUMPS TOO MANY! TRY AGAIN.'",
+      "palette": "Deep navy night, warm yellow lighthouse light, pink-red boat and octopus, and glowing lavender jellyfish",
+      "pitch": "A cozy, weapon-free tower defense where runaway jellyfish drift for your aquarium and you defend it by chaining them together with your hook. Survive the night rush, fill the tank, and keep the glass in one piece.",
+      "roles": [
+        {
+          "object": "boat",
+          "role": "Your defense boat, sailing the surface and working the hook that builds and carries jelly chains"
+        },
+        {
+          "object": "whale",
+          "role": "Your ferry and moving shield - he slowly crosses the screen blocking drifting jellies, and carries a delivered chain-load safely to the tank"
+        },
+        {
+          "object": "octopus",
+          "role": "The aquarium's keeper at its base - feed her a chain of 3 or more and she repairs one crack and holds the tank door wider for the next load"
+        },
+        {
+          "object": "lighthouse",
+          "role": "Your tower - its slowly sweeping beam calms and pauses any jellyfish caught in the light, buying you time, but a swinging chain that hits it snaps"
+        },
+        {
+          "object": "jellyfish",
+          "role": "Both the incoming waves and the friends you're saving - they drift in glowing lines, link tentacle-to-tentacle when hooked together, and crack the tank if they bump it loose"
+        }
+      ],
+      "title": "Lighthouse Last Light",
+      "win": "Fill the aquarium with 10 jellyfish and survive 90 seconds of waves - 'THE AQUARIUM GLOWS! YOU KEPT EVERYONE SAFE.'"
+    }
+  ],
+  "ms": 42372,
+  "usage": {
+    "completion_tokens": 3355,
+    "prompt_tokens": 1143,
+    "total_tokens": 4498,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1716
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  }
+}

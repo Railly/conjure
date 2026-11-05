@@ -1,0 +1,93 @@
+{
+  "slug": "a-3d-kart-race-on-a-dese-11050029-c0-0",
+  "verdict": "ok",
+  "contract": {
+    "outcome": true,
+    "progress": true
+  },
+  "too_easy_by": [],
+  "search": {
+    "outcome": "won",
+    "frames": 2600,
+    "progress": 0.997546184682233,
+    "inputs": 1549
+  },
+  "budget": {
+    "max_frames": 7200,
+    "segment": 20,
+    "tries": 12
+  },
+  "policies": {
+    "idle": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.0019199709840792677
+    },
+    "hold-right": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.0019199709840792677
+    },
+    "hold-left": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.0019199709840792677
+    },
+    "hold-right-jump": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.0019199709840792677
+    },
+    "hold-everything": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.0019199709840792677
+    },
+    "tap-action": {
+      "outcome": "lost",
+      "frames": 5420,
+      "progress": 0.07281046141840633
+    },
+    "mash-1": {
+      "outcome": "lost",
+      "frames": 5448,
+      "progress": 0.24540053705302659
+    },
+    "mash-2": {
+      "outcome": "lost",
+      "frames": 5676,
+      "progress": 0.27022104977686434
+    },
+    "mash-3": {
+      "outcome": "lost",
+      "frames": 5688,
+      "progress": 0.28959051728798324
+    },
+    "mash-4": {
+      "outcome": "lost",
+      "frames": 5706,
+      "progress": 0.28514799370327976
+    },
+    "mash-5": {
+      "outcome": "lost",
+      "frames": 5436,
+      "progress": 0.15863312362285076
+    },
+    "mash-6": {
+      "outcome": "lost",
+      "frames": 5712,
+      "progress": 0.26748044149134176
+    },
+    "mash-7": {
+      "outcome": "lost",
+      "frames": 5454,
+      "progress": 0.235883759026355
+    },
+    "mash-8": {
+      "outcome": "lost",
+      "frames": 5424,
+      "progress": 0.15365377222656512
+    }
+  },
+  "advice": "Winnable, and no dumb policy wins."
+}

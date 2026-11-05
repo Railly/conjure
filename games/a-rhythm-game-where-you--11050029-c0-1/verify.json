@@ -1,0 +1,93 @@
+{
+  "slug": "a-rhythm-game-where-you--11050029-c0-1",
+  "verdict": "ok",
+  "contract": {
+    "outcome": true,
+    "progress": true
+  },
+  "too_easy_by": [],
+  "search": {
+    "outcome": "won",
+    "frames": 5420,
+    "progress": 1,
+    "inputs": 3241
+  },
+  "budget": {
+    "max_frames": 7200,
+    "segment": 20,
+    "tries": 12
+  },
+  "policies": {
+    "idle": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-right": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-left": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-right-jump": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-everything": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "tap-action": {
+      "outcome": "lost",
+      "frames": 666,
+      "progress": 0.05263703703703703
+    },
+    "mash-1": {
+      "outcome": "won",
+      "frames": 5436,
+      "progress": 1
+    },
+    "mash-2": {
+      "outcome": "won",
+      "frames": 5424,
+      "progress": 1
+    },
+    "mash-3": {
+      "outcome": "won",
+      "frames": 5424,
+      "progress": 1
+    },
+    "mash-4": {
+      "outcome": "won",
+      "frames": 5430,
+      "progress": 1
+    },
+    "mash-5": {
+      "outcome": "won",
+      "frames": 5430,
+      "progress": 1
+    },
+    "mash-6": {
+      "outcome": "won",
+      "frames": 5430,
+      "progress": 1
+    },
+    "mash-7": {
+      "outcome": "won",
+      "frames": 5430,
+      "progress": 1
+    },
+    "mash-8": {
+      "outcome": "won",
+      "frames": 5430,
+      "progress": 1
+    }
+  },
+  "advice": "Winnable, and no dumb policy wins."
+}

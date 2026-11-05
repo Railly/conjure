@@ -1,0 +1,108 @@
+{
+  "photo": {
+    "width": 1600,
+    "height": 1067
+  },
+  "timings_ms": {
+    "spark": 9237,
+    "sam:penguin": 3153,
+    "sam:cube": 2688,
+    "sam:igloo": 3594,
+    "sam:fish": 1933,
+    "sam:snowflake": 4376
+  },
+  "spark_usage": {
+    "completion_tokens": 1038,
+    "prompt_tokens": 2263,
+    "total_tokens": 3301,
+    "completion_tokens_details": {
+      "reasoning_tokens": 849
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  },
+  "sam_cost_usd": 0.0125,
+  "objects": [
+    {
+      "name": "penguin",
+      "spark_box": [
+        424,
+        289,
+        650,
+        536
+      ],
+      "box": [
+        424,
+        241,
+        648,
+        510
+      ],
+      "parts": 8
+    },
+    {
+      "name": "cube",
+      "spark_box": [
+        972,
+        256,
+        1226,
+        443
+      ],
+      "box": [
+        962,
+        240,
+        1179,
+        414
+      ],
+      "parts": 8
+    },
+    {
+      "name": "igloo",
+      "spark_box": [
+        242,
+        698,
+        730,
+        935
+      ],
+      "box": [
+        211,
+        649,
+        754,
+        950
+      ],
+      "parts": 8
+    },
+    {
+      "name": "fish",
+      "spark_box": [
+        812,
+        645,
+        1056,
+        794
+      ],
+      "box": [
+        782,
+        620,
+        1068,
+        800
+      ],
+      "parts": 8
+    },
+    {
+      "name": "snowflake",
+      "spark_box": [
+        1143,
+        683,
+        1328,
+        888
+      ],
+      "box": [
+        1145,
+        668,
+        1330,
+        835
+      ],
+      "parts": 8
+    }
+  ]
+}
