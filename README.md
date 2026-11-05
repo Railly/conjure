@@ -4,7 +4,7 @@
 
 **Live showcase: https://conjure.crafter.run**
 
-**Demo video:** (YouTube link)
+**Demo video:** https://youtu.be/ZngyVBDTdkA
 
 Take a photo of a kid's drawing and play it as a real game a few minutes later. The characters keep their crayon style and become bodies with physics on a real engine. Then you change the game while you play, by asking.
 
