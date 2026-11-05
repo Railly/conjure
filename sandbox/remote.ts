@@ -29,9 +29,15 @@ export const sh = async (sandbox: Sandbox, cmd: string, env: Record<string, stri
   return r.stdout();
 };
 
-// The code a build needs, as a tarball: everything but games, the web app, dependencies and secrets.
+// The code a build needs, as a tarball: the files git knows about (tracked or untracked but not ignored), minus games,
+// the web app and the spike photos. Listing from git keeps ignored folders (renders, dependencies, secrets) out.
 export async function codeTarball(): Promise<Uint8Array> {
-  const p = Bun.spawn(["tar", "--no-xattrs", "--no-mac-metadata", "-cz", "--exclude=./games", "--exclude=./web", "--exclude=*/node_modules", "--exclude=./node_modules", "--exclude=./.env", "--exclude=./.git", "--exclude=./spike/out", "--exclude=./spike/photo", "-f", "-", "."], { cwd: ROOT, stdout: "pipe", env: { ...process.env, COPYFILE_DISABLE: "1" } });
+  const ls = Bun.spawnSync(["git", "ls-files", "-co", "--exclude-standard"], { cwd: ROOT });
+  const files = ls.stdout
+    .toString()
+    .split("\n")
+    .filter((f) => f && !/^(games|web|spike\/out|spike\/photo)\//.test(f) && !/(^|\/)node_modules\//.test(f) && !/(^|\/)\.env/.test(f));
+  const p = Bun.spawn(["tar", "--no-xattrs", "--no-mac-metadata", "-cz", "-T", "-", "-f", "-"], { cwd: ROOT, stdin: new Blob([files.join("\n")]), stdout: "pipe", env: { ...process.env, COPYFILE_DISABLE: "1" } });
   const buf = new Uint8Array(await new Response(p.stdout).arrayBuffer());
   if ((await p.exited) !== 0) throw new Error("tar failed");
   return buf;
