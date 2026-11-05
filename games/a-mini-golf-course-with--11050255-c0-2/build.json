@@ -1,0 +1,154 @@
+{
+  "concept": {
+    "controls": "- Use 'Arrows' or 'WASD' to aim the arrow. Hold 'Space' to charge and release it to putt. Press 'Enter' to start and restart.",
+    "core_mechanic": "The windmill really works: after a putt, you gently tilt the whole course with 'Arrows' or 'WASD', rolling the ball around sand and walls, and the faster the windmill blades spin, the harder the course tilts.",
+    "genre": "sports",
+    "juice": "- Gamepad or 'Arrows' and 'WASD' move the ball once per hole: the ball stretches on impact, squashes on hard knocks, slows in sand, and stops at the hole. Keep 'Enter' near your thumb to undo changes quickly.",
+    "lose": "Finish 'Out of Bounds' if the ball flies into the rough or sits in any sand trap for three seconds. Use Undo (Enter) to pull the ball back.",
+    "palette": "- The ball is a glowing white orb, the flag is a bright red beacon, the bridge over the pond is the only safe crossing, the windmill obstacles guard the back fairway, and the pond is blue glass.",
+    "pitch": "A classic mini-golf hole with a twist: the windmill isn't an obstacle - it's your steering wheel. Every time you putt, you don't just watch, you drive the ball to the flag past the pond. The first hole is a gentle curve, but the windmill gets quicker and the pond gets bigger with each round.",
+    "roles": [
+      {
+        "object": "ball",
+        "role": "You putt the white golf ball around the one hole, mostly using curves and ramps. Aim and hold to power your shot."
+      },
+      {
+        "object": "flag",
+        "role": "The red flag plants the hole at the back of the screen - sink the ball there to win the hole."
+      },
+      {
+        "object": "pond",
+        "role": "A bright blue water hazard sits between you and the hole. If the ball goes in, it costs a stroke."
+      },
+      {
+        "object": "windmill",
+        "role": "The windmill blade slowly spins over a narrow exit, and it also pushes wind across the field when you steer. Tap a blade and the ball bounces off."
+      },
+      {
+        "object": "bridge",
+        "role": "The arched bridge sits over the pond - if you roll onto it, your ball crosses safely; the wind can't move you while you're on it."
+      }
+    ],
+    "title": "Windmill Steering Golf",
+    "win": "You win by holing the ball in the cup under the flag in 5 strokes or fewer."
+  },
+  "verdict": "ok",
+  "playtest": {
+    "slug": "a-mini-golf-course-with--11050255-c0-2",
+    "verdict": "ok",
+    "contract": {
+      "outcome": true,
+      "progress": true
+    },
+    "too_easy_by": [],
+    "search": {
+      "outcome": "won",
+      "frames": 380,
+      "progress": 1,
+      "inputs": 218
+    },
+    "budget": {
+      "max_frames": 7200,
+      "segment": 20,
+      "tries": 12
+    },
+    "policies": {
+      "idle": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-right": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-left": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-right-jump": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-everything": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "tap-action": {
+        "outcome": "lost",
+        "frames": 759,
+        "progress": 0
+      },
+      "mash-1": {
+        "outcome": "lost",
+        "frames": 223,
+        "progress": 0.08949173940531319
+      },
+      "mash-2": {
+        "outcome": "lost",
+        "frames": 223,
+        "progress": 0.2276259402077806
+      },
+      "mash-3": {
+        "outcome": "lost",
+        "frames": 171,
+        "progress": 0.11744048815649355
+      },
+      "mash-4": {
+        "outcome": "lost",
+        "frames": 304,
+        "progress": 0.06579744675231658
+      },
+      "mash-5": {
+        "outcome": "lost",
+        "frames": 280,
+        "progress": 0
+      },
+      "mash-6": {
+        "outcome": "lost",
+        "frames": 410,
+        "progress": 0.5402787917321051
+      },
+      "mash-7": {
+        "outcome": "lost",
+        "frames": 193,
+        "progress": 0.7730735769215997
+      },
+      "mash-8": {
+        "outcome": "lost",
+        "frames": 285,
+        "progress": 0.5982389760268897
+      }
+    },
+    "advice": "Winnable, and no dumb policy wins."
+  },
+  "qa": {
+    "ok": true,
+    "issues": [],
+    "minor": [
+      "Title screen instruction lines sit directly over the pond/bridge illustration, lowering contrast though still legible",
+      "BRIDGE - SAFE caption is small and low-contrast against pond edge and grass"
+    ],
+    "model": "Muse Spark 1.3",
+    "ms": 14995
+  },
+  "cost_usd": 0.8178,
+  "ms": 179212,
+  "runs": [
+    {
+      "model": "muse-wonder-1.0",
+      "ms": 160977,
+      "turns": 62,
+      "usage": {
+        "input": 84495,
+        "cachedInput": 650500,
+        "output": 17488
+      },
+      "summary": "Windmill Steering Golf is a hand-drawn mini-golf game where you putt across a pond on a bridge, dodge sand and spinning windmill blades, and sink the ball by the red flag in five strokes or fewer. Aim with Arrows/WASD, hold and release Space to charge your putt, then keep steering the rolling ball by tilting the course with Arrows/WASD — pressing Enter to undo a bad shot."
+    }
+  ]
+}

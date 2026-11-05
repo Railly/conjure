@@ -1,0 +1,154 @@
+{
+  "concept": {
+    "controls": "Left / Right Arrows or A / D: Swing the left and right flippers. Space: Launch the shell, then tap it again in mid-flight to pop a bubble boost. Hold Space after a drain for a stronger relaunch.",
+    "core_mechanic": "Every hit makes a starfish bumper light up, spin, and crawl one step down the table toward the drain. The table itself rearranges while you play, so a safe bumper can suddenly become a blocker — light all eight starfish, then sink the shell into the treasure pocket before the bumpers crowd you out.",
+    "genre": "breakout-like",
+    "juice": "The shell leaves a foamy bubble trail and squashes flat for one frame on every bounce. Starfish spin, flash gold, and pop out “BING!”, “BOING!”, and “COMBO x3!” text with a spray of tiny bubbles, while a perfect flipper smack triggers a tiny screen shake and makes the octopus's eyes squash happily. Title screen: “PRESS ENTER” pulses under the huge octopus, which idly juggles the shell between its tentacles.",
+    "lose": "“THE SHELL DRAINED AWAY!” — You lose your third shell down the middle before lighting all the starfish and reaching the pocket.",
+    "palette": "Deep teal water over a sandy tan table, purple octopus and pink shell against warm orange starfish, with bright cyan bubbles and a parchment treasure map lining the back wall.",
+    "pitch": "It's underwater pinball where the octopus is your flippers and every starfish bumper you hit starts crawling toward the drain. Light them all and sink the shell into the treasure pocket before your own bumpers overrun the table!",
+    "roles": [
+      {
+        "object": "octopus",
+        "role": "Your flipper keeper at the bottom of the table — its two curled outer tentacles are the big, springy flippers you swing."
+      },
+      {
+        "object": "starfish",
+        "role": "The eight pinball bumpers scattered across the table. Each one must be lit by a shell hit."
+      },
+      {
+        "object": "shell",
+        "role": "The pinball itself — a light, floaty ball that drifts a little sideways like it's caught in a current."
+      },
+      {
+        "object": "map",
+        "role": "The treasure map painted across the back of the table, with its big X marking the glowing treasure pocket you must finally sink the shell into."
+      },
+      {
+        "object": "bubbles",
+        "role": "Your bubble boost. One bubble trails the shell, and popping it with Space gives the shell one small mid-air kick in the direction it's already moving."
+      }
+    ],
+    "title": "Starfish Pinball Panic",
+    "win": "“TREASURE FOUND!” — Light all eight starfish, then land the shell in the X pocket at the top of the table."
+  },
+  "verdict": "ok",
+  "playtest": {
+    "slug": "an-underwater-pinball-ta-11050306-c0-0",
+    "verdict": "ok",
+    "contract": {
+      "outcome": true,
+      "progress": true
+    },
+    "too_easy_by": [],
+    "search": {
+      "outcome": "won",
+      "frames": 3040,
+      "progress": 1,
+      "inputs": 1813
+    },
+    "budget": {
+      "max_frames": 7200,
+      "segment": 20,
+      "tries": 12
+    },
+    "policies": {
+      "idle": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-right": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-left": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-right-jump": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-everything": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "tap-action": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0.6900000000000001
+      },
+      "mash-1": {
+        "outcome": "won",
+        "frames": 7198,
+        "progress": 1
+      },
+      "mash-2": {
+        "outcome": "won",
+        "frames": 5284,
+        "progress": 1
+      },
+      "mash-3": {
+        "outcome": "won",
+        "frames": 2836,
+        "progress": 1
+      },
+      "mash-4": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0.805
+      },
+      "mash-5": {
+        "outcome": "won",
+        "frames": 2422,
+        "progress": 1
+      },
+      "mash-6": {
+        "outcome": "won",
+        "frames": 864,
+        "progress": 1
+      },
+      "mash-7": {
+        "outcome": "won",
+        "frames": 4196,
+        "progress": 1
+      },
+      "mash-8": {
+        "outcome": "won",
+        "frames": 808,
+        "progress": 1
+      }
+    },
+    "advice": "Winnable, and no dumb policy wins."
+  },
+  "qa": {
+    "ok": true,
+    "issues": [],
+    "minor": [
+      "Opening screen: white shell sprite overlaps the instruction line 'Light all 8 starfish then sink the shell in the X!' partially covering text",
+      "Mid-play: announcement banner 'THE STARFISH ARE CRAWLING!' crosses over the starfish bumpers and playfield for a moment"
+    ],
+    "model": "Muse Spark 1.3",
+    "ms": 20198
+  },
+  "cost_usd": 0.741,
+  "ms": 185098,
+  "runs": [
+    {
+      "model": "muse-wonder-1.0",
+      "ms": 161114,
+      "turns": 48,
+      "usage": {
+        "input": 78184,
+        "cachedInput": 688108,
+        "output": 14534
+      },
+      "summary": "Starfish Pinball Panic is an underwater pinball game where a purple octopus works the flippers, the shell drifts with the current, and every starfish you light spins and crawls one step closer to the drain. Play with Left/Right or A/D to flip, hold and release Space to launch, tap Space in flight for a bubble boost, light all eight starfish across your three shells, then sink the shell into the glowing X pocket to find the treasure."
+    }
+  ]
+}

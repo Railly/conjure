@@ -1,0 +1,125 @@
+{
+  "photo": {
+    "width": 1600,
+    "height": 1067
+  },
+  "timings_ms": {
+    "spark": 20097,
+    "sam:mouse": 3910,
+    "sam:lamp": 4207,
+    "sam:cat": 3887,
+    "sam:text": 2362,
+    "sam:cheese": 1762,
+    "sam:rug": 5441
+  },
+  "spark_usage": {
+    "completion_tokens": 2482,
+    "prompt_tokens": 2263,
+    "total_tokens": 4745,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2262
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 2181
+    }
+  },
+  "sam_cost_usd": 0.015,
+  "objects": [
+    {
+      "name": "mouse",
+      "spark_box": [
+        352,
+        211,
+        695,
+        377
+      ],
+      "box": [
+        351,
+        185,
+        694,
+        353
+      ],
+      "parts": 8
+    },
+    {
+      "name": "lamp",
+      "spark_box": [
+        969,
+        75,
+        1314,
+        441
+      ],
+      "box": [
+        948,
+        69,
+        1249,
+        417
+      ],
+      "parts": 8
+    },
+    {
+      "name": "cat",
+      "spark_box": [
+        322,
+        495,
+        678,
+        714
+      ],
+      "box": [
+        321,
+        480,
+        675,
+        692
+      ],
+      "parts": 8
+    },
+    {
+      "name": "text",
+      "spark_box": [
+        652,
+        443,
+        823,
+        535
+      ],
+      "box": [
+        652,
+        419,
+        824,
+        510
+      ],
+      "parts": 8
+    },
+    {
+      "name": "cheese",
+      "spark_box": [
+        965,
+        503,
+        1210,
+        712
+      ],
+      "box": [
+        961,
+        477,
+        1190,
+        685
+      ],
+      "parts": 8
+    },
+    {
+      "name": "rug",
+      "spark_box": [
+        558,
+        785,
+        975,
+        1001
+      ],
+      "box": [
+        560,
+        771,
+        975,
+        976
+      ],
+      "parts": 8
+    }
+  ]
+}

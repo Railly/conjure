@@ -1,0 +1,93 @@
+{
+  "slug": "an-endless-runner-where--11050250-c0-1",
+  "verdict": "ok",
+  "contract": {
+    "outcome": true,
+    "progress": true
+  },
+  "too_easy_by": [],
+  "search": {
+    "outcome": "won",
+    "frames": 1620,
+    "progress": 1,
+    "inputs": 961
+  },
+  "budget": {
+    "max_frames": 7200,
+    "segment": 20,
+    "tries": 12
+  },
+  "policies": {
+    "idle": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-right": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-left": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-right-jump": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-everything": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "tap-action": {
+      "outcome": "lost",
+      "frames": 877,
+      "progress": 0.4681887621459401
+    },
+    "mash-1": {
+      "outcome": "won",
+      "frames": 1641,
+      "progress": 1
+    },
+    "mash-2": {
+      "outcome": "lost",
+      "frames": 1438,
+      "progress": 0.8569960854584332
+    },
+    "mash-3": {
+      "outcome": "lost",
+      "frames": 743,
+      "progress": 0.3993593171664716
+    },
+    "mash-4": {
+      "outcome": "lost",
+      "frames": 891,
+      "progress": 0.48568006076933873
+    },
+    "mash-5": {
+      "outcome": "lost",
+      "frames": 550,
+      "progress": 0.2855613605019308
+    },
+    "mash-6": {
+      "outcome": "won",
+      "frames": 1650,
+      "progress": 1
+    },
+    "mash-7": {
+      "outcome": "won",
+      "frames": 1656,
+      "progress": 1
+    },
+    "mash-8": {
+      "outcome": "won",
+      "frames": 1627,
+      "progress": 1
+    }
+  },
+  "advice": "Winnable, and no dumb policy wins."
+}

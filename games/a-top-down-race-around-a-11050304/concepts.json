@@ -1,0 +1,139 @@
+{
+  "concepts": [
+    {
+      "controls": " Up / W: Gas | Down / S: Brake / Reverse | Left / Right or A / D: Steer | Space: Hold to lay marker ink, release to boost | Enter: Start / Restart\",\n      \"win\": \"Finish three laps before the blue car and the on-screen text says: \\\"YOU WIN THE TROPHY!\\\"\",\n      \"lose\": \"The blue car finishes three laps first and the on-screen text says: \\\"BLUE WINS! TRY AGAIN!\\\"\",\n      \"difficulty\": \"Lap 1 is a clean paper oval. Lap 2 drops cones across the racing line and the blue car uses your ink trails too. Lap 3 narrows the pylon boost gate, drains marker ink faster, and gives the blue car shorter, riskier shortcut lines.\",\n      \"text_in_game\": [\n        \"3 LAPS VS BLUE!\",\n        \"HOLD SPACE TO DRAW YOUR BOOST!\",\n        \"LAP 2!\",\n        \"FINAL LAP!\",\n        \"YOU WIN THE TROPHY!\",\n        \"BLUE WINS! TRY AGAIN!\"\n      ],\n      \"juice\": \"Red and blue paper-skid trails, yellow star sparkles on gate boosts, ink splats when marker paint lands, cone bounce and spin with a tiny screen shake on car-to-car bumps, speed lines at boost speed, squash-and-stretch cars when they hit the track edge, and big floating text that pops in for LAP 2! and FINAL LAP!.\"\n    }\n  ]\n}",
+      "core_mechanic": "Holding Space spends marker ink to paint a red boost road directly behind your car while you steer. Release Space while still on your fresh ink to launch forward, so the fastest line is a road you just drew — but the blue car can steal a ride on it too.",
+      "genre": "racing",
+      "juice": "Red and blue paper-skid trails, yellow star sparkles on gate boosts, ink splats when marker paint lands, cone bounce and spin with a tiny screen shake on car-to-car bumps, speed lines at boost speed, squash-and-stretch cars when they hit the track edge, and big floating text that pops in for LAP 2! and FINAL LAP!.",
+      "lose": "The blue car finishes three laps first and the on-screen text says: \"BLUE WINS! TRY AGAIN!\"",
+      "palette": "#fffaf0",
+      "pitch": "Race the red No. 5 car around a hand-drawn paper track and beat the blue No. 8 to the trophy in three laps.",
+      "roles": [
+        {
+          "object": "car",
+          "role": "The player's big red No. 5 race car, shown top-down and rotating as it steers around the paper track."
+        },
+        {
+          "object": "racecar",
+          "role": "The blue No. 8 rival car, racing the same three laps on its own fast line."
+        },
+        {
+          "object": "trophy",
+          "role": "The gold trophy prize displayed huge at track center and awarded to the winner after three laps."
+        },
+        {
+          "object": "cone",
+          "role": "Short orange track cones that spin away and slow either car when clipped."
+        },
+        {
+          "object": "pylon",
+          "role": "The taller orange pylon marking a narrow boost gate on each lap."
+        },
+        {
+          "object": "marker",
+          "role": "The marker pickup that refills the player's ink meter for painting boost roads."
+        },
+        {
+          "object": "flag",
+          "role": "The start/finish flag at the lap line, waving each time a car completes a lap."
+        }
+      ],
+      "title": "Paper Grand Prix",
+      "win": "Finish three laps before the blue car and the on-screen text says: \"YOU WIN THE TROPHY!\""
+    },
+    {
+      "controls": "Left / Right or A / D: Drive the red car | Space: Launch the flag / hold to stretch the ink guard | Enter: Start / Restart",
+      "core_mechanic": "The ball is a tumbling checkered flag, and the red car is the paddle. Holding Space paints a short-lived marker-ink wall behind the car that can save a falling flag once — but every save makes the flag fall faster and ricochet at a wilder angle.",
+      "genre": "breakout-like",
+      "juice": "Paper confetti bursts when cones break, double sparkles and a bigger shake for two-hit pylons, a waving ribbon trail behind the flag ball, ink splatter and stretch when the guard wall saves a life, squash on every car bounce, floating combo text like COMBO x4!, and the trophy's star pulsing faster as bricks clear.",
+      "lose": "Lose all three flags before reaching the trophy and the text says: \"OUT OF FLAGS! BLUE TAKES THE TROPHY!\"",
+      "palette": "#eef6ff",
+      "pitch": "Bounce a tumbling checkered flag off the red No. 5 car to smash through a wall of cones and pylons and knock the trophy loose before the blue No. 8 steals it.",
+      "roles": [
+        {
+          "object": "car",
+          "role": "The player's red No. 5 car, driving left and right along the bottom as the paddle."
+        },
+        {
+          "object": "racecar",
+          "role": "The blue No. 8 rival car, patrolling upside-down at the top as a moving blocker that knocks the flag back down."
+        },
+        {
+          "object": "trophy",
+          "role": "The gold trophy prize sitting behind the brick wall; hit it three times to win it."
+        },
+        {
+          "object": "cone",
+          "role": "One-hit orange bricks forming the lower rows of the wall."
+        },
+        {
+          "object": "pylon",
+          "role": "Taller two-hit orange bricks in the upper rows that crack after the first hit."
+        },
+        {
+          "object": "marker",
+          "role": "The marker power-up that drops from broken bricks and refills the ink guard meter."
+        },
+        {
+          "object": "flag",
+          "role": "The tumbling checkered flag used as the bouncing ball, plus the three spare flags shown as lives."
+        }
+      ],
+      "title": "Trophy Breakout Rally",
+      "win": "Clear the wall, hit the exposed trophy three times, and the text says: \"TROPHY DOWN! YOU WIN!\""
+    },
+    {
+      "controls": "Arrows / WASD: Move one tile (push cones and pylons) | Space: Wait one turn | Enter: Start / Restart",
+      "core_mechanic": "This is a turn-based race on a paper grid: every time the red car moves one tile, the blue car also rolls one tile closer to the trophy. Push a light cone to block a lane, or shove a heavy pylon so it slides until it hits something — building the blue car's traffic jam is how you win.",
+      "genre": "sokoban-like grid puzzle",
+      "juice": "Chunky tile-by-tile hops with squash and stretch, orange dust puffs when cones land, a sliding trail and screen shake when a pylon slams to a stop, red ink splashes on painted tiles, the flag snapping and sparkling on each checkpoint, blue-car engine puffs on every one of its turns, and a star burst with floating BLOCKED! text when the rival bumps into your trap.",
+      "lose": "The blue car reaches the trophy first, or the red car runs out of moves, and the text says: \"BLUE GOT THE TROPHY! TRY AGAIN!\"",
+      "palette": "#f3ffe9",
+      "pitch": "Outsmart the blue No. 8 in a turn-based paper-grid race by pushing cones and sliding pylons into its path on your way to the trophy.",
+      "roles": [
+        {
+          "object": "car",
+          "role": "The player's red No. 5 car, moving one grid tile at a time and pushing obstacles."
+        },
+        {
+          "object": "racecar",
+          "role": "The blue No. 8 rival car that automatically rolls one tile toward the trophy after every player move."
+        },
+        {
+          "object": "trophy",
+          "role": "The gold trophy goal tile at the far end of the grid."
+        },
+        {
+          "object": "cone",
+          "role": "Light pushable blockers that move exactly one tile when bumped."
+        },
+        {
+          "object": "pylon",
+          "role": "Heavy pushable blockers that slide in a straight line until they hit a wall, car, or obstacle."
+        },
+        {
+          "object": "marker",
+          "role": "A marker tile that paints the square red when driven over; the blue car will not cross fresh red ink."
+        },
+        {
+          "object": "flag",
+          "role": "The checkpoint flag tile the red car must touch to unlock the trophy on each board."
+        }
+      ],
+      "title": "Gridlock Trophy Dash",
+      "win": "Touch the flag, then reach the trophy before the blue car in all three boards, and the text says: \"THREE BOARDS CLEAR! TROPHY WON!\""
+    }
+  ],
+  "ms": 33250,
+  "usage": {
+    "completion_tokens": 3567,
+    "prompt_tokens": 1249,
+    "total_tokens": 4816,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1519
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  }
+}

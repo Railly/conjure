@@ -1,0 +1,93 @@
+{
+  "slug": "a-downhill-snowboard-run-11050313-c0-1",
+  "verdict": "ok",
+  "contract": {
+    "outcome": true,
+    "progress": true
+  },
+  "too_easy_by": [],
+  "search": {
+    "outcome": "won",
+    "frames": 2320,
+    "progress": 1,
+    "inputs": 1381
+  },
+  "budget": {
+    "max_frames": 7200,
+    "segment": 20,
+    "tries": 12
+  },
+  "policies": {
+    "idle": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-right": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-left": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-right-jump": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-everything": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "tap-action": {
+      "outcome": "lost",
+      "frames": 1760,
+      "progress": 0.7641964341315293
+    },
+    "mash-1": {
+      "outcome": "won",
+      "frames": 2398,
+      "progress": 1
+    },
+    "mash-2": {
+      "outcome": "lost",
+      "frames": 1652,
+      "progress": 0.6853576177269471
+    },
+    "mash-3": {
+      "outcome": "lost",
+      "frames": 1205,
+      "progress": 0.4935881716879936
+    },
+    "mash-4": {
+      "outcome": "won",
+      "frames": 2408,
+      "progress": 1
+    },
+    "mash-5": {
+      "outcome": "lost",
+      "frames": 1534,
+      "progress": 0.6329631888218187
+    },
+    "mash-6": {
+      "outcome": "lost",
+      "frames": 2142,
+      "progress": 0.8863922657069963
+    },
+    "mash-7": {
+      "outcome": "won",
+      "frames": 2412,
+      "progress": 1
+    },
+    "mash-8": {
+      "outcome": "lost",
+      "frames": 1988,
+      "progress": 0.831723600811312
+    }
+  },
+  "advice": "Winnable, and no dumb policy wins."
+}

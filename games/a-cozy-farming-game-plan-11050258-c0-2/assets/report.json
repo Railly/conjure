@@ -1,0 +1,108 @@
+{
+  "photo": {
+    "width": 1600,
+    "height": 1067
+  },
+  "timings_ms": {
+    "spark": 23949,
+    "sam:girl": 4044,
+    "sam:carrot": 3317,
+    "sam:wateringcan": 2609,
+    "sam:chicken": 4564,
+    "sam:barn": 6080
+  },
+  "spark_usage": {
+    "completion_tokens": 2446,
+    "prompt_tokens": 2263,
+    "total_tokens": 4709,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2255
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 2181
+    }
+  },
+  "sam_cost_usd": 0.0125,
+  "objects": [
+    {
+      "name": "girl",
+      "spark_box": [
+        245,
+        197,
+        616,
+        587
+      ],
+      "box": [
+        253,
+        172,
+        554,
+        558
+      ],
+      "parts": 8
+    },
+    {
+      "name": "carrot",
+      "spark_box": [
+        1003,
+        129,
+        1249,
+        449
+      ],
+      "box": [
+        989,
+        102,
+        1203,
+        420
+      ],
+      "parts": 8
+    },
+    {
+      "name": "wateringcan",
+      "spark_box": [
+        642,
+        471,
+        1057,
+        667
+      ],
+      "box": [
+        628,
+        446,
+        1017,
+        643
+      ],
+      "parts": 8
+    },
+    {
+      "name": "chicken",
+      "spark_box": [
+        268,
+        638,
+        613,
+        963
+      ],
+      "box": [
+        267,
+        616,
+        588,
+        969
+      ],
+      "parts": 8
+    },
+    {
+      "name": "barn",
+      "spark_box": [
+        1053,
+        576,
+        1410,
+        873
+      ],
+      "box": [
+        1031,
+        553,
+        1338,
+        845
+      ],
+      "parts": 8
+    }
+  ]
+}

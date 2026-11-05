@@ -1,0 +1,11 @@
+{
+  "model": "muse-wonder-1.0",
+  "ms": 117412,
+  "turns": 49,
+  "usage": {
+    "input": 78989,
+    "cachedInput": 619652,
+    "output": 15357
+  },
+  "summary": "Powder Panic! is an endless-runner snowboard chase where you carve down a scrolling slope to the finish flags while a huge yeti looms behind you, growing closer whenever you ride clean and falling back when you blind him with spray. Play with Left/Right or A/D to carve and blast snow into his face (hard zigzag carves spray most but slow you down), press Space to jump, hit snowmen square-on to launch and hold Left+Right in the air to spin for trick points and a landing spray burst, thread red flag gates for bonuses, and avoid three tree crashes that crack your goggles — press Enter to start or restart."
+}

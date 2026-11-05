@@ -1,0 +1,142 @@
+{
+  "photo": {
+    "width": 1600,
+    "height": 1067
+  },
+  "timings_ms": {
+    "spark": 22833,
+    "sam:car": 3130,
+    "sam:racecar": 2689,
+    "sam:trophy": 3147,
+    "sam:cone": 4526,
+    "sam:pylon": 2408,
+    "sam:marker": 3281,
+    "sam:flag": 3671
+  },
+  "spark_usage": {
+    "completion_tokens": 2568,
+    "prompt_tokens": 2263,
+    "total_tokens": 4831,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2313
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 5
+    }
+  },
+  "sam_cost_usd": 0.0175,
+  "objects": [
+    {
+      "name": "car",
+      "spark_box": [
+        311,
+        245,
+        799,
+        455
+      ],
+      "box": [
+        301,
+        235,
+        797,
+        428
+      ],
+      "parts": 8
+    },
+    {
+      "name": "racecar",
+      "spark_box": [
+        886,
+        179,
+        1248,
+        350
+      ],
+      "box": [
+        883,
+        153,
+        1248,
+        323
+      ],
+      "parts": 8
+    },
+    {
+      "name": "trophy",
+      "spark_box": [
+        973,
+        384,
+        1176,
+        689
+      ],
+      "box": [
+        966,
+        376,
+        1170,
+        664
+      ],
+      "parts": 8
+    },
+    {
+      "name": "cone",
+      "spark_box": [
+        313,
+        559,
+        451,
+        710
+      ],
+      "box": [
+        317,
+        536,
+        439,
+        685
+      ],
+      "parts": 8
+    },
+    {
+      "name": "pylon",
+      "spark_box": [
+        470,
+        529,
+        580,
+        676
+      ],
+      "box": [
+        468,
+        516,
+        571,
+        650
+      ],
+      "parts": 8
+    },
+    {
+      "name": "marker",
+      "spark_box": [
+        607,
+        510,
+        716,
+        647
+      ],
+      "box": [
+        605,
+        501,
+        718,
+        620
+      ],
+      "parts": 8
+    },
+    {
+      "name": "flag",
+      "spark_box": [
+        658,
+        693,
+        950,
+        960
+      ],
+      "box": [
+        654,
+        689,
+        942,
+        936
+      ],
+      "parts": 8
+    }
+  ]
+}

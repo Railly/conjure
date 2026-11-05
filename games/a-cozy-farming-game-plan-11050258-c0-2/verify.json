@@ -1,0 +1,93 @@
+{
+  "slug": "a-cozy-farming-game-plan-11050258-c0-2",
+  "verdict": "ok",
+  "contract": {
+    "outcome": true,
+    "progress": true
+  },
+  "too_easy_by": [],
+  "search": {
+    "outcome": "won",
+    "frames": 2940,
+    "progress": 1,
+    "inputs": 1757
+  },
+  "budget": {
+    "max_frames": 7200,
+    "segment": 20,
+    "tries": 12
+  },
+  "policies": {
+    "idle": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-right": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-left": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-right-jump": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-everything": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "tap-action": {
+      "outcome": "lost",
+      "frames": 3921,
+      "progress": 0.8125
+    },
+    "mash-1": {
+      "outcome": "won",
+      "frames": 3487,
+      "progress": 1
+    },
+    "mash-2": {
+      "outcome": "won",
+      "frames": 3433,
+      "progress": 1
+    },
+    "mash-3": {
+      "outcome": "won",
+      "frames": 2863,
+      "progress": 1
+    },
+    "mash-4": {
+      "outcome": "won",
+      "frames": 3205,
+      "progress": 1
+    },
+    "mash-5": {
+      "outcome": "won",
+      "frames": 3127,
+      "progress": 1
+    },
+    "mash-6": {
+      "outcome": "won",
+      "frames": 2863,
+      "progress": 1
+    },
+    "mash-7": {
+      "outcome": "won",
+      "frames": 3079,
+      "progress": 1
+    },
+    "mash-8": {
+      "outcome": "won",
+      "frames": 3163,
+      "progress": 1
+    }
+  },
+  "advice": "Winnable, and no dumb policy wins."
+}

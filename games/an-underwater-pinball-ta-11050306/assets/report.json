@@ -1,0 +1,108 @@
+{
+  "photo": {
+    "width": 1600,
+    "height": 1067
+  },
+  "timings_ms": {
+    "spark": 14757,
+    "sam:octopus": 3466,
+    "sam:starfish": 3391,
+    "sam:shell": 2538,
+    "sam:map": 3142,
+    "sam:bubbles": 2585
+  },
+  "spark_usage": {
+    "completion_tokens": 1504,
+    "prompt_tokens": 2263,
+    "total_tokens": 3767,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1316
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 2181
+    }
+  },
+  "sam_cost_usd": 0.0125,
+  "objects": [
+    {
+      "name": "octopus",
+      "spark_box": [
+        257,
+        58,
+        548,
+        354
+      ],
+      "box": [
+        261,
+        59,
+        525,
+        327
+      ],
+      "parts": 8
+    },
+    {
+      "name": "starfish",
+      "spark_box": [
+        893,
+        137,
+        1108,
+        370
+      ],
+      "box": [
+        870,
+        138,
+        1081,
+        341
+      ],
+      "parts": 8
+    },
+    {
+      "name": "shell",
+      "spark_box": [
+        384,
+        492,
+        605,
+        648
+      ],
+      "box": [
+        349,
+        467,
+        639,
+        668
+      ],
+      "parts": 8
+    },
+    {
+      "name": "map",
+      "spark_box": [
+        607,
+        697,
+        868,
+        897
+      ],
+      "box": [
+        608,
+        671,
+        859,
+        872
+      ],
+      "parts": 8
+    },
+    {
+      "name": "bubbles",
+      "spark_box": [
+        1176,
+        818,
+        1330,
+        986
+      ],
+      "box": [
+        1184,
+        795,
+        1337,
+        988
+      ],
+      "parts": 8
+    }
+  ]
+}

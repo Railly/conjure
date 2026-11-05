@@ -1,0 +1,10 @@
+Title: Long Dog Dash
+Genre: Endless Runner
+Pitch: Your dog has spotted the bus home and is stretching, snapping, and sprinting down the street to catch it. Time each rubber-band leap over hydrants, snatch bones mid-flight, and reach the final bus stop before your three tumbles run out.
+Core mechanic: Holding Space stretches the dog's front half forward while its back feet stay planted, then releasing snaps its whole body through the air. A longer stretch flies farther but takes longer to snap, so players must judge distance rather than simply tap to jump.
+Controls: Hold and release Space to stretch and launch. Press Down to duck. Press Enter to start or retry.
+Win: Reach the big BUS STOP sign at 600 meters before losing all three tumbles to see 'YOU CAUGHT THE BUS!'
+Lose: Crash into three hydrants or cats and the run ends with the text 'OH NO! TRIPPED UP!'
+Roles: The brown spotted running dog: The large hero whose body visibly stretches and snaps forward with every jump.; The red fire hydrant: The main ground obstacle to clear; clipping one costs a tumble and bursts a spray of water.; The black-and-white bone: Floating treats placed along ideal jump arcs; grabbing five in a row restores one tumble.; The gray striped cat: A tall sitting blocker that must be ducked under its swiping paw or cleared with a very short hop.; The brown wooden fence: Raised fence sections that act as landing platforms and change the height of upcoming jumps.; The blue BUS STOP sign: Milestone signs every 150 meters and the giant finish sign at the end of the street.
+Juice: The dog squashes before stretching, wiggles while fully extended, and snaps forward with speed lines and dust puffs. Perfect landings pop floating text, bones spin off in sparkles, hydrant grazes cause a tiny screen shake, and passing each bus stop triggers a cheerful sign wiggle and distance banner. A paper-like street, paw-print trail, and big hand-drawn sprites keep the run charming and readable.
+Palette: Warm cream, dog brown, hydrant red, and bus-stop blue on a dark outline.

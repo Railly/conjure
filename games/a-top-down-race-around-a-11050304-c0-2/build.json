@@ -1,0 +1,162 @@
+{
+  "concept": {
+    "controls": " Up / W: Gas | Down / S: Brake / Reverse | Left / Right or A / D: Steer | Space: Hold to lay marker ink, release to boost | Enter: Start / Restart\",\n      \"win\": \"Finish three laps before the blue car and the on-screen text says: \\\"YOU WIN THE TROPHY!\\\"\",\n      \"lose\": \"The blue car finishes three laps first and the on-screen text says: \\\"BLUE WINS! TRY AGAIN!\\\"\",\n      \"difficulty\": \"Lap 1 is a clean paper oval. Lap 2 drops cones across the racing line and the blue car uses your ink trails too. Lap 3 narrows the pylon boost gate, drains marker ink faster, and gives the blue car shorter, riskier shortcut lines.\",\n      \"text_in_game\": [\n        \"3 LAPS VS BLUE!\",\n        \"HOLD SPACE TO DRAW YOUR BOOST!\",\n        \"LAP 2!\",\n        \"FINAL LAP!\",\n        \"YOU WIN THE TROPHY!\",\n        \"BLUE WINS! TRY AGAIN!\"\n      ],\n      \"juice\": \"Red and blue paper-skid trails, yellow star sparkles on gate boosts, ink splats when marker paint lands, cone bounce and spin with a tiny screen shake on car-to-car bumps, speed lines at boost speed, squash-and-stretch cars when they hit the track edge, and big floating text that pops in for LAP 2! and FINAL LAP!.\"\n    }\n  ]\n}",
+    "core_mechanic": "Holding Space spends marker ink to paint a red boost road directly behind your car while you steer. Release Space while still on your fresh ink to launch forward, so the fastest line is a road you just drew — but the blue car can steal a ride on it too.",
+    "genre": "racing",
+    "juice": "Red and blue paper-skid trails, yellow star sparkles on gate boosts, ink splats when marker paint lands, cone bounce and spin with a tiny screen shake on car-to-car bumps, speed lines at boost speed, squash-and-stretch cars when they hit the track edge, and big floating text that pops in for LAP 2! and FINAL LAP!.",
+    "lose": "The blue car finishes three laps first and the on-screen text says: \"BLUE WINS! TRY AGAIN!\"",
+    "palette": "#fffaf0",
+    "pitch": "Race the red No. 5 car around a hand-drawn paper track and beat the blue No. 8 to the trophy in three laps.",
+    "roles": [
+      {
+        "object": "car",
+        "role": "The player's big red No. 5 race car, shown top-down and rotating as it steers around the paper track."
+      },
+      {
+        "object": "racecar",
+        "role": "The blue No. 8 rival car, racing the same three laps on its own fast line."
+      },
+      {
+        "object": "trophy",
+        "role": "The gold trophy prize displayed huge at track center and awarded to the winner after three laps."
+      },
+      {
+        "object": "cone",
+        "role": "Short orange track cones that spin away and slow either car when clipped."
+      },
+      {
+        "object": "pylon",
+        "role": "The taller orange pylon marking a narrow boost gate on each lap."
+      },
+      {
+        "object": "marker",
+        "role": "The marker pickup that refills the player's ink meter for painting boost roads."
+      },
+      {
+        "object": "flag",
+        "role": "The start/finish flag at the lap line, waving each time a car completes a lap."
+      }
+    ],
+    "title": "Paper Grand Prix",
+    "win": "Finish three laps before the blue car and the on-screen text says: \"YOU WIN THE TROPHY!\""
+  },
+  "verdict": "ok",
+  "playtest": {
+    "slug": "a-top-down-race-around-a-11050304-c0-2",
+    "verdict": "ok",
+    "contract": {
+      "outcome": true,
+      "progress": true
+    },
+    "too_easy_by": [],
+    "search": {
+      "outcome": "won",
+      "frames": 940,
+      "progress": 1,
+      "inputs": 553
+    },
+    "budget": {
+      "max_frames": 7200,
+      "segment": 20,
+      "tries": 12
+    },
+    "policies": {
+      "idle": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-right": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-left": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-right-jump": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-everything": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "tap-action": {
+        "outcome": "lost",
+        "frames": 929,
+        "progress": 0
+      },
+      "mash-1": {
+        "outcome": "lost",
+        "frames": 1380,
+        "progress": 0.041800349686157236
+      },
+      "mash-2": {
+        "outcome": "lost",
+        "frames": 1329,
+        "progress": 0.16110156727833966
+      },
+      "mash-3": {
+        "outcome": "lost",
+        "frames": 1896,
+        "progress": 0.029083943171789046
+      },
+      "mash-4": {
+        "outcome": "lost",
+        "frames": 1142,
+        "progress": 0.11580046707226342
+      },
+      "mash-5": {
+        "outcome": "lost",
+        "frames": 953,
+        "progress": 0.13626681762722975
+      },
+      "mash-6": {
+        "outcome": "lost",
+        "frames": 1698,
+        "progress": 0.063437801151079
+      },
+      "mash-7": {
+        "outcome": "lost",
+        "frames": 1336,
+        "progress": 0.022194933016091437
+      },
+      "mash-8": {
+        "outcome": "lost",
+        "frames": 941,
+        "progress": 0
+      }
+    },
+    "advice": "Winnable, and no dumb policy wins."
+  },
+  "qa": {
+    "ok": true,
+    "issues": [],
+    "minor": [
+      "Opening screen hero title overlaps the hand-drawn blue No.8 / red cars and checkered flag sketch behind it, crowding the art.",
+      "Mid-play floating GO text and car trails / boost puffs momentarily cross the HUD, start-line and track - normal motion overlap."
+    ],
+    "model": "Muse Spark 1.3",
+    "ms": 18473
+  },
+  "cost_usd": 0.6329,
+  "ms": 119962,
+  "runs": [
+    {
+      "model": "muse-wonder-1.0",
+      "ms": 98399,
+      "turns": 35,
+      "usage": {
+        "input": 72701,
+        "cachedInput": 463040,
+        "output": 12475
+      },
+      "summary": "Paper Grand Prix is a hand-drawn 3-lap race on lined paper where your red No. 5 car battles the blue No. 8 around an oval for the gold trophy at track centre. Drive with Arrows/WASD, hold Space to spend ink painting a red boost road behind you and release it on your fresh ink to launch ahead — grab markers to refill, thread the pylon gate for sparkles, and finish three laps first to win."
+    }
+  ]
+}

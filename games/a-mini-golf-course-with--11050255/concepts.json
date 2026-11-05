@@ -1,0 +1,115 @@
+{
+  "concepts": [
+    {
+      "controls": "- Use 'Arrows' or 'WASD' to aim the arrow. Hold 'Space' to charge and release it to putt. Press 'Enter' to start and restart.",
+      "core_mechanic": "The windmill really works: after a putt, you gently tilt the whole course with 'Arrows' or 'WASD', rolling the ball around sand and walls, and the faster the windmill blades spin, the harder the course tilts.",
+      "genre": "sports",
+      "juice": "- Gamepad or 'Arrows' and 'WASD' move the ball once per hole: the ball stretches on impact, squashes on hard knocks, slows in sand, and stops at the hole. Keep 'Enter' near your thumb to undo changes quickly.",
+      "lose": "Finish 'Out of Bounds' if the ball flies into the rough or sits in any sand trap for three seconds. Use Undo (Enter) to pull the ball back.",
+      "palette": "- The ball is a glowing white orb, the flag is a bright red beacon, the bridge over the pond is the only safe crossing, the windmill obstacles guard the back fairway, and the pond is blue glass.",
+      "pitch": "A classic mini-golf hole with a twist: the windmill isn't an obstacle - it's your steering wheel. Every time you putt, you don't just watch, you drive the ball to the flag past the pond. The first hole is a gentle curve, but the windmill gets quicker and the pond gets bigger with each round.",
+      "roles": [
+        {
+          "object": "ball",
+          "role": "You putt the white golf ball around the one hole, mostly using curves and ramps. Aim and hold to power your shot."
+        },
+        {
+          "object": "flag",
+          "role": "The red flag plants the hole at the back of the screen - sink the ball there to win the hole."
+        },
+        {
+          "object": "pond",
+          "role": "A bright blue water hazard sits between you and the hole. If the ball goes in, it costs a stroke."
+        },
+        {
+          "object": "windmill",
+          "role": "The windmill blade slowly spins over a narrow exit, and it also pushes wind across the field when you steer. Tap a blade and the ball bounces off."
+        },
+        {
+          "object": "bridge",
+          "role": "The arched bridge sits over the pond - if you roll onto it, your ball crosses safely; the wind can't move you while you're on it."
+        }
+      ],
+      "title": "Windmill Steering Golf",
+      "win": "You win by holing the ball in the cup under the flag in 5 strokes or fewer."
+    },
+    {
+      "controls": "- Use 'Left Arrow' and 'Right Arrow' to slide the bridge. Use 'Up Arrow' and 'Down Arrow' to spin it. Hold 'Space' to charge and release it to putt once. Press 'Enter' to restart.",
+      "core_mechanic": "The windmill really works: after a putt, you gently tilt the whole course with 'Arrows' or 'WASD', rolling the ball around sand and walls, and the faster the windmill blades spin, the harder the course tilts.",
+      "genre": "physics puzzle",
+      "juice": "The bridge slingshots the ball on impact, particles spray out of the pond when sprayed, the screen wobbles as the windmill powers up, and a big 'SPLASH!' text pops up with a blue splash when you mess up. The ball squashes onto the bridge and stretches off it, and a faint trail shows your one perfect path.",
+      "lose": "You lose a life each time the ball drops into the pond - lose all three hearts and it's 'Puzzle Failed'. You also lose if you run out of time.",
+      "palette": "A bright top-down green with the white ball, red flag, blue pond, brown windmill, and wooden bridge drawn large and chunky - all the hand drawings stay readable and central, never tiny icons.",
+      "pitch": "You only get one putt per puzzle - but you control the bridge. Slide and spin the bridge in real time to bounce, catch, and carry the rolling ball over the pond, through the windmill gate, and into the flag. Three puzzles, one screen, each one meaner than the last.",
+      "roles": [
+        {
+          "object": "ball",
+          "role": "The golf ball is the one thing you shoot - it keeps rolling with real momentum, bouncing off walls until it sinks, splashes, or stops."
+        },
+        {
+          "object": "flag",
+          "role": "The flag marks the hole in a different corner of each puzzle - it flutters when the ball gets close, teasing you."
+        },
+        {
+          "object": "pond",
+          "role": "The pond fills the middle of the screen as a deadly sink; only the bridge can get the ball across it."
+        },
+        {
+          "object": "windmill",
+          "role": "The windmill blocks the far side, its four blades turning into a timed gate you must thread or bounce through - a blade swat adds spin to the ball."
+        },
+        {
+          "object": "bridge",
+          "role": "The star: a movable wooden bridge you slide and rotate like a paddle and ramp. It bridges the pond and also acts as a deflector wall to curve the ball around corners."
+        }
+      ],
+      "title": "One Putt, Moving Bridge",
+      "win": "Solve all three one-screen puzzles by sinking the ball under the flag."
+    },
+    {
+      "controls": "- Use 'Left Arrow' and 'Right Arrow' (or 'A' and 'D') to move the bridge paddle. Press 'Space' to launch the ball and to give it a little hop when it's rolling back. Press 'Enter' to start.",
+      "core_mechanic": "The bridge is your paddle: every time the ball bounces off the bridge, its arch bends and springs back - hold 'Left' or 'Right' while it hits to add English and curve the ball around the windmill blades. Miss the bridge and the ball drops in the pond behind you.",
+      "genre": "breakout-like",
+      "juice": "Each bridge bounce makes the bridge squash and spring, the ball leaves a white dotted trail, windmill hits burst into blue-and-orange sparks, and big combo text pops: 'Nice Save!', 'Blade Breaker!', 'Almost There!'. Pond misses splash with droplets and a small screen shake, and breaking a blade gives a satisfying slow-mo flash.",
+      "lose": "You have three balls. Lose all three in the pond and it's 'Game Over'. The ball speeds up each blade you break, so the last blade is frantic.",
+      "palette": "A vertical one-screen green court, viewed top-down: bridge paddle at the bottom, pond as a moat just behind it, the big windmill spinning near the top, and the flag hole glowing beyond it. Everything is your hand-drawn art, scaled up big.",
+      "pitch": "It's Breakout on a golf green: your bridge is the paddle, the windmill is the wall of bricks, and the flag hole waits behind it. Bounce the golf ball up, smash all four windmill blades one by one, then thread the last shot past the spinning hub and sink it in the cup.",
+      "roles": [
+        {
+          "object": "ball",
+          "role": "The golf ball is the Breakout ball - it never stops, bouncing off walls, blades, and your bridge until you sink it or splash it."
+        },
+        {
+          "object": "flag",
+          "role": "The flag and cup sit at the very top as the final goal, unlocked only after all four blades are broken."
+        },
+        {
+          "object": "pond",
+          "role": "The pond stretches across the bottom behind your paddle - it's the drain. If the ball slips past the bridge, it splashes in and you lose a ball."
+        },
+        {
+          "object": "windmill",
+          "role": "The windmill is the brick wall: its four big blades spin slowly and each takes one hit to break, changing the spin pattern every time."
+        },
+        {
+          "object": "bridge",
+          "role": "The arched bridge is your paddle, sliding along the bottom edge. Its curved top lets you aim rebounds, just like a real Breakout paddle."
+        }
+      ],
+      "title": "Putt-Out: Break the Windmill",
+      "win": "Break all four windmill blades, then bounce the ball into the flag's cup to win: 'You Sank It!'"
+    }
+  ],
+  "ms": 36294,
+  "usage": {
+    "completion_tokens": 3127,
+    "prompt_tokens": 1080,
+    "total_tokens": 4207,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1357
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  }
+}

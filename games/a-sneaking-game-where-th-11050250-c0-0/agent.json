@@ -1,0 +1,11 @@
+{
+  "model": "muse-wonder-1.0",
+  "ms": 85970,
+  "turns": 36,
+  "usage": {
+    "input": 67081,
+    "cachedInput": 343908,
+    "output": 10796
+  },
+  "summary": "Squeak in the Dark (wear the rug!) is a top-down stealth game where a tiny mouse must steal three bites from a giant cheese wedge and carry them home without waking the sleeping cat. Move with Arrow Keys or WASD, hold SPACE while on the red rug to hide and creep safely through the swinging lamplight, release SPACE to pop out and grab cheese, and steer clear of moving in bright light or the Wake Meter will fill and the cat will pounce."
+}

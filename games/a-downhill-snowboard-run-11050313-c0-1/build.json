@@ -1,0 +1,151 @@
+{
+  "concept": {
+    "controls": "Left / Right or A / D: Carve and aim your spray\nSpace: Jump off a snowman ramp\nLeft + Right in the air: Spin for trick points\nEnter: Start / restart",
+    "core_mechanic": "Carving sprays a real arc of snow behind you. Spray the yeti in the face to blind and slow him, but hard carves also slow you down — so you have to zigzag between safe speed and desperate snow-blasting. Riding straight into a snowman launches you off its belly for a spin trick, and a clean landing dumps a huge spray burst behind you.",
+    "genre": "Endless runner",
+    "juice": "Snow spray particles arc from the board on every carve, a white splash bursts across the yeti's face when blinded, and landing a spin pops floating text like '360! +300' with a squash-and-stretch landing. The screen gives a tiny shake when you clip a tree and a bigger shake as the yeti lunges. A carved trench trail fades behind your board. Title screen: 'POWDER PANIC!' over the grinning snowboarder, with 'Press Enter — Don't Let Him Wipe His Face!' underneath.",
+    "lose": "The yeti catches you, shown by him filling the screen with 'GOTCHA!' Or you crash into three trees, shown by three cracked-goggle icons emptying and 'WIPEOUT!'",
+    "palette": "Fresh white snow, crayon-yellow jacket, pine green, flag red, and icy pale blue for the yeti.",
+    "pitch": "Race one steep scrolling run to the finish flags at the bottom while the yeti thunders down right behind you. Your only brake on him is the snow you kick up — carve, fly off snowmen, land tricks, and keep his face full of powder.",
+    "roles": [
+      {
+        "object": "snowboarder",
+        "role": "The big central hero sprite you carve downhill, tilting and squashing as it rides and spins in midair."
+      },
+      {
+        "object": "tree",
+        "role": "Crayon pine obstacles planted across the slope; clipping one costs a crash and shakes loose a puff of green needles and snow."
+      },
+      {
+        "object": "snowman",
+        "role": "A friendly ramp — hit one square-on to launch into the air for spin tricks; it wobbles and loses its carrot for a second, then pops back up."
+      },
+      {
+        "object": "flag",
+        "role": "Red gate flags in pairs marking the fastest line down, plus a giant checkered row of them at the finish at the bottom."
+      },
+      {
+        "object": "yeti",
+        "role": "The huge pursuer looming at the top of the screen, gaining whenever you ride clean and falling back when you blind him with spray, wipe three crashes and he grabs you."
+      }
+    ],
+    "title": "Powder Panic!",
+    "win": "Cross the finish flags before the yeti grabs you. 'YOU MADE IT DOWN!' shows with your trick score and best combo."
+  },
+  "verdict": "ok",
+  "playtest": {
+    "slug": "a-downhill-snowboard-run-11050313-c0-1",
+    "verdict": "ok",
+    "contract": {
+      "outcome": true,
+      "progress": true
+    },
+    "too_easy_by": [],
+    "search": {
+      "outcome": "won",
+      "frames": 2320,
+      "progress": 1,
+      "inputs": 1381
+    },
+    "budget": {
+      "max_frames": 7200,
+      "segment": 20,
+      "tries": 12
+    },
+    "policies": {
+      "idle": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-right": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-left": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-right-jump": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-everything": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "tap-action": {
+        "outcome": "lost",
+        "frames": 1760,
+        "progress": 0.7641964341315293
+      },
+      "mash-1": {
+        "outcome": "won",
+        "frames": 2398,
+        "progress": 1
+      },
+      "mash-2": {
+        "outcome": "lost",
+        "frames": 1652,
+        "progress": 0.6853576177269471
+      },
+      "mash-3": {
+        "outcome": "lost",
+        "frames": 1205,
+        "progress": 0.4935881716879936
+      },
+      "mash-4": {
+        "outcome": "won",
+        "frames": 2408,
+        "progress": 1
+      },
+      "mash-5": {
+        "outcome": "lost",
+        "frames": 1534,
+        "progress": 0.6329631888218187
+      },
+      "mash-6": {
+        "outcome": "lost",
+        "frames": 2142,
+        "progress": 0.8863922657069963
+      },
+      "mash-7": {
+        "outcome": "won",
+        "frames": 2412,
+        "progress": 1
+      },
+      "mash-8": {
+        "outcome": "lost",
+        "frames": 1988,
+        "progress": 0.831723600811312
+      }
+    },
+    "advice": "Winnable, and no dumb policy wins."
+  },
+  "qa": {
+    "ok": true,
+    "issues": [],
+    "minor": [],
+    "model": "Muse Spark 1.3",
+    "ms": 22058
+  },
+  "cost_usd": 0.747,
+  "ms": 142399,
+  "runs": [
+    {
+      "model": "muse-wonder-1.0",
+      "ms": 117412,
+      "turns": 49,
+      "usage": {
+        "input": 78989,
+        "cachedInput": 619652,
+        "output": 15357
+      },
+      "summary": "Powder Panic! is an endless-runner snowboard chase where you carve down a scrolling slope to the finish flags while a huge yeti looms behind you, growing closer whenever you ride clean and falling back when you blind him with spray. Play with Left/Right or A/D to carve and blast snow into his face (hard zigzag carves spray most but slow you down), press Space to jump, hit snowmen square-on to launch and hold Left+Right in the air to spin for trick points and a landing spray burst, thread red flag gates for bonuses, and avoid three tree crashes that crack your goggles — press Enter to start or restart."
+    }
+  ]
+}

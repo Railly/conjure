@@ -1,0 +1,115 @@
+{
+  "concepts": [
+    {
+      "controls": "Left / Right Arrows or A / D: Swing the left and right flippers. Space: Launch the shell, then tap it again in mid-flight to pop a bubble boost. Hold Space after a drain for a stronger relaunch.",
+      "core_mechanic": "Every hit makes a starfish bumper light up, spin, and crawl one step down the table toward the drain. The table itself rearranges while you play, so a safe bumper can suddenly become a blocker — light all eight starfish, then sink the shell into the treasure pocket before the bumpers crowd you out.",
+      "genre": "breakout-like",
+      "juice": "The shell leaves a foamy bubble trail and squashes flat for one frame on every bounce. Starfish spin, flash gold, and pop out “BING!”, “BOING!”, and “COMBO x3!” text with a spray of tiny bubbles, while a perfect flipper smack triggers a tiny screen shake and makes the octopus's eyes squash happily. Title screen: “PRESS ENTER” pulses under the huge octopus, which idly juggles the shell between its tentacles.",
+      "lose": "“THE SHELL DRAINED AWAY!” — You lose your third shell down the middle before lighting all the starfish and reaching the pocket.",
+      "palette": "Deep teal water over a sandy tan table, purple octopus and pink shell against warm orange starfish, with bright cyan bubbles and a parchment treasure map lining the back wall.",
+      "pitch": "It's underwater pinball where the octopus is your flippers and every starfish bumper you hit starts crawling toward the drain. Light them all and sink the shell into the treasure pocket before your own bumpers overrun the table!",
+      "roles": [
+        {
+          "object": "octopus",
+          "role": "Your flipper keeper at the bottom of the table — its two curled outer tentacles are the big, springy flippers you swing."
+        },
+        {
+          "object": "starfish",
+          "role": "The eight pinball bumpers scattered across the table. Each one must be lit by a shell hit."
+        },
+        {
+          "object": "shell",
+          "role": "The pinball itself — a light, floaty ball that drifts a little sideways like it's caught in a current."
+        },
+        {
+          "object": "map",
+          "role": "The treasure map painted across the back of the table, with its big X marking the glowing treasure pocket you must finally sink the shell into."
+        },
+        {
+          "object": "bubbles",
+          "role": "Your bubble boost. One bubble trails the shell, and popping it with Space gives the shell one small mid-air kick in the direction it's already moving."
+        }
+      ],
+      "title": "Starfish Pinball Panic",
+      "win": "“TREASURE FOUND!” — Light all eight starfish, then land the shell in the X pocket at the top of the table."
+    },
+    {
+      "controls": "Left / Right / Up / Down Arrows or WASD: Pop the bubble in that lane. Space: Big Pop on the beat for any bubble perfectly centered. Enter: Start the song.",
+      "core_mechanic": "Popping a bubble exactly on the beat inflates the next bubble in line, building a chain — a Good pop moves the shell one dash forward on the map, a Perfect pop moves it two and makes it bounce higher. Miss, and the shell slides one dash backward; after the first chorus the current starts pushing it back between beats too, so only a steady combo keeps you moving toward the X.",
+      "genre": "rhythm or timing",
+      "juice": "Perfect pops burst into a ring of mini-bubbles with a floating “PERFECT!”, “GOOD!”, or “MISS” and a rising chime pitch for every combo step. The octopus bobs and stretches its tentacles on each beat, starfish clap two arms together on the downbeat, and at combo x10 the whole screen pulses with the music. Title screen: the octopus conducts rising bubbles under the title while “PRESS ENTER TO START THE SONG!” bounces in time.",
+      "lose": "“THE TIDE WON!” — The timer ends, or your combo drops the shell all the way back to the start of the map three times.",
+      "palette": "Bright shallow-water blues and cyan bubble lanes, parchment map route across the middle, purple octopus conductor, and orange starfish flashing gold on the beat.",
+      "pitch": "Follow the treasure map one bubble-pop at a time in this underwater rhythm race. Hit the beat to bounce the shell along the dotted route to the X — miss, and the tide rolls it backward!",
+      "roles": [
+        {
+          "object": "octopus",
+          "role": "The conductor at the bottom of the screen. Its tentacles reach up into four lanes and pop the bubbles you hit, dancing bigger as your combo grows."
+        },
+        {
+          "object": "starfish",
+          "role": "The beat judges. One starfish sits at the hit line in each lane, opening on the approach and clapping shut exactly on the beat."
+        },
+        {
+          "object": "shell",
+          "role": "Your treasure hunter, sitting on the map route. It hops forward one dotted step per good pop and tumbles backward on a miss."
+        },
+        {
+          "object": "map",
+          "role": "The song's progress track stretched across the screen — a single dotted route from a small x on the left to the big X treasure island on the right."
+        },
+        {
+          "object": "bubbles",
+          "role": "The notes. Bubbles rise up the four lanes in rhythm and must be popped the moment they cross their starfish."
+        }
+      ],
+      "title": "Bubble Beat Treasure",
+      "win": "“YOU FOUND THE TREASURE!” — Bounce the shell all the way to the big X before the 90-second song ends."
+    },
+    {
+      "controls": "Arrow Keys or WASD: Move the placement cursor around the reef. Enter: Place a starfish tower (costs 3 pearls). Space: Octopus Bubble Shield — one big pop that floats the nearest three shells backward, with a 10-second cooldown.",
+      "core_mechanic": "Your starfish towers don't shoot straight — they shoot bubbles that trap a shell, float it up, and ricochet it into the next nearest starfish, pinballing one trapped shell from tower to tower for more damage each bounce. A lone tower barely pops anything, but a clever triangle of starfish will juggle the same shell five or six times before it escapes.",
+      "genre": "tower or base defense",
+      "juice": "Every ricochet makes the receiving starfish squash, spin a quarter-turn, and spray sparkles, with floating “JUGGLE x2!”, “x3!”, “x4!” text as the trapped shell wobbles inside its bubble. Reaching the octopus makes it flinch, flash, and lose a heart with a low screen shake; the shield pop is one huge expanding bubble ring. Title screen: the map covers the screen under the title, its dotted route drawing itself toward the X while “PRESS ENTER TO DEFEND THE TREASURE!” pulses.",
+      "lose": "“THE TREASURE IS GONE!” — Ten shells reach the X and overwhelm the octopus before the final wave ends.",
+      "palette": "Sandy parchment map as the sea floor, teal reef edges, orange starfish towers, pink marching shells, purple octopus guarding a golden X, and pale blue bubbles everywhere a shot is fired.",
+      "pitch": "Defend the treasure X at the end of the map from a parade of thieving shells marching down the dotted route. Place starfish towers so their trapping bubbles pinball the same shell from tower to tower — placement is your firepower!",
+      "roles": [
+        {
+          "object": "octopus",
+          "role": "Your base and last defender, curled protectively around the treasure at the end of the route. It also fires the Bubble Shield you trigger with Space."
+        },
+        {
+          "object": "starfish",
+          "role": "Your placeable towers. Each one puffs trapping bubbles at nearby shells and knocks a trapped shell onward to the next starfish in range."
+        },
+        {
+          "object": "shell",
+          "role": "The invaders — a marching line of treasure-hunting shells following the map's dotted route, getting faster and tougher each wave. You earn a pearl for each one popped."
+        },
+        {
+          "object": "map",
+          "role": "The whole battlefield. Its dotted route is the only path shells can march, and its big X island is the treasure you're defending."
+        },
+        {
+          "object": "bubbles",
+          "role": "The starfish's ammunition and the octopus's shield — bubbles trap shells, float them helplessly, and carry them into the next tower's range."
+        }
+      ],
+      "title": "Octopus Cove Defense",
+      "win": "“THE COVE IS SAFE!” — Survive all six waves in about 90 seconds without letting ten shells reach the treasure."
+    }
+  ],
+  "ms": 32846,
+  "usage": {
+    "completion_tokens": 3067,
+    "prompt_tokens": 1259,
+    "total_tokens": 4326,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1307
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  }
+}

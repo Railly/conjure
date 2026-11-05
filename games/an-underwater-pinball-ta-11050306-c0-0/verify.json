@@ -1,0 +1,93 @@
+{
+  "slug": "an-underwater-pinball-ta-11050306-c0-0",
+  "verdict": "ok",
+  "contract": {
+    "outcome": true,
+    "progress": true
+  },
+  "too_easy_by": [],
+  "search": {
+    "outcome": "won",
+    "frames": 3040,
+    "progress": 1,
+    "inputs": 1813
+  },
+  "budget": {
+    "max_frames": 7200,
+    "segment": 20,
+    "tries": 12
+  },
+  "policies": {
+    "idle": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-right": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-left": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-right-jump": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-everything": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "tap-action": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.6900000000000001
+    },
+    "mash-1": {
+      "outcome": "won",
+      "frames": 7198,
+      "progress": 1
+    },
+    "mash-2": {
+      "outcome": "won",
+      "frames": 5284,
+      "progress": 1
+    },
+    "mash-3": {
+      "outcome": "won",
+      "frames": 2836,
+      "progress": 1
+    },
+    "mash-4": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.805
+    },
+    "mash-5": {
+      "outcome": "won",
+      "frames": 2422,
+      "progress": 1
+    },
+    "mash-6": {
+      "outcome": "won",
+      "frames": 864,
+      "progress": 1
+    },
+    "mash-7": {
+      "outcome": "won",
+      "frames": 4196,
+      "progress": 1
+    },
+    "mash-8": {
+      "outcome": "won",
+      "frames": 808,
+      "progress": 1
+    }
+  },
+  "advice": "Winnable, and no dumb policy wins."
+}

@@ -1,0 +1,11 @@
+{
+  "model": "muse-wonder-1.0",
+  "ms": 161114,
+  "turns": 48,
+  "usage": {
+    "input": 78184,
+    "cachedInput": 688108,
+    "output": 14534
+  },
+  "summary": "Starfish Pinball Panic is an underwater pinball game where a purple octopus works the flippers, the shell drifts with the current, and every starfish you light spins and crawls one step closer to the drain. Play with Left/Right or A/D to flip, hold and release Space to launch, tap Space in flight for a bubble boost, light all eight starfish across your three shells, then sink the shell into the glowing X pocket to find the treasure."
+}

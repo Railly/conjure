@@ -1,0 +1,11 @@
+{
+  "model": "muse-wonder-1.0",
+  "ms": 98399,
+  "turns": 35,
+  "usage": {
+    "input": 72701,
+    "cachedInput": 463040,
+    "output": 12475
+  },
+  "summary": "Paper Grand Prix is a hand-drawn 3-lap race on lined paper where your red No. 5 car battles the blue No. 8 around an oval for the gold trophy at track centre. Drive with Arrows/WASD, hold Space to spend ink painting a red boost road behind you and release it on your fresh ink to launch ahead — grab markers to refill, thread the pylon gate for sparkles, and finish three laps first to win."
+}

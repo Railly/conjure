@@ -1,0 +1,11 @@
+{
+  "model": "muse-wonder-1.0",
+  "ms": 151298,
+  "turns": 48,
+  "usage": {
+    "input": 79138,
+    "cachedInput": 898724,
+    "output": 15071
+  },
+  "summary": "Sunset Beat Farm is a cozy rhythm-farming game where you grow and harvest carrots to the barn drum's accelerating beat before sunset, dodging fake early clucks from wandering chickens. Move between the three soil rows with Up/Down or W/S, press Space exactly on the beat to water (PERFECT grows two stages) or harvest ripe carrots, rotate rows while soil rests, and deliver 12 carrots before the sun goes down."
+}

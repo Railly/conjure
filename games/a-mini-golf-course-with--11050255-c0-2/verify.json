@@ -1,0 +1,93 @@
+{
+  "slug": "a-mini-golf-course-with--11050255-c0-2",
+  "verdict": "ok",
+  "contract": {
+    "outcome": true,
+    "progress": true
+  },
+  "too_easy_by": [],
+  "search": {
+    "outcome": "won",
+    "frames": 380,
+    "progress": 1,
+    "inputs": 218
+  },
+  "budget": {
+    "max_frames": 7200,
+    "segment": 20,
+    "tries": 12
+  },
+  "policies": {
+    "idle": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-right": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-left": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-right-jump": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "hold-everything": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0
+    },
+    "tap-action": {
+      "outcome": "lost",
+      "frames": 759,
+      "progress": 0
+    },
+    "mash-1": {
+      "outcome": "lost",
+      "frames": 223,
+      "progress": 0.08949173940531319
+    },
+    "mash-2": {
+      "outcome": "lost",
+      "frames": 223,
+      "progress": 0.2276259402077806
+    },
+    "mash-3": {
+      "outcome": "lost",
+      "frames": 171,
+      "progress": 0.11744048815649355
+    },
+    "mash-4": {
+      "outcome": "lost",
+      "frames": 304,
+      "progress": 0.06579744675231658
+    },
+    "mash-5": {
+      "outcome": "lost",
+      "frames": 280,
+      "progress": 0
+    },
+    "mash-6": {
+      "outcome": "lost",
+      "frames": 410,
+      "progress": 0.5402787917321051
+    },
+    "mash-7": {
+      "outcome": "lost",
+      "frames": 193,
+      "progress": 0.7730735769215997
+    },
+    "mash-8": {
+      "outcome": "lost",
+      "frames": 285,
+      "progress": 0.5982389760268897
+    }
+  },
+  "advice": "Winnable, and no dumb policy wins."
+}

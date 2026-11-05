@@ -1,0 +1,11 @@
+{
+  "model": "muse-wonder-1.0",
+  "ms": 160977,
+  "turns": 62,
+  "usage": {
+    "input": 84495,
+    "cachedInput": 650500,
+    "output": 17488
+  },
+  "summary": "Windmill Steering Golf is a hand-drawn mini-golf game where you putt across a pond on a bridge, dodge sand and spinning windmill blades, and sink the ball by the red flag in five strokes or fewer. Aim with Arrows/WASD, hold and release Space to charge your putt, then keep steering the rolling ball by tilting the course with Arrows/WASD — pressing Enter to undo a bad shot."
+}

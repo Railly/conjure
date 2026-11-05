@@ -15,3 +15,6 @@ games/_kit-test/
 games/_template/
 video/
 games/*/node_modules
+
+# Only curated games are tracked; agent logs carry local paths
+games/*/*.log

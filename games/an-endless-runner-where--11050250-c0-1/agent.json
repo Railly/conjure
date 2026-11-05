@@ -1,0 +1,11 @@
+{
+  "model": "muse-wonder-1.0",
+  "ms": 119759,
+  "turns": 35,
+  "usage": {
+    "input": 70762,
+    "cachedInput": 396888,
+    "output": 13144
+  },
+  "summary": "Long Dog Dash is a hand-drawn endless runner where your stretching dog sprints 600 meters past hydrants, cats, and fences to catch the bus home. Hold and release Space to stretch and snap through the air, press Down to duck under cats, collect five bones in a row to earn back a tumble, and press Enter to start or retry."
+}

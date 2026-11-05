@@ -1,0 +1,115 @@
+{
+  "concepts": [
+    {
+      "controls": " Up/Down or W/S: Move the girl between the three soil rows. Space: Pour water or harvest a ripe carrot, right on the beat. Enter: Start or restart.",
+      "core_mechanic": "You water only on the barn's drumbeat: a PERFECT hit grows a carrot two stages at once, a GOOD hit grows it one stage, and an off-beat pour just splashes the girl's boots. Ripe carrots take one more on-beat tap to launch them into the barn, and every harvest builds your combo multiplier. It starts at an easy garden tempo, but as the sun sinks the beat speeds up from a stroll to a scramble, and more chickens wander across the rows, clucking tempting off-beats a split-second early - trust the drum, not the chicken.",
+      "genre": "rhythm or timing",
+      "juice": "Water droplets burst in time with the beat on every good pour, carrots squash down then spring up a size with a leafy pop, and the whole screen gives a soft pulse on PERFECT hits. Floating text pops up: \"PERFECT!\", \"GOOD\", \"MISS\", \"Combo x8!\", and a harvested carrot arcs into the barn trailing sparkles while the door wiggles. Chickens ruffle feathers and flash \"BAWK!\" when they nearly fool you. Title screen: the girl bobs under the big hand-drawn title \"SUNSET BEAT FARM\" while a carrot bounces on the beat and \"Press Enter to Play\" pulses below.",
+      "lose": "The sun sets before 12 carrots reach the barn. The screen dims to dusk and shows \"Sunset! You delivered X of 12 carrots. Press Enter to Try Again.\"",
+      "palette": "Warm sunset oranges and pinks over soft soil browns, leafy greens, and the bright crayon colors of the original drawings.",
+      "pitch": "It's a cozy farming rhythm game where every carrot grows to the beat of the barn's drum before the sun goes down. Water on the beat, harvest on the beat, and don't let the chickens cluck you off tempo!",
+      "roles": [
+        {
+          "object": "girl",
+          "role": "The player character. She hops between the three soil rows and does all the watering and harvesting with a big musical splash."
+        },
+        {
+          "object": "carrot",
+          "role": "The crop and the whole point of the game: carrots grow through three visible stages in the soil rows and fly into the barn when harvested."
+        },
+        {
+          "object": "wateringcan",
+          "role": "The girl's tool, front and center: it pours an arc of water that only lands if you hit Space on the beat."
+        },
+        {
+          "object": "chicken",
+          "role": "Wandering tricksters that stroll across the rows and cluck just before the real beat, trying to throw off your timing."
+        },
+        {
+          "object": "barn",
+          "role": "The stage and the goal: a drum thumps from the barn door, the beat ring pulses around it, and harvested carrots land inside it."
+        }
+      ],
+      "title": "Sunset Beat Farm",
+      "win": "Deliver 12 ripe carrots to the barn before the sun sets. The barn doors burst open with sparkles and the screen says \"Harvest Complete! Great Timing, Farmer!\""
+    },
+    {
+      "controls": " Arrow Keys or WASD: Move the girl one tile and push cans, carrots, and chickens. Space: Wait one turn in place (handy for letting a chicken wander out of your way). Enter: Start, or restart a stuck field.",
+      "core_mechanic": "It's Sokoban with one naughty twist: chickens are pushable crates that take one extra step on their own after you shove them. Push a watering can onto a thirsty carrot tile and it tips over, waters the carrot, and pops it up big and harvestable - then push that giant carrot into the barn. But push a chicken and it waddles one bonus tile in the same direction, tipping cans, plugging gaps, or wandering off with your carefully planned setup. Three tiny fields get trickier as chickens multiply and the move counter (your setting sun) runs down, so every shove is a little prediction puzzle: where will that chicken end up?",
+      "genre": "sokoban-like grid puzzle",
+      "juice": "The girl does a squashy little hop tile to tile, cans slosh with droplet particles when they tip, and watered carrots spring out of the soil with a stretchy pop and leaf sparkle. Pushed chickens burst a few feathers, flash \"BAWK!\", and waddle their bonus step with a wobble. When a carrot slides into the barn, the doors swing open, stars burst out, and \"Stored!\" floats up; finishing a field triggers a confetti of carrot leaves and \"Field Clear!\". Title screen: the drawings line up on a checkerboard field under \"CHICKEN SHUFFLE ACRES\" with \"Press Enter to Play\" and a chicken that wanders across the logo every few seconds.",
+      "lose": "Run out of moves before the last carrot is stored, or wedge a needed carrot or can into a corner. The field freezes, a chicken flashes \"Stuck!\", and the screen says \"Out of Moves! Press Enter to Retry.\"",
+      "palette": "Fresh spring greens and tilled-earth browns on a tidy grid, with the crayon-bright drawings popping against soft fences and paths.",
+      "pitch": "A cozy farm puzzle where you push watering cans and giant carrots across a tidy grid - but the chickens you shove always take one extra waddle on their own. Plan two steps ahead, water every carrot, and shuffle them all into the barn before sunset!",
+      "roles": [
+        {
+          "object": "girl",
+          "role": "The player character. She walks the grid tile by tile and pushes everything with her shoulder, one square at a time."
+        },
+        {
+          "object": "carrot",
+          "role": "A two-state puzzle piece: small and stuck in the soil until watered, then a big pushable carrot you must slide into the barn."
+        },
+        {
+          "object": "wateringcan",
+          "role": "A pushable tool block. Slide it onto a dry carrot tile and it tips over and waters that carrot, then stays as an empty obstacle."
+        },
+        {
+          "object": "chicken",
+          "role": "Living crates that wander the field: push one and it takes an extra step by itself, blocking paths or tipping cans for you."
+        },
+        {
+          "object": "barn",
+          "role": "The goal at the edge of every field: slide each ripe carrot into its open doors to store the harvest."
+        }
+      ],
+      "title": "Chicken Shuffle Acres",
+      "win": "Water and store every carrot in all three fields before the move counter runs out. The barn doors fly open, chickens dance, and the screen says \"All Carrots Stored! What a Tidy Farm!\" with your moves left as a bonus score."
+    },
+    {
+      "controls": " Left/Right or A/D: Move the girl along the bottom - her wide straw hat is the paddle. Space: Launch the watering can, and tap it while the can is falling to give it a little hopeful nudge. Enter: Start or restart.",
+      "core_mechanic": "It's Breakout, except your ball is a watering can and the bricks are carrots that refuse to break - they grow. The first bounce waters a buried sprout, the second swells it into a fat carrot that's now a bigger, easier target, and the third pops it clean out of the soil and into the barn. Grown carrots change the shape of the wall as you play, opening new bounce angles, and chickens wander back and forth through the field as moving bumpers: clip one and the can comes back faster but fully refilled, worth double growth on its next hit. Over ninety seconds the can speeds up, more chickens cross your lanes, and the sunset creeps down - drop the can three times and it's cracked for the day.",
+      "genre": "breakout-like",
+      "juice": "The can leaves a sparkling droplet trail and sloshes blue water particles on every bounce; sprouts stretch up with a rubbery sproing, fat carrots wobble when clipped, and popped carrots spin into the barn with a leaf-burst and a floating \"+1 Stored!\". Hitting a chicken puffs feathers everywhere with a \"BAWK!\" and a tiny screen shake, and losing a can makes a soft thud shake and a dirt splash as \"Can Down!\" appears. Three quick pops in a row flash \"Combo x3!\" in big bouncy letters. Title screen: the watering can bounces off the girl's hat under the chunky title \"WATERING CAN BOUNCE\" with \"Press Enter to Play\" below and carrots popping in time.",
+      "lose": "Drop the watering can three times, or let the 90-second sunset run out with carrots still in the ground. The can lands in the dirt, the sky dims, and the screen says \"Sunset! X carrots still growing. Press Enter to Try Again.\"",
+      "palette": "Sky-blue afternoons fading to amber at the bottom of the screen, rich garden browns, and the bold crayon oranges and greens of the drawings.",
+      "pitch": "It's Breakout on a farm: bounce a flying watering can off a farmer's hat to water, grow, and pop carrots right out of the ground. Clear the whole patch into the barn before sunset - just watch out for the bumper chickens!",
+      "roles": [
+        {
+          "object": "girl",
+          "role": "The paddle. She scampers along the bottom of the screen and bounces the can off her big straw hat; miss and the can thuds into the dirt."
+        },
+        {
+          "object": "carrot",
+          "role": "The brick wall: a field of carrot plots at the top that grow through three stages with each hit before popping free."
+        },
+        {
+          "object": "wateringcan",
+          "role": "The ball, and the star of the show: a big bouncing can that sprays water on every impact and empties a little until the girl's hat refills it."
+        },
+        {
+          "object": "chicken",
+          "role": "Roaming bumpers that wander across the middle of the field, deflecting the can at wild angles and refilling it with a feathery bonk."
+        },
+        {
+          "object": "barn",
+          "role": "The back wall and the harvest bin behind the carrot patch: popped carrots arc over the rows and land in its doors for points."
+        }
+      ],
+      "title": "Watering Can Bounce",
+      "win": "Pop all 18 carrots into the barn before sunset with at least one can left. The barn doors swing wide, carrots rain in, and the screen cheers \"Patch Cleared! Dinner Is Saved!\""
+    }
+  ],
+  "ms": 84981,
+  "usage": {
+    "completion_tokens": 4905,
+    "prompt_tokens": 1137,
+    "total_tokens": 6042,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2505
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  }
+}

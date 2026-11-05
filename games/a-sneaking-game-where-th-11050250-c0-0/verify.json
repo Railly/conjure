@@ -1,0 +1,93 @@
+{
+  "slug": "a-sneaking-game-where-th-11050250-c0-0",
+  "verdict": "ok",
+  "contract": {
+    "outcome": true,
+    "progress": true
+  },
+  "too_easy_by": [],
+  "search": {
+    "outcome": "won",
+    "frames": 1200,
+    "progress": 1,
+    "inputs": 709
+  },
+  "budget": {
+    "max_frames": 7200,
+    "segment": 20,
+    "tries": 12
+  },
+  "policies": {
+    "idle": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.015213069632528704
+    },
+    "hold-right": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.015213069632528704
+    },
+    "hold-left": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.015213069632528704
+    },
+    "hold-right-jump": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.015213069632528704
+    },
+    "hold-everything": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.015213069632528704
+    },
+    "tap-action": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.02203498188857214
+    },
+    "mash-1": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.1021426068148275
+    },
+    "mash-2": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.05537799720314245
+    },
+    "mash-3": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.0945541079756159
+    },
+    "mash-4": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.06711329993670896
+    },
+    "mash-5": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.07558650164812018
+    },
+    "mash-6": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.10353965029653361
+    },
+    "mash-7": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.09869612342950979
+    },
+    "mash-8": {
+      "outcome": "playing",
+      "frames": 7200,
+      "progress": 0.07537433580586146
+    }
+  },
+  "advice": "Winnable, and no dumb policy wins."
+}

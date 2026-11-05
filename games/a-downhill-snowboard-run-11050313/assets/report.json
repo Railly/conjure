@@ -1,0 +1,108 @@
+{
+  "photo": {
+    "width": 1600,
+    "height": 1067
+  },
+  "timings_ms": {
+    "spark": 20046,
+    "sam:snowboarder": 6917,
+    "sam:tree": 3274,
+    "sam:snowman": 2333,
+    "sam:flag": 2431,
+    "sam:yeti": 2704
+  },
+  "spark_usage": {
+    "completion_tokens": 2090,
+    "prompt_tokens": 2263,
+    "total_tokens": 4353,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1901
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 2181
+    }
+  },
+  "sam_cost_usd": 0.0125,
+  "objects": [
+    {
+      "name": "snowboarder",
+      "spark_box": [
+        160,
+        430,
+        460,
+        767
+      ],
+      "box": [
+        171,
+        406,
+        455,
+        744
+      ],
+      "parts": 8
+    },
+    {
+      "name": "tree",
+      "spark_box": [
+        484,
+        407,
+        677,
+        710
+      ],
+      "box": [
+        487,
+        381,
+        678,
+        687
+      ],
+      "parts": 8
+    },
+    {
+      "name": "snowman",
+      "spark_box": [
+        700,
+        398,
+        907,
+        703
+      ],
+      "box": [
+        703,
+        373,
+        907,
+        675
+      ],
+      "parts": 8
+    },
+    {
+      "name": "flag",
+      "spark_box": [
+        950,
+        404,
+        1102,
+        697
+      ],
+      "box": [
+        950,
+        378,
+        1105,
+        664
+      ],
+      "parts": 8
+    },
+    {
+      "name": "yeti",
+      "spark_box": [
+        1116,
+        356,
+        1403,
+        727
+      ],
+      "box": [
+        1118,
+        329,
+        1409,
+        701
+      ],
+      "parts": 8
+    }
+  ]
+}

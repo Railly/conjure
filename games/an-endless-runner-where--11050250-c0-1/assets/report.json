@@ -1,0 +1,125 @@
+{
+  "photo": {
+    "width": 1600,
+    "height": 1067
+  },
+  "timings_ms": {
+    "spark": 20322,
+    "sam:dog": 2889,
+    "sam:hydrant": 3489,
+    "sam:bone": 3670,
+    "sam:cat": 2941,
+    "sam:fence": 1515,
+    "sam:sign": 3293
+  },
+  "spark_usage": {
+    "completion_tokens": 2134,
+    "prompt_tokens": 2263,
+    "total_tokens": 4397,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1911
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 2181
+    }
+  },
+  "sam_cost_usd": 0.015,
+  "objects": [
+    {
+      "name": "dog",
+      "spark_box": [
+        312,
+        248,
+        706,
+        552
+      ],
+      "box": [
+        317,
+        231,
+        697,
+        515
+      ],
+      "parts": 8
+    },
+    {
+      "name": "hydrant",
+      "spark_box": [
+        954,
+        143,
+        1110,
+        400
+      ],
+      "box": [
+        954,
+        146,
+        1123,
+        370
+      ],
+      "parts": 8
+    },
+    {
+      "name": "bone",
+      "spark_box": [
+        408,
+        580,
+        645,
+        732
+      ],
+      "box": [
+        413,
+        571,
+        643,
+        698
+      ],
+      "parts": 8
+    },
+    {
+      "name": "cat",
+      "spark_box": [
+        1013,
+        486,
+        1192,
+        695
+      ],
+      "box": [
+        1017,
+        461,
+        1182,
+        669
+      ],
+      "parts": 8
+    },
+    {
+      "name": "fence",
+      "spark_box": [
+        942,
+        618,
+        1350,
+        812
+      ],
+      "box": [
+        939,
+        596,
+        1342,
+        784
+      ],
+      "parts": 8
+    },
+    {
+      "name": "sign",
+      "spark_box": [
+        710,
+        787,
+        870,
+        1035
+      ],
+      "box": [
+        712,
+        763,
+        869,
+        1010
+      ],
+      "parts": 8
+    }
+  ]
+}

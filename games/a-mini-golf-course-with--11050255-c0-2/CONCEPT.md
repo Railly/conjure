@@ -1,0 +1,10 @@
+Title: Windmill Steering Golf
+Genre: sports
+Pitch: A classic mini-golf hole with a twist: the windmill isn't an obstacle - it's your steering wheel. Every time you putt, you don't just watch, you drive the ball to the flag past the pond. The first hole is a gentle curve, but the windmill gets quicker and the pond gets bigger with each round.
+Core mechanic: The windmill really works: after a putt, you gently tilt the whole course with 'Arrows' or 'WASD', rolling the ball around sand and walls, and the faster the windmill blades spin, the harder the course tilts.
+Controls: - Use 'Arrows' or 'WASD' to aim the arrow. Hold 'Space' to charge and release it to putt. Press 'Enter' to start and restart.
+Win: You win by holing the ball in the cup under the flag in 5 strokes or fewer.
+Lose: Finish 'Out of Bounds' if the ball flies into the rough or sits in any sand trap for three seconds. Use Undo (Enter) to pull the ball back.
+Roles: ball: You putt the white golf ball around the one hole, mostly using curves and ramps. Aim and hold to power your shot.; flag: The red flag plants the hole at the back of the screen - sink the ball there to win the hole.; pond: A bright blue water hazard sits between you and the hole. If the ball goes in, it costs a stroke.; windmill: The windmill blade slowly spins over a narrow exit, and it also pushes wind across the field when you steer. Tap a blade and the ball bounces off.; bridge: The arched bridge sits over the pond - if you roll onto it, your ball crosses safely; the wind can't move you while you're on it.
+Juice: - Gamepad or 'Arrows' and 'WASD' move the ball once per hole: the ball stretches on impact, squashes on hard knocks, slows in sand, and stops at the hole. Keep 'Enter' near your thumb to undo changes quickly.
+Palette: - The ball is a glowing white orb, the flag is a bright red beacon, the bridge over the pond is the only safe crossing, the windmill obstacles guard the back fairway, and the pond is blue glass.

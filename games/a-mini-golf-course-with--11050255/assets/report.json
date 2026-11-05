@@ -1,0 +1,108 @@
+{
+  "photo": {
+    "width": 1600,
+    "height": 1067
+  },
+  "timings_ms": {
+    "spark": 49678,
+    "sam:ball": 3741,
+    "sam:flag": 3584,
+    "sam:pond": 3269,
+    "sam:windmill": 3263,
+    "sam:bridge": 3464
+  },
+  "spark_usage": {
+    "completion_tokens": 5991,
+    "prompt_tokens": 2263,
+    "total_tokens": 8254,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5806
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 2181
+    }
+  },
+  "sam_cost_usd": 0.0125,
+  "objects": [
+    {
+      "name": "ball",
+      "spark_box": [
+        458,
+        192,
+        607,
+        326
+      ],
+      "box": [
+        438,
+        193,
+        578,
+        326
+      ],
+      "parts": 8
+    },
+    {
+      "name": "flag",
+      "spark_box": [
+        491,
+        449,
+        592,
+        606
+      ],
+      "box": [
+        491,
+        450,
+        581,
+        605
+      ],
+      "parts": 8
+    },
+    {
+      "name": "pond",
+      "spark_box": [
+        393,
+        731,
+        773,
+        933
+      ],
+      "box": [
+        378,
+        731,
+        748,
+        915
+      ],
+      "parts": 8
+    },
+    {
+      "name": "windmill",
+      "spark_box": [
+        938,
+        137,
+        1192,
+        470
+      ],
+      "box": [
+        912,
+        138,
+        1160,
+        441
+      ],
+      "parts": 8
+    },
+    {
+      "name": "bridge",
+      "spark_box": [
+        977,
+        668,
+        1312,
+        827
+      ],
+      "box": [
+        945,
+        670,
+        1237,
+        798
+      ],
+      "parts": 8
+    }
+  ]
+}

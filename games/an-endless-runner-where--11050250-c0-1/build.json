@@ -1,0 +1,157 @@
+{
+  "concept": {
+    "controls": "Hold and release Space to stretch and launch. Press Down to duck. Press Enter to start or retry.",
+    "core_mechanic": "Holding Space stretches the dog's front half forward while its back feet stay planted, then releasing snaps its whole body through the air. A longer stretch flies farther but takes longer to snap, so players must judge distance rather than simply tap to jump.",
+    "genre": "Endless Runner",
+    "juice": "The dog squashes before stretching, wiggles while fully extended, and snaps forward with speed lines and dust puffs. Perfect landings pop floating text, bones spin off in sparkles, hydrant grazes cause a tiny screen shake, and passing each bus stop triggers a cheerful sign wiggle and distance banner. A paper-like street, paw-print trail, and big hand-drawn sprites keep the run charming and readable.",
+    "lose": "Crash into three hydrants or cats and the run ends with the text 'OH NO! TRIPPED UP!'",
+    "palette": "Warm cream, dog brown, hydrant red, and bus-stop blue on a dark outline.",
+    "pitch": "Your dog has spotted the bus home and is stretching, snapping, and sprinting down the street to catch it. Time each rubber-band leap over hydrants, snatch bones mid-flight, and reach the final bus stop before your three tumbles run out.",
+    "roles": [
+      {
+        "object": "The brown spotted running dog",
+        "role": "The large hero whose body visibly stretches and snaps forward with every jump."
+      },
+      {
+        "object": "The red fire hydrant",
+        "role": "The main ground obstacle to clear; clipping one costs a tumble and bursts a spray of water."
+      },
+      {
+        "object": "The black-and-white bone",
+        "role": "Floating treats placed along ideal jump arcs; grabbing five in a row restores one tumble."
+      },
+      {
+        "object": "The gray striped cat",
+        "role": "A tall sitting blocker that must be ducked under its swiping paw or cleared with a very short hop."
+      },
+      {
+        "object": "The brown wooden fence",
+        "role": "Raised fence sections that act as landing platforms and change the height of upcoming jumps."
+      },
+      {
+        "object": "The blue BUS STOP sign",
+        "role": "Milestone signs every 150 meters and the giant finish sign at the end of the street."
+      }
+    ],
+    "title": "Long Dog Dash",
+    "win": "Reach the big BUS STOP sign at 600 meters before losing all three tumbles to see 'YOU CAUGHT THE BUS!'"
+  },
+  "verdict": "ok",
+  "playtest": {
+    "slug": "an-endless-runner-where--11050250-c0-1",
+    "verdict": "ok",
+    "contract": {
+      "outcome": true,
+      "progress": true
+    },
+    "too_easy_by": [],
+    "search": {
+      "outcome": "won",
+      "frames": 1620,
+      "progress": 1,
+      "inputs": 961
+    },
+    "budget": {
+      "max_frames": 7200,
+      "segment": 20,
+      "tries": 12
+    },
+    "policies": {
+      "idle": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-right": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-left": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-right-jump": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "hold-everything": {
+        "outcome": "playing",
+        "frames": 7200,
+        "progress": 0
+      },
+      "tap-action": {
+        "outcome": "lost",
+        "frames": 877,
+        "progress": 0.4681887621459401
+      },
+      "mash-1": {
+        "outcome": "won",
+        "frames": 1641,
+        "progress": 1
+      },
+      "mash-2": {
+        "outcome": "lost",
+        "frames": 1438,
+        "progress": 0.8569960854584332
+      },
+      "mash-3": {
+        "outcome": "lost",
+        "frames": 743,
+        "progress": 0.3993593171664716
+      },
+      "mash-4": {
+        "outcome": "lost",
+        "frames": 891,
+        "progress": 0.48568006076933873
+      },
+      "mash-5": {
+        "outcome": "lost",
+        "frames": 550,
+        "progress": 0.2855613605019308
+      },
+      "mash-6": {
+        "outcome": "won",
+        "frames": 1650,
+        "progress": 1
+      },
+      "mash-7": {
+        "outcome": "won",
+        "frames": 1656,
+        "progress": 1
+      },
+      "mash-8": {
+        "outcome": "won",
+        "frames": 1627,
+        "progress": 1
+      }
+    },
+    "advice": "Winnable, and no dumb policy wins."
+  },
+  "qa": {
+    "ok": true,
+    "issues": [],
+    "minor": [
+      "Floating 'BONE 2/5' pickup text briefly overlaps the dog sprite in mid-play capture, typical motion overlap."
+    ],
+    "model": "Muse Spark 1.3",
+    "ms": 22090
+  },
+  "cost_usd": 0.6253,
+  "ms": 145509,
+  "runs": [
+    {
+      "model": "muse-wonder-1.0",
+      "ms": 119759,
+      "turns": 35,
+      "usage": {
+        "input": 70762,
+        "cachedInput": 396888,
+        "output": 13144
+      },
+      "summary": "Long Dog Dash is a hand-drawn endless runner where your stretching dog sprints 600 meters past hydrants, cats, and fences to catch the bus home. Hold and release Space to stretch and snap through the air, press Down to duck under cats, collect five bones in a row to earn back a tumble, and press Enter to start or retry."
+    }
+  ]
+}
